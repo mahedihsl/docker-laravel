@@ -1,3 +1,3 @@
 # docker/nginx/Dockerfile
-FROM nginx:1.20
+FROM nginx
 ADD myradar.nginx.conf /etc/nginx/conf.d/default.conf

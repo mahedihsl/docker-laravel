@@ -5,10 +5,10 @@ services:
     container_name: nginx
     build: ./docker/nginx
     command: nginx -g "daemon off;"
-    links:
+    depends_on:
       - php
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./logs/nginx:/var/log/nginx
       - ./src/myradar:/var/www/html/myradar
@@ -20,38 +20,15 @@ services:
     volumes:
       - ./src/myradar:/var/www/html/myradar
     working_dir: /var/www/html/myradar
+    
   composer:
     container_name: composer
-    image: composer/composer
+    image: composer:latest
     volumes:
       - ./src/myradar:/var/www/html/myradar
     working_dir: /var/www/html/myradar
-    command: install
-  mongo:
-    image: mongo:5.0
-    container_name: mongo
-    environment:
-        - MONGO_INITDB_ROOT_USERNAME=root
-        - MONGO_INITDB_ROOT_PASSWORD=password
-    restart: unless-stopped
-    ports:
-      - "27017:27017"
-    volumes:
-      - ./database/mongodb/db:/data/db
-      - ./database/mongodb/dev.archive:/Databases/dev.archive
-      - ./database/mongodb/production:/Databases/production
-    command: [--auth]
-  mongo-express:
-    image: mongo-express
-    container_name: mexpress
-    environment:
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
-      - ME_CONFIG_MONGODB_URL=mongodb://root:password@mongo:27017/?authSource=admin
-      - ME_CONFIG_BASICAUTH_USERNAME=mexpress
-      - ME_CONFIG_BASICAUTH_PASSWORD=mexpress
+
     links:
-      - mongo
-    restart: unless-stopped
-    ports:
-      - "8081:8081"
+      - php
+  
+  

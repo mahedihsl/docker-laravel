@@ -8,7 +8,6 @@ RUN apt-get install -y autoconf pkg-config libssl-dev
 
 RUN docker-php-ext-install bcmath mbstring intl opcache
 
-RUN docker-php-ext-install pdo pdo_mysql mysqli
 
 RUN pecl install mongodb
 RUN echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini
