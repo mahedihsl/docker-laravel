@@ -38,12 +38,12 @@ return [
 
         'mongodb' => [
             'driver'   => 'mongodb',
-            // 'host'     => ['182.160.99.137:6008','52.76.149.159:27017','18.138.219.158:27017'],
-            'host'     => env('DB_HOST'),
-            'port'     => env('DB_PORT'),
-            'database' => env('DB_NAME'),
-            'username' => env('DB_USER'),
-            'password' => env('DB_PASS'),
+             //'host'     => ['182.160.99.137:6008','52.76.149.159:27017','18.138.219.158:27017'],
+            'host'     => env('MONGO_HOST'),
+            'port'     => env('MONGO_PORT'),
+            'database' => env('MONGO_DATABASE'),
+            'username' => env('MONGO_USERNAME'),
+            'password' => urlencode(env('MONGO_PASSWORD')),
             'options'  => [
                 'database' => env('MONGO_AUTH_DATABASE')
             ]
@@ -106,7 +106,7 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
-        
+
 
     ],
 

@@ -20,15 +20,12 @@ services:
     volumes:
       - ./src/myradar:/var/www/html/myradar
     working_dir: /var/www/html/myradar
-    
+
   composer:
     container_name: composer
     image: composer:latest
     volumes:
       - ./src/myradar:/var/www/html/myradar
     working_dir: /var/www/html/myradar
-
-    links:
+    depends_on:
       - php
-  
-  
