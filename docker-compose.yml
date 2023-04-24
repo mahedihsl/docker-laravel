@@ -29,3 +29,13 @@ services:
     working_dir: /var/www/html/myradar
     depends_on:
       - php
+
+  npm:
+    image: node:14
+    container_name: npm
+    working_dir: /var/www/html/myradar
+    entrypoint: ["npm"]
+    volumes:
+      - ./src/myradar:/var/www/html/myradar
+    depends_on:
+      - php

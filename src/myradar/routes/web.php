@@ -18,4 +18,10 @@ Route::get('/', function () {
     $query = bkash::where('is_successful', false)->get();
 
     dd($query);
+})->name('welcome');
+
+Route::get('/home', function() {
+    //$lang = $request->get('lang', config('app.locale'));
+
+        return view('revamp.index');
 });
