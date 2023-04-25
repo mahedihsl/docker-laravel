@@ -9,7 +9,7 @@ RUN docker-php-ext-install bcmath mbstring intl opcache
 
 RUN pecl install mongodb
 RUN echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini
-RUN apt-get remove -y python3.9-minimal
+
 # RUN apt-get install -y python3.9-minimal
 
 # RUN apt-get install -y nodejs npm

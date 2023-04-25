@@ -98,7 +98,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
-<body x-data="{
+<body x-data="{ 
   showOfferModal: false,
   interest: new URLSearchParams(location.search).get('interest'),
   offerForm: {
@@ -116,7 +116,7 @@
       this.showOfferModal = true
     }, 2500)
     if (this.interest === 'offer') {
-
+      
     }
   },
   registerToOffer() {
@@ -272,7 +272,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <form action="" method="post" class="php-email-form">
+                    <form action="{{ route('save-message') }}" method="post" class="php-email-form">
                         {!! csrf_field() !!}
                         <input type="hidden" name="type" value="message_lead">
                         <div class="row gy-4">
