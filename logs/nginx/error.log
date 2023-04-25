@@ -1385,3 +1385,4 @@
 2023/04/25 05:45:12 [notice] 1#1: start worker process 33
 2023/04/25 05:45:12 [notice] 1#1: start worker process 34
 2023/04/25 05:45:12 [notice] 1#1: start worker process 35
+2023/04/25 08:56:20 [error] 28#28: *667 directory index of "/var/www/html/myradar/public/" is forbidden, client: 172.20.0.1, server: , request: "GET / HTTP/1.1", host: "127.0.0.1:8080"

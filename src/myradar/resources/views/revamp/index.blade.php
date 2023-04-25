@@ -98,7 +98,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
-<body x-data="{ 
+<body x-data="{
   showOfferModal: false,
   interest: new URLSearchParams(location.search).get('interest'),
   offerForm: {
@@ -116,7 +116,7 @@
       this.showOfferModal = true
     }, 2500)
     if (this.interest === 'offer') {
-      
+
     }
   },
   registerToOffer() {

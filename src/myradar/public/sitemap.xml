@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+<url>
+  <loc>https://myradar.com.bd</loc>
+</url>
+<url>
+  <loc>https://myradar.com.bd/login?demo=yes</loc>
+</url>
+<url>
+  <loc>https://myradar.com.bd/login</loc>
+</url>
+<url>
+  <loc>https://myradar.com.bd?lang=bn</loc>
+</url>
+<url>
+  <loc>https://myradar.com.bd?lang=en</loc>
+</url>
+<url>
+  <loc>http://myradar.com.bd/index.html</loc>
+</url>
+<url>
+  <loc>http://myradar.com.bd/href:hs@hypersystems.com.bd</loc>
+</url>
+<url>
+  <loc></loc>
+</url>
+</urlset>
