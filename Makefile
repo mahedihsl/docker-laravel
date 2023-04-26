@@ -21,6 +21,9 @@ permission:
 	docker exec php bash -c "chown -R root:www-data bootstrap/cache"
 	docker exec php bash -c "chmod -R 775 storage"
 	docker exec php bash -c "chmod -R 755 bootstrap/cache"
+	docker exec php bash -c "cp .env.sample .env"
+	docker exec php bash -c "php artisan key:generate"
+
 
 app:
 	docker exec -it php bash
