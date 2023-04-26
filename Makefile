@@ -1,12 +1,14 @@
 
 setup:
-	@make build
+	@make fresh-build
 	@make composer-update
 	@make npm-update
 	@make permission
 
-build:
+fresh-build:
 	docker compose build --no-cache --force-rm
+build:
+	docker compose build 
 
 stop:
 	docker compose stop
