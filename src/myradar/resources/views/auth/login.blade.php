@@ -53,7 +53,8 @@
             <img class="brand-img" src="{{ asset('images/web_logo.png', true) }}" alt="..." style="width: 60px;">
             <h2 class="brand-text font-size-18">My Radar</h2>
           </div>
-          <form method="post" action="{{ route('login') }}" autocomplete="off">
+          <form method="post" action="{{ route('test') }}" autocomplete="off">
+            @csrf
             <div class="form-group form-material floating" data-plugin="formMaterial">
               <input type="text" class="form-control" name="username" value="{{ old('username') }}" />
               <label class="floating-label">Email or Phone</label>

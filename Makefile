@@ -13,7 +13,7 @@ stop:
 up:
 	docker compose up -d
 composer-update:
-	docker compose run --rm composer update --ignore-platform-reqs 
+	docker compose run --rm composer install --ignore-platform-reqs 
 npm-update:
 	docker compose run --rm npm npm install  
 permission:
@@ -22,5 +22,8 @@ permission:
 	docker exec php bash -c "chmod -R 775 storage"
 	docker exec php bash -c "chmod -R 755 bootstrap/cache"
 
+app:
+	docker exec -it php bash
+ 
 
 	

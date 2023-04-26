@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\bkash;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\CustomLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,7 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
   Route::get('/archive', function() {
       return view('landing.welcome');
   });
+  Route::post('/test', [CustomLoginController::class,'login'])->name('test');
 
    Auth::routes();
 
@@ -49,15 +51,18 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 //   Route::get('/eheater', 'Promotion\CampaignController@eheater');
 //   Route::post('/enroll/save', 'Promotion\CampaignController@enroll');
 
-//   Route::post('/login', 'Auth\CustomLoginController@login');
-//   Route::get('/logout', 'Auth\CustomLoginController@logout');
+   //Route::post('/login', 'Auth\CustomLoginController@login');
+
+
+   Route::get('/logout', [CustomLoginController::class,'logout']);
 //   Route::get('/forgetPassword', 'Auth\CustomLoginController@getUserName');
 //   Route::get('/password/setNewPassword', 'Auth\CustomLoginController@setNewPassword')->name('setNewPassword');
 //   Route::post('/password/newPassword', 'Auth\CustomLoginController@newPassword');
 
 //   Route::group(['middleware' => ['auth']], function() {
 //       Route::get('/home', 'HomeController@index')->name('home');
-//       Route::get('/car/tracking', 'Customer\PositionController@show')->name('car-tracking');
+ //     Route::get('/car/tracking', 'Customer\PositionController@show')->name('car-tracking');
+ Route::get('/car/tracking', [App\Http\Controllers\Report\PositionController::class,'show'])->name('car-tracking');;
 //       Route::get('/car/positions/{deviceId}/{start}/{finish}/{skip}', 'Customer\PositionHistoryController@getPositions');
 //   });
 
@@ -123,6 +128,7 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
 //    //Bkash Checkout URL
 //    Route::get('/p/{uId}', 'Payment\BkashCheckoutURLController@amount')->name('url-amount');
+    Route::get('/p/{uId}', [App\Http\Controllers\Payment\BkashCheckoutURLController::class],'amount')->name('url-amount');
 //    Route::post('/bkash/pay','Payment\BkashCheckoutURLController@payment')->name('url-pay');
 //    Route::post('/bkash/create','Payment\BkashCheckoutURLController@createPayment')->name('url-create')->middleware(['checkout_url_jwt']);
 //    Route::get('/bkash/callback','Payment\BkashCheckoutURLController@callback')->name('url-callback')->middleware(['checkout_url_jwt']);
@@ -137,6 +143,7 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 //       Route::get('/user/device/ids/{userId}', 'Customer\DeviceController@devices');
 
 //       Route::get('/refuel/log', 'Calibration\RefuelFeedController@customer')->name('refuel-feed');
+       Route::get('/refuel/log', [App\Http\Controllers\Calibration\RefuelFeedController::class],'customer')->name('refuel-feed');
 //       Route::post('/refuel/feed/save', 'Calibration\RefuelFeedController@store');
 
 //       Route::get('/checkout-iframe/success', 'Payment\CheckoutIFrameController@success');
@@ -434,6 +441,7 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 //       Route::get('/customer/modules', 'User\CustomerController@modules');
 //       Route::get('/manage/customer/{id}', 'User\CustomerController@manage')->name('manage.customer');
 //       Route::get('/service/view', 'Customer\ServiceController@show')->name('service-view');
+      Route::get('/service/view', [App\Http\Controllers\Customer\ServiceController::class,'show'])->name('service-view');
 
 //       Route::get('/service/log/{car}/{service}', 'Service\ServiceLogController@history');
 //       Route::get('/service/report/{car_id}', 'Service\ServiceLogController@report');
@@ -463,7 +471,10 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
 //       Route::get('/mileage/records/{carId}/{days}', 'Service\MileageController@records');
 
-//       Route::get('/geofence/manage', 'Fence\AreaController@index')->name('area-fence');
+     // Route::get('/geofence/manage', 'Fence\AreaController@index')->name('area-fence');
+     Route::get('/geofence/manage', [App\Http\Controllers\Fence\AreaController::class,'index'])->name('area-fence');
+
+
 //       Route::post('/geofence/save', 'Fence\AreaController@save');
 //       Route::post('/geofence/subscribe', 'Fence\AreaController@subscribe');
 //       Route::post('/geofence/unsubscribe', 'Fence\AreaController@unsubscribe');
@@ -520,10 +531,10 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 //   Route::get('/tracking/records/fetch', 'Customer\PositionHistoryController@history');
 
 
-Auth::routes();
+ Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+// // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

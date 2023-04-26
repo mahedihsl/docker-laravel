@@ -10,7 +10,7 @@ use Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Device\RestAPIController;
-use App\Entities\User;
+use App\Models\User;
 use App\Service\Microservice\UserMicroservice;
 use Carbon\Carbon;
 use Illuminate\Support\MessageBag;
@@ -24,6 +24,7 @@ class CustomLoginController extends Controller
 
     public function __construct()
     {
+
         $this->userService = new UserMicroservice();
         //  $this->middleware('web');
 
@@ -38,7 +39,7 @@ class CustomLoginController extends Controller
 
     public function login(Request $request)
     {
-
+        //dd($request->all());
         $input = $request->get('username');
         $pass = $request->get('password');
 
@@ -54,7 +55,8 @@ class CustomLoginController extends Controller
 
         if (filter_var($input, FILTER_VALIDATE_EMAIL)) {
 
-            $auth_attempt = Auth::attempt(['email' => $input, 'password' => request('password')]);
+            $auth_attempt = Auth::attempt(['email' => $input, 'password' => $pass]);
+
 
             if ($auth_attempt == true) {
                 $user = Auth::user();
@@ -66,6 +68,7 @@ class CustomLoginController extends Controller
                     } else {
                         if ($user->type == User::$TYPE_CUSTOMER) {
                             $navigation = $this->getNavigationAfterCustomerLogin($user);
+
                             return redirect($navigation['path'])->with($navigation['data']);
                         } else {
                             $url = '/home';
@@ -121,6 +124,7 @@ class CustomLoginController extends Controller
     public function getNavigationAfterCustomerLogin($user)
     {
         $userAuthData = $this->userService->token($user->id);
+        //dd($userAuthData);
 
         $token = $userAuthData['token'];
         $vehicleCount = $userAuthData['deviceCount']['vehicle'];

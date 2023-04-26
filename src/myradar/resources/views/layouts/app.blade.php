@@ -60,7 +60,7 @@
     @endphp
     <div id="app" class="container body">
         <div class="main_container">
-            @include('partial.sidebar.sidebar')
+             @include('partial.sidebar')
 
             <!-- top navigation -->
             @include('partial.topbar')
