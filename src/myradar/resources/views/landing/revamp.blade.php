@@ -1,3 +1,6 @@
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,7 +135,7 @@
 
     <div class="row" style="width: 100%; --bs-gutter-x: 0;">
       <div class="col-lg-12" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="{{ asset('landing2/assets/image/banner.gif', true) }}" class="img-fluid d-none d-lg-block" alt=""
+        <img src="{{ asset('landing2/assets/image/banner.gif', $hasHttps) }}" class="img-fluid d-none d-lg-block" alt=""
           style="width: 100%;" />
         <img src="{{ asset('landing2/assets/image/live_tracking3.gif', true) }}" class="img-fluid d-lg-none" alt=""
           style="width: 100%;" />

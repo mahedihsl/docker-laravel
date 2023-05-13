@@ -1,3 +1,6 @@
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 
@@ -10,33 +13,33 @@
 
   <title>Login | myRADAR</title>
 
-  <link rel="apple-touch-icon" href="{{ asset('auth/images/apple-touch-icon.png', true) }}">
-  <link rel="shortcut icon" href="{{ asset('images/favicon.ico', true) }}">
+  <link rel="apple-touch-icon" href="{{ asset('auth/images/apple-touch-icon.png', $hasHttps) }}">
+  <link rel="shortcut icon" href="{{ asset('images/favicon.ico', $hasHttps) }}">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="{{ asset('auth/global/css/bootstrap.min.css', true) }}">
-  <link rel="stylesheet" href="{{ asset('auth/global/css/bootstrap-extend.min.css', true) }}">
-  <link rel="stylesheet" href="{{ asset('auth/css/site.min.css', true) }}">
+  <link rel="stylesheet" href="{{ asset('auth/global/css/bootstrap.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('auth/global/css/bootstrap-extend.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('auth/css/site.min.css', $hasHttps) }}">
 
   <!-- Plugins -->
-  <link rel="stylesheet" href="{{ asset('auth/global/vendor/animsition/animsition.min.css', true) }}">
-  <link rel="stylesheet" href="{{ asset('auth/global/vendor/asscrollable/asScrollable.min.css', true) }}">
-  <link rel="stylesheet" href="{{ asset('auth/global/vendor/switchery/switchery.min.css', true) }}">
-  <link rel="stylesheet" href="{{ asset('auth/global/vendor/intro-js/introjs.min.css', true) }}">
-  <link rel="stylesheet" href="{{ asset('auth/global/vendor/slidepanel/slidePanel.min.css', true) }}">
-  <link rel="stylesheet" href="{{ asset('auth/global/vendor/flag-icon-css/flag-icon.min.css', true) }}">
-  <link rel="stylesheet" href="{{ asset('auth/global/vendor/waves/waves.min.css', true) }}">
+  <link rel="stylesheet" href="{{ asset('auth/global/vendor/animsition/animsition.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('auth/global/vendor/asscrollable/asScrollable.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('auth/global/vendor/switchery/switchery.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('auth/global/vendor/intro-js/introjs.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('auth/global/vendor/slidepanel/slidePanel.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('auth/global/vendor/flag-icon-css/flag-icon.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('auth/global/vendor/waves/waves.min.css', $hasHttps) }}">
 
   <!-- Page -->
-  <link rel="stylesheet" href="{{ asset('auth/examples/css/pages/login-v3.min.css', true) }}">
+  <link rel="stylesheet" href="{{ asset('auth/examples/css/pages/login-v3.min.css', $hasHttps) }}">
 
   <!-- Fonts -->
-  <link rel="stylesheet" href="{{ asset('auth/global/fonts/material-design/material-design.min.css', true) }}">
-  <link rel="stylesheet" href="{{ asset('auth/global/fonts/brand-icons/brand-icons.min.css', true) }}">
+  <link rel="stylesheet" href="{{ asset('auth/global/fonts/material-design/material-design.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('auth/global/fonts/brand-icons/brand-icons.min.css', $hasHttps) }}">
   <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,700">
 
   <!-- Scripts -->
-  <script src="{{ asset('auth/global/vendor/breakpoints/breakpoints.min.js', true) }}"></script>
+  <script src="{{ asset('auth/global/vendor/breakpoints/breakpoints.min.js', $hasHttps) }}"></script>
   <script>
     Breakpoints();
   </script>
@@ -50,7 +53,7 @@
       <div class="panel">
         <div class="panel-body">
           <div class="brand">
-            <img class="brand-img" src="{{ asset('images/web_logo.png', true) }}" alt="..." style="width: 60px;">
+            <img class="brand-img" src="{{ asset('images/web_logo.png', $hasHttps) }}" alt="..." style="width: 60px;">
             <h2 class="brand-text font-size-18">My Radar</h2>
           </div>
           <form method="post" action="{{ route('test') }}" autocomplete="off">
@@ -106,54 +109,54 @@
   <!-- End Page -->
 
   <!-- Core  -->
-  <script src="{{ asset('auth/global/vendor/babel-external-helpers/babel-external-helpers.js', true) }}"></script>
-  <script src="{{ asset('auth/global/vendor/jquery/jquery.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/vendor/popper-js/umd/popper.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/vendor/bootstrap/bootstrap.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/vendor/animsition/animsition.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/vendor/mousewheel/jquery.mousewheel.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/vendor/asscrollbar/jquery-asScrollbar.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/vendor/asscrollable/jquery-asScrollable.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/vendor/ashoverscroll/jquery-asHoverScroll.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/vendor/waves/waves.min.js', true) }}"></script>
+  <script src="{{ asset('auth/global/vendor/babel-external-helpers/babel-external-helpers.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/vendor/jquery/jquery.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/vendor/popper-js/umd/popper.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/vendor/bootstrap/bootstrap.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/vendor/animsition/animsition.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/vendor/mousewheel/jquery.mousewheel.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/vendor/asscrollbar/jquery-asScrollbar.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/vendor/asscrollable/jquery-asScrollable.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/vendor/ashoverscroll/jquery-asHoverScroll.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/vendor/waves/waves.min.js', $hasHttps) }}"></script>
 
   <!-- Plugins -->
-  <script src="{{ asset('auth/global/vendor/switchery/switchery.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/vendor/intro-js/intro.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/vendor/screenfull/screenfull.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/vendor/slidepanel/jquery-slidePanel.min.js', true) }}"></script>
+  <script src="{{ asset('auth/global/vendor/switchery/switchery.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/vendor/intro-js/intro.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/vendor/screenfull/screenfull.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/vendor/slidepanel/jquery-slidePanel.min.js', $hasHttps) }}"></script>
 
   <!-- Plugins For This Page -->
-  <script src="{{ asset('auth/global/vendor/jquery-placeholder/jquery.placeholder.min.js', true) }}"></script>
+  <script src="{{ asset('auth/global/vendor/jquery-placeholder/jquery.placeholder.min.js', $hasHttps) }}"></script>
 
   <!-- Scripts -->
-  <script src="{{ asset('auth/global/js/State.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/js/Component.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/js/Plugin.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/js/Base.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/js/Config.min.js', true) }}"></script>
+  <script src="{{ asset('auth/global/js/State.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/js/Component.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/js/Plugin.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/js/Base.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/js/Config.min.js', $hasHttps) }}"></script>
 
-  <script src="{{ asset('auth/js/Section/Menubar.min.js', true) }}"></script>
-  <script src="{{ asset('auth/js/Section/Sidebar.min.js', true) }}"></script>
-  <script src="{{ asset('auth/js/Section/PageAside.min.js', true) }}"></script>
-  <script src="{{ asset('auth/js/Plugin/menu.min.js', true) }}"></script>
+  <script src="{{ asset('auth/js/Section/Menubar.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/js/Section/Sidebar.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/js/Section/PageAside.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/js/Plugin/menu.min.js', $hasHttps) }}"></script>
 
   <!-- Config -->
-  <script src="{{ asset('auth/global/js/config/colors.min.js', true) }}"></script>
-  <script src="{{ asset('auth/js/config/tour.min.js', true) }}"></script>
+  <script src="{{ asset('auth/global/js/config/colors.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/js/config/tour.min.js', $hasHttps) }}"></script>
   <script>
     Config.set('assets', '../assets');
   </script>
 
   <!-- Page -->
-  <script src="{{ asset('auth/js/Site.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/js/Plugin/asscrollable.min.js', true) }}"></script>
+  <script src="{{ asset('auth/js/Site.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/js/Plugin/asscrollable.min.js', $hasHttps) }}"></script>
 
-  <script src="{{ asset('auth/global/js/Plugin/slidepanel.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/js/Plugin/switchery.min.js', true) }}"></script>
+  <script src="{{ asset('auth/global/js/Plugin/slidepanel.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/js/Plugin/switchery.min.js', $hasHttps) }}"></script>
 
-  <script src="{{ asset('auth/global/js/Plugin/jquery-placeholder.min.js', true) }}"></script>
-  <script src="{{ asset('auth/global/js/Plugin/material.min.js', true) }}"></script>
+  <script src="{{ asset('auth/global/js/Plugin/jquery-placeholder.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('auth/global/js/Plugin/material.min.js', $hasHttps) }}"></script>
 
 
   <script>

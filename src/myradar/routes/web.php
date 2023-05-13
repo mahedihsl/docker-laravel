@@ -531,7 +531,7 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 //   Route::get('/tracking/records/fetch', 'Customer\PositionHistoryController@history');
 
 
- Auth::routes();
+ //Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

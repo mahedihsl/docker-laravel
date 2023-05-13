@@ -3,7 +3,7 @@
   <div class="row" style="width: 100%; --bs-gutter-x: 0;">
     <div class="col-lg-12" style="display: flex; flex-direction: column; align-items: center;">
       <div class="container-fluid position-relative">
-        <img src="{{ asset('landing2/assets/image/banner.gif', true) }}" class="img-fluid d-none d-lg-block" alt=""
+        <img src="{{ asset('landing2/assets/image/banner.gif') }}" class="img-fluid d-none d-lg-block" alt=""
           style="width: 100%;" />
         <div class="row d-none d-lg-block position-absolute bottom-0 start-50 translate-middle-x">
           <div class="col-xs-12 d-flex flex-row justify-content-center align-items-center">
