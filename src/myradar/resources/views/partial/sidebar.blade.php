@@ -49,6 +49,7 @@
               <small class="label pull-right bg-green">Hot</small>
             </span> --}}
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
             </form>
           </a>
       </li>

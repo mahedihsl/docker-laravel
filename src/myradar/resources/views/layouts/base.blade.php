@@ -1,3 +1,7 @@
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
+
 <!DOCTYPE html>
 <html>
 
@@ -11,16 +15,16 @@
 
     <title>{{ config('app.name') }}</title>
 
-    <link rel="shortcut icon" href="{{ asset('images/favicon.ico', true) }}">
-    <link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', true) }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', true) }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', true) }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico', $hasHttps) }}">
+    <link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', $hasHttps) }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', $hasHttps) }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', $hasHttps) }}">
 
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-    <link rel="stylesheet" href="{{ asset('css/tailwind.css?v='.config('cache.version'), true) }}">
+    <link rel="stylesheet" href="{{ asset('css/tailwind.css?v='.config('cache.version'), $hasHttps) }}">
     <script src="//unpkg.com/alpinejs" defer></script>
     @stack('style')
     <!-- Scripts -->
