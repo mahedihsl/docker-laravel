@@ -5,13 +5,13 @@
 
     <header class="section-header">
       <h2>F.A.Q</h2>
-      <p class="@lang('misc.font')">@lang('faq.title')</p>
+      <p class="bangla">@lang('faq.title')</p>
     </header>
 
     <div class="row">
       <div class="col-lg-6">
         <!-- F.A.Q List 1-->
-        <div class="accordion accordion-flush @lang('misc.font')" id="faqlist1">
+        <div class="accordion accordion-flush bangla" id="faqlist1">
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed font-bold" type="button" data-bs-toggle="collapse"
@@ -116,7 +116,7 @@
       <div class="col-lg-6">
 
         <!-- F.A.Q List 2-->
-        <div class="accordion accordion-flush @lang('misc.font')" id="faqlist2">
+        <div class="accordion accordion-flush bangla" id="faqlist2">
 
           <div class="accordion-item">
             <h2 class="accordion-header">

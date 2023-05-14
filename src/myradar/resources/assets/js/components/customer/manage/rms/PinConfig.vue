@@ -22,30 +22,38 @@
       <select class="form-control" v-model="info.type">
         <option value="main_phase">MAIN PHASE</option>
         <option value="dg_status">DG STATUS</option>
-        <option value="pg_status">PG STATUS</option>
         <option value="dg_fuel">DG FUEL</option>
         <option value="temperature">TEMPERATURE</option>
-        <option value="access_control">ACCESS CONTROL</option>
-        <!-- <option value="door_status">DOOR STATUS</option> -->
-        <!-- <option value="battery_cell">BATTERY CELL</option> -->
-        <option value="vibration_sensor">VIBRATION SENSOR</option>
-        <option value="battery_terminal">DC VOLTAGE</option>
-        <option value="battery_current">DC CURRENT</option>
-        <option value="battery_low">DC LOW VOLTAGE</option>
-        <!-- <option value="battery_offset">BATTERY OFFSET</option> -->
+        <option value="door_status">DOOR STATUS</option>
+        <option value="battery_cell">BATTERY CELL</option>
+        <option value="battery_terminal">BATTERY TERMINAL</option>
+        <option value="battery_offset">BATTERY OFFSET</option>
         <option value="smoke_detector">SMOKE DETECTOR</option>
-        <option value="mains_fail">MAINS FAIL</option>
-        <option value="rectifier_fault">RECTIFIER FAULT</option>
       </select>
     </div>
     <div class="tw-w-1/12 tw-mx-2">
-      <input type="text" v-model="info.factor" class="form-control" placeholder="Factor" />
+      <input
+        type="text"
+        v-model="info.factor"
+        class="form-control"
+        placeholder="Factor"
+      />
     </div>
     <div class="tw-w-1/12 tw-mx-2">
-      <input type="text" v-model="info.offset" class="form-control" placeholder="Offset" />
+      <input
+        type="text"
+        v-model="info.offset"
+        class="form-control"
+        placeholder="Offset"
+      />
     </div>
     <div class="tw-w-3/12 tw-mx-2">
-      <input type="text" v-model="info.label" class="form-control" placeholder="Optional Name" />
+      <input
+        type="text"
+        v-model="info.label"
+        class="form-control"
+        placeholder="Optional Name"
+      />
     </div>
     <div
       class="
@@ -127,4 +135,5 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

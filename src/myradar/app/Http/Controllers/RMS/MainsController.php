@@ -74,4 +74,35 @@ class MainsController extends Controller
         return response()->json(['error' => $e->getMessage()], 400);
       }
     }
+
+    public function powerTrend(Request $request)
+    {
+      try {
+        $response = $this->rmsMainsService->powerTrend($request->all());
+        return response()->json($response);
+      } catch (Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
+      }
+    }
+
+    public function LastEvent(Request $request)
+    {
+      try {
+        $response = $this->rmsMainsService->lastevent($request->all());
+        return response()->json($response);
+      } catch (Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
+      }
+    }
+
+
+    public function hourlyPowerTrend(Request $request)
+    {
+      try {
+        $response = $this->rmsMainsService->hourlyPowerTrend($request->all());
+        return response()->json($response);
+      } catch (Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
+      }
+    }
 }

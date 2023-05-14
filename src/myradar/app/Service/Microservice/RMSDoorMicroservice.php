@@ -50,4 +50,49 @@ class RMSDoorMicroservice extends BaseService
   {
     return $this->post('/access/clear-cards', $data);
   }
+
+  public function getSiteGroups($query)
+  {
+    return $this->get('/manage/site/group-list', $query);
+  }
+
+  public function saveSiteGroup($data)
+  {
+    return $this->post('/manage/site/save-group', $data);
+  }
+
+  public function deleteSiteGroup($data)
+  {
+    return $this->post('/manage/site/delete-group', $data);
+  }
+
+  public function saveAccessCard($data)
+  {
+    return $this->post('/manage/card/save', $data);
+  }
+
+  public function getCardList($query)
+  {
+    return $this->get('/manage/card/list', $query);
+  }
+
+  public function getCardGroups($query)
+  {
+    return $this->get('/manage/card/group-list', $query);
+  }
+
+  public function saveCardGroup($data)
+  {
+    return $this->post('/manage/card/save-group', $data);
+  }
+
+  public function deleteCardGroup($data)
+  {
+    return $this->post('/manage/card/delete-group', $data);
+  }
+
+  public function attachSiteAndCardGroups($data)
+  {
+    return $this->post('/manage/attach-groups', $data);
+  }
 }

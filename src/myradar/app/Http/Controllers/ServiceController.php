@@ -57,19 +57,19 @@ class ServiceController extends Controller
                 $reply = $res['reply'];
                 $serviceString->update([
                     'data' => array_merge(
-                        $request->all(), 
-                        $res['pieces'], 
+                        $request->all(),
+                        $res['pieces'],
                         ['response' => $reply]
                     )
                 ]);
 
                 // if ($com_id == 28592) return '0,0,_,_,15-17-19-04-22,0';
-                
+
                 return $reply; // DC1,DC2,ADD_CARD,DELETE_CARD,TIME_UPDATE,CLEAR_CARDS,ERASE_LOG
             }
         } catch (\Exception $e) {
             Log::info('rms-string identification error', ['message' => $e->getMessage()]);
-            return '0,0'; // DC1,DC2
+            return '0,0,_,_,_,0'; // DC1,DC2
         }
 
 

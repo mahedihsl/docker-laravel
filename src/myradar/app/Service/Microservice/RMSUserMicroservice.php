@@ -6,7 +6,8 @@ class RMSUserMicroservice extends BaseService
 {
   const SERVICE_NAME = 'rms-user';
 
-  public function __construct() {
+  public function __construct()
+  {
     parent::__construct(self::SERVICE_NAME);
   }
 
@@ -29,7 +30,7 @@ class RMSUserMicroservice extends BaseService
   {
     return $this->post('/cache/site-status', $data);
   }
-  
+
   public function statusCounts($query)
   {
     return $this->get('/site/status-counts', $query);
@@ -45,16 +46,11 @@ class RMSUserMicroservice extends BaseService
     return $this->post('/site/digital-control', $data);
   }
 
-  public function siteAvailability($query)
-  {
-    return $this->get('/site/availability', $query);
-  }
-
   public function siteEvents($query)
   {
     return $this->get('/site/events', $query);
   }
-  
+
   public function siteAlarms($query)
   {
     return $this->get('/site/alarms', $query);
@@ -64,7 +60,12 @@ class RMSUserMicroservice extends BaseService
   {
     return $this->get('/network/events', $query);
   }
- 
+
+  public function filterNetworkEvents($query)
+  {
+    return $this->get('/network/filter-events', $query);
+  }
+
   public function networkHealths($query)
   {
     return $this->get('/network/healths', $query);
@@ -74,12 +75,12 @@ class RMSUserMicroservice extends BaseService
   {
     return $this->post('/auth/login', $data);
   }
-  
+
   public function refreshToken($data)
   {
     return $this->post('/auth/refresh', $data);
   }
-  
+
   public function getUser($headers)
   {
     return $this->get('/auth/user', [], $headers);
@@ -89,7 +90,7 @@ class RMSUserMicroservice extends BaseService
   {
     return $this->post('/auth/logout', $data);
   }
-  
+
   public function startSession($data)
   {
     return $this->post('/session/start', $data);
@@ -103,5 +104,20 @@ class RMSUserMicroservice extends BaseService
   public function clearSecurityBreach($data)
   {
     return $this->post('/site/clear-security-breach', $data);
+  }
+
+  public function updateProfile($data)
+  {
+    return $this->post('/profile/update', $data);
+  }
+
+  public function changePassword($data)
+  {
+    return $this->post('/profile/change-password', $data);
+  }
+
+  public function unlockSite($data)
+  {
+    return $this->post('/site/unlock', $data);
   }
 }

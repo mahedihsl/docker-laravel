@@ -1,6 +1,7 @@
 @php
 $hasHttps= env('APP_ENV')=='production'
 @endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,10 +29,10 @@ $hasHttps= env('APP_ENV')=='production'
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <!-- Favicons -->
-  <link rel="shortcut icon" href="{{ asset('images/favicon.ico', true) }}">
-  <link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', true) }}">
-  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', true) }}">
-  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', true) }}">
+  <link rel="shortcut icon" href="{{ asset('images/favicon.ico', $hasHttps) }}">
+  <link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', $hasHttps) }}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', $hasHttps) }}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', $hasHttps) }}">
 
   <!-- Google Fonts -->
   <link
@@ -39,17 +40,17 @@ $hasHttps= env('APP_ENV')=='production'
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{{ asset('landing2/assets/vendor/bootstrap/css/bootstrap.min.css', true) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/bootstrap-icons/bootstrap-icons.css', true) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/aos/aos.css', true) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/remixicon/remixicon.css', true) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/swiper/swiper-bundle.min.css', true) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/glightbox/css/glightbox.min.css', true) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/bootstrap/css/bootstrap.min.css', $hasHttps) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/bootstrap-icons/bootstrap-icons.css', $hasHttps) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/aos/aos.css', $hasHttps) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/remixicon/remixicon.css', $hasHttps) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/swiper/swiper-bundle.min.css', $hasHttps) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/glightbox/css/glightbox.min.css', $hasHttps) }}" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ asset('vendors/fa5/css/all.css') }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <!-- Template Main CSS File -->
-  <link href="{{ asset('landing2/assets/css/style.css', true) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/css/style.css', $hasHttps) }}" rel="stylesheet">
 
   <!-- Facebook Pixel Code -->
   <script>
@@ -76,26 +77,26 @@ $hasHttps= env('APP_ENV')=='production'
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="{{ route('welcome') }}" class="logo d-flex align-items-center">
-        <img src="{{ asset('images/web_logo.png', true) }}" alt="myRADAR logo">
+        <img src="{{ asset('images/web_logo.png', $hasHttps) }}" alt="myRADAR logo">
         <span>myRADAR</span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="@lang('misc.font') nav-link scrollto active" href="#hero">হোম</a></li>
-          <li><a class="@lang('misc.font') nav-link scrollto" href="#features">ফিচার</a></li>
-          <li><a class="@lang('misc.font') nav-link scrollto" href="#services">সেবাসমূহ</a></li>
-          <li><a class="@lang('misc.font') nav-link scrollto" href="#mobile">মোবাইল অ্যাপ</a></li>
-          <li><a class="@lang('misc.font') nav-link scrollto" href="#pricing">প্যাকেজ</a></li>
-          <li><a class="@lang('misc.font') nav-link scrollto" href="{{ route('login', ['demo' => 'yes']) }}">ফ্রি ডেমো</a></li>
+          <li><a class="bangla nav-link scrollto active" href="#hero">হোম</a></li>
+          <li><a class="bangla nav-link scrollto" href="#features">ফিচার</a></li>
+          <li><a class="bangla nav-link scrollto" href="#services">সেবাসমূহ</a></li>
+          <li><a class="bangla nav-link scrollto" href="#mobile">মোবাইল অ্যাপ</a></li>
+          <li><a class="bangla nav-link scrollto" href="#pricing">প্যাকেজ</a></li>
+          <li><a class="bangla nav-link scrollto" href="{{ route('login', ['demo' => 'yes']) }}">ফ্রি ডেমো</a></li>
           <li>
             <a class="nav-link scrollto" href="#contact">
               <img src="{{ asset('images/phone-call.svg') }}" class="animate__animated animate__tada animate__infinite"
                 alt="" style="width: 24px;" />
-              <span class="@lang('misc.font')" style="margin-left: 12px;">+8801907888839</span>
+              <span class="bangla" style="margin-left: 12px;">+8801907888839</span>
             </a>
           </li>
-          <li><a class="getstarted scrollto @lang('misc.font')" href="{{ route('login') }}">লগ ইন</a></li>
+          <li><a class="getstarted scrollto bangla" href="{{ route('login') }}">লগ ইন</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -137,17 +138,17 @@ $hasHttps= env('APP_ENV')=='production'
       <div class="col-lg-12" style="display: flex; flex-direction: column; align-items: center;">
         <img src="{{ asset('landing2/assets/image/banner.gif', $hasHttps) }}" class="img-fluid d-none d-lg-block" alt=""
           style="width: 100%;" />
-        <img src="{{ asset('landing2/assets/image/live_tracking3.gif', true) }}" class="img-fluid d-lg-none" alt=""
+        <img src="{{ asset('landing2/assets/image/live_tracking3.gif', $hasHttps) }}" class="img-fluid d-lg-none" alt=""
           style="width: 100%;" />
-        <h2 class="text-center @lang('misc.font')" style="font-weight: 800; color: #424242; font-size: 24px;">
+        <h2 class="text-center bangla" style="font-weight: 800; color: #424242; font-size: 24px;">
           মাইরাডার অ্যাপ এর স্মার্ট ফিচারে, গাড়ি থাকুক নিরাপদে
         </h2>
-        <p class="text-enter @lang('misc.font')" style="margin-top: 10px; font-size: 16px;">
+        <p class="text-enter bangla" style="margin-top: 10px; font-size: 16px;">
           আপনার প্রিয় গাড়ির সুরক্ষায়, আস্থা ও বিশ্বাসের আরেক নাম মাইরাডার
         </p>
         <a href="#pricing" style="background: #4154f1;padding: 18px 30px; border-radius: 4px; color: #fff;"
           class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-          <span class="@lang('misc.font')">প্যাকেজ দেখুন</span>
+          <span class="bangla">প্যাকেজ দেখুন</span>
           <i class="bi bi-arrow-right text-white"></i>
         </a>
       </div>
@@ -163,32 +164,32 @@ $hasHttps= env('APP_ENV')=='production'
 
         <header class="section-header">
           <h2>Our Values</h2>
-          <p class="@lang('misc.font')">স্মার্ট জিপিএস ট্র্যাকার</p>
+          <p class="bangla">স্মার্ট জিপিএস ট্র্যাকার</p>
         </header>
 
         <div class="row">
 
           <div class="col-lg-4">
             <div class="box" data-aos="fade-up" data-aos-delay="200">
-              <img src="{{ asset('landing2/assets/image/live_tracking.png', true) }}" class="img-fluid" alt="">
-              <h3 class="@lang('misc.font')">লাইভ ট্র্যাকিং</h3>
-              <p class="@lang('misc.font')">লাইভ ট্র্যাকিং এর মাধ্যমে জানতে পারবেন গাড়ি এখন কোথায় আছে</p>
+              <img src="{{ asset('landing2/assets/image/live_tracking.png', $hasHttps) }}" class="img-fluid" alt="">
+              <h3 class="bangla">লাইভ ট্র্যাকিং</h3>
+              <p class="bangla">লাইভ ট্র্যাকিং এর মাধ্যমে জানতে পারবেন গাড়ি এখন কোথায় আছে</p>
             </div>
           </div>
 
           <div class="col-lg-4 mt-4 mt-lg-0">
             <div class="box" data-aos="fade-up" data-aos-delay="400">
-              <img src="{{ asset('landing2/assets/image/lock_unlock.png', true) }}" class="img-fluid" alt="">
-              <h3 class="@lang('misc.font')">ডিজিটাল ইঞ্জিন লক</h3>
-              <p class="@lang('misc.font')">অ্যাপ এর মাধ্যমে দূরে থেকেও গাড়ি নিয়ন্ত্রণ করুন অনায়সে</p>
+              <img src="{{ asset('landing2/assets/image/lock_unlock.png', $hasHttps) }}" class="img-fluid" alt="">
+              <h3 class="bangla">ডিজিটাল ইঞ্জিন লক</h3>
+              <p class="bangla">অ্যাপ এর মাধ্যমে দূরে থেকেও গাড়ি নিয়ন্ত্রণ করুন অনায়সে</p>
             </div>
           </div>
 
           <div class="col-lg-4 mt-4 mt-lg-0">
             <div class="box" data-aos="fade-up" data-aos-delay="600">
-              <img src="{{ asset('landing2/assets/image/cng_monitoring.png', true) }}" class="img-fluid" alt="">
-              <h3 class="@lang('misc.font')">ফুয়েল ও সিএনজি মনিটরিং</h3>
-              <p class="@lang('misc.font')">শুধুমাত্র আমরাই দিচ্ছি ফুয়েল এবং সিএনজি মনিটরিং সুবিধা</p>
+              <img src="{{ asset('landing2/assets/image/cng_monitoring.png', $hasHttps) }}" class="img-fluid" alt="">
+              <h3 class="bangla">ফুয়েল ও সিএনজি মনিটরিং</h3>
+              <p class="bangla">শুধুমাত্র আমরাই দিচ্ছি ফুয়েল এবং সিএনজি মনিটরিং সুবিধা</p>
             </div>
           </div>
 
@@ -261,13 +262,13 @@ $hasHttps= env('APP_ENV')=='production'
 
         <header class="section-header">
           <h2>Features</h2>
-          <p class="@lang('misc.font')">আমাদের আকর্ষণীয় ফিচারসমূহ</p>
+          <p class="bangla">আমাদের আকর্ষণীয় ফিচারসমূহ</p>
         </header>
 
         <div class="row">
 
           <div class="col-lg-6">
-            <img src="{{ asset('landing2/assets/image/features.png', true) }}" class="img-fluid" alt="">
+            <img src="{{ asset('landing2/assets/image/features.png', $hasHttps) }}" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
@@ -276,42 +277,42 @@ $hasHttps= env('APP_ENV')=='production'
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3 class="@lang('misc.font')">লাইভ ট্র্যাকিং</h3>
+                  <h3 class="bangla">লাইভ ট্র্যাকিং</h3>
                 </div>
               </div>
 
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="300">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3 class="@lang('misc.font')">৩ মাসের ট্রিপ হিস্ট্রি</h3>
+                  <h3 class="bangla">৩ মাসের ট্রিপ হিস্ট্রি</h3>
                 </div>
               </div>
 
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="300">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3 class="@lang('misc.font')">ইঞ্জিন লক/আনলক</h3>
+                  <h3 class="bangla">ইঞ্জিন লক/আনলক</h3>
                 </div>
               </div>
 
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="400">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3 class="@lang('misc.font')">ফুয়েল মনিটরিং সিস্টেম</h3>
+                  <h3 class="bangla">ফুয়েল মনিটরিং সিস্টেম</h3>
                 </div>
               </div>
 
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="500">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3 class="@lang('misc.font')">সি এন জি মনিটরিং সিস্টেম</h3>
+                  <h3 class="bangla">সি এন জি মনিটরিং সিস্টেম</h3>
                 </div>
               </div>
 
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="600">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3 class="@lang('misc.font')">ডেসটিনেশন এলার্ট</h3>
+                  <h3 class="bangla">ডেসটিনেশন এলার্ট</h3>
                 </div>
               </div>
 
@@ -323,7 +324,7 @@ $hasHttps= env('APP_ENV')=='production'
         <!-- Feature Tabs 1 -->
         <div class="row feture-tabs" data-aos="fade-up">
           <div class="col-lg-6">
-            <h3 class="@lang('misc.font')">আপনার প্রিয় গাড়ীটি রেখে দুরে এসেছেন!! ভয় নেই, পাহারায় আছে মাইরাডার</h3>
+            <h3 class="bangla">আপনার প্রিয় গাড়ীটি রেখে দুরে এসেছেন!! ভয় নেই, পাহারায় আছে মাইরাডার</h3>
 
             <!-- Tabs -->
             <ul class="nav nav-pills mb-3">
@@ -341,28 +342,28 @@ $hasHttps= env('APP_ENV')=='production'
                   consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p> --}}
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong></strong> কেউ দরজা খুললেই পেয়ে যাবেন "ডোর ওপেন এলার্ট"</span>
+                  <span class="bangla"><strong></strong> কেউ দরজা খুললেই পেয়ে যাবেন "ডোর ওপেন এলার্ট"</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')">কত সময় যাবত গাড়ি পারকিং এ আছে তাও জানতে পারবেন।</span>
+                  <span class="bangla">কত সময় যাবত গাড়ি পারকিং এ আছে তাও জানতে পারবেন।</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')">ইঞ্জিন অন হলেই পেয়ে যাবেন "ইঞ্জিন অন এলার্ট"</span>
+                  <span class="bangla">ইঞ্জিন অন হলেই পেয়ে যাবেন "ইঞ্জিন অন এলার্ট"</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong></strong> গাড়ির গতি, অবস্থান, দিক ইত্যাদি দেখা যাবে</span>
+                  <span class="bangla"><strong></strong> গাড়ির গতি, অবস্থান, দিক ইত্যাদি দেখা যাবে</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')">এক পলকে দেখে নিতে পারবেন গাড়ির ভ্রমন পথ</span>
+                  <span class="bangla">এক পলকে দেখে নিতে পারবেন গাড়ির ভ্রমন পথ</span>
                 </div>
                 <a href="#pricing"
                   style="background: #4154f1;padding: 8px 20px;margin-left: 30px;border-radius: 4px;color: #fff; margin-top: 30px;"
                   class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                  <span class="@lang('misc.font')">প্যাকেজ দেখুন</span>
+                  <span class="bangla">প্যাকেজ দেখুন</span>
                   <i class="bi bi-arrow-right text-white"></i>
                 </a>
               </div>
@@ -373,7 +374,7 @@ $hasHttps= env('APP_ENV')=='production'
           </div>
 
           <div class="col-lg-6">
-            <img src="{{ asset('landing2/assets/image/car_safety.png', true) }}" class="img-fluid" alt="">
+            <img src="{{ asset('landing2/assets/image/car_safety.png', $hasHttps) }}" class="img-fluid" alt="">
           </div>
 
         </div>
@@ -382,11 +383,11 @@ $hasHttps= env('APP_ENV')=='production'
         <!-- Feature Tabs 2 -->
         <div class="row feture-tabs" data-aos="fade-up">
           <div class="col-lg-6">
-            <img src="{{ asset('landing2/assets/image/live_tracking3.gif', true) }}" class="img-fluid" alt="">
+            <img src="{{ asset('landing2/assets/image/live_tracking3.gif', $hasHttps) }}" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-6">
-            <h3 class="@lang('misc.font')">গাড়ি কি আপনার চোখের আড়ালে !! নজরদারি করুন মাইরাডার লাইভ ট্র্যাকিং দিয়ে</h3>
+            <h3 class="bangla">গাড়ি কি আপনার চোখের আড়ালে !! নজরদারি করুন মাইরাডার লাইভ ট্র্যাকিং দিয়ে</h3>
 
             <!-- Tabs -->
             <ul class="nav nav-pills mb-3">
@@ -402,37 +403,37 @@ $hasHttps= env('APP_ENV')=='production'
               <div class="tab-pane fade show active" id="tab1">
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>লাইভ ট্র্যাকিং ২৪ ঘণ্টা - </strong> গাড়ির গতি, অবস্থান, দিক ইত্যাদি দেখা
+                  <span class="bangla"><strong>লাইভ ট্র্যাকিং ২৪ ঘণ্টা - </strong> গাড়ির গতি, অবস্থান, দিক ইত্যাদি দেখা
                     যাবে</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>হিস্টরি মনিটরিং :</strong>গাড়ি কখন কোথায় আসা/যাওয়ার জন্য কোন রুট ব্যবহার
+                  <span class="bangla"><strong>হিস্টরি মনিটরিং :</strong>গাড়ি কখন কোথায় আসা/যাওয়ার জন্য কোন রুট ব্যবহার
                     করছে তা এক
                     ক্লিকেই মুঠোফোনে দেখা যাবে। History ট্র্যাকিং রেকর্ড থাকবে ৩ মাস পর্যন্ত</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>Traffic View: </strong> Google Traffic View (রাস্তায় যানজট) লাইভ আপডেট
+                  <span class="bangla"><strong>Traffic View: </strong> Google Traffic View (রাস্তায় যানজট) লাইভ আপডেট
                     থাকবে মাইরাডার
                     অ্যাপ এ</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>ইঞ্জিন এলার্টঃ</strong> ইঞ্জিন অন/অফ নোটিফিকেশনের মাধ্যমে জানতে পারবেন
+                  <span class="bangla"><strong>ইঞ্জিন এলার্টঃ</strong> ইঞ্জিন অন/অফ নোটিফিকেশনের মাধ্যমে জানতে পারবেন
                     গাড়ি কতবার অন/অফ
                     করা হয়েছে</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>ডিজিটাল ইঞ্জিন লকঃ</strong> মোবাইল অ্যাপ দিয়ে গাড়ির ইঞ্জিন লক/আনলক করা
+                  <span class="bangla"><strong>ডিজিটাল ইঞ্জিন লকঃ</strong> মোবাইল অ্যাপ দিয়ে গাড়ির ইঞ্জিন লক/আনলক করা
                     যাবে
                     অনায়াসে</span>
                 </div>
                 <a href="#pricing"
                   style="background: #4154f1;padding: 8px 20px;margin-left: 30px;border-radius: 4px;color: #fff; margin-top: 30px;"
                   class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                  <span class="@lang('misc.font')">প্যাকেজ দেখুন</span>
+                  <span class="bangla">প্যাকেজ দেখুন</span>
                   <i class="bi bi-arrow-right text-white"></i>
                 </a>
               </div>
@@ -450,7 +451,7 @@ $hasHttps= env('APP_ENV')=='production'
 
 
           <div class="col-lg-6">
-            <h3 class="@lang('misc.font')">গাড়ি চূরি নিয়ে চিন্তিত !! সুরক্ষায় আছি আমরা</h3>
+            <h3 class="bangla">গাড়ি চূরি নিয়ে চিন্তিত !! সুরক্ষায় আছি আমরা</h3>
 
             <!-- Tabs -->
             <ul class="nav nav-pills mb-3">
@@ -466,32 +467,32 @@ $hasHttps= env('APP_ENV')=='production'
               <div class="tab-pane fade show active" id="tab1">
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>লক মোড:</strong> পারকিং করার পরে রাখুন লক মোডে, হবেনা ইঞ্জিন অন, কন্ট্রোল
+                  <span class="bangla"><strong>লক মোড:</strong> পারকিং করার পরে রাখুন লক মোডে, হবেনা ইঞ্জিন অন, কন্ট্রোল
                     আপনার
                     অ্যাপে</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>ইঞ্জিন লক:</strong> myRadar অ্যাপ এর মাধ্যমে গাড়ি চুরি হওয়ার সাথে সাথে
+                  <span class="bangla"><strong>ইঞ্জিন লক:</strong> myRadar অ্যাপ এর মাধ্যমে গাড়ি চুরি হওয়ার সাথে সাথে
                     ইঞ্জিন অফ
                     করে দিতে পারবেন</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>জিইও ফেন্স নোটিফিকেশনঃ</strong> নির্ধারিত এলাকার বাহিরে বা ভিতরে প্রবেশ
+                  <span class="bangla"><strong>জিইও ফেন্স নোটিফিকেশনঃ</strong> নির্ধারিত এলাকার বাহিরে বা ভিতরে প্রবেশ
                     করলে এলার্ট
                     পেয়ে যাবেন সাথে সাথেই ।</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>ইমারজেন্সি বাটনঃ</strong> হাইজ্যাক হলে ড্রাইভার চাপবে বাটন, চলে আসবে
+                  <span class="bangla"><strong>ইমারজেন্সি বাটনঃ</strong> হাইজ্যাক হলে ড্রাইভার চাপবে বাটন, চলে আসবে
                     ইমারজেঞ্ছি
                     এলার্ট</span>
                 </div>
                 <a href="#pricing"
                   style="background: #4154f1;padding: 8px 20px;margin-left: 30px;border-radius: 4px;color: #fff; margin-top: 30px;"
                   class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                  <span class="@lang('misc.font')">প্যাকেজ দেখুন</span>
+                  <span class="bangla">প্যাকেজ দেখুন</span>
                   <i class="bi bi-arrow-right text-white"></i>
                 </a>
               </div>
@@ -502,7 +503,7 @@ $hasHttps= env('APP_ENV')=='production'
           </div>
 
           <div class="col-lg-6">
-            <img src="{{ asset('landing2/assets/image/theft_protection.png', true) }}" class="img-fluid" alt="">
+            <img src="{{ asset('landing2/assets/image/theft_protection.png', $hasHttps) }}" class="img-fluid" alt="">
           </div>
 
         </div>
@@ -511,11 +512,11 @@ $hasHttps= env('APP_ENV')=='production'
         <!-- Feature Tabs 3 -->
         <div class="row feture-tabs" data-aos="fade-up">
           <div class="col-lg-6">
-            <img src="{{ asset('landing2/assets/image/cng_monitoring2.png', true) }}" class="img-fluid" alt="">
+            <img src="{{ asset('landing2/assets/image/cng_monitoring2.png', $hasHttps) }}" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-6">
-            <h3 class="@lang('misc.font')">ফুয়েল, সিএনজি এবং অন্যান্য হিসাব রাখতে হিমসিম খাচ্ছেন!! নো টেনশন</h3>
+            <h3 class="bangla">ফুয়েল, সিএনজি এবং অন্যান্য হিসাব রাখতে হিমসিম খাচ্ছেন!! নো টেনশন</h3>
 
             <!-- Tabs -->
             <ul class="nav nav-pills mb-3">
@@ -533,34 +534,34 @@ $hasHttps= env('APP_ENV')=='production'
                   consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p> --}}
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>মাইলেজ রিপোর্টঃ</strong> মাইলেজ রিপোর্ট দেখে সহজেই পরিমাপ করতে
+                  <span class="bangla"><strong>মাইলেজ রিপোর্টঃ</strong> মাইলেজ রিপোর্ট দেখে সহজেই পরিমাপ করতে
                     পারবেন ফুয়েলের হিসাব।</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>সি এন জি মনিটরিংঃ</strong> গাড়ির CNG মিটার myRADAR মোবাইল অ্যাপ-এ দেখতে
+                  <span class="bangla"><strong>সি এন জি মনিটরিংঃ</strong> গাড়ির CNG মিটার myRADAR মোবাইল অ্যাপ-এ দেখতে
                     পাবেন এবং গাড়িতে
                     CNG নেওয়ার সাথে সাথেই ফোনে নোটিফিকেশন পাবেন।</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>ফুয়েল মনিটরিংঃ </strong>গাড়ির ফুয়েল মিটার দেখতে পাবেন মোবাইল App -
+                  <span class="bangla"><strong>ফুয়েল মনিটরিংঃ </strong>গাড়ির ফুয়েল মিটার দেখতে পাবেন মোবাইল App -
                     এ</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')">ফুয়েল রিফিল এবং লীকেজ এলার্ট (শিগ্রই আসছে)</span>
+                  <span class="bangla">ফুয়েল রিফিল এবং লীকেজ এলার্ট (শিগ্রই আসছে)</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>ডেইলি সামারি:</strong> কতবার ইঞ্জিন অন/অফ করা হয়েছে, কতটুকু সময় চলেছে,
+                  <span class="bangla"><strong>ডেইলি সামারি:</strong> কতবার ইঞ্জিন অন/অফ করা হয়েছে, কতটুকু সময় চলেছে,
                     কত দুরুত্ত
                     অতিক্রম করেছে নোটিফিকেশন এবং SMS-এর মাধ্যমে জানিয়ে দেয়া হবে</span>
                 </div>
                 <a href="#pricing"
                   style="background: #4154f1;padding: 8px 20px;margin-left: 30px;border-radius: 4px;color: #fff; margin-top: 30px;"
                   class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                  <span class="@lang('misc.font')">প্যাকেজ দেখুন</span>
+                  <span class="bangla">প্যাকেজ দেখুন</span>
                   <i class="bi bi-arrow-right text-white"></i>
                 </a>
               </div>
@@ -580,7 +581,7 @@ $hasHttps= env('APP_ENV')=='production'
 
 
           <div class="col-lg-6">
-            <h3 class="@lang('misc.font')">নির্দিষ্ট এলাকার বাইরে গাড়ির যাতায়াত মনিটর করতে চান!! সমাধানে মাইরাডার</h3>
+            <h3 class="bangla">নির্দিষ্ট এলাকার বাইরে গাড়ির যাতায়াত মনিটর করতে চান!! সমাধানে মাইরাডার</h3>
 
             <!-- Tabs -->
             <ul class="nav nav-pills mb-3">
@@ -598,22 +599,22 @@ $hasHttps= env('APP_ENV')=='production'
                   consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p> --}}
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>ডেসটিনেশন এলার্ট:</strong> নির্ধারিত এলাকার বাহিরে গেলে এলার্ট।</span>
+                  <span class="bangla"><strong>ডেসটিনেশন এলার্ট:</strong> নির্ধারিত এলাকার বাহিরে গেলে এলার্ট।</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong>এরাইভাল এলার্ট:</strong> নির্ধারিত এলাকার ভিতরে প্রবেশ করলে
+                  <span class="bangla"><strong>এরাইভাল এলার্ট:</strong> নির্ধারিত এলাকার ভিতরে প্রবেশ করলে
                     এলার্ট।</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')">সকল গুরুত্বপূর্ণ শহরে প্রবেশ এবং প্রস্থান এর সময় নোটিফিকেশান পাবেন অটোমেটিক্যালি
+                  <span class="bangla">সকল গুরুত্বপূর্ণ শহরে প্রবেশ এবং প্রস্থান এর সময় নোটিফিকেশান পাবেন অটোমেটিক্যালি
                     ।</span>
                 </div>
                 <a href="#pricing"
                   style="background: #4154f1;padding: 8px 20px;margin-left: 30px;border-radius: 4px;color: #fff; margin-top: 30px;"
                   class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                  <span class="@lang('misc.font')">প্যাকেজ দেখুন</span>
+                  <span class="bangla">প্যাকেজ দেখুন</span>
                   <i class="bi bi-arrow-right text-white"></i>
                 </a>
               </div>
@@ -624,7 +625,7 @@ $hasHttps= env('APP_ENV')=='production'
           </div>
 
           <div class="col-lg-6">
-            <img src="{{ asset('landing2/assets/image/live_tracking2.png', true) }}" class="img-fluid" alt="">
+            <img src="{{ asset('landing2/assets/image/live_tracking2.png', $hasHttps) }}" class="img-fluid" alt="">
           </div>
 
         </div>
@@ -633,11 +634,11 @@ $hasHttps= env('APP_ENV')=='production'
         <!-- Feature Tabs 5 -->
         <div class="row feture-tabs" data-aos="fade-up">
           <div class="col-lg-6">
-            <img src="{{ asset('landing2/assets/image/family_safety.png', true) }}" class="img-fluid" alt="">
+            <img src="{{ asset('landing2/assets/image/family_safety.png', $hasHttps) }}" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-6">
-            <h3 class="@lang('misc.font')">আপনজনদের সুরক্ষায় myRadar</h3>
+            <h3 class="bangla">আপনজনদের সুরক্ষায় myRadar</h3>
 
             <!-- Tabs -->
             <ul class="nav nav-pills mb-3">
@@ -655,23 +656,23 @@ $hasHttps= env('APP_ENV')=='production'
                   consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p> --}}
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong></strong> অতিরিক্ত গতিতে গাড়ি চললেই এলার্ট পাবেন সাথে সাথে</span>
+                  <span class="bangla"><strong></strong> অতিরিক্ত গতিতে গাড়ি চললেই এলার্ট পাবেন সাথে সাথে</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')"><strong></strong> বাচ্চা নির্ধারিত সময়ে স্কুলে পৌঁছেছে কিনা, তা মোবাইল অ্যাপ - এ
+                  <span class="bangla"><strong></strong> বাচ্চা নির্ধারিত সময়ে স্কুলে পৌঁছেছে কিনা, তা মোবাইল অ্যাপ - এ
                     জানতে
                     পারবেন</span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')">আপনার সেট করে দেয়া গন্তব্যে আপনজন পৌঁছা মাত্র জানিয়ে দেবে myRadar</span>
+                  <span class="bangla">আপনার সেট করে দেয়া গন্তব্যে আপনজন পৌঁছা মাত্র জানিয়ে দেবে myRadar</span>
                 </div>
 
                 <a href="#pricing"
                   style="background: #4154f1;padding: 8px 20px;margin-left: 30px;border-radius: 4px;color: #fff; margin-top: 30px;"
                   class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                  <span class="@lang('misc.font')">প্যাকেজ দেখুন</span>
+                  <span class="bangla">প্যাকেজ দেখুন</span>
                   <i class="bi bi-arrow-right text-white"></i>
                 </a>
               </div>
@@ -697,7 +698,7 @@ $hasHttps= env('APP_ENV')=='production'
 
         <header class="section-header">
           <h2>Services</h2>
-          <p class="@lang('misc.font')">মাইরাডারের সেবাসমূহ</p>
+          <p class="bangla">মাইরাডারের সেবাসমূহ</p>
         </header>
 
         <div class="row gy-4">
@@ -705,8 +706,8 @@ $hasHttps= env('APP_ENV')=='production'
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-box blue">
               <i class="ri-discuss-line icon"></i>
-              <h3 class="@lang('misc.font')">লাইভ ট্র্যাকিং</h3>
-              <ul class="@lang('misc.font')" style="text-align: left;">
+              <h3 class="bangla">লাইভ ট্র্যাকিং</h3>
+              <ul class="bangla" style="text-align: left;">
                 <li>LIVE ট্র্যাকিং ২৪ ঘণ্টা - গাড়ির গতি, অবস্থান, দিক</li>
                 <li>History ট্র্যাকিং রেকর্ড ৩ মাস অবধি</li>
                 <li>SPEED ভায়োলেশন এলার্ট</li>
@@ -720,8 +721,8 @@ $hasHttps= env('APP_ENV')=='production'
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-box orange">
               <i class="ri-discuss-line icon"></i>
-              <h3 class="@lang('misc.font')">মাইলেজ রিপোর্ট</h3>
-              <ul class="@lang('misc.font')" style="text-align: left;">
+              <h3 class="bangla">মাইলেজ রিপোর্ট</h3>
+              <ul class="bangla" style="text-align: left;">
                 <li>প্রতিদিন কত কিলোমিটার ভ্রমণ করেছেন এক পলকেই জানতে পারবেন মাইলেজ রিপোর্ট দেখে</li>
                 <li>বিগত দিনের মাইলেজ রিপোর্ট দেখতে পাবেন খুব সহজে</li>
                 <li>অস্বাভাবিক মাইলেজ নোটিফিকেশন</li>
@@ -732,8 +733,8 @@ $hasHttps= env('APP_ENV')=='production'
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-box green">
               <i class="ri-discuss-line icon"></i>
-              <h3 class="@lang('misc.font')">Special CNG প্যাকেজ</h3>
-              <ul class="@lang('misc.font')" style="text-align: left;">
+              <h3 class="bangla">Special CNG প্যাকেজ</h3>
+              <ul class="bangla" style="text-align: left;">
                 <li>শুধু আমরা দিচ্ছি আপনার গাড়ির CNG মিটার মনিটর সুবিধা</li>
                 <li>গাড়ির CNG মিটার myRADAR মোবাইল অ্যাপ-এ মনিটর করা</li>
                 <li>গাড়িতে CNG নেওয়ার পরে অ্যাপ-এ Money receipt পাবেন</li>
@@ -745,8 +746,8 @@ $hasHttps= env('APP_ENV')=='production'
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="service-box red">
               <i class="ri-discuss-line icon"></i>
-              <h3 class="@lang('misc.font')">ডেসটিনেশন এলার্ট</h3>
-              <ul class="@lang('misc.font')" style="text-align: left;">
+              <h3 class="bangla">ডেসটিনেশন এলার্ট</h3>
+              <ul class="bangla" style="text-align: left;">
                 <li>গন্তব্যে পৌছার নোটিফিকেশন : School, Home, Office ইত্যাদি</li>
                 <li>নির্ধারিত এলাকার বাহিরে বা ভিতরে প্রবেশ করলে এলার্ট</li>
                 <li>নিজের ইচ্ছেমত এলাকা জিও ফেন্স হিসেবে নির্ধারণ করুন</li>
@@ -758,8 +759,8 @@ $hasHttps= env('APP_ENV')=='production'
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
             <div class="service-box purple">
               <i class="ri-discuss-line icon"></i>
-              <h3 class="@lang('misc.font')">Corporate গ্রাহকদের জন্য সুবিধা সমূহ</h3>
-              <ul class="@lang('misc.font')" style="text-align: left;">
+              <h3 class="bangla">Corporate গ্রাহকদের জন্য সুবিধা সমূহ</h3>
+              <ul class="bangla" style="text-align: left;">
                 <li>Fleet Management Software মাধ্যমে সব গাড়ি নিয়ন্ত্রণের সুবিধা</li>
                 <li>সকল গাড়ীর ড্রাইভিং সময়কাল রিপোর্ট</li>
                 <li>ড্রাইভারদের ডিউটি সময়কাল রিপোর্ট</li>
@@ -772,8 +773,8 @@ $hasHttps= env('APP_ENV')=='production'
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
             <div class="service-box pink">
               <i class="ri-discuss-line icon"></i>
-              <h3 class="@lang('misc.font')">অন্যান্য সুবিধা সমূহ</h3>
-              <ul class="@lang('misc.font')" style="text-align: left;">
+              <h3 class="bangla">অন্যান্য সুবিধা সমূহ</h3>
+              <ul class="bangla" style="text-align: left;">
                 <li>Android, iPhone এবং ব্রাউজার ব্যবহার করে গাড়ি ট্র্যাকিং সুবিধা</li>
                 <li>এক আইডি থেকে সব গাড়ি নিয়ন্ত্রণের সুবিধা</li>
                 <li>আপনার বাড়ি, অফিস সর্বত্র আমাদের ইঞ্জিনিয়ার দ্বারা FREE Install</li>
@@ -794,28 +795,28 @@ $hasHttps= env('APP_ENV')=='production'
       <div class="container" data-aos="fade-up">
         <!-- Feature Icons -->
         <div class="row feature-icons" data-aos="fade-up">
-          <h3 class="@lang('misc.font')">মোবাইল অ্যাপ</h3>
+          <h3 class="bangla">মোবাইল অ্যাপ</h3>
 
           <div class="row">
             <div class="col-xs-12 d-flex flex-column flex-lg-row">
               <div style="padding: 10px;">
-                <img src="{{ asset('images/screenshots/1.jpg', true) }}" alt=""
+                <img src="{{ asset('images/screenshots/1.jpg', $hasHttps) }}" alt=""
                   style="width: 100%; border-radius: 4px;" />
               </div>
               <div style="padding: 10px;">
-                <img src="{{ asset('images/screenshots/2.jpg', true) }}" alt=""
+                <img src="{{ asset('images/screenshots/2.jpg', $hasHttps) }}" alt=""
                   style="width: 100%; border-radius: 4px;" />
               </div>
               <div style="padding: 10px;">
-                <img src="{{ asset('images/screenshots/3.jpg', true) }}" alt=""
+                <img src="{{ asset('images/screenshots/3.jpg', $hasHttps) }}" alt=""
                   style="width: 100%; border-radius: 4px;" />
               </div>
               <div style="padding: 10px;">
-                <img src="{{ asset('images/screenshots/4.jpg', true) }}" alt=""
+                <img src="{{ asset('images/screenshots/4.jpg', $hasHttps) }}" alt=""
                   style="width: 100%; border-radius: 4px;" />
               </div>
               <div style="padding: 10px;">
-                <img src="{{ asset('images/screenshots/5.jpg', true) }}" alt=""
+                <img src="{{ asset('images/screenshots/5.jpg', $hasHttps) }}" alt=""
                   style="width: 100%; border-radius: 4px;" />
               </div>
             </div>
@@ -843,7 +844,7 @@ $hasHttps= env('APP_ENV')=='production'
 
         <header class="section-header">
           <h2>Pricing</h2>
-          <p class="@lang('misc.font')">আমাদের প্যাকেজ সমূহ</p>
+          <p class="bangla">আমাদের প্যাকেজ সমূহ</p>
         </header>
 
         <div class="row gy-4" data-aos="fade-left">
@@ -852,10 +853,10 @@ $hasHttps= env('APP_ENV')=='production'
             <div class="box">
               <h3 class="price-standard">Standard <div class="arrow"></div>
               </h3>
-              <div class="price @lang('misc.font')"><sup></sup>৬,০০০<span> টাকা</span></div>
-              <div class="price2 @lang('misc.font')"><span>মাসিক চার্জ </span>৪০০<span> টাকা</span></div>
-              {{-- <img src="{{ asset('landing2/assets/img/pricing-free.png', true) }}" class="img-fluid" alt=""> --}}
-              <ul class="@lang('misc.font')">
+              <div class="price bangla"><sup></sup>৬,০০০<span> টাকা</span></div>
+              <div class="price2 bangla"><span>মাসিক চার্জ </span>৪০০<span> টাকা</span></div>
+              {{-- <img src="{{ asset('landing2/assets/img/pricing-free.png', $hasHttps) }}" class="img-fluid" alt=""> --}}
+              <ul class="bangla">
                 <li>লাইভ ট্র্যাকিং</li>
                 <li>ট্রাভেল হিস্টোরি</li>
                 <li>ইঞ্জিন লক/আনলক</li>
@@ -884,11 +885,11 @@ $hasHttps= env('APP_ENV')=='production'
               {{-- <span class="featured">Featured</span> --}}
               <h3 class="price-special">Special <div class="arrow"></div>
               </h3>
-              <div class="price @lang('misc.font')"><sup></sup>৮,০০০<span> টাকা</span></div>
-              <div class="price2 @lang('misc.font')"><span>মাসিক চার্জ </span>৫০০<span> টাকা</span></div>
-              {{-- <img src="{{ asset('landing2/assets/img/pricing-starter.png', true) }}" class="img-fluid" alt="">
+              <div class="price bangla"><sup></sup>৮,০০০<span> টাকা</span></div>
+              <div class="price2 bangla"><span>মাসিক চার্জ </span>৫০০<span> টাকা</span></div>
+              {{-- <img src="{{ asset('landing2/assets/img/pricing-starter.png', $hasHttps) }}" class="img-fluid" alt="">
               --}}
-              <ul class="@lang('misc.font')">
+              <ul class="bangla">
                 <li>লাইভ ট্র্যাকিং</li>
                 <li>ট্রাভেল হিস্টোরি</li>
                 <li>ইঞ্জিন লক/আনলক</li>
@@ -916,11 +917,11 @@ $hasHttps= env('APP_ENV')=='production'
             <div class="box">
               <h3 class="price-advanced">Advanced <div class="arrow"></div>
               </h3>
-              <div class="price @lang('misc.font')"><sup></sup>১৫,০০০<span> টাকা</span></div>
-              <div class="price2 @lang('misc.font')"><span>মাসিক চার্জ </span>৮০০<span> টাকা</span></div>
-              {{-- <img src="{{ asset('landing2/assets/img/pricing-business.png', true) }}" class="img-fluid" alt="">
+              <div class="price bangla"><sup></sup>১৫,০০০<span> টাকা</span></div>
+              <div class="price2 bangla"><span>মাসিক চার্জ </span>৮০০<span> টাকা</span></div>
+              {{-- <img src="{{ asset('landing2/assets/img/pricing-business.png', $hasHttps) }}" class="img-fluid" alt="">
               --}}
-              <ul class="@lang('misc.font')">
+              <ul class="bangla">
                 <li>লাইভ ট্র্যাকিং</li>
                 <li>ট্রাভেল হিস্টোরি</li>
                 <li>ইঞ্জিন লক/আনলক</li>
@@ -948,11 +949,11 @@ $hasHttps= env('APP_ENV')=='production'
             <div class="box">
               <h3 class="price-business">Business <div class="arrow"></div>
               </h3>
-              <div class="price @lang('misc.font')"><sup></sup>Custom<span></span></div>
-              <div class="price2 @lang('misc.font')">&nbsp;</div>
-              {{-- <img src="{{ asset('landing2/assets/img/pricing-ultimate.png', true) }}" class="img-fluid" alt="">
+              <div class="price bangla"><sup></sup>Custom<span></span></div>
+              <div class="price2 bangla">&nbsp;</div>
+              {{-- <img src="{{ asset('landing2/assets/img/pricing-ultimate.png', $hasHttps) }}" class="img-fluid" alt="">
               --}}
-              <ul class="@lang('misc.font')">
+              <ul class="bangla">
                 <li>লাইভ ট্র্যাকিং</li>
                 <li>ট্রাভেল হিস্টোরি</li>
                 <li>ইঞ্জিন লক/আনলক</li>
@@ -987,13 +988,13 @@ $hasHttps= env('APP_ENV')=='production'
 
         <header class="section-header">
           <h2>F.A.Q</h2>
-          <p class="@lang('misc.font')">মাইরাডার সম্পর্কিত জিজ্ঞাসা</p>
+          <p class="bangla">মাইরাডার সম্পর্কিত জিজ্ঞাসা</p>
         </header>
 
         <div class="row">
           <div class="col-lg-6">
             <!-- F.A.Q List 1-->
-            <div class="accordion accordion-flush @lang('misc.font')" id="faqlist1">
+            <div class="accordion accordion-flush bangla" id="faqlist1">
               <div class="accordion-item">
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed font-bold" type="button" data-bs-toggle="collapse"
@@ -1106,7 +1107,7 @@ $hasHttps= env('APP_ENV')=='production'
           <div class="col-lg-6">
 
             <!-- F.A.Q List 2-->
-            <div class="accordion accordion-flush @lang('misc.font')" id="faqlist2">
+            <div class="accordion accordion-flush bangla" id="faqlist2">
 
               <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -1214,13 +1215,13 @@ $hasHttps= env('APP_ENV')=='production'
 
         <header class="section-header">
           <h2></h2>
-          <p class="@lang('misc.font')">কর্পোরেট পার্টনার</p>
+          <p class="bangla">কর্পোরেট পার্টনার</p>
         </header>
 
         <div class="clients-wrapper">
-          <img src="{{ asset('images/partners/banglalink.png', true) }}" alt="">
-          <img src="{{ asset('images/partners/robi.png', true) }}" alt="" style="margin: 0 50px;">
-          <img src="{{ asset('images/partners/jural.png', true) }}" alt="">
+          <img src="{{ asset('images/partners/banglalink.png', $hasHttps) }}" alt="">
+          <img src="{{ asset('images/partners/robi.png', $hasHttps) }}" alt="" style="margin: 0 50px;">
+          <img src="{{ asset('images/partners/jural.png', $hasHttps) }}" alt="">
         </div>
 
       </div>
@@ -1343,7 +1344,7 @@ $hasHttps= env('APP_ENV')=='production'
         <div class="row gy-4">
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
-              <img src="{{ asset('images/web_logo.png', true) }}" alt="">
+              <img src="{{ asset('images/web_logo.png', $hasHttps) }}" alt="">
               <span>myRADAR</span>
             </a>
             <p></p>
@@ -1410,16 +1411,16 @@ $hasHttps= env('APP_ENV')=='production'
 
   <!-- Vendor JS Files -->
   {{-- <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script> --}}
-  <script src="{{ asset('landing2/assets/vendor/aos/aos.js', true) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/php-email-form/validate.js', true) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/swiper/swiper-bundle.min.js', true) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/purecounter/purecounter.js', true) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/isotope-layout/isotope.pkgd.min.js', true) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/glightbox/js/glightbox.min.js', true) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/bootstrap/js/bootstrap.bundle.js', true) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/aos/aos.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/php-email-form/validate.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/swiper/swiper-bundle.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/purecounter/purecounter.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/isotope-layout/isotope.pkgd.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/glightbox/js/glightbox.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/bootstrap/js/bootstrap.bundle.js', $hasHttps) }}"></script>
 
   <!-- Template Main JS File -->
-  <script src="{{ asset('landing2/assets/js/main.js', true) }}"></script>
+  <script src="{{ asset('landing2/assets/js/main.js', $hasHttps) }}"></script>
 
   {{-- <script>if( window.self == window.top ) { (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-55234356-4', 'auto'); ga('send', 'pageview'); } </script> --}}
 </body>

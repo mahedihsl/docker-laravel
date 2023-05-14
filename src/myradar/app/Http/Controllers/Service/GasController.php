@@ -13,7 +13,9 @@ use App\Criteria\BeforeWhenCriteria;
 use App\Criteria\LastUpdatedCriteria;
 use App\Presenters\DailyGasPresenter;
 use App\Entities\Device;
+use App\Events\GasRefueled;
 use Carbon\Carbon;
+use Exception;
 
 class GasController extends Controller
 {
@@ -25,6 +27,23 @@ class GasController extends Controller
     public function __construct(DailyGasRepository $dailyRepo)
     {
         $this->dailyRepo = $dailyRepo;
+    }
+
+    public function onRefuel(Request $request)
+    {
+        try {
+            $deviceId = $request->get('device_id');
+            $range = $request->get('range');
+            $device = Device::find($deviceId);
+            if (is_null($device)) {
+                throw new Exception("Device not found with id: {$deviceId}");
+            }
+
+            event(new GasRefueled($device, $range));
+            return response()->ok('Refuel event processed');
+        } catch (\Exception $th) {
+            return response()->error($th->getMessage());
+        }
     }
 
     public function latest(Request $request, $id)
@@ -42,13 +61,13 @@ class GasController extends Controller
         if (!$device->car->status) {
             return response()->ok(['value' => 0]);
         }
-        
+
         $this->dailyRepo->setPresenter(DailyGasPresenter::class);
         $this->dailyRepo->pushCriteria(new DeviceIdCriteria($id));
         $this->dailyRepo->pushCriteria(new LastUpdatedCriteria());
 
         $item = $this->dailyRepo->skipPresenter()->first();
-        if ( ! is_null($item)) {
+        if (!is_null($item)) {
             return response()->ok($item->presenter());
         }
 
@@ -118,16 +137,15 @@ class GasController extends Controller
             $model = $items->get($i);
             $date = $from->copy()->subDays($i);
 
-            if ( ! $model->when->eq($date)) {
+            if (!$model->when->eq($date)) {
                 $temp = $model->presenter()['data'];
                 $temp['when'] = $date->format('j M');
                 $items->splice($i, 0, [$temp]);
             }
         }
 
-        return $items->take($day)->map(function($item) {
+        return $items->take($day)->map(function ($item) {
             return is_array($item) ? $item : $item->presenter()['data'];
         });
     }
-
 }

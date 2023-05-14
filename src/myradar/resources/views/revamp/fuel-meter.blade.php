@@ -112,7 +112,7 @@
           <h5 class="modal-title" id="exampleModalLabel">Call Us</h5>
         </div>
         <div class="modal-body">
-          <p class="@lang('misc.font')">@lang('header.menu.phone') <br>@lang('header.menu.phone2')</p>
+          <p class="bangla">@lang('header.menu.phone') <br>@lang('header.menu.phone2')</p>
         </div>
         {{-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -132,7 +132,7 @@
           </div>
 
           <div class="col-lg-6">
-            <h3 class="@lang('misc.font')">@lang('story.4.title')</h3>
+            <h3 class="bangla">@lang('story.4.title')</h3>
 
             <!-- Tabs -->
             <ul class="nav nav-pills mb-3">
@@ -150,42 +150,42 @@
               consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p> --}}
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')">
+                  <span class="bangla">
                     <strong>@lang('story.4.items.1.bold')</strong>
                     @lang('story.4.items.1.normal')
                   </span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')">
+                  <span class="bangla">
                     <strong>@lang('story.4.items.2.bold')</strong>
                     @lang('story.4.items.2.normal')
                   </span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')">
+                  <span class="bangla">
                     <strong>@lang('story.4.items.3.bold')</strong>
                     @lang('story.4.items.3.normal')
                   </span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')">
+                  <span class="bangla">
                     <strong>@lang('story.4.items.4.bold')</strong>
                     @lang('story.4.items.4.normal')
                   </span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')">
+                  <span class="bangla">
                     <strong>@lang('story.4.items.5.bold')</strong>
                     @lang('story.4.items.5.normal')
                   </span>
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i class="bi bi-check2"></i>
-                  <span class="@lang('misc.font')">
+                  <span class="bangla">
                     <strong>@lang('story.4.items.6.bold')</strong>
                     @lang('story.4.items.6.normal')
                   </span>
@@ -193,7 +193,7 @@
                 <a href="https://myradar.com.bd/#pricing"
                   style="background: #4154f1;padding: 8px 20px;margin-left: 30px;border-radius: 4px;color: #fff; margin-top: 30px;"
                   class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                  <span class="@lang('misc.font')">@lang('header.banner.action')</span>
+                  <span class="bangla">@lang('header.banner.action')</span>
                   <i class="bi bi-arrow-right text-white"></i>
                 </a>
               </div>

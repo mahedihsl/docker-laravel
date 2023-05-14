@@ -52,9 +52,12 @@ class NoticeController extends Controller
                     ->orWhere('status', 1)
                     ->orWhere('status', "1");
             })
-            ->get(['phone']);
+            ->get(['phone', 'account_type', 'customer_type']);
 
-        return $unpaid;
+        return $unpaid->filter(function($user) {
+            $excludedTypes = ['rms_manager'];
+            return !in_array($user->account_type, $excludedTypes);
+        });
     }
 
     // $mm = month (1 indexed)
@@ -62,7 +65,8 @@ class NoticeController extends Controller
     {
         $phoneNumbers = collect();
         for ($i = 0; $i < 36; $i++) {
-            $phoneNumbers = $phoneNumbers->concat($this->unpaidUsersOfMonth($mm, $yy));
+            $numbers = $this->unpaidUsersOfMonth($mm, $yy);
+            $phoneNumbers = $phoneNumbers->concat($numbers);
             $mm--;
             if ($mm == 0) {
                 $mm = 1;
@@ -78,7 +82,11 @@ class NoticeController extends Controller
         $mm = intval($month[0]);
         $yy = intval($month[1]);
 
-        return $this->getUnpaidUsers($mm, $yy)->count();
+        $phones = $this->getUnpaidUsers($mm, $yy);
+        return [
+            'count' => $phones->count(),
+            'phones' => $phones,
+        ];
     }
 
     public function sendDueNotice(Request $request)
@@ -96,15 +104,12 @@ class NoticeController extends Controller
             $notice = $this->repository->create([
                 'message' => $message,
                 'via' => $via,
-                // 'pending' => $unpaid->count(),
-                'pending' => 1,
+                'pending' => $unpaid->count(),
                 'sent' => 0,
                 'failed' => 0,
             ]);
 
             $unpaid->each(function ($user) use ($message, $via, $notice) {
-                // if($user->phone != '01627892968') return;
-
                 if ($via == 'sms') {
                     PendingNotice::create([
                         'via' => $via,
@@ -114,15 +119,14 @@ class NoticeController extends Controller
                         'attempt' => 0,
                     ]);
                 } else {
-                    $payload = [
-                        'title' => 'Notice',
-                        'body' => $message,
-                        'type' => NotificationService::$TYPE_BILL,
-                    ];
                     PendingNotice::create([
                         'via' => $via,
                         'to' => $user->id,
-                        'payload' => $payload,
+                        'payload' => [
+                            'title' => 'Notice',
+                            'body' => $message,
+                            'type' => NotificationService::$TYPE_BILL,
+                        ],
                         'notice_id' => $notice->id,
                         'attempt' => 0,
                     ]);

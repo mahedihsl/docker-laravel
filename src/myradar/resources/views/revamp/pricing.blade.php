@@ -5,7 +5,7 @@
 
     <header class="section-header">
       <h2>Pricing</h2>
-      <p class="@lang('misc.font')">@lang('price.title')</p>
+      <p class="bangla">@lang('price.title')</p>
     </header>
 
     <div class="row gy-4" data-aos="fade-left">
@@ -14,10 +14,10 @@
         <div class="box">
           <h3 class="price-standard">@lang('price.standard.name') <div class="arrow"></div>
           </h3>
-          <div class="price @lang('misc.font')"><sup class="na">@lang('price.standard.price_prev')</sup>@lang('price.standard.price')<span> @lang('misc.currency')</span></div>
-          <div class="price2 @lang('misc.font')"><span>@lang('misc.month_charge') </span>@lang('price.standard.bill')<span> @lang('misc.currency')</span></div>
+          <div class="price bangla"><sup class="na">@lang('price.standard.price_prev')</sup>@lang('price.standard.price')<span> @lang('misc.currency')</span></div>
+          <div class="price2 bangla"><span>@lang('misc.month_charge') </span>@lang('price.standard.bill')<span> @lang('misc.currency')</span></div>
           {{-- <img src="{{ asset('landing2/assets/img/pricing-free.png', true) }}" class="img-fluid" alt=""> --}}
-          <ul class="@lang('misc.font')">
+          <ul class="bangla">
             <li>@lang('price.items.1')</li>
             <li>@lang('price.items.2')</li>
             <li>@lang('price.items.3')</li>
@@ -46,11 +46,11 @@
           {{-- <span class="featured">Featured</span> --}}
           <h3 class="price-special">@lang('price.special.name') <div class="arrow"></div>
           </h3>
-          <div class="price @lang('misc.font')"><sup class="na">@lang('price.special.price_prev')</sup>@lang('price.special.price')<span> @lang('misc.currency')</span></div>
-          <div class="price2 @lang('misc.font')"><span>@lang('misc.month_charge') </span>@lang('price.special.bill')<span> @lang('misc.currency')</span></div>
+          <div class="price bangla"><sup class="na">@lang('price.special.price_prev')</sup>@lang('price.special.price')<span> @lang('misc.currency')</span></div>
+          <div class="price2 bangla"><span>@lang('misc.month_charge') </span>@lang('price.special.bill')<span> @lang('misc.currency')</span></div>
           {{-- <img src="{{ asset('landing2/assets/img/pricing-starter.png', true) }}" class="img-fluid" alt="">
           --}}
-          <ul class="@lang('misc.font')">
+          <ul class="bangla">
             <li>@lang('price.items.1')</li>
             <li>@lang('price.items.2')</li>
             <li>@lang('price.items.3')</li>
@@ -78,11 +78,11 @@
         <div class="box">
           <h3 class="price-advanced">@lang('price.advanced.name') <div class="arrow"></div>
           </h3>
-          <div class="price @lang('misc.font')"><sup></sup>@lang('price.advanced.price')<span> @lang('misc.currency')</span></div>
-          <div class="price2 @lang('misc.font')"><span>@lang('misc.month_charge') </span>@lang('price.advanced.bill')<span> @lang('misc.currency')</span></div>
+          <div class="price bangla"><sup></sup>@lang('price.advanced.price')<span> @lang('misc.currency')</span></div>
+          <div class="price2 bangla"><span>@lang('misc.month_charge') </span>@lang('price.advanced.bill')<span> @lang('misc.currency')</span></div>
           {{-- <img src="{{ asset('landing2/assets/img/pricing-business.png', true) }}" class="img-fluid" alt="">
           --}}
-          <ul class="@lang('misc.font')">
+          <ul class="bangla">
             <li>@lang('price.items.1')</li>
             <li>@lang('price.items.2')</li>
             <li>@lang('price.items.3')</li>
@@ -110,11 +110,11 @@
         <div class="box">
           <h3 class="price-business">@lang('price.business.name') <div class="arrow"></div>
           </h3>
-          <div class="price @lang('misc.font')"><sup></sup>@lang('price.business.price')<span></span></div>
-          <div class="price2 @lang('misc.font')">&nbsp;</div>
+          <div class="price bangla"><sup></sup>@lang('price.business.price')<span></span></div>
+          <div class="price2 bangla">&nbsp;</div>
           {{-- <img src="{{ asset('landing2/assets/img/pricing-ultimate.png', true) }}" class="img-fluid" alt="">
           --}}
-          <ul class="@lang('misc.font')">
+          <ul class="bangla">
             <li>@lang('price.items.1')</li>
             <li>@lang('price.items.2')</li>
             <li>@lang('price.items.3')</li>

@@ -1,12 +1,4 @@
 <li>
-  <a href="{{route('bkash-pgw-bill')}}">
-    <i class="fa fa-cab"></i> <span>bKash PGW (909)</span>
-    {{-- <span class="pull-right-container">
-      <small class="label pull-right bg-green">Hot</small>
-    </span> --}}
-  </a>
-</li>
-<li>
   <a href="{{route('billing')}}">
     <i class="fa fa-cab"></i> <span>Billing</span>
     {{-- <span class="pull-right-container">
@@ -55,7 +47,7 @@
     <i class="fa fa-key"></i> <span>Customer Engagement</span>
   </a>
 </li>
-{{-- <li>
+<li>
   <a href="/messages">
     <i class="fa fa-envelope"></i> <span>Messages</span>
     @php
@@ -67,5 +59,5 @@
     </span>
     @endif
   </a>
-</li> --}}
+</li>
 @include('partial.menu.test')

@@ -73,6 +73,14 @@ class CheckoutIFrameController extends Controller
         return $this->checkoutService->refundTransaction($paymentID, $trxID, $amount, $this->credential);
     }
 
+    public function refundStatus(Request $request)
+    {
+        $trxID = $request->get('trxID');
+        $paymentID = $request->get('paymentID');
+
+        return $this->checkoutService->refundStatus($paymentID, $trxID, $this->credential);
+    }
+
     public function amount(Request $request)
     {
         return view('bkash.checkout-iframe.amount');
