@@ -63,7 +63,7 @@ $hasHttps= env('APP_ENV')=='production'
     @endphp
     <div id="app" class="container body">
         <div class="main_container">
-             @include('partial.sidebar')
+            @include('partial.sidebar.sidebar')
 
             <!-- top navigation -->
             @include('partial.topbar')

@@ -64,7 +64,6 @@ export default {
     data: () => ({
         paymentSMS: "",
         totalDue: '',
-        smsType: '',
         //current: 'payment-form',
     }),
     computed: {
@@ -101,7 +100,7 @@ export default {
       },
       send(){
         let api= new PaymentApi(EventBus);
-        api.sendMessage(this.customer.id, this.paymentSMS, this.smsType);
+        api.sendMessage(this.customer.id, this.paymentSMS);
         toastr.success('Message Sent successfully!');
       },
       getPaymentMethod(){
@@ -111,9 +110,8 @@ export default {
       onTotalDueReceived(total) {
         this.totalDue = total;
       },
-      onMessageContentReceived(data, type){
+      onMessageContentReceived(data){
         this.paymentSMS = data.message;
-        this.smsType = type;
         this.$modal.show('info');
 
       },

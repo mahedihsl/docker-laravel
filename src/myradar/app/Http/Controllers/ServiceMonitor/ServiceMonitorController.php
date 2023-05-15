@@ -56,7 +56,7 @@ class ServiceMonitorController extends Controller
 
     if(isset($user_id))
     {
-    $Device = Device::find($device_id);
+    $Device = Device::where('_id', $device_id)->orWhere('com_id', intval($device_id))->first();
     $User = User::find($user_id)->name;
     }
 

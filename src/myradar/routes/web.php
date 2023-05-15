@@ -525,7 +525,8 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
 //   Route::get('/tracking/report', 'Report\TrackingController@report');
 //   Route::get('/report/positions', 'Report\PositionController@show');
-//   Route::get('/report/positions/fetch', 'Report\PositionController@latest');
+   //Route::get('/report/positions/fetch', 'Report\PositionController@latest');
+   Route::get('/report/positions/fetch',[App\Http\Controllers\Report\PositionController::class,'latest']);
 
 //   Route::get('/tracking/history/{id}', 'Customer\PositionHistoryController@show');
 //   Route::get('/tracking/records/fetch', 'Customer\PositionHistoryController@history');

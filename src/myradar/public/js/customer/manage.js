@@ -4132,8 +4132,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       paymentSMS: "",
-      totalDue: '',
-      smsType: ''
+      totalDue: ''
       //current: 'payment-form',
     };
   },
@@ -4172,7 +4171,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     send: function send() {
       var api = new __WEBPACK_IMPORTED_MODULE_2__api_PaymentApi__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1__util_EventBus__["a" /* default */]);
-      api.sendMessage(this.customer.id, this.paymentSMS, this.smsType);
+      api.sendMessage(this.customer.id, this.paymentSMS);
       toastr.success('Message Sent successfully!');
     },
     getPaymentMethod: function getPaymentMethod() {
@@ -4182,9 +4181,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     onTotalDueReceived: function onTotalDueReceived(total) {
       this.totalDue = total;
     },
-    onMessageContentReceived: function onMessageContentReceived(data, type) {
+    onMessageContentReceived: function onMessageContentReceived(data) {
       this.paymentSMS = data.message;
-      this.smsType = type;
       this.$modal.show('info');
     },
     hide: function hide() {
@@ -4324,7 +4322,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             types: [{ id: 1, label: 'Cash' }, { id: 2, label: 'bKash' }, { id: 9, label: 'bKash (907)' }, { id: 10, label: 'bKash (909)' }, { id: 3, label: 'bKash Personal' }, { id: 4, label: 'Rocket' }, { id: 5, label: 'Rocket Personal' }, { id: 6, label: 'Bank' }, { id: 7, label: 'Visa' }, { id: 8, label: 'MasterCard' }],
             paymentType: null,
             years: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
-            selectedYear: '2022',
+            selectedYear: '2021',
             payments: [],
             activationDate: "",
             carBill: '',
@@ -5197,6 +5195,14 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -5332,13 +5338,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -5640,10 +5639,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       this.setCurrentComponent(__WEBPACK_IMPORTED_MODULE_2__RmsSiteList_vue___default.a);
     },
     onCreateClick: function onCreateClick() {
-      this.setCurrentComponent(__WEBPACK_IMPORTED_MODULE_3__SiteCreateForm_vue___default.a, {
-        userId: this.customer.id,
-        userUid: Number(this.customer.uid)
-      });
+      this.setCurrentComponent(__WEBPACK_IMPORTED_MODULE_3__SiteCreateForm_vue___default.a, { userId: this.customer.id });
     },
     onEditClick: function onEditClick(site) {
       this.setCurrentComponent(__WEBPACK_IMPORTED_MODULE_4__SiteEditForm_vue___default.a, { site: site });
@@ -6045,10 +6041,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     userId: {
       type: String,
       required: true
-    },
-    userUid: {
-      type: Number,
-      required: true
     }
   },
   data: function data() {
@@ -6067,7 +6059,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                 _context.next = 3;
                 return this.$store.dispatch('rms/saveSite', {
                   user_id: this.userId,
-                  user_uid: this.userUid,
                   name: this.name
                 });
 
@@ -7184,15 +7175,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -7216,7 +7198,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         new_service: '1',
         fuel_group: null,
         voice_service: '0',
-        billing_type: 'postpaid',
         volume: 0 // application for 'generator' type
       },
       error: {
@@ -7507,15 +7488,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -7539,7 +7511,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         voice_service: '0',
         engine_control: 'lock',
         bill: '',
-        billing_type: 'postpaid',
         volume: 0
       },
       error: {
@@ -7583,7 +7554,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       this.info.engine_control = data.engine_control;
       this.info.fuel_group = data.meta.fuel_group;
       this.info.bill = data.bill;
-      this.info.billing_type = data.billing_type || 'postpaid';
       if (data.type) {
         this.info.type = '' + data.type;
       }
@@ -63714,53 +63684,6 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-6" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Billing Type")]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.info.billing_type,
-                    expression: "info.billing_type"
-                  }
-                ],
-                staticClass: "form-control",
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.info,
-                      "billing_type",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { value: "postpaid" } }, [
-                  _vm._v("Postpaid")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "prepaid" } }, [
-                  _vm._v("Prepaid")
-                ])
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
         _c("div", { staticClass: "pull-right" }, [
           _c(
             "button",
@@ -65126,46 +65049,30 @@ var render = function() {
             _vm._v("DG STATUS")
           ]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "pg_status" } }, [
-            _vm._v("PG STATUS")
-          ]),
-          _vm._v(" "),
           _c("option", { attrs: { value: "dg_fuel" } }, [_vm._v("DG FUEL")]),
           _vm._v(" "),
           _c("option", { attrs: { value: "temperature" } }, [
             _vm._v("TEMPERATURE")
           ]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "access_control" } }, [
-            _vm._v("ACCESS CONTROL")
+          _c("option", { attrs: { value: "door_status" } }, [
+            _vm._v("DOOR STATUS")
           ]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "vibration_sensor" } }, [
-            _vm._v("VIBRATION SENSOR")
+          _c("option", { attrs: { value: "battery_cell" } }, [
+            _vm._v("BATTERY CELL")
           ]),
           _vm._v(" "),
           _c("option", { attrs: { value: "battery_terminal" } }, [
-            _vm._v("DC VOLTAGE")
+            _vm._v("BATTERY TERMINAL")
           ]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "battery_current" } }, [
-            _vm._v("DC CURRENT")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "battery_low" } }, [
-            _vm._v("DC LOW VOLTAGE")
+          _c("option", { attrs: { value: "battery_offset" } }, [
+            _vm._v("BATTERY OFFSET")
           ]),
           _vm._v(" "),
           _c("option", { attrs: { value: "smoke_detector" } }, [
             _vm._v("SMOKE DETECTOR")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "mains_fail" } }, [
-            _vm._v("MAINS FAIL")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "rectifier_fault" } }, [
-            _vm._v("RECTIFIER FAULT")
           ])
         ]
       )
@@ -65763,7 +65670,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-6" }, [
           _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Monthly Bill")]),
+            _c("label", [_vm._v("Bill")]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -65786,53 +65693,6 @@ var render = function() {
                 }
               }
             })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-6" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Billing Type")]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.info.billing_type,
-                    expression: "info.billing_type"
-                  }
-                ],
-                staticClass: "form-control",
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.info,
-                      "billing_type",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { value: "postpaid" } }, [
-                  _vm._v("Postpaid")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "prepaid" } }, [
-                  _vm._v("Prepaid")
-                ])
-              ]
-            )
           ])
         ]),
         _vm._v(" "),
@@ -66273,46 +66133,30 @@ var render = function() {
             _vm._v("DG STATUS")
           ]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "pg_status" } }, [
-            _vm._v("PG STATUS")
-          ]),
-          _vm._v(" "),
           _c("option", { attrs: { value: "dg_fuel" } }, [_vm._v("DG FUEL")]),
           _vm._v(" "),
           _c("option", { attrs: { value: "temperature" } }, [
             _vm._v("TEMPERATURE")
           ]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "access_control" } }, [
-            _vm._v("ACCESS CONTROL")
+          _c("option", { attrs: { value: "door_status" } }, [
+            _vm._v("DOOR STATUS")
           ]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "vibration_sensor" } }, [
-            _vm._v("VIBRATION SENSOR")
+          _c("option", { attrs: { value: "battery_cell" } }, [
+            _vm._v("BATTERY CELL")
           ]),
           _vm._v(" "),
           _c("option", { attrs: { value: "battery_terminal" } }, [
-            _vm._v("DC VOLTAGE")
+            _vm._v("BATTERY TERMINAL")
           ]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "battery_current" } }, [
-            _vm._v("DC CURRENT")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "battery_low" } }, [
-            _vm._v("DC LOW VOLTAGE")
+          _c("option", { attrs: { value: "battery_offset" } }, [
+            _vm._v("BATTERY OFFSET")
           ]),
           _vm._v(" "),
           _c("option", { attrs: { value: "smoke_detector" } }, [
             _vm._v("SMOKE DETECTOR")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "mains_fail" } }, [
-            _vm._v("MAINS FAIL")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "rectifier_fault" } }, [
-            _vm._v("RECTIFIER FAULT")
           ])
         ]
       )
@@ -86968,7 +86812,7 @@ var PaymentApi = function () {
 
             this.EventBus.$emit('get-message-content-start');
             Vue.http.get('/payment/message/' + userId).then(function (response) {
-                _this4.EventBus.$emit('message-content-received', response.body.data, 'payment_2');
+                _this4.EventBus.$emit('message-content-received', response.body.data);
             }, function (error) {});
         }
     }, {
@@ -86982,11 +86826,11 @@ var PaymentApi = function () {
         }
     }, {
         key: 'sendMessage',
-        value: function sendMessage(userId, content, type) {
+        value: function sendMessage(userId, content) {
             var _this6 = this;
 
             this.EventBus.$emit('message-send-start');
-            Vue.http.post('/payment/sms/send', { id: userId, content: content, type: type }).then(function (response) {
+            Vue.http.post('/payment/sms/send', { id: userId, content: content }).then(function (response) {
                 _this6.EventBus.$emit('message-send-done', response.body.data);
             }, function (error) {});
         }
@@ -87013,7 +86857,7 @@ var PaymentApi = function () {
 
             this.EventBus.$emit('message-send-start');
             Vue.http.get('/payment/method/sms/' + userId).then(function (response) {
-                _this7.EventBus.$emit('message-content-received', response.body.data, 'payment_1');
+                _this7.EventBus.$emit('message-content-received', response.body.data);
             }, function (error) {});
         }
     }, {

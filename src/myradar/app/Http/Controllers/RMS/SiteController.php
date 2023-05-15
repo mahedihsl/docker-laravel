@@ -8,17 +8,21 @@ use App\Entities\User;
 use App\Http\Requests\CreateRmsSite;
 use App\Http\Requests\UpdateRmsSite;
 use App\Service\Microservice\DeviceMicroservice;
+use App\Service\Microservice\RMSBatteryMicroservice;
 use App\Service\Microservice\RMSUserMicroservice;
+use App\Service\Microservice\ServiceException;
 
 class SiteController extends Controller
 {
     private $rmsUserService;
+    private $rmsBatteryService;
     private $deviceService;
 
     public function __construct()
     {
         $this->deviceService = new DeviceMicroservice();
         $this->rmsUserService = new RMSUserMicroservice();
+        $this->rmsBatteryService = new RMSBatteryMicroservice();
     }
 
     public function index(Request $request)
@@ -140,7 +144,7 @@ class SiteController extends Controller
     public function availability(Request $request)
     {
         try {
-            $response = $this->rmsUserService->siteAvailability($request->all());
+            $response = $this->rmsBatteryService->siteAvailability($request->all());
             return response()->json($response);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
@@ -156,7 +160,7 @@ class SiteController extends Controller
             return response()->json(['error' => $e->getMessage()], 400);
         }
     }
-    
+
     public function siteAlarms(Request $request)
     {
         try {
@@ -176,7 +180,17 @@ class SiteController extends Controller
             return response()->json(['error' => $e->getMessage()], 400);
         }
     }
-    
+
+    public function filterNetworkEvents(Request $request)
+    {
+        try {
+            $response = $this->rmsUserService->filterNetworkEvents($request->all());
+            return response()->json($response);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+    }
+
     public function networkHealths(Request $request)
     {
         try {
@@ -206,7 +220,7 @@ class SiteController extends Controller
             return response()->json(['error' => $e->getMessage()], 400);
         }
     }
-   
+
     public function clearSecurityBreach(Request $request)
     {
         try {
@@ -214,6 +228,16 @@ class SiteController extends Controller
             return response()->json($response);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
+        }
+    }
+
+    public function unlockSite(Request $request)
+    {
+        try {
+            $response = $this->rmsUserService->unlockSite($request->all());
+            return response()->json($response);
+        } catch (ServiceException $e) {
+            return response()->json($e->data, 400);
         }
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Entities\User;
 use App\Service\Microservice\SupervisorMicroservice;
 use Exception;
 
@@ -26,7 +26,7 @@ class HomeController extends Controller
         \App::setLocale($lang);
         return view('revamp.index');
     }
-
+    
     public function welcomeDev(Request $request)
     {
         $lang = $request->get('lang', config('app.locale'));

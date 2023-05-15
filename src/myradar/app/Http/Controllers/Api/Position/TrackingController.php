@@ -28,8 +28,13 @@ class TrackingController extends Controller
      */
     public function last(Request $request, $id)
     {
+        $startTime = microtime(true);
         $position = $this->repository->lastPosition($id);
-        if ( ! is_null($position)) {
+        if (!is_null($position)) {
+            $endTime = microtime(true);
+            $duration = ($endTime - $startTime) * 1000;
+            $position['duration'] = $duration;
+
             return response()->ok($position);
         }
 
@@ -63,5 +68,4 @@ class TrackingController extends Controller
             return response()->json(['message' => $e->getMessage()], 400);
         }
     }
-
 }

@@ -99,13 +99,19 @@ class BillingController extends Controller
 
     public function export(Request $request)
     {
+        // $data = $this->repository
+        //             ->pushCriteria(new LastCreatedCriteria())
+        //             ->with(['car.payments'])
+        //             ->all()
+        //             ->filter(function($record) {
+        //                 return ! is_null($record->car);
+        //             });
+
         $data = $this->repository
-                    ->pushCriteria(new LastCreatedCriteria())
-                    ->with(['car.payments'])
-                    ->all()
-                    ->filter(function($record) {
-                        return ! is_null($record->car);
-                    });
+    ->pushCriteria(new LastCreatedCriteria())
+    ->with(['car.payments'])
+    ->has('car') 
+    ->get();
 
         Excel::create('FullBillingReport', function ($excel) use ($data) {
             $excel->sheet('data', function ($sheet) use ($data) {

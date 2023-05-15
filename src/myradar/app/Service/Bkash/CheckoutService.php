@@ -174,7 +174,7 @@ class CheckoutService extends BkashService
   public function refundTransaction($paymentID, $trxID, $amount, BkashCredential $credential)
   {
     try {
-      $res = $this->httpClient()->post($credential->getURL('/checkout/payment/refund/'), [
+      $res = $this->httpClient()->post($credential->getURL('/checkout/payment/refund'), [
         'json' => [
           'paymentID' => $paymentID,
           'trxID' => $trxID,
@@ -187,7 +187,33 @@ class CheckoutService extends BkashService
         'read_timeout' => 30,
       ]);
 
-      return json_decode($res->getBody()->getContents(), true);
+      $response = json_decode($res->getBody()->getContents(), true);
+      $this->storeLog('refund', $url, $headers, $body, $response);
+
+      return $response;
+    } catch (Exception $e) {
+      throw $e;
+    }
+  }
+
+  public function refundStatus($paymentID, $trxID, BkashCredential $credential)
+  {
+    try {
+      $url = $credential->getURL('/checkout/payment/refund');
+      $res = $this->httpClient()->post($url, [
+        'json' => [
+          'paymentID' => $paymentID,
+          'trxID' => $trxID,
+        ],
+        'headers' => $credential->getAccessHeaders($this->getAccessToken()),
+        'connect_timeout' => 10,
+        'read_timeout' => 30,
+      ]);
+
+      $response =  json_decode($res->getBody()->getContents(), true);
+      // $this->storeLog('refund_status', $url, $headers, $body, $response);
+
+      return $response;
     } catch (Exception $e) {
       throw $e;
     }

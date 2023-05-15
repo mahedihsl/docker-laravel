@@ -1725,100 +1725,94 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      spin1: false,
-      spin2: false,
-      comId: '',
-      phone: '',
-      version: '',
-      imei: ''
-    };
-  },
-  mounted: function mounted() {
-    __WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */].$on('com-id-found', this.onComIdFound.bind(this));
-    __WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */].$on('device-create-ok', this.onDeviceCreateSuccess.bind(this));
-    __WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */].$on('device-create-error', this.onDeviceCreateError.bind(this));
-
-    new Clipboard('#comid');
-    tippy('#comid');
-  },
-
-  methods: {
-    onGenerateClick: function onGenerateClick() {
-      this.spin1 = true;
-      var api = new __WEBPACK_IMPORTED_MODULE_1__api_DeviceApi__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */]);
-      api.generateNewId();
+    data: function data() {
+        return {
+            spin1: false,
+            spin2: false,
+            comId: '',
+            phone: '',
+            version: '',
+            imei: ''
+        };
     },
-    onSaveClick: function onSaveClick() {
-      var error = this.validate();
-      if (error) return;
+    mounted: function mounted() {
+        __WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */].$on('com-id-found', this.onComIdFound.bind(this));
+        __WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */].$on('device-create-ok', this.onDeviceCreateSuccess.bind(this));
+        __WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */].$on('device-create-error', this.onDeviceCreateError.bind(this));
 
-      this.spin2 = true;
-      this.error = '';
-      var api = new __WEBPACK_IMPORTED_MODULE_1__api_DeviceApi__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */]);
-      api.create(this.comId, this.phone, this.version, this.imei);
+        new Clipboard('#comid');
+        tippy('#comid');
     },
-    validate: function validate() {
-      var msg = '';
 
-      if (!this.comId) msg += '<br>Commercial id is empty';
-      if (!this.phone) msg += '<br>Phone number is empty';
-      if (!this.version) msg += '<br>Version is empty';
+    methods: {
+        onGenerateClick: function onGenerateClick() {
+            this.spin1 = true;
+            var api = new __WEBPACK_IMPORTED_MODULE_1__api_DeviceApi__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */]);
+            api.generateNewId();
+        },
+        onSaveClick: function onSaveClick() {
+            var error = this.validate();
+            if (error) return;
 
-      if (msg) {
-        $.alert({
-          title: 'Error !',
-          content: msg,
-          type: 'red',
-          theme: 'material'
-        });
+            this.spin2 = true;
+            this.error = '';
+            var api = new __WEBPACK_IMPORTED_MODULE_1__api_DeviceApi__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */]);
+            api.create(this.comId, this.phone, this.version, this.imei);
+        },
+        validate: function validate() {
+            var msg = '';
 
-        return true;
-      }
+            if (!this.comId) msg += '<br>Commercial id is empty';
+            if (!this.phone) msg += '<br>Phone number is empty';
+            if (!this.version) msg += '<br>Version is empty';
 
-      return false;
-    },
-    onComIdFound: function onComIdFound(id) {
-      this.comId = id;
-      this.spin1 = false;
-    },
-    onDeviceCreateSuccess: function onDeviceCreateSuccess(data) {
-      this.spin2 = false;
-      this.comId = '';
-      this.phone = '';
-      this.error = '';
-      this.version = '';
-      this.imei = '';
+            if (msg) {
+                $.alert({
+                    title: 'Error !',
+                    content: msg,
+                    type: 'red',
+                    theme: 'material'
+                });
 
-      toastr.success('Device successfully created !');
+                return true;
+            }
 
-      __WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */].$emit('device-item-found', data);
-    },
-    onDeviceCreateError: function onDeviceCreateError(message) {
-      this.spin2 = false;
-      $.alert({
-        title: 'Error !',
-        content: message,
-        type: 'red',
-        theme: 'material'
-      });
-    },
-    onPrintClick: function onPrintClick() {
-      __WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */].$emit('print-codes', 10);
+            return false;
+        },
+        onComIdFound: function onComIdFound(id) {
+            this.comId = id;
+            this.spin1 = false;
+        },
+        onDeviceCreateSuccess: function onDeviceCreateSuccess(data) {
+            this.spin2 = false;
+            this.comId = '';
+            this.phone = '';
+            this.error = '';
+            this.version = '';
+            this.imei = '';
+
+            toastr.success('Device successfully created !');
+
+            __WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */].$emit('device-item-found', data);
+        },
+        onDeviceCreateError: function onDeviceCreateError(message) {
+            this.spin2 = false;
+            $.alert({
+                title: 'Error !',
+                content: message,
+                type: 'red',
+                theme: 'material'
+            });
+        },
+        onPrintClick: function onPrintClick() {
+            __WEBPACK_IMPORTED_MODULE_0__util_EventBus__["a" /* default */].$emit('print-codes', 10);
+        }
     }
-  }
 });
 
 /***/ }),
@@ -4338,7 +4332,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.com_button[data-v-f64c89d8] {\n  margin-top: 20px;\n}\n.com_id[data-v-f64c89d8] {\n  cursor: pointer;\n  width: 100%;\n  min-height: 60px;\n  padding: 10px 15px;\n  border-radius: 4px;\n  text-align: center;\n  background: #e0e0e0;\n}\n.exportBtn[data-v-f64c89d8] {\n  padding-left: 15px;\n  padding-right: 15px;\n  padding-top: 5px;\n  padding-bottom: 5px;\n  margin-left: 15px;\n}\n", ""]);
+exports.push([module.i, "\n.com_button[data-v-f64c89d8] {\n  margin-top: 20px;\n}\n.com_id[data-v-f64c89d8] {\n  cursor: pointer;\n  width: 100%;\n  min-height: 60px;\n  padding: 10px 15px;\n  border-radius: 4px;\n  text-align: center;\n  background: #E0E0E0;\n}\n.exportBtn[data-v-f64c89d8] {\n  padding-left: 15px;\n  padding-right: 15px;\n  padding-top: 5px;\n  padding-bottom: 5px;\n  margin-left: 15px;\n}\n", ""]);
 
 // exports
 
@@ -33634,7 +33628,7 @@ var render = function() {
               title: "Copied To Clipboard"
             }
           },
-          [_vm._v("\n        " + _vm._s(_vm.comId) + "\n      ")]
+          [_vm._v(_vm._s(_vm.comId))]
         )
       ]),
       _vm._v(" "),
@@ -33658,7 +33652,7 @@ var render = function() {
               ],
               staticClass: "fa fa-refresh fa-spin"
             }),
-            _vm._v("\n        New Commercial ID\n      ")
+            _vm._v("\n                New Commercial ID\n            ")
           ]
         )
       ])
@@ -33722,13 +33716,7 @@ var render = function() {
                       _vm.version = $event.target.value
                     }
                   }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticStyle: { color: "#7f8c8d", "font-size": "12px" } },
-                  [_vm._v("Type: 8.0.8 for all Makthro Devices")]
-                )
+                })
               ])
             ]),
             _vm._v(" "),
@@ -33791,7 +33779,7 @@ var render = function() {
                 ],
                 staticClass: "fa fa-refresh fa-spin"
               }),
-              _vm._v("\n        DONE\n      ")
+              _vm._v("\n                DONE\n            ")
             ]
           ),
           _vm._v(" "),
@@ -33817,7 +33805,7 @@ var staticRenderFns = [
       },
       [
         _c("i", { staticClass: "fa fa-print" }),
-        _vm._v("\n        Print\n      ")
+        _vm._v("\n                Print\n            ")
       ]
     )
   },
@@ -33836,7 +33824,7 @@ var staticRenderFns = [
           staticClass: "fa fa-file-excel-o",
           attrs: { "aria-hidden": "true" }
         }),
-        _vm._v("\n        Export All\n      ")
+        _vm._v("\n              Export All\n            ")
       ]
     )
   }

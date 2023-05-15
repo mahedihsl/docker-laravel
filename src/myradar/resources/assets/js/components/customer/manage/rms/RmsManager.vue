@@ -63,10 +63,7 @@ export default {
     },
 
     onCreateClick() {
-      this.setCurrentComponent(SiteCreateForm, {
-        userId: this.customer.id,
-        userUid: Number(this.customer.uid),
-      })
+      this.setCurrentComponent(SiteCreateForm, { userId: this.customer.id })
     },
 
     onEditClick(site) {
@@ -93,4 +90,5 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

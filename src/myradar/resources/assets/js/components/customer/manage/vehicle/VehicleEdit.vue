@@ -131,22 +131,13 @@
         </div>
         <div class="col-xs-6">
           <div class="form-group">
-            <label>Monthly Bill</label>
+            <label>Bill</label>
             <input
               type="text"
               v-model="info.bill"
               class="form-control"
               placeholder="ex: 500"
             />
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <div class="form-group">
-            <label>Billing Type</label>
-            <select class="form-control" v-model="info.billing_type">
-              <option value="postpaid">Postpaid</option>
-              <option value="prepaid">Prepaid</option>
-            </select>
           </div>
         </div>
         <div class="pull-right">
@@ -188,7 +179,6 @@ export default {
       voice_service: '0',
       engine_control: 'lock',
       bill: '',
-      billing_type: 'postpaid',
       volume: 0,
     },
     error: {
@@ -230,7 +220,6 @@ export default {
       this.info.engine_control = data.engine_control
       this.info.fuel_group = data.meta.fuel_group
       this.info.bill = data.bill
-      this.info.billing_type = data.billing_type || 'postpaid'
       if (data.type) {
         this.info.type = `${data.type}`
       }

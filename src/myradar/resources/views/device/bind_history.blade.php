@@ -26,10 +26,6 @@ Device Bind History
       <button class="btn btn-default" type="button" id="clear-form">
         <i class="fa fa-times"></i> Clear
       </button>
-      <a href="/device/bind/export" class="btn btn-primary">
-        <i class="fa fa-file-excel-o"></i>
-        Export
-      </a>
     </form>
   </div>
   <div class="col-xs-12">

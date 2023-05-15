@@ -125,7 +125,7 @@ export default {
       ],
       paymentType: null,
       years:['2018', '2019','2020','2021','2022', '2023', '2024', '2025'],
-      selectedYear: '2022',
+      selectedYear: '2021',
       payments:[],
       activationDate:"",
       carBill: '',

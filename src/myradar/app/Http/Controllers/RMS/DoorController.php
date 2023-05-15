@@ -95,4 +95,94 @@ class DoorController extends Controller
         return response()->json(['error' => $e->getMessage()], 400);
       }
     }
+
+    public function getSiteGroups(Request $request)
+    {
+      try {
+        $response = $this->rmsDoorService->getSiteGroups($request->all());
+        return response()->json($response);
+      } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
+      }
+    }
+
+    public function saveSiteGroup(Request $request)
+    {
+      try {
+        $response = $this->rmsDoorService->saveSiteGroup($request->all());
+        return response()->json($response);
+      } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
+      }
+    }
+
+    public function deleteSiteGroup(Request $request)
+    {
+      try {
+        $response = $this->rmsDoorService->deleteSiteGroup($request->all());
+        return response()->json($response);
+      } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
+      }
+    }
+
+    public function getCardList(Request $request)
+    {
+      try {
+        $response = $this->rmsDoorService->getCardList($request->all());
+        return response()->json($response);
+      } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
+      }
+    }
+
+    public function saveAccessCard(Request $request)
+    {
+      try {
+        $response = $this->rmsDoorService->saveAccessCard($request->all());
+        return response()->json($response);
+      } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
+      }
+    }
+
+    public function getCardGroups(Request $request)
+    {
+      try {
+        $response = $this->rmsDoorService->getCardGroups($request->all());
+        return response()->json($response);
+      } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
+      }
+    }
+
+    public function saveCardGroup(Request $request)
+    {
+      try {
+        $response = $this->rmsDoorService->saveCardGroup($request->all());
+        return response()->json($response);
+      } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
+      }
+    }
+
+    public function deleteCardGroup(Request $request)
+    {
+      try {
+        $response = $this->rmsDoorService->deleteCardGroup($request->all());
+        return response()->json($response);
+      } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
+      }
+    }
+    
+    public function attachSiteAndCardGroups(Request $request)
+    {
+      try {
+        $response = $this->rmsDoorService->attachSiteAndCardGroups($request->all());
+        return response()->json($response);
+      } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 400);
+      }
+    }
 }

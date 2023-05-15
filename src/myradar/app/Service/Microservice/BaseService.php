@@ -12,7 +12,6 @@ class BaseService {
   public function __construct($name) {
     $this->name = $name;
     $this->client = new \GuzzleHttp\Client(['base_uri' => $this->getBaseUri()]);
-
   }
 
   public function getBaseUri()
@@ -30,7 +29,6 @@ class BaseService {
 
   public function post($path, $data = [], $headers = [])
   {
-    
     try {
       $res = $this->client->post($path, [ 'json' => $data, 'headers' => $headers ]);
       return json_decode($res->getBody()->getContents(), true);

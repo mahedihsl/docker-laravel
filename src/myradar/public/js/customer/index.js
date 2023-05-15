@@ -48684,7 +48684,7 @@ var PaymentApi = function () {
 
             this.EventBus.$emit('get-message-content-start');
             Vue.http.get('/payment/message/' + userId).then(function (response) {
-                _this4.EventBus.$emit('message-content-received', response.body.data, 'payment_2');
+                _this4.EventBus.$emit('message-content-received', response.body.data);
             }, function (error) {});
         }
     }, {
@@ -48698,11 +48698,11 @@ var PaymentApi = function () {
         }
     }, {
         key: 'sendMessage',
-        value: function sendMessage(userId, content, type) {
+        value: function sendMessage(userId, content) {
             var _this6 = this;
 
             this.EventBus.$emit('message-send-start');
-            Vue.http.post('/payment/sms/send', { id: userId, content: content, type: type }).then(function (response) {
+            Vue.http.post('/payment/sms/send', { id: userId, content: content }).then(function (response) {
                 _this6.EventBus.$emit('message-send-done', response.body.data);
             }, function (error) {});
         }
@@ -48729,7 +48729,7 @@ var PaymentApi = function () {
 
             this.EventBus.$emit('message-send-start');
             Vue.http.get('/payment/method/sms/' + userId).then(function (response) {
-                _this7.EventBus.$emit('message-content-received', response.body.data, 'payment_1');
+                _this7.EventBus.$emit('message-content-received', response.body.data);
             }, function (error) {});
         }
     }, {

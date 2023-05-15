@@ -2,23 +2,31 @@
 
 namespace App\Service\Microservice;
 
-class ServiceException extends \Exception {
-  public function __construct($message, $code = 400) {
+class ServiceException extends \Exception
+{
+  public $data;
+
+  public function __construct($message, $code = 400, $data)
+  {
     parent::__construct($message);
     $this->statusCode = $code;
+    $this->data = $data;
   }
 
-  public function getStatusCode() {
+  public function getStatusCode()
+  {
     return $this->statusCode;
   }
 
-  public static function fromClientException($e) {
+  public static function fromClientException($e)
+  {
     $response = $e->getResponse()->getBody()->getContents();
     $response = json_decode($response, true);
-    return new ServiceException($response['message'], $e->getResponse()->getStatusCode());
+    return new ServiceException($response['message'], $e->getResponse()->getStatusCode(), $response);
   }
 
-  public static function fromServerException($e) {
-    return new ServiceException('Unknown error !!!', $e->getResponse()->getStatusCode());
+  public static function fromServerException($e)
+  {
+    return new ServiceException('Unknown error !!!', $e->getResponse()->getStatusCode(), null);
   }
 }

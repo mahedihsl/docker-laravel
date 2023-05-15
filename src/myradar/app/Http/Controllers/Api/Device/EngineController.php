@@ -41,7 +41,7 @@ class EngineController extends Controller
     {
         $device = $this->repository->find($id);
 
-        if ( ! is_null($device)) {
+        if (!is_null($device)) {
             return response()->ok([
                 'lock' => $device->lock_status,
                 'engine' => $device->engine_status,
@@ -63,15 +63,16 @@ class EngineController extends Controller
                     "lock" => intval($info['controlled_state']),
                 ]);
             }
-        } catch (\Exception $th) {}
+        } catch (\Exception $th) {
+        }
         return response()->error('Device not connected');
     }
 
     public function updateLock(Request $request)
     {
         $device = Device::where('com_id', intval($request->get('com_id')))->first();
-        if (! is_null($device)) {
-            $device->update([ 'lock_status' => intval($request->get('lock')) ]);
+        if (!is_null($device)) {
+            $device->update(['lock_status' => intval($request->get('lock'))]);
             return response()->ok();
         }
 
@@ -81,8 +82,8 @@ class EngineController extends Controller
     public function toggle(Request $request)
     {
         $user = $request->user('api');
-        if(is_null($user)){
-          $user = $request->user();
+        if (is_null($user)) {
+            $user = $request->user();
         }
         if ($user->demo) {
             return response()->error('No Real Car !');
@@ -95,23 +96,23 @@ class EngineController extends Controller
             return response()->error('Car is not active');
         }
 
-        if ( ! is_null($device)) {
-            if(!$user->isSharedCar($device->car_id)){
-              if ($device->engine_status === 1) {
-                  if ($target_lock === 1) {
-                      event(new LockWhenEngineOnEvent($device));
-                  } else {
-                      event(new UnlockWhenEngineOnEvent($device));
-                  }
-              } else {
-                  if ($target_lock === 1) {
-                      event(new LockWhenEngineOffEvent($device));
-                  } else {
-                      event(new UnlockWhenEngineOffEvent($device));
-                  }
-              }
+        if (!is_null($device)) {
+            if (!$user->isSharedCar($device->car_id)) {
+                if ($device->engine_status === 1) {
+                    if ($target_lock === 1) {
+                        event(new LockWhenEngineOnEvent($device));
+                    } else {
+                        event(new UnlockWhenEngineOnEvent($device));
+                    }
+                } else {
+                    if ($target_lock === 1) {
+                        event(new LockWhenEngineOffEvent($device));
+                    } else {
+                        event(new UnlockWhenEngineOffEvent($device));
+                    }
+                }
 
-              return response()->ok([ 'lock_status' => $device->lock_status, ]);
+                return response()->ok(['lock_status' => $device->lock_status,]);
             }
         }
         return response()->error();
@@ -144,7 +145,7 @@ class EngineController extends Controller
             return response()->json(['message' => 'Car is offline now'], 400);
         }
 
-        $device->update([ 'lock_status' => $target_lock ]);
+        $device->update(['lock_status' => $target_lock]);
 
         return response()->ok();
     }
@@ -169,7 +170,7 @@ class EngineController extends Controller
             //throw $th;
         }
 
-        if ( ! is_null($device)) {
+        if (!is_null($device)) {
             $status = intval($request->get('status'));
             event(new EngineStatusChanged($device, $status));
             if ($status == 0) {
@@ -192,6 +193,20 @@ class EngineController extends Controller
         return '0';
     }
 
+    public function consume(Request $request)
+    {
+        $com_id = intval($request->get('com_id'));
+        $device = Device::raw(function ($collection) use ($com_id) {
+            return $collection->findOne([
+                'com_id' => ['$eq' => $com_id]
+            ]);
+        });
+
+        $status = intval($request->get('status'));
+        event(new EngineStatusChanged($device, $status));
+        return response()->ok();
+    }
+
     public function test(Request $request)
     {
         $criteria = new CommercialIdCriteria($request->get('com_id'));
@@ -202,11 +217,10 @@ class EngineController extends Controller
             'engine_status' => $device->engine_status,
             'lock_status' => $device->lock_status,
         ];
-        Pusher::trigger('map-channel-'.$user->id, 'engine-off-event', [
+        Pusher::trigger('map-channel-' . $user->id, 'engine-off-event', [
             'message' => $data
         ]);
 
         return $res;
     }
-
 }

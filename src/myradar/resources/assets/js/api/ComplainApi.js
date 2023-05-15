@@ -42,4 +42,13 @@ export default class ComplainApi {
           error => reject())
       })
     }
+
+    // paymentList(userId){
+    //   return new Promise((resolve, reject) => {
+    //     Vue.http.get(`/payment/paymentlist/${userId}`).then(response =>
+    //       response.body.status ? resolve(response.body.data): reject(), error => reject())
+    //   })
+    // }
+    //
+
 }

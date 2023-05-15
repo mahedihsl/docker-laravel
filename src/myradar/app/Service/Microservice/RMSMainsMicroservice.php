@@ -39,4 +39,19 @@ class RMSMainsMicroservice extends BaseService
   {
     return $this->get('/analytics/availability', $query);
   }
+
+  public function lastevent($data)
+  {
+    return $this->post('/event/last-event', $data);
+  }
+
+  public function powerTrend($query)
+  {
+    return $this->get('/analytics/power-trend', $query);
+  }
+
+  public function hourlyPowerTrend($query)
+  {
+    return $this->get('/analytics/hourly-power-trend', $query);
+  }
 }

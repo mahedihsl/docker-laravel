@@ -1693,55 +1693,22 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
+// import vSelect from "vue-select";
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: '',
+  name: "",
   store: __WEBPACK_IMPORTED_MODULE_1__service_complain_store__["a" /* default */],
-  components: {},
+  components: {
+    // vSelect,
+  },
   data: function data() {
     return {
-      comment: '',
+      comment: "",
       statusList: ['open', 'investigating', 'resolved', 'replace', 'closed', 'reopen'],
       status: '',
-      reviews: [{ tag: 'best', label: 'Excellent' }, { tag: 'good', label: 'Good' }, { tag: 'bad', label: 'Not Satisfactory' }],
-      review: '',
       responsible: '1',
 
       types: ['Less Lat-Lng', 'Frequent Reset', 'Frequent Hang', 'Device Stopped', 'ES Missing', 'Notification', 'Gas Refill', 'Gas Meter', 'Lock-unlock', 'other'],
@@ -1752,6 +1719,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     complain: 'selectedComplain',
     pagination: 'pagination'
   }), {
+    // resp_text() {
+    // 	let types = ['N/A', 'CCD', 'Eng - Ops']
+    // 	try {
+    // 		return types[parseInt(this.complain.responsible)]
+    // 	} catch (e) {
+    // 		return types[0];
+    // 	}
+    // },
     car_url: function car_url() {
       return '/manage/customer/' + this.complain.ids.user + '?tab=vehicles&target=' + this.complain.ids.car;
     }
@@ -1760,7 +1735,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     __WEBPACK_IMPORTED_MODULE_2__util_EventBus__["a" /* default */].$on('comment-add-finish', this.onCommentAddFinish.bind(this));
     this.type = this.complain.type;
     this.status = this.complain.status;
-    this.review = this.complain.review;
     this.responsible = this.complain.responsible;
   },
 
@@ -1769,23 +1743,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.$store.commit('changeContent', 0);
     },
     onCommentClick: function onCommentClick() {
-      if (this.status === 'closed' && !this.review) {
-        alert('Please select a customer review');
-        return;
-      }
       this.$store.dispatch('addComment', {
         comment: this.comment,
         type: this.type,
         status: this.status,
-        review: this.review,
-        responsible: this.responsible
-      });
+        responsible: this.responsible });
     },
     onCommentAddFinish: function onCommentAddFinish(body) {
       if (body.status) {
         toastr.success('Data saved Successfully');
         this.$store.dispatch('getComplains', this.pagination.current_page);
-        this.comment = '';
+        this.comment = "";
       } else {
         toastr.error(body.data.message);
       }
@@ -1875,7 +1843,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      employees: ['Wahida', 'Hasib', 'Masud', 'Agent 1', 'Agent 2', 'Rubel', 'Ahnaf', 'Shahadat'],
+      employees: ['Wahida', 'Mitu', 'Airin', 'Hasib', 'Borhan', 'Masud', 'Agent 1', 'Agent 2', 'Jasim', 'Sumit'],
       types: ['Less Lat-Lng', 'Frequent Reset', 'Frequent Hang', 'Device Stopped', 'ES Missing', 'Notification', 'Gas Refill', 'Gas Meter', 'Lock-unlock', 'other'],
       selectedType: '',
       selectedEmp: '',
@@ -4756,7 +4724,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.complain[data-v-4e645f84] {\n  background: #fff;\n  border-radius: 4px;\n  padding: 10px;\n}\n.complain-title[data-v-4e645f84] {\n  margin: 8px 0;\n}\n.complain-title h3[data-v-4e645f84] {\n  margin: 5px 0;\n  color: #242729;\n}\n.complain-body[data-v-4e645f84],\n.comment-box[data-v-4e645f84] {\n  margin: 10px 0px;\n  font-size: 18px;\n  color: #525252;\n}\n.comment[data-v-4e645f84] {\n  margin: 10px 8px;\n  font-size: 15px;\n  background: #fff;\n  border-radius: 4px;\n  padding: 5px;\n  color: #525252;\n}\n.comment-box button[data-v-4e645f84] {\n  margin: 8px 0;\n}\n.complain-title[data-v-4e645f84],\n.complain-body[data-v-4e645f84],\n.comment[data-v-4e645f84],\n.bar[data-v-4e645f84] {\n  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);\n          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);\n}\n.bar[data-v-4e645f84] {\n  margin-right: 8px;\n  margin-bottom: 2px;\n  padding: 0;\n  border-radius: 4px;\n  text-align: center;\n  vertical-align: middle;\n}\n.bar p[data-v-4e645f84] {\n  margin: 11px 0;\n  font-size: 14px;\n  color: #546e7a;\n}\n.back-btn[data-v-4e645f84] {\n  padding: 8px;\n}\n.paragraph-title[data-v-4e645f84] {\n  margin-bottom: 0px;\n  margin-top: 20px;\n}\n.row[data-v-4e645f84] {\n  margin-left: 3px;\n}\n", ""]);
+exports.push([module.i, "\n.complain[data-v-4e645f84] {\n  background: #fff;\n  border-radius: 4px;\n  padding: 10px;\n}\n.complain-title[data-v-4e645f84] {\n  margin: 8px 0;\n}\n.complain-title h3[data-v-4e645f84] {\n  margin: 5px 0;\n  color: #242729;\n}\n.complain-body[data-v-4e645f84], .comment-box[data-v-4e645f84] {\n  margin: 10px 0px;\n  font-size: 18px;\n  color: #525252;\n}\n.comment[data-v-4e645f84] {\n  margin: 10px 8px;\n  font-size: 15px;\n  background: #fff;\n  border-radius: 4px;\n  padding: 5px;\n  color: #525252;\n}\n.comment-box button[data-v-4e645f84] {\n  margin: 8px 0;\n}\n.complain-title[data-v-4e645f84], .complain-body[data-v-4e645f84], .comment[data-v-4e645f84], .bar[data-v-4e645f84] {\n  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);\n          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);\n}\n.bar[data-v-4e645f84] {\n  margin-right: 8px;\n  margin-bottom: 2px;\n  padding: 0;\n  border-radius: 4px;\n  text-align: center;\n  vertical-align: middle;\n}\n.bar p[data-v-4e645f84] {\n  margin: 11px 0;\n  font-size: 14px;\n  color: #546E7A;\n}\n.back-btn[data-v-4e645f84] {\n  padding: 8px;\n}\n.paragraph-title[data-v-4e645f84] {\n  margin-bottom: 0px;\n  margin-top: 20px;\n}\n.row[data-v-4e645f84] {\n  margin-left: 3px;\n}\n", ""]);
 
 // exports
 
@@ -34409,7 +34377,7 @@ var render = function() {
               },
               _vm._l(_vm.statusList, function(s, i) {
                 return _c("option", { key: i, domProps: { value: s } }, [
-                  _vm._v("\n              " + _vm._s(s) + "\n            ")
+                  _vm._v(_vm._s(s))
                 ])
               })
             )
@@ -34456,7 +34424,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "bar col-md-2" }, [
             _c("p", [
-              _vm._v("\n            Token: "),
+              _vm._v("Token: "),
               _c("b", [_vm._v(_vm._s(_vm.complain.token))])
             ])
           ]),
@@ -34464,7 +34432,7 @@ var render = function() {
           _c("div", { staticClass: "bar col-md-2" }, [
             _c("p", [
               _c("a", { attrs: { href: _vm.car_url } }, [
-                _vm._v("\n              Reg no: "),
+                _vm._v("Reg no: "),
                 _c("b", [_vm._v(_vm._s(_vm.complain.reg_no))])
               ])
             ])
@@ -34484,7 +34452,7 @@ var render = function() {
                     staticClass: "fa fa-arrow-left",
                     attrs: { "aria-hidden": "true" }
                   }),
-                  _vm._v(" Back\n            ")
+                  _vm._v(" Back\n\t            ")
                 ]
               )
             ])
@@ -34525,7 +34493,7 @@ var render = function() {
               },
               _vm._l(_vm.types, function(t, i) {
                 return _c("option", { key: i, domProps: { value: t } }, [
-                  _vm._v("\n              " + _vm._s(t) + "\n            ")
+                  _vm._v(_vm._s(t))
                 ])
               })
             )
@@ -34533,92 +34501,25 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "bar col-md-3" }, [
             _c("p", [
-              _vm._v("\n            Name: "),
+              _vm._v("Name: "),
               _c("b", [_vm._v(_vm._s(_vm.complain.user))])
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "bar col-md-2" }, [
             _c("p", [
-              _vm._v("\n            Emp: "),
+              _vm._v("Emp: "),
               _c("b", [_vm._v(_vm._s(_vm.complain.emp))])
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "bar col-md-3" }, [
             _c("p", [
-              _vm._v("\n            Date: "),
+              _vm._v("Date: "),
               _c("b", [_vm._v(_vm._s(_vm.complain.date))])
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _vm.status === "closed"
-          ? _c(
-              "div",
-              {
-                staticClass:
-                  "tw-w-full tw-flex tw-flex-col tw-border tw-border-solid tw-border-gray-300 tw-rounded-lg tw-px-10 tw-py-4 tw-mt-6"
-              },
-              [
-                _c(
-                  "span",
-                  {
-                    staticClass: "tw-text-gray-700 tw-text-2xl tw-font-medium"
-                  },
-                  [_vm._v("Select Customer Review/Feedback")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "tw-w-full tw-mt-3 tw-flex tw-flex-row tw-flex-wrap tw-space-x-4"
-                  },
-                  _vm._l(_vm.reviews, function(rv, i) {
-                    return _c("label", { key: i }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.review,
-                            expression: "review"
-                          }
-                        ],
-                        staticClass: "tw-peer tw-sr-only",
-                        attrs: { type: "radio", name: "review" },
-                        domProps: {
-                          value: rv.tag,
-                          checked: _vm._q(_vm.review, rv.tag)
-                        },
-                        on: {
-                          change: function($event) {
-                            _vm.review = rv.tag
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "tw-px-4 tw-py-2 tw-rounded tw-border tw-border-solid tw-border-gray-200 tw-text-gray-700 tw-text-xl tw-font-normal tw-bg-white hover:tw-bg-gray-100 peer-checked:tw-bg-green-500 peer-checked:tw-text-white peer-checked:tw-border-green-700 tw-transition tw-duration-300 tw-cursor-pointer"
-                        },
-                        [
-                          _vm._v(
-                            "\n              " +
-                              _vm._s(rv.label) +
-                              "\n            "
-                          )
-                        ]
-                      )
-                    ])
-                  })
-                )
-              ]
-            )
-          : _vm._e()
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "box-body no-padding" }, [
@@ -34669,7 +34570,7 @@ var render = function() {
               attrs: { type: "button", name: "button" },
               on: { click: _vm.onCommentClick }
             },
-            [_vm._v("\n          Save\n        ")]
+            [_vm._v("Save")]
           )
         ]),
         _vm._v(" "),
@@ -34682,7 +34583,7 @@ var render = function() {
               _c("br"),
               _vm._v(" "),
               _c("strong", [_vm._v(_vm._s(com.who) + " - ")]),
-              _vm._v(_vm._s(com.body) + "\n        ")
+              _vm._v(_vm._s(com.body) + "\n\t\t\t\t\t")
             ])
           })
         )
@@ -48886,6 +48787,15 @@ var ComplainApi = function () {
         });
       });
     }
+
+    // paymentList(userId){
+    //   return new Promise((resolve, reject) => {
+    //     Vue.http.get(`/payment/paymentlist/${userId}`).then(response =>
+    //       response.body.status ? resolve(response.body.data): reject(), error => reject())
+    //   })
+    // }
+    //
+
   }]);
 
   return ComplainApi;
@@ -49462,7 +49372,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
       var sel_id = state.selectedComplain.id;
       var info = _extends({}, state.selectedComplain, {
         type: data.type,
-        review: data.review,
         comment: data.comment,
         new_status: data.status,
         responsible: data.responsible

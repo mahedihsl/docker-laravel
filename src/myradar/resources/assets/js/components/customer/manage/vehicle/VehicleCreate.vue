@@ -147,15 +147,6 @@
             </select>
           </div>
         </div>
-        <div class="col-xs-6">
-          <div class="form-group">
-            <label>Billing Type</label>
-            <select class="form-control" v-model="info.billing_type">
-              <option value="postpaid">Postpaid</option>
-              <option value="prepaid">Prepaid</option>
-            </select>
-          </div>
-        </div>
         <div class="pull-right">
           <button
             class="btn btn-success right-space"
@@ -195,7 +186,6 @@ export default {
       new_service: '1',
       fuel_group: null,
       voice_service: '0',
-      billing_type: 'postpaid',
       volume: 0, // application for 'generator' type
     },
     error: {

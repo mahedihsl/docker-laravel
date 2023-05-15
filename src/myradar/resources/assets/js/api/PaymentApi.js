@@ -36,7 +36,7 @@ export default class PaymentApi {
     getMsgContent(userId){
       this.EventBus.$emit('get-message-content-start');
       Vue.http.get(`/payment/message/${userId}`).then(response => {
-        this.EventBus.$emit('message-content-received',response.body.data, 'payment_2');
+        this.EventBus.$emit('message-content-received',response.body.data);
       }, error => {})
     }
 
@@ -46,9 +46,9 @@ export default class PaymentApi {
       }, error => {})
     }
 
-    sendMessage(userId, content, type){
+    sendMessage(userId, content){
       this.EventBus.$emit('message-send-start');
-      Vue.http.post(`/payment/sms/send`,{id:userId, content:content, type: type}).then(response => {
+      Vue.http.post(`/payment/sms/send`,{id:userId, content:content}).then(response => {
         this.EventBus.$emit('message-send-done',response.body.data);
       }, error => {})
     }
@@ -71,7 +71,7 @@ export default class PaymentApi {
     getPaymentMethod(userId){
       this.EventBus.$emit('message-send-start');
       Vue.http.get(`/payment/method/sms/${userId}`).then(response => {
-        this.EventBus.$emit('message-content-received',response.body.data, 'payment_1');
+        this.EventBus.$emit('message-content-received',response.body.data);
       }, error => {})
     }
 
