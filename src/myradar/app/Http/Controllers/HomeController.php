@@ -54,6 +54,7 @@ class HomeController extends Controller
            return view('home.enterprise');
 
          }
+
         switch ($user->type) {
             case User::$TYPE_ADMIN:
                 return view('home.admin');
