@@ -127,11 +127,11 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 //   Route::any('/concox/test', 'Test\ConcoxController@receive');
 
 //    //Bkash Checkout URL
-//    Route::get('/p/{uId}', 'Payment\BkashCheckoutURLController@amount')->name('url-amount');
-    Route::get('/p/{uId}', [App\Http\Controllers\Payment\BkashCheckoutURLController::class],'amount')->name('url-amount');
-//    Route::post('/bkash/pay','Payment\BkashCheckoutURLController@payment')->name('url-pay');
-//    Route::post('/bkash/create','Payment\BkashCheckoutURLController@createPayment')->name('url-create')->middleware(['checkout_url_jwt']);
-//    Route::get('/bkash/callback','Payment\BkashCheckoutURLController@callback')->name('url-callback')->middleware(['checkout_url_jwt']);
+Route::get('/p', [App\Http\Controllers\Payment\BkashCheckoutURLController::class,'new'])->name('url');
+    Route::get('/p/{uId}', [App\Http\Controllers\Payment\BkashCheckoutURLController::class,'amount'])->name('url-amount');
+    Route::post('/bkash/pay',[App\Http\Controllers\Payment\BkashCheckoutURLController::class,'payment'])->name('url-pay');
+    Route::post('/bkash/create',[App\Http\Controllers\Payment\BkashCheckoutURLController::class,'createPayment'])->name('url-create')->middleware(['checkout_url_jwt']);
+    Route::get('/bkash/callback',[App\Http\Controllers\Payment\BkashCheckoutURLController::class,'callback'])->name('url-callback')->middleware(['checkout_url_jwt']);
 
 
 //   // Private Customer
