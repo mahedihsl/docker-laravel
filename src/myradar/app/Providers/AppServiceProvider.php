@@ -12,6 +12,7 @@ use Validator;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\Providers\ObserverServiceProvider;
+use App\Providers\RepositoryServiceProvider as newRepositoryServiceProvider;
 
 
 class LaravelLoggerProxy
@@ -31,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        URL::forceScheme('https');
+        //URL::forceScheme('https');
 
         Validator::extend('bd_phone', function ($attribute, $value, $parameters, $validator) {
             return preg_match('^(?:\+?88)?01[15-9]\d{8}$^', $value) && strlen($value) >= 10;
@@ -64,12 +65,12 @@ class AppServiceProvider extends ServiceProvider
         // });
 
         if ($this->app->environment('local', 'testing')) {
-            //$this->app->register(DuskServiceProvider::class);
+            $this->app->register(DuskServiceProvider::class);
         }
         $this->app->register(RepositoryServiceProvider::class);
+        $this->app->register(newRepositoryServiceProvider::class);
         $this->app->register(ObserverServiceProvider::class);
         $this->app->bind('App\Service\Calibration\CalibrationService', 'App\Service\Calibration\CalibrationServiceImpl');
-        $this->app->bind(PaymentRepository::class, PaymentRepositoryImpl::class);
 
         $this->app->bind('package', function () {
             return new \App\Service\PackageService;
