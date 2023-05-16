@@ -1,9 +1,12 @@
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top">
   <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
     <a href="{{ route('welcome') }}" class="logo d-flex align-items-center">
-      <img src="{{ asset('images/web_logo.png', true) }}" alt="myRADAR logo">
+      <img src="{{ asset('images/web_logo.png', $hasHttps) }}" alt="myRADAR logo">
       <span>myRADAR</span>
     </a>
 
