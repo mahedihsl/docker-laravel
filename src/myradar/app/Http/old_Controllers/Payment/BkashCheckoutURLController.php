@@ -47,36 +47,44 @@ class BkashCheckoutURLController extends Controller
     
     public function payment(Request $request)
     {
-        $cars = $request->input('cars');
-        $selectedCarIndexs = $request->input('car_index');
+        //$cars = $request->input('cars');
+        //$selectedCarIndexs = $request->input('car_index');
 
         $user = $request->user;
 
-        if(!$selectedCarIndexs){
-            return redirect()->back()->withErrors(['error' => 'Please select a car']);
+        // if(!$selectedCarIndexs){
+        //     return redirect()->back()->withErrors(['error' => 'Please select a car']);
+        // }
+
+        //$total_pay_bill = 0;
+        //$car_wise_bill = [];
+        //$selectedCars = [];
+        
+        // foreach ($selectedCarIndexs as $selectedCarIndex) {
+
+        //     if($request->input($selectedCarIndex) < 1){
+        //         return redirect()->back()->withErrors(['error' => 'Minimum amount 1 TK']);
+        //     } 
+            
+        //     array_push($selectedCars, $cars[$selectedCarIndex]);
+        //     array_push($car_wise_bill, ['car_no' => $cars[$selectedCarIndex], 'bill' => $request->input($selectedCarIndex)]);
+
+        //     $total_pay_bill +=  $request->input($selectedCarIndex);
+
+        //   } 
+        
+        $total_bill = $request->total_bill;
+
+
+        if($total_bill < 1){
+            return redirect()->back()->withErrors(['error' => 'Minimum payable amount 1 tk']);
         }
 
-        $total_pay_bill = 0;
-        $car_wise_bill = [];
-        $selectedCars = [];
-        
-        foreach ($selectedCarIndexs as $selectedCarIndex) {
-
-            if($request->input($selectedCarIndex) < 1){
-                return redirect()->back()->withErrors(['error' => 'Minimum amount 1 TK']);
-            } 
-            
-            array_push($selectedCars, $cars[$selectedCarIndex]);
-            array_push($car_wise_bill, ['car_no' => $cars[$selectedCarIndex], 'bill' => $request->input($selectedCarIndex)]);
-
-            $total_pay_bill +=  $request->input($selectedCarIndex);
-
-          } 
           
         return view('bkash.chcekout-url.pay')->with([
-            'car_wise_bill' => json_encode($car_wise_bill),
-            'selected_cars' => $selectedCars,
-            'amount' => $total_pay_bill,
+            //'car_wise_bill' => json_encode($car_wise_bill),
+            //'selected_cars' => $selectedCars,
+            'amount' => $total_bill,
             'user' => $user
         ]);
     }
@@ -85,23 +93,31 @@ class BkashCheckoutURLController extends Controller
     {
         $user = $request->user;
         $amount = $request->get('amount');
-        $car_wise_bill = $request->get('car_wise_bill');
+        //$car_wise_bill = $request->get('car_wise_bill');
       
-        return $this->bkashCheckoutURLService->createPayment($user, $amount, json_decode($car_wise_bill,true), $this->credential);
+        return $this->bkashCheckoutURLService->createPayment($user, $amount, $this->credential);
     }
 
-    public function callback(Request $request)
+    public function callback(Request $request, $uid)
     {
         $allRequest = $request->all();
 
+        $paymentID = $allRequest['paymentID'];
+        
+        $data = $this->bkashCheckoutURLService->isPaymentIDExist($paymentID);
+
+        if($data){
+            return view('bkash.chcekout-url.success');
+        }
+
         if(isset($allRequest['status']) && $allRequest['status'] == 'success'){
             
-            $response = $this->bkashCheckoutURLService->executePayment($allRequest['paymentID'], $this->credential);
+            $response = $this->bkashCheckoutURLService->executePayment($paymentID, $this->credential);
 
             if(array_key_exists("message",$response)){
                 // If Execute API Failed  
                 sleep(1);
-                $response = $this->bkashCheckoutURLService->queryPayment($allRequest['paymentID'], $this->credential);
+                $response = $this->bkashCheckoutURLService->queryPayment($paymentID, $this->credential);
             }
 
             if(array_key_exists("statusCode",$response) && $response['statusCode'] == '0000'){
@@ -109,12 +125,13 @@ class BkashCheckoutURLController extends Controller
             }else{
                 return view('bkash.chcekout-url.fail')->with([
                     'message' => $response['statusMessage'],
+                    'uid' => $uid,
                 ]);
             }  
 
-        }else{
+        } else{
             return view('bkash.chcekout-url.fail')->with([
-                'message' => $allRequest['status'],
+                'uid' => $uid,
             ]);       
         }
 
@@ -133,8 +150,14 @@ class BkashCheckoutURLController extends Controller
 
         $response = $this->bkashCheckoutURLService->refundTransaction($paymentID, $trxID, $amount, $this->credential);
 
+        if(isset($response['statusCode'])){
+            return view('bkash.chcekout-url.refund')->with([
+                'response' => $response['statusMessage'],
+            ]);
+        }
+
         return view('bkash.chcekout-url.refund')->with([
-            'response' => "Refund Successful",
+            'response' => "Refund Successfully Completed !!",
         ]);
     }        
     
