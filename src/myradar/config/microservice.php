@@ -19,7 +19,8 @@ return [
         'port' => 6003,
     ],
     'device' => [
-        'url' => 'http://myradar-device',
+        //'url' => 'http://myradar-device',
+        'url' => 'http://18.141.98.213',
         'port' => 6004,
     ],
     'health' => [
