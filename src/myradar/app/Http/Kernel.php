@@ -63,5 +63,17 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'LogMiddleware' => \App\Http\Middleware\LogMiddleware::class,
+        'debug' => \App\Http\Middleware\DebugMiddleware::class,
+        'role' => \App\Http\Middleware\CheckRole::class,
+        'customer' => \App\Http\Middleware\CheckCustomer::class,
+        'account' => \App\Http\Middleware\CheckAccount::class,
+        'BkashPayment' => \App\Http\Middleware\BkashPayment::class,
+        'engage' => \App\Http\Middleware\EngagementMiddleware::class,
+        'logcat' => \App\Http\Middleware\LogCat::class,
+        'cors' => \App\Http\Middleware\CORS::class,
+        // 'querylog' => \App\Http\Middleware\QueryLog::class,
+        'checkout_iframe_jwt' => \App\Http\Middleware\CheckoutIFrameToken::class,
     ];
 }

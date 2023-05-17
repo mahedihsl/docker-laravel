@@ -1,3 +1,7 @@
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,18 +14,18 @@
   <meta name="author" content="HyperSystems">
 	{{-- <link rel="icon" type="image/png" href="{{ asset('bikroy/images/icons/favicon.ico') }}" /> --}}
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="{{ asset('images/favicon.ico', true) }}">
-	<link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', true) }}">
-	<link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', true) }}">
-	<link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', true) }}">
+	<link rel="shortcut icon" href="{{ asset('images/favicon.ico', $hasHttps) }}">
+	<link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', $hasHttps) }}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', $hasHttps) }}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', $hasHttps) }}">
 
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/bootstrap/css/bootstrap.min.css', true) }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/fonts/font-awesome-4.7.0/css/font-awesome.min.css', true) }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/animate/animate.css', true) }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/css-hamburgers/hamburgers.min.css', true) }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/select2/select2.min.css', true) }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/css/util.css', true) }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/css/main.css', true) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/bootstrap/css/bootstrap.min.css', $hasHttps) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/fonts/font-awesome-4.7.0/css/font-awesome.min.css', $hasHttps) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/animate/animate.css', $hasHttps) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/css-hamburgers/hamburgers.min.css', $hasHttps) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/select2/select2.min.css', $hasHttps) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/css/util.css', $hasHttps) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/css/main.css', $hasHttps) }}">
 	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
@@ -35,8 +39,8 @@
 					<div class="w-full md:w-1/2 px-12">
 						<div class="flex flex-col">
 							<div class="w-full flex flex-row justify-start items-center">
-								<img src="{{asset('images/web_logo.png', true)}}" alt="myRADAR" class="w-auto h-24 md:h-32" />
-								<img src="{{asset('images/e-heater.jpg', true)}}" alt="e-Heater" class="w-auto h-16 md:h-24 ml-4 md:ml-12 rounded" />
+								<img src="{{asset('images/web_logo.png', $hasHttps)}}" alt="myRADAR" class="w-auto h-24 md:h-32" />
+								<img src="{{asset('images/e-heater.jpg', $hasHttps)}}" alt="e-Heater" class="w-auto h-16 md:h-24 ml-4 md:ml-12 rounded" />
 							</div>
 							<div class="w-full">
 								<p class="mt-2">
@@ -113,17 +117,17 @@
 		</div>
 	</div>
 
-	<script src="{{ asset('bikroy/vendor/jquery/jquery-3.2.1.min.js', true) }}"></script>
-	<script src="{{ asset('bikroy/vendor/bootstrap/js/popper.js', true) }}"></script>
-	<script src="{{ asset('bikroy/vendor/bootstrap/js/bootstrap.min.js', true) }}"></script>
-	<script src="{{ asset('bikroy/vendor/select2/select2.min.js', true) }}"></script>
-	<script src="{{ asset('bikroy/vendor/tilt/tilt.jquery.min.js', true) }}"></script>
+	<script src="{{ asset('bikroy/vendor/jquery/jquery-3.2.1.min.js', $hasHttps) }}"></script>
+	<script src="{{ asset('bikroy/vendor/bootstrap/js/popper.js', $hasHttps) }}"></script>
+	<script src="{{ asset('bikroy/vendor/bootstrap/js/bootstrap.min.js', $hasHttps) }}"></script>
+	<script src="{{ asset('bikroy/vendor/select2/select2.min.js', $hasHttps) }}"></script>
+	<script src="{{ asset('bikroy/vendor/tilt/tilt.jquery.min.js', $hasHttps) }}"></script>
 	<script>
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
 	</script>
-	<script src="{{ asset('bikroy/js/main.js', true) }}"></script>
+	<script src="{{ asset('bikroy/js/main.js', $hasHttps) }}"></script>
 
 </body>
 

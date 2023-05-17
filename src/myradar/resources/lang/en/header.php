@@ -15,7 +15,6 @@ return [
   'banner' => [
     'title' => 'Keep your Car safe with myRADAR smart tracker',
     'caption' => '',
-    'action' => 'Regular Package',
-    'coupon' => 'Lucky Coupon',
+    'action' => 'See Package',
   ],
 ];

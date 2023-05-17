@@ -31,7 +31,7 @@ class HomeController extends Controller
     {
         $lang = $request->get('lang', config('app.locale'));
         \App::setLocale($lang);
-        return view('revamp.index_dev');
+        return view('revamp.index');
     }
 
     public function fuelMeter(Request $request)
@@ -54,6 +54,7 @@ class HomeController extends Controller
            return view('home.enterprise');
 
          }
+
         switch ($user->type) {
             case User::$TYPE_ADMIN:
                 return view('home.admin');
