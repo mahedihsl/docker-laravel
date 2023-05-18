@@ -11,7 +11,7 @@ setup-local:
 	@make composer-update
 	@make npm-update
 	@make npm-rundev
-	@make prod-local
+	@make local-env
 	@make permission
 	
 fresh-build:
@@ -27,13 +27,13 @@ up:
 	docker compose up -d
 
 composer-update:
-	docker compose run --rm hyperwire-composer install --ignore-platform-reqs 
+	docker compose run --rm composer install --ignore-platform-reqs 
 
 npm-update:
-	docker compose run --rm hyperwire-npm npm install  
+	docker compose run --rm npm npm install  
 
 npm-rundev:
-	docker compose run --rm hyperwire-npm npm run dev  
+	docker compose run --rm npm npm run dev  
 
 permission:
 	docker exec hyperwire-php bash -c "chown -R root:www-data storage"
