@@ -27,26 +27,26 @@ up:
 	docker compose up -d
 
 composer-update:
-	docker compose run --rm composer install --ignore-platform-reqs 
+	docker compose run --rm hyperwire-composer install --ignore-platform-reqs 
 
 npm-update:
-	docker compose run --rm npm npm install  
+	docker compose run --rm hyperwire-npm npm install  
 
 npm-rundev:
-	docker compose run --rm npm npm run dev  
+	docker compose run --rm hyperwire-npm npm run dev  
 
 permission:
-	docker exec php bash -c "chown -R root:www-data storage"
-	docker exec php bash -c "chown -R root:www-data bootstrap/cache"
-	docker exec php bash -c "chmod -R 775 storage"
-	docker exec php bash -c "chmod -R 755 bootstrap/cache"
-	docker exec php bash -c "php artisan key:generate"
+	docker exec hyperwire-php bash -c "chown -R root:www-data storage"
+	docker exec hyperwire-php bash -c "chown -R root:www-data bootstrap/cache"
+	docker exec hyperwire-php bash -c "chmod -R 775 storage"
+	docker exec hyperwire-php bash -c "chmod -R 755 bootstrap/cache"
+	docker exec hyperwire-php bash -c "php artisan key:generate"
 
 prod-env:
-	docker exec php bash -c "cp .env.prod .env"
+	docker exec hyperwire-php bash -c "cp .env.prod .env"
 	
 local-env:
-	docker exec php bash -c "cp .env.sample .env"
+	docker exec hyperwire-php bash -c "cp .env.sample .env"
 
 app:
-	docker exec -it php bash
+	docker exec -it hyperwire-php bash
