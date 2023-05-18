@@ -2,7 +2,7 @@
 version: "3.8"
 services:
   nginx:
-    container_name: nginx
+    container_name: hyperwire-nginx
     build: ./docker/nginx
     command: nginx -g "daemon off;"
     depends_on:
@@ -12,8 +12,11 @@ services:
     volumes:
       - ./logs/nginx:/var/log/nginx
       - ./src/myradar:/var/www/html/myradar
+
+    networks:
+      - hyperwire
   php:
-    container_name: php
+    container_name: hyperwire-php
     build: ./docker/php
     ports:
       - "9000:9000"
@@ -21,20 +24,33 @@ services:
       - ./src/myradar:/var/www/html/myradar
     working_dir: /var/www/html/myradar
 
+    networks:
+      - hyperwire
+
   composer:
-    container_name: composer
+    container_name: hyperwire-composer
     image: composer:latest
     volumes:
       - ./src/myradar:/var/www/html/myradar
     working_dir: /var/www/html/myradar
     depends_on:
       - php
+    networks:
+      - hyperwire
 
   npm:
     image: node:12.22.12
-    container_name: npm
+    container_name: hyperwire-npm
     working_dir: /var/www/html/myradar
     volumes:
       - ./src/myradar:/var/www/html/myradar
     depends_on:
       - php
+   
+
+
+networks:
+  hyperwire:
+    name: hyperwire
+    # external: true
+    driver: bridge
