@@ -8,6 +8,7 @@ use App\Http\Controllers\Promotion\CampaignController;
 use App\Http\Controllers\Report\PositionController;
 use App\Http\Controllers\Customer\ServiceController;
 use App\Http\Controllers\Admin\BillingController;
+use App\Http\Controllers\Finance\BillingController as FinanceBillingController;
 use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\User\CustomerController;
 use App\Http\Controllers\Customer\SessionController;
@@ -424,7 +425,7 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
   
   // billing
   Route::get('/billing',[BillingController::class,'index'])->name('billing');
-  Route::get('/bill/entry', [BillingController::class,'entry']);
+  Route::get('/bill/entry', [FinanceBillingController::class,'entry']);
   Route::post('/importExcel', [BillingController::class,'importExcel']);
 
  // customer
