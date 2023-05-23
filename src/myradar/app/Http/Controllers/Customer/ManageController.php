@@ -26,7 +26,7 @@ class ManageController extends Controller
         $customer = $this->repository->find($id);
 
         if ( ! is_null($customer)) {
-            return response()->ok($customer);
+            return response()->json($customer);
         }
 
         return abort(404);

@@ -124,20 +124,23 @@ $hasHttps= env('APP_ENV')=='production'
   <!-- jQuery 3 -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+      {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      console.log('jquery')
+    </script> --}}
   <!-- Bootstrap 3.3.7 -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- FastClick -->
-  <script src="{{asset('vendors/fastclick/lib/fastclick.js', true)}}"></script>
+  <script src="{{asset('vendors/fastclick/lib/fastclick.js', $hasHttps)}}"></script>
   <!-- Sparkline -->
-  <script src="{{asset('vendors/jquery-sparkline/dist/jquery.sparkline.min.js', true)}}"></script>
+  <script src="{{asset('vendors/jquery-sparkline/dist/jquery.sparkline.min.js', $hasHttps)}}"></script>
   <!-- SlimScroll -->
-  <script src="{{asset('vendors/jquery-slimscroll/jquery.slimscroll.min.js', true)}}"></script>
+  <script src="{{asset('vendors/jquery-slimscroll/jquery.slimscroll.min.js', $hasHttps)}}"></script>
   <!-- AdminLTE App -->
-  <script src="{{asset('js/adminlte.min.js', true)}}"></script>
-  <script src="{{asset('vendors/toastr/toastr.min.js', true)}}" charset="utf-8"></script>
+  <script src="{{asset('js/adminlte.min.js', $hasHttps)}}"></script>
+  <script src="{{asset('vendors/toastr/toastr.min.js', $hasHttps)}}" charset="utf-8"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="{{asset('js/demo.js', true)}}"></script>
-  <script src="{{asset('js/common.js', true)}}" charset="utf-8"></script>
+  <script src="{{asset('js/demo.js', $hasHttps)}}"></script>
+  <script src="{{asset('js/common.js', $hasHttps)}}" charset="utf-8"></script>
   <script>
     $(document).ready(function () {
     $('.sidebar-menu').tree()

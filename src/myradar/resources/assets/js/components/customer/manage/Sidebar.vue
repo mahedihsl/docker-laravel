@@ -36,6 +36,7 @@ import Url from '../../../util/Url'
 import EventBus from '../../../util/EventBus'
 import CustomerApi from '../../../api/CustomerApi'
 import AccountApi from '../../../api/AccountApi'
+import mutations from "../../../store/modules/customer"
 
 export default {
   components: {
@@ -102,6 +103,7 @@ export default {
     },
 
     onInfoFound(info) {
+      console.log('info',info)
       this.info = info
       this.$store.commit('customer', info)
       this.attemptAutoNavigate()

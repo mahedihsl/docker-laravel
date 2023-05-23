@@ -430,7 +430,7 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
 
  // customer
   Route::get('/find/customer/{phone}', [CustomerController::class,'gindByPhone']);
-  Route::get('/customers', 'User\CustomerController@index')->name('all-customers');
+  Route::get('/customers', [CustomerController::class,'index'])->name('all-customers');
   Route::post('/customer/save', [CustomerController::class,'save']);
   Route::post('/customer/update', [CustomerController::class,'update']);
   Route::post('/customer/password/change', [CustomerController::class,'password']);

@@ -35,6 +35,9 @@ npm-update:
 npm-rundev:
 	docker compose run --rm npm npm run dev  
 
+npm-runwatch:
+	docker compose run --rm npm npm run watch 
+
 permission:
 	docker exec hyperwire-php bash -c "chown -R root:www-data storage"
 	docker exec hyperwire-php bash -c "chown -R root:www-data bootstrap/cache"

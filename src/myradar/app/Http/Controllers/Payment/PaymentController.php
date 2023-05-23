@@ -84,7 +84,7 @@ class PaymentController extends Controller
     $content = $request->get('content');
     $type = $request->get('type');
     $this->smsService->send(User::find($userId)->phone, $content, $type);
-    return response()->ok();
+    return response()->json();
   }
 
   public function getMsgContent($userId)

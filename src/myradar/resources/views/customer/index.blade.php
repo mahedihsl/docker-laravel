@@ -1,3 +1,7 @@
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
+
 @extends('layouts.new')
 @push('style')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
@@ -27,6 +31,7 @@
 @endsection
 
 @push('script')
-<script src="{{ asset('js/customer/index.js', true) }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+<script src="{{ asset('js/customer/index.js', $hasHttps) }}"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script> --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 @endpush

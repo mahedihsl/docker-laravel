@@ -25,7 +25,8 @@ export default class AccountApi {
 
     messageAccess() {
         Vue.http.get(`/message/access/of/user`).then(response => {
-            this.EventBus.$emit('message-access-found', response.body.data);
+           // console.log('From AccountApi',response.body.bulkMessage)
+            this.EventBus.$emit('message-access-found', response.body.bulkMessage);
         }, error => {});
     }
 }
