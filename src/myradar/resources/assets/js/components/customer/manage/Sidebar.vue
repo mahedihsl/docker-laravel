@@ -36,7 +36,7 @@ import Url from '../../../util/Url'
 import EventBus from '../../../util/EventBus'
 import CustomerApi from '../../../api/CustomerApi'
 import AccountApi from '../../../api/AccountApi'
-import mutations from "../../../store/modules/customer"
+import Store from "../../../store/modules/customer"
 
 export default {
   components: {
@@ -103,9 +103,16 @@ export default {
     },
 
     onInfoFound(info) {
-      console.log('info',info)
+      console.log('customer info',this.$store.state.customer)
       this.info = info
-      this.$store.commit('customer', info)
+      //this.$store.commit('customer', info)
+      for (let k in this.info) {
+                    console.log('key: ' + k);
+                    if (this.info.hasOwnProperty(k)) {
+                      console.log('value: '+this.info[k]);
+                        this.$store.commit('updateCustomerInfo', {key: k, val: this.info[k]});
+                    }
+                }
       this.attemptAutoNavigate()
     },
 
