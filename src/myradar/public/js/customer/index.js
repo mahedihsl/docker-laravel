@@ -48416,7 +48416,7 @@ var AccountApi = function () {
             var _this3 = this;
 
             Vue.http.get('/customer/access/of/user').then(function (response) {
-                _this3.EventBus.$emit('customer-acces-found', response.body.data);
+                _this3.EventBus.$emit('customer-acces-found', response.body);
             }, function (error) {});
         }
     }, {
@@ -49308,7 +49308,7 @@ new Vue({
     },
     onMessageAccessFound: function onMessageAccessFound(data) {
       this.access = data;
-      console.log(this.access);
+      //console.log(this.access);
     },
     onAccessDenied: function onAccessDenied() {
       toastr.error('Sorry! you dont have access');
