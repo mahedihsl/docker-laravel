@@ -48416,7 +48416,7 @@ var AccountApi = function () {
             var _this3 = this;
 
             Vue.http.get('/customer/access/of/user').then(function (response) {
-                _this3.EventBus.$emit('customer-acces-found', response.body.data);
+                _this3.EventBus.$emit('customer-acces-found', response.body);
             }, function (error) {});
         }
     }, {
@@ -48425,7 +48425,8 @@ var AccountApi = function () {
             var _this4 = this;
 
             Vue.http.get('/message/access/of/user').then(function (response) {
-                _this4.EventBus.$emit('message-access-found', response.body.data);
+                // console.log('From AccountApi',response.body.bulkMessage)
+                _this4.EventBus.$emit('message-access-found', response.body.bulkMessage);
             }, function (error) {});
         }
     }]);
@@ -48703,6 +48704,7 @@ var PaymentApi = function () {
 
             this.EventBus.$emit('message-send-start');
             Vue.http.post('/payment/sms/send', { id: userId, content: content }).then(function (response) {
+                console.log(response.body);
                 _this6.EventBus.$emit('message-send-done', response.body.data);
             }, function (error) {});
         }
@@ -49306,7 +49308,7 @@ new Vue({
     },
     onMessageAccessFound: function onMessageAccessFound(data) {
       this.access = data;
-      console.log(this.access);
+      //console.log(this.access);
     },
     onAccessDenied: function onAccessDenied() {
       toastr.error('Sorry! you dont have access');

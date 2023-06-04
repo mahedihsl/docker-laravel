@@ -49,6 +49,7 @@ export default class PaymentApi {
     sendMessage(userId, content){
       this.EventBus.$emit('message-send-start');
       Vue.http.post(`/payment/sms/send`,{id:userId, content:content}).then(response => {
+        console.log(response.body);
         this.EventBus.$emit('message-send-done',response.body.data);
       }, error => {})
     }

@@ -96,7 +96,7 @@ new Vue({
         },
         onMessageAccessFound(data){
           this.access=data;
-          console.log(this.access);
+          //console.log(this.access);
         },
         onAccessDenied(){
           toastr.error('Sorry! you dont have access');

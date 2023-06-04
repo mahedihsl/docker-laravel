@@ -44,6 +44,7 @@ class CustomerController extends Controller
     {
         $user = $this->repository->find($id);
 
+
         if ( ! is_null($user)) {
             return view('customer.manage')->with([
                 'user' => $user,

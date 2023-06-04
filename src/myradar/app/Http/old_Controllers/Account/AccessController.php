@@ -50,11 +50,11 @@ class AccessController extends Controller
     public function messageAccess(Request $request)
     {
       $user = $this->getWebUser();
-      return response()->ok([
+      return response()->json([
         'bulkMessage'   => [
             'status' => $user->isAdmin(),
             'meta' => null,
         ],
-      ]);
+      ],200);
     }
 }

@@ -19,13 +19,14 @@ export default class AccountApi {
 
     myCustomerAccess() {
         Vue.http.get(`/customer/access/of/user`).then(response => {
-            this.EventBus.$emit('customer-acces-found', response.body.data);
+            this.EventBus.$emit('customer-acces-found', response.body)
         }, error => {});
     }
 
     messageAccess() {
         Vue.http.get(`/message/access/of/user`).then(response => {
-            this.EventBus.$emit('message-access-found', response.body.data);
+           // console.log('From AccountApi',response.body.bulkMessage)
+            this.EventBus.$emit('message-access-found', response.body.bulkMessage);
         }, error => {});
     }
 }
