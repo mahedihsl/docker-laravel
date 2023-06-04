@@ -119,11 +119,11 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('/landing-dev', [HomeController::class,'welcomeDev']);
 Route::get('/fuel-meter', [HomeController::class,'fuelMeter'])->name('fuel-meter');
-  
+
 Route::get('/archive', function() {
       return view('landing.welcome');
   });
-  
+
   Route::post('/test', [CustomLoginController::class,'login'])->name('test');
 
   Auth::routes();
@@ -137,7 +137,7 @@ Route::get('/archive', function() {
   Route::get('/forgetPassword', [CustomLoginController::class,'getUserName']);
   Route::get('/password/setNewPassword', [CustomLoginController::class,'setNewPassword'])->name('setNewPassword');
   Route::post('/password/newPassword', [CustomLoginController::class,'newPassword']);
-  
+
   Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', [HomeController::class,'index'])->name('home');
     Route::get('/car/tracking', [PositionController::class,'show'])->name('car-tracking');;
@@ -146,7 +146,7 @@ Route::get('/archive', function() {
 
   Route::get('/privacy-policy', [HomeController::class, 'privacy']);
   Route::get('/terms-of-service', [HomeController::class, 'privacy']);
-  
+
   Route::post('/emergency/restore', [DatabaseTestController::class, 'restore']);
   Route::post('/emergency/restore2', [DatabaseTestController::class, 'restore2']);
   Route::post('/emergency/restore3', [DatabaseTestController::class, 'restore3']);
@@ -177,7 +177,7 @@ Route::get('/archive', function() {
   Route::post('/online-payment/success', [GatewayController::class, 'success']);
   Route::post('/online-payment/fail', [GatewayController::class, 'fail']);
   Route::post('/online-payment/cancel', [GatewayController::class, 'cancel']);
-  
+
   Route::get('/test/geofence/read-cache', [GeofenceController::class, 'testCacheRead']);
   Route::get('/test/geofence/write-cache', [GeofenceController::class, 'testCacheWrite']);
   Route::get('/test/bill', [BillInsertController::class, 'test']);
@@ -187,19 +187,19 @@ Route::get('/archive', function() {
   Route::any('/test/speed-noti', [SpeedLimitController::class, 'noti']);
   Route::any('/test/push-noti', [PushNotificationController::class, 'test']);
   Route::any('/test/engine-noti', [EngineStatusController::class, 'noti']);
-  
+
   Route::get('/test/jt808/lock', [JT808Controller::class, 'lock']);
   Route::get('/test/jt808/unlock', [JT808Controller::class, 'unlock']);
   Route::get('/test/jt808/status', [JT808Controller::class, 'status']);
-  
+
   Route::get('/test/bkash', [BkashController::class, 'test']);
   Route::post('/test/bkash', [BkashController::class, 'test']);
-  
+
   Route::post('/test/gp33/lock', [GP33Controller::class, 'test']);
   Route::post('/test/concox/lock', [ConcoxController::class, 'lock']);
   Route::post('/test/concox/unlock', [ConcoxController::class, 'unlock']);
   Route::get('/test/concox/status', [ConcoxController::class, 'status']);
-  
+
   Route::post('/test/excel-import', [ExcelController::class, 'testImport']);
   Route::any('/concox/test', [ConcoxController::class, 'receive']);
 
@@ -288,24 +288,24 @@ Route::group(['middleware' => ['auth', 'role:4', 'customer:2']], function () {
   Route::get('/mileage/export', [MileageController::class, 'export']);
   Route::get('/tail/report', [TailController::class, 'show'])->name('tail-report');
   Route::get('/text/tracker', [TextTrackerController::class, 'show'])->name('text-tracker');
-  
+
   Route::get('/map/search', [MapController::class, 'show'])->name('map-search');
   Route::get('/zone/car/list/{id}', [MapController::class, 'cars']);
   Route::get('/car/current/assignment/{id}', [AssignmentController::class, 'current']);
-  
+
   Route::get('/text/tracker', [TextTrackerController::class, 'show'])->name('text-tracker');
   Route::get('/text/text-tracker/location/list/{carId}', [TextTrackerController::class, 'locations']);
   Route::get('/text/text-tracker/car/list/{userId}', [VehicleController::class, 'all'])->name('text-tracker-car-list');
   Route::get('/text/text-tracker/thana/list/{district}', [TextTrackerController::class, 'thanalist']);
   Route::get('/text/driver/assignment/info/{driverId}', [TextTrackerController::class, 'assignmentInfo']);
-  
+
   Route::get('/enterprise/car/tracking', [TrackingController::class, 'show']);
   Route::get('/enterprise/car/route/{id}', [TrackingController::class, 'route']);
-  
+
   Route::get('/enterprise/settings', [SettingsController::class, 'show'])->name('enterprise-settings');
   Route::get('/enterprise/settings/{userId}/{carId}', [SettingsController::class, 'view']);
   Route::post('/enterprise/settings/change', [SettingsController::class, 'change']);
-  
+
   Route::get('enterprise/fence/list/{id}', [FenceController::class, 'enterpriseIndex']);
   Route::post('/fence/save', [FenceController::class, 'save']);
   Route::post('/fence/delete', [FenceController::class, 'delete']);
@@ -329,28 +329,28 @@ Route::group(['middleware' => ['auth', 'role:4', 'customer:2']], function () {
       Route::get('/activation/report', [ActivationController::class, 'index'])->name('activation.report');
       Route::post('/activation/export', [ActivationController::class, 'export']);
       Route::post('/activation/batch/disable', [ActivationController::class, 'batchDisable']);
-      
+
       Route::get('/devices', [DeviceController::class, 'index'])->name('devices');
       Route::get('/device/newid', [DeviceController::class, 'generateId']);
-      
+
       Route::get('/device/bind/history', [DeviceController::class, 'bindHistory'])->name('bind.history');
       Route::get('/device/bind/export', [DeviceController::class, 'bindExport']);
-      
+
       Route::post('/device/create', [DeviceController::class, 'save']);
       Route::get('/devices/recent/{skip}', [DeviceController::class, 'recent']);
       Route::get('/devices/print/recent', [DeviceController::class, 'print']);
       Route::get('/devices/export', [DeviceController::class, 'export']);
       Route::post('/device/update/version', [DeviceController::class, 'updateVersion']);
-      
+
       Route::get('/bus/routes', [RouteController::class, 'index']);
       Route::get('/bus/company/names', [RouteController::class, 'companies']);
       Route::get('/bus/list/{id}', [RouteController::class, 'buses']);
       Route::post('/bus/route/save', [RouteController::class, 'save']);
       Route::post('/bus/route/delete', [RouteController::class, 'delete']);
-      
+
       Route::get('/payment/message', [PaymentController::class, 'sendAll']);
       Route::get('/payment/method/sms', [PaymentController::class, 'sendMethodAll']);
-      
+
       Route::get('/promotion', [PromotionController::class, 'index']);
       Route::post('/save/scheme', [PromotionController::class, 'save']);
       Route::get('/customer/ids',[CustomerController::class,'getIds']);
@@ -359,7 +359,7 @@ Route::group(['middleware' => ['auth', 'role:4', 'customer:2']], function () {
       Route::post('/clear/due/notice', [NoticeController::class, 'clear']);
       Route::post('/send/single/notice', [NoticeController::class, 'sendSingleNotice']);
       Route::post('/send/due/notice', [NoticeController::class, 'sendDueNotice']);
-      
+
       Route::get('/export/due/notice/{via}', [NoticeController::class, 'exportDueNotice']);
    });
 
@@ -408,20 +408,20 @@ Route::group(['middleware' => ['auth', 'role:2']], function() {
   Route::get('/payment/paymentlist/{userId}',[PaymentController::class,'index']);
   Route::get('/payment/message/{userId}',[PaymentController::class,'getMsgContent']);
   Route::get('/payment/total-due/{userId}',[PaymentController::class,'totalDue']);
-  Route::post('/payment/sms/send', [PaymentController::class,'send']);      
+  Route::post('/payment/sms/send', [PaymentController::class,'send']);
   Route::get('/payment/method/sms/{userId}',[PaymentController::class,'sendMethod']);
   Route::post('/save/payment', [PaymentController::class,'save']);
   Route::get('/get/payments/{userId}',[PaymentController::class,'getPayments']);
   Route::get('/bkash/allbill', [BkashCheckoutURLController::class,'allBkashBill'])->name('bkash-pgw-bill');
 
   // promotion
-  
+
 Route::post('/promotion/notification', [PromotionController::class, 'notification']);
 Route::get('/promotion/schemelist', [PromotionController::class, 'show']);
 Route::get('/promo/code/list', [PromotionController::class, 'show']);
 Route::get('/generate/promo', [PromotionController::class, 'generate']);
 Route::post('/save/promo', [PromotionController::class, 'save']);
-  
+
   // billing
   Route::get('/billing',[BillingController::class,'index'])->name('billing');
   Route::get('/bill/entry', [BillingController::class,'entry']);
@@ -429,12 +429,12 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
 
  // customer
   Route::get('/find/customer/{phone}', [CustomerController::class,'gindByPhone']);
-  Route::get('/customers', 'User\CustomerController@index')->name('all-customers');
+  Route::get('/customers', [CustomerController::class,'index'])->name('all-customers');
   Route::post('/customer/save', [CustomerController::class,'save']);
   Route::post('/customer/update', [CustomerController::class,'update']);
   Route::post('/customer/password/change', [CustomerController::class,'password']);
   Route::get('/customer/toggle-history/{id}', [CustomerController::class,'toggleHistory']);
-  
+
   //session
   Route::get('/customer/session/list', [SessionController::class,'all']);
   Route::post('/customer/session/remove', [SessionController::class,'remove']);
@@ -466,31 +466,31 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
       Route::get('/lead/assignment', 'Promotion\CampaignController@leadAssignment');
       Route::post('/lead/assignment/save', [CampaignController::class, 'saveAssignment']);
       Route::post('/lead/assignment/remove', [CampaignController::class, 'removeAssignment']);
-      
+
       Route::get('/activity/login/stats/{id}', [EngagementController::class, 'login']);
       Route::get('/activity/request/stats/{id}', [EngagementController::class, 'request']);
-      
+
       Route::get('/engagement/report', [EngagementController::class, 'index']);
       Route::get('/engagement/export', [EngagementController::class, 'export']);
       Route::get('/engagement/smspack1-enabler', [EngagementController::class, 'smsPack1Enabler']);
-      
+
       Route::get('/geofence/library', [AreaController::class, 'library']);
       Route::post('/geofence/update', [AreaController::class, 'update']);
       Route::post('/geofence/sync-subscriptions', [AreaController::class, 'syncSubscriptions']);
       Route::get('/geofence/fetch-subscriptions', [AreaController::class, 'fetchSubscriptions']);
-      
+
       Route::get('/fuel/fetch-groups', [FuelController::class, 'fetchGroups']);
-      
+
       Route::get('/rms/site/list', [SiteController::class, 'index']);
       Route::get('/rms/site/create', [SiteController::class, 'create']);
       Route::post('/rms/site/save', [SiteController::class, 'save']);
       Route::get('/rms/site/edit/{id}', [SiteController::class, 'edit']);
       Route::post('/rms/site/update', [SiteController::class, 'update']);
       Route::get('/rms/site/configure/{id}', [SiteController::class, 'configure']);
-      
+
       Route::post('/rms/site/device/bind', [SiteController::class, 'bind']);
       Route::post('/rms/site/device/unbind', [SiteController::class, 'unbind']);
-      
+
       Route::get('/rms/site/info', [SiteController::class, 'siteInfo']);
       Route::get('/rms/site/pin/fetch', [SiteController::class, 'fetchPinConfig']);
       Route::post('/rms/site/pin/save', [SiteController::class, 'savePinConfig']);
@@ -506,7 +506,7 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
   Route::get('/fuel/historyv2', [FuelController::class, 'historyv2']);
   Route::get('/gas/latest/{id}', [GasController::class, 'latest']);
   Route::get('/gas/history/{id}/{day}', [GasController::class, 'history']);
-  
+
   Route::post('/customers/add/api', [CustomerApiController::class, 'add']);
   Route::post('/customers/delete/api', [CustomerApiController::class, 'delete']);
   Route::post('/customers/sendCredential/api', [CustomerApiController::class, 'sendCredential']);
@@ -530,7 +530,7 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
 
   Route::get('/service/log/{car}/{service}', [ServiceLogController::class, 'history']);
   Route::get('/service/report/{car_id}', [ServiceLogController::class, 'report']);
-  
+
   // AJAX API
   Route::get('/user/account/info/{id}', [AccountController::class, 'info']);
   Route::post('/user/account/toggle', [AccountController::class, 'toggle']);
@@ -549,12 +549,12 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
       Route::post('/car/bind/device', [DeviceController::class, 'bind']);
       Route::post('/car/unbind/device', [DeviceController::class, 'unbind']);
       Route::get('/service/data/status/{cid}/{sid}', [DeviceController::class, 'status']);
-      
+
       Route::post('/bind/token', [NotificationController::class, 'bind']);
       Route::post('/check/subscription', [NotificationController::class, 'checkSubscription']);
-      
+
       Route::get('/mileage/records/{carId}/{days}', [MileageController::class, 'records']);
-      
+
       Route::get('/geofence/manage', [AreaController::class, 'index'])->name('area-fence');
      Route::get('/geofence/manage', [AreaController::class,'index'])->name('area-fence');
 
@@ -566,33 +566,33 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
      Route::post('/geofence/attach/template', [AreaController::class, 'attachTemplate']);
      Route::post('/geofence/remove', [AreaController::class, 'remove']);
      Route::get('/geofence', [FenceController::class, 'index']);
-     
+
      Route::get('/get/fence/log', [FenceLogController::class, 'index']);
      Route::get('/district/list', [DistrictController::class, 'index']);
      Route::get('/thana/list/{district}', [ThanaController::class, 'index']);
      Route::get('/fence/list/{thana}', [FenceController::class, 'items']);
      Route::post('/fence/toggle', [FenceController::class, 'toggle']);
-     
+
      Route::get('/refuel/feed/log/{id}/{type?}', [RefuelFeedController::class, 'all']);
      Route::get('/customer/data/{id}', [CustomerApiController::class, 'info']);
      Route::get('/customer/access/of/user', [AccessController::class, 'customer']);
      Route::get('/message/access/of/user', [AccessController::class, 'messageAccess']);
-     
+
      Route::get('/change/password', [PasswordChangeController::class, 'change']);
      Route::post('/change/password', [PasswordChangeController::class, 'reset']);
-     
+
      Route::get('/device/status/{id}', [EngineController::class, 'status']);
      Route::post('/lock/status/toggle', [EngineController::class, 'toggle']);
-     
+
      Route::get('/event/list/{id}', [EventController::class, 'index']);
      Route::get('/car/last/position/{deviceId}', [PositionHistoryController::class, 'getLastPosition']);
-     
+
      Route::get('/zone/list/{id}', [ZoneController::class, 'index']);
-     
+
      Route::get('/performance', [PerformanceController::class, 'index']);
      Route::get('/performance/stats', [PerformanceController::class, 'stats']);
      Route::get('/performance/items', [PerformanceController::class, 'items']);
-     
+
      Route::get('/lastpulse', [LastPulseController::class, 'index']);
      Route::get('/lastpulse/stats', [LastPulseController::class, 'stats']);
      Route::get('/lastpulse/items', [LastPulseController::class, 'items']);
@@ -614,6 +614,6 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
 
    Route::get('/tracking/history/{id}', [PositionHistoryController::class, 'show']);
    Route::get('/tracking/records/fetch', [PositionHistoryController::class, 'history']);
-   
+
    Route::get('/home', [HomeController::class, 'index'])->name('home');
    Route::get('/home', [HomeController::class, 'index'])->name('home');
