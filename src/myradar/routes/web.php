@@ -37,6 +37,7 @@ use App\Http\Controllers\Test\GP33Controller;
 use App\Http\Controllers\Test\ConcoxController;
 use App\Http\Controllers\Test\ExcelController;
 use App\Http\Controllers\Customer\DeviceController;
+use App\Http\Controllers\Device\DeviceController as Device_DeviceController ;
 use App\Http\Controllers\Car\DeviceController as CarDeviceController;
 use App\Http\Controllers\Calibration\RefuelFeedController;
 use App\Http\Controllers\Payment\CheckoutIFrameController;
@@ -373,9 +374,9 @@ Route::middleware(['auth', 'role:3'])->group(function () {
   Route::post('/service/api/get_service_diagnosis', [ServiceApiController::class, 'get_service_diagnosis']);
 
   Route::get('/service-monitor', [ServiceMonitorController::class, 'show']);
-  Route::get('/user/devices/{id}', [DeviceController::class, 'allOfUser']);
+  Route::get('/user/devices/{id}', [Device_DeviceController::class, 'allOfUser']);
 
-  Route::post('/device/update/phone', [DeviceController::class, 'changePhone']);
+  Route::post('/device/update/phone', [Device_DeviceController::class, 'changePhone']);
 
   Route::get('/services/api', [ServiceApiController::class, 'index']);
   Route::post('/services/api/update', [ServiceApiController::class, 'update']);

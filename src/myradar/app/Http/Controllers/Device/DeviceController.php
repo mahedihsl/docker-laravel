@@ -108,7 +108,7 @@ class DeviceController extends Controller
         if (!$user->isAdmin()) {
             return response()->error('Only admin can change device phone number');
         }
-        
+
         $phone = $request->get('phone');
         $device = Device::where('car_id', $request->get('car_id'))->first();
 
@@ -127,7 +127,7 @@ class DeviceController extends Controller
     public function allOfUser(Request $request, $id)
     {
         $this->repository->pushCriteria(new UserIdCriteria($id));
-        return response()->ok($this->repository->all(['com_id']));
+        return response()->json($this->repository->all(['com_id']));
     }
 
     public function export(Request $request)

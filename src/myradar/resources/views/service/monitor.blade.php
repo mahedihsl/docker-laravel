@@ -1,8 +1,12 @@
 @extends('layouts.new')
 
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
+
 @push('style')
   <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('css/datetimepicker.min.css', true) }}">
+  <link rel="stylesheet" href="{{ asset('css/datetimepicker.min.css', $hasHttps) }}">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
   <style>
     td.highlight {
@@ -180,24 +184,26 @@
   <script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
   <script src="//cdn.datatables.net/plug-ins/1.10.12/sorting/datetime-moment.js"></script>
-  <script src="{{ asset('js/moment.min.js', true) }}" charset="utf-8"></script>
-  <script src="{{ asset('js/datetimepicker.min.js', true) }}" charset="utf-8"></script>
+  <script src="{{ asset('js/moment.min.js', $hasHttps) }}" charset="utf-8"></script>
+  <script src="{{ asset('js/datetimepicker.min.js', $hasHttps) }}" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
   <script>
     var sites = [];
 
     function getDevices(userId) {
       $.get('/user/devices/' + userId, function(response) {
+
         var select = $('select[name="device_id"]');
         select.empty();
         var flag = false;
         var cache = select.data('cache');
 
-        for (var i = 0; i < response.data.length; i++) {
-          if (cache == response.data[i]._id) flag = true;
+
+        for (var i = 0; i < response.length; i++) {
+          if (cache == response[i]._id) flag = true;
           select.append($('<option>', {
-            val: response.data[i]._id,
-            text: response.data[i].com_id,
+            val: response[i]._id,
+            text: response[i].com_id,
           }));
         }
         if (flag) select.val(cache);
@@ -209,7 +215,7 @@
     function getRMSSites(userId) {
       $.get('/api/rms/site/list', {user_id: userId}, function(response) {
         sites = response
-        
+
         var select = $('select[name="site_id"');
         select.empty();
 

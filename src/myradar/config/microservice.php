@@ -133,7 +133,8 @@ return [
         'port' => 5003,
     ],
     'rms-user' => [
-    'url' => 'http://rms-user',
+    //'url' => 'http://rms-user',
+    'url' => 'http://18.141.98.213',
         'port' => 5004,
     ],
     'rms-temperature' => [
