@@ -21,7 +21,7 @@ export default class ComplainApi {
       };
       return new Promise(function(resolve, reject){
         Vue.http.get(`/complain/search`,{params}).then(response => {
-           resolve(response.body.data)
+           resolve(response.body)
         }, error => {})
       })
     }
