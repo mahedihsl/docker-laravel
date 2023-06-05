@@ -87,6 +87,7 @@ use App\Http\Controllers\Device\PerformanceController;
 use App\Http\Controllers\Device\LastPulseController;
 use App\Http\Controllers\ServiceMonitor\ComplainController;
 use App\Http\Controllers\Payment\BkashCheckoutURLController;
+use App\Http\Controllers\Account\BillingController as AccountBillingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -426,9 +427,9 @@ Route::get('/generate/promo', [PromotionController::class, 'generate']);
 Route::post('/save/promo', [PromotionController::class, 'save']);
 
   // billing
-  Route::get('/billing',[BillingController::class,'index'])->name('billing');
+  Route::get('/billing',[AccountBillingController::class,'index'])->name('billing');
   Route::get('/bill/entry', [FinanceBillingController::class,'entry']);
-  Route::post('/importExcel', [BillingController::class,'importExcel']);
+  Route::post('/importExcel', [AccountBillingController::class,'importExcel']);
 
  // customer
   Route::get('/find/customer/{phone}', [CustomerController::class,'gindByPhone']);

@@ -8,7 +8,7 @@ export default class ComplainApi {
     static getComplains(page, user_id = '') {
       return new Promise(function(resolve, reject){
         Vue.http.get(`/complain/list?page=${page}&user_id=${user_id}`).then(response => {
-           resolve(response.body.data)
+           resolve(response.body)
         }, error => {})
       })
     }

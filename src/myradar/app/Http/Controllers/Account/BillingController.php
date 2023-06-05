@@ -42,7 +42,7 @@ class BillingController extends Controller
         if ($request->get('type') == 'export') {
             $this->export($this->repository->all());
         }
-
+        
         return view('car.billing')->with([
             'cars' => $this->repository->paginate(),
             'params' => $request->all(),
