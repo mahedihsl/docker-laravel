@@ -2675,3 +2675,17 @@
 2023/06/04 04:52:25 [notice] 1#1: start worker process 35
 2023/06/04 06:09:27 [error] 28#28: *140 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 172.20.0.1, server: , request: "GET /customer/info/5f63f8719dbb7723d01f7396 HTTP/1.1", upstream: "fastcgi://172.20.0.2:9000", host: "localhost:8080", referrer: "http://localhost:8080/manage/customer/5f63f8719dbb7723d01f7396"
 2023/06/04 06:26:35 [error] 31#31: *164 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 172.20.0.1, server: , request: "GET /payment/total-due/5f63f8719dbb7723d01f7396 HTTP/1.1", upstream: "fastcgi://172.20.0.2:9000", host: "localhost:8080", referrer: "http://localhost:8080/manage/customer/5f63f8719dbb7723d01f7396"
+2023/06/05 04:40:32 [notice] 1#1: using the "epoll" event method
+2023/06/05 04:40:32 [notice] 1#1: nginx/1.25.0
+2023/06/05 04:40:32 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/06/05 04:40:32 [notice] 1#1: OS: Linux 5.19.0-43-generic
+2023/06/05 04:40:32 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:524288
+2023/06/05 04:40:32 [notice] 1#1: start worker processes
+2023/06/05 04:40:32 [notice] 1#1: start worker process 28
+2023/06/05 04:40:32 [notice] 1#1: start worker process 29
+2023/06/05 04:40:32 [notice] 1#1: start worker process 30
+2023/06/05 04:40:32 [notice] 1#1: start worker process 31
+2023/06/05 04:40:32 [notice] 1#1: start worker process 32
+2023/06/05 04:40:32 [notice] 1#1: start worker process 33
+2023/06/05 04:40:32 [notice] 1#1: start worker process 34
+2023/06/05 04:40:32 [notice] 1#1: start worker process 35

@@ -2,4 +2,4 @@
 *.log
 
 database/
-log/
+logs/

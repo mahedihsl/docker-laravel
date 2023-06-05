@@ -49157,10 +49157,12 @@ var EventApi = function () {
         value: function list(carId, page) {
             return new Promise(function (resolve, reject) {
                 Vue.http.get("/event/list/" + carId, { params: { page: page } }).then(function (response) {
-                    resolve({
-                        list: response.body.data.data || [],
-                        pagination: response.body.data.meta.pagination
-                    });
+                    var data = {
+                        list: response.body.data || [],
+                        pagination: response.body.meta.pagination
+                    };
+
+                    resolve(data);
                 }, function (error) {
                     return reject();
                 });
@@ -49170,7 +49172,9 @@ var EventApi = function () {
         key: "recent",
         value: function recent(deviceId, limit, type) {
             return new Promise(function (resolve, reject) {
-                Vue.http.get("/api/event/recent/" + deviceId, { params: { limit: limit, type: type } }).then(function (response) {
+                Vue.http.get("/api/event/recent/" + deviceId, {
+                    params: { limit: limit, type: type }
+                }).then(function (response) {
                     resolve(response.body.data.items || []);
                 }, function (error) {
                     return reject();

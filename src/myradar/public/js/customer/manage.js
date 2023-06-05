@@ -86632,10 +86632,12 @@ var EventApi = function () {
         value: function list(carId, page) {
             return new Promise(function (resolve, reject) {
                 Vue.http.get("/event/list/" + carId, { params: { page: page } }).then(function (response) {
-                    resolve({
-                        list: response.body.data.data || [],
-                        pagination: response.body.data.meta.pagination
-                    });
+                    var data = {
+                        list: response.body.data || [],
+                        pagination: response.body.meta.pagination
+                    };
+
+                    resolve(data);
                 }, function (error) {
                     return reject();
                 });
@@ -86645,7 +86647,9 @@ var EventApi = function () {
         key: "recent",
         value: function recent(deviceId, limit, type) {
             return new Promise(function (resolve, reject) {
-                Vue.http.get("/api/event/recent/" + deviceId, { params: { limit: limit, type: type } }).then(function (response) {
+                Vue.http.get("/api/event/recent/" + deviceId, {
+                    params: { limit: limit, type: type }
+                }).then(function (response) {
                     resolve(response.body.data.items || []);
                 }, function (error) {
                     return reject();
@@ -91508,12 +91512,12 @@ var event = {
                 _ref2$page = _ref2.page,
                 page = _ref2$page === undefined ? 1 : _ref2$page;
 
-            commit('setLoading', true);
+            commit("setLoading", true);
             __WEBPACK_IMPORTED_MODULE_1__api_EventApi__["a" /* default */].list(carId, page).then(function (data) {
-                commit('setEvents', data.list);
-                commit('setPagination', data.pagination);
+                commit("setEvents", data.list);
+                commit("setPagination", data.pagination);
             }).catch(function () {}).then(function () {
-                return commit('setLoading', false);
+                return commit("setLoading", false);
             });
         }
     }

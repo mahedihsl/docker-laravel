@@ -52,7 +52,7 @@ class EventController extends Controller
         });
         $items = $this->repository->parserResult($items);
         // $data = new LengthAwarePaginator($items, $total, $per_page, $page);
-        return response()->ok([
+        return response()->json([
             'data' => $items['data'],
             'meta' => [
                 'pagination' => [
@@ -62,7 +62,7 @@ class EventController extends Controller
                     'total_pages' => ceil($total / $per_page),
                 ]
             ]
-        ]);
+        ],200);
         // return response()->ok($data);
     }
     public function recent(Request $request, $id)
