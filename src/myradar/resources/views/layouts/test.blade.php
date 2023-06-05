@@ -121,8 +121,8 @@
 <script src="{{asset('js/adminlte.min.js')}}"></script>
 <script src="{{asset('vendors/toastr/toastr.min.js')}}" charset="utf-8"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('js/demo.js')}}"></script>
-<script src="{{asset('js/common.js')}}" charset="utf-8"></script>
+{{-- <script src="{{asset('js/demo.js')}}"></script>
+<script src="{{asset('js/common.js')}}" charset="utf-8"></script> --}}
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()

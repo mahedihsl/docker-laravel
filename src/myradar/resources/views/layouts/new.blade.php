@@ -139,8 +139,8 @@ $hasHttps= env('APP_ENV')=='production'
   <script src="{{asset('js/adminlte.min.js', $hasHttps)}}"></script>
   <script src="{{asset('vendors/toastr/toastr.min.js', $hasHttps)}}" charset="utf-8"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="{{asset('js/demo.js', $hasHttps)}}"></script>
-  <script src="{{asset('js/common.js', $hasHttps)}}" charset="utf-8"></script>
+  {{-- <script src="{{asset('js/demo.js', $hasHttps)}}"></script>
+  <script src="{{asset('js/common.js', $hasHttps)}}" charset="utf-8"></script> --}}
   <script>
     $(document).ready(function () {
     $('.sidebar-menu').tree()
