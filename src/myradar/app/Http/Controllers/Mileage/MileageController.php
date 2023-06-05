@@ -41,7 +41,7 @@ class MileageController extends Controller
             return ['value' => 0, 'date' => $time->format('j M')];
         });
 
-        return response()->ok($items);
+        return response()->json($items);
     }
 
 }

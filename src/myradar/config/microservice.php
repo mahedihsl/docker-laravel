@@ -83,8 +83,9 @@ return [
         'port' => 6015,
     ],
     'location' => [
-    'url' => 'http://myradar-location',
-        'port' => 6016,
+    //'url' => 'http://myradar-location',
+    'url' => 'http://18.141.98.213',
+        'port' => 49155,
     ],
     'trip' => [
     'url' => 'http://myradar-trip',

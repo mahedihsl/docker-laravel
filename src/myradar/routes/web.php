@@ -37,6 +37,7 @@ use App\Http\Controllers\Test\GP33Controller;
 use App\Http\Controllers\Test\ConcoxController;
 use App\Http\Controllers\Test\ExcelController;
 use App\Http\Controllers\Customer\DeviceController;
+use App\Http\Controllers\Car\DeviceController as CarDeviceController;
 use App\Http\Controllers\Calibration\RefuelFeedController;
 use App\Http\Controllers\Payment\CheckoutIFrameController;
 use App\Http\Controllers\Api\Device\HistoryAPIController;
@@ -48,6 +49,7 @@ use App\Http\Controllers\Enterprise\EmployeeController;
 use App\Http\Controllers\Enterprise\DrivingController;
 use App\Http\Controllers\Enterprise\DutyController;
 use App\Http\Controllers\Enterprise\MileageController;
+use App\Http\Controllers\Mileage\MileageController as MainMileageController;
 use App\Http\Controllers\Enterprise\TailController;
 use App\Http\Controllers\Enterprise\TextTrackerController;
 use App\Http\Controllers\Enterprise\MapController;
@@ -544,6 +546,7 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
 
 //       Route::get('/car/state/{id}', 'Car\DeviceController@state');
 
+      Route::get('/car/state/{id}', [CarDeviceController::class,'state']);
       Route::get('/car/packages', [CarController::class,'packages']);
       Route::get('/car/services/{id}', [CarController::class,'services']);
       Route::get('/car/toggle-status/{id}', [CarController::class,'toggleStatus']);
@@ -554,7 +557,7 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
       Route::post('/bind/token', [NotificationController::class, 'bind']);
       Route::post('/check/subscription', [NotificationController::class, 'checkSubscription']);
 
-      Route::get('/mileage/records/{carId}/{days}', [MileageController::class, 'records']);
+      Route::get('/mileage/records/{carId}/{days}', [MainMileageController::class, 'records']);
 
       Route::get('/geofence/manage', [AreaController::class, 'index'])->name('area-fence');
      Route::get('/geofence/manage', [AreaController::class,'index'])->name('area-fence');

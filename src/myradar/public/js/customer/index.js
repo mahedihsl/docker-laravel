@@ -48457,7 +48457,7 @@ var CustomerApi = function () {
     }
 
     _createClass(CustomerApi, [{
-        key: 'update',
+        key: "update",
         value: function update(info) {
             var _this = this;
 
@@ -48471,21 +48471,21 @@ var CustomerApi = function () {
                 ref_no: info.ref_no,
                 status: info.status
             };
-            Vue.http.post('/customer/update', data).then(function (response) {
+            Vue.http.post("/customer/update", data).then(function (response) {
                 if (response.body.status == 1) {
-                    _this.EventBus.$emit('profile-update-done', response.body.data);
+                    _this.EventBus.$emit("profile-update-done", response.body.data);
                 } else {
-                    _this.EventBus.$emit('profile-update-error', 200, 'Error, Try Again');
+                    _this.EventBus.$emit("profile-update-error", 200, "Error, Try Again");
                 }
             }, function (error) {
                 if (error.status == 422) {
                     var res = new __WEBPACK_IMPORTED_MODULE_0__util_Error__["a" /* default */](error);
-                    _this.EventBus.$emit('profile-update-error', 422, res.validationError());
+                    _this.EventBus.$emit("profile-update-error", 422, res.validationError());
                 }
             });
         }
     }, {
-        key: 'password',
+        key: "password",
         value: function password(id, pass1, pass2) {
             var _this2 = this;
 
@@ -48494,75 +48494,75 @@ var CustomerApi = function () {
                 password: pass1,
                 password_confirmation: pass2
             };
-            Vue.http.post('/customer/password/change', data).then(function (response) {
+            Vue.http.post("/customer/password/change", data).then(function (response) {
                 if (response.body.status == 1) {
-                    _this2.EventBus.$emit('password-update-done');
+                    _this2.EventBus.$emit("password-update-done");
                 } else {
-                    _this2.EventBus.$emit('password-update-error', 200, 'Error, Try Again');
+                    _this2.EventBus.$emit("password-update-error", 200, "Error, Try Again");
                 }
             }, function (error) {
                 if (error.status == 422) {
                     var res = new __WEBPACK_IMPORTED_MODULE_0__util_Error__["a" /* default */](error);
-                    _this2.EventBus.$emit('password-update-error', 422, res.validationError());
+                    _this2.EventBus.$emit("password-update-error", 422, res.validationError());
                 }
             });
         }
     }, {
-        key: 'info',
+        key: "info",
         value: function info(id) {
             var _this3 = this;
 
-            Vue.http.get('/customer/info/' + id).then(function (response) {
-                _this3.EventBus.$emit('customer-info-found', response.body.data);
+            Vue.http.get("/customer/info/" + id).then(function (response) {
+                _this3.EventBus.$emit("customer-info-found", response.body.data);
             }, function (error) {});
         }
     }, {
-        key: 'data',
+        key: "data",
         value: function data(id) {
             var _this4 = this;
 
-            Vue.http.get('/customer/data/' + id).then(function (response) {
-                _this4.EventBus.$emit('customer-data-found', response.body.data);
+            Vue.http.get("/customer/data/" + id).then(function (response) {
+                _this4.EventBus.$emit("customer-data-found", response.body.data);
             }, function (error) {});
         }
     }, {
-        key: 'getSettings',
+        key: "getSettings",
         value: function getSettings(id) {
             var _this5 = this;
 
-            Vue.http.get('/customer/settings/' + id).then(function (response) {
-                _this5.EventBus.$emit('customer-settings-found', response.body.data);
+            Vue.http.get("/customer/settings/" + id).then(function (response) {
+                _this5.EventBus.$emit("customer-settings-found", response.body.data);
             }, function (error) {});
         }
     }, {
-        key: 'updateSettings',
+        key: "updateSettings",
         value: function updateSettings(data) {
             var _this6 = this;
 
-            Vue.http.post('/customer/settings/change', data).then(function (response) {
-                _this6.EventBus.$emit('customer-settings-changed');
+            Vue.http.post("/customer/settings/change", data).then(function (response) {
+                _this6.EventBus.$emit("customer-settings-changed");
             }, function (error) {});
         }
     }, {
-        key: 'cars',
+        key: "cars",
         value: function cars(userId) {
             var _this7 = this;
 
-            Vue.http.get('/user/car/names/' + userId).then(function (response) {
-                _this7.EventBus.$emit('car-names-found', response.body.data);
+            Vue.http.get("/user/car/names/" + userId).then(function (response) {
+                _this7.EventBus.$emit("car-names-found", response.data);
             }, function (error) {});
         }
     }, {
-        key: 'customerIds',
+        key: "customerIds",
         value: function customerIds() {
             var _this8 = this;
 
-            Vue.http.get('/customer/ids').then(function (response) {
-                _this8.EventBus.$emit('customer-ids-found', response.body.data);
+            Vue.http.get("/customer/ids").then(function (response) {
+                _this8.EventBus.$emit("customer-ids-found", response.body.data);
             }, function (error) {});
         }
     }], [{
-        key: 'search',
+        key: "search",
         value: function search(data) {
             return new Promise(function (resolve, reject) {
                 var params = {
@@ -48572,7 +48572,7 @@ var CustomerApi = function () {
                     reg_no: data.reg_no,
                     ref_no: data.ref_no
                 };
-                Vue.http.get('/customers/api', { params: params }).then(function (response) {
+                Vue.http.get("/customers/api", { params: params }).then(function (response) {
                     return resolve({
                         list: response.body.data,
                         pagination: response.body.meta.pagination
@@ -48583,12 +48583,12 @@ var CustomerApi = function () {
             });
         }
     }, {
-        key: 'save',
+        key: "save",
         value: function save(data) {
             // console.log('save request dispatched');
 
             return new Promise(function (resolve, reject) {
-                Vue.http.post('/customer/save', data).then(function (response) {
+                Vue.http.post("/customer/save", data).then(function (response) {
                     if (response.body.status == 1) {
                         resolve(response.body.data);
                     }
@@ -48601,10 +48601,10 @@ var CustomerApi = function () {
             });
         }
     }, {
-        key: 'getToggleHistory',
+        key: "getToggleHistory",
         value: function getToggleHistory(id) {
             return new Promise(function (resolve, reject) {
-                Vue.http.get('/customer/toggle-history/' + id).then(function (response) {
+                Vue.http.get("/customer/toggle-history/" + id).then(function (response) {
                     if (response.body.status == 1) {
                         resolve(response.body.data);
                     }

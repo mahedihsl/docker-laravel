@@ -50,7 +50,7 @@ class DeviceRepositoryEloquent extends BaseRepository implements DeviceRepositor
         $this->resetScope();
     }
 
-    public function count()
+    public function counts()
     {
         $this->applyCriteria();
         $this->applyScope();

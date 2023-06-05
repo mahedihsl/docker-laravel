@@ -81,7 +81,7 @@ class CarController extends Controller
                         ->pushCriteria(new SharedUserCriteria($userId))
                         ->all();
 
-        return response()->ok($models);
+        return response()->json($models,200);
     }
 
     public function show(Request $request, $id)
@@ -225,6 +225,7 @@ class CarController extends Controller
     {
         try {
             $device = Device::where('car_id', $request->get('car_id'))->first();
+          
             if (is_null($device)) {
                 throw new Exception('No Device attached to this car');
             }

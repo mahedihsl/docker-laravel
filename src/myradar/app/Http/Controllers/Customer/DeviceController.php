@@ -58,7 +58,7 @@ class DeviceController extends Controller
                             ];
                         });
 
-            return response()->ok($cars);
+            return response()->json($cars,200);
         }
 
         return response()->error('User not found');
