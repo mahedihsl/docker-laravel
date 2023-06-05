@@ -84,7 +84,7 @@ class ComplainController extends Controller
       $this->repository->pushCriteria(new CarIdCriteria($car_ids));
     }
 
-    return response()->ok($this->repository->paginate());
+    return response()->json($this->repository->paginate());
   }
 
   public function search(Request $request)
