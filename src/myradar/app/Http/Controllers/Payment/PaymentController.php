@@ -57,7 +57,7 @@ class PaymentController extends Controller
       ->pushCriteria($criteria)
       ->with(['user', 'car'])
       ->all();
-    return response()->ok($paymentlist);
+    return response()->json($paymentlist);
   }
 
   public function getRefNo(Request $request, $userId)
@@ -130,7 +130,7 @@ class PaymentController extends Controller
 
   public function totalDue(Request $request, $userId)
   {
-    return response()->ok([
+    return response()->json([
       'total' => $this->getDue($userId)->sum('bill'),
     ]);
   }

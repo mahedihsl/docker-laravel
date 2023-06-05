@@ -86808,83 +86808,83 @@ var PaymentApi = function () {
     }
 
     _createClass(PaymentApi, [{
-        key: 'findCustomer',
+        key: "findCustomer",
         value: function findCustomer(phone) {
             var _this = this;
 
-            Vue.http.get('/find/customer/' + phone).then(function (response) {
+            Vue.http.get("/find/customer/" + phone).then(function (response) {
                 if (response.body.status == 1) {
-                    _this.EventBus.$emit('user-found', response.body);
+                    _this.EventBus.$emit("user-found", response.body);
                 } else {
-                    _this.EventBus.$emit('not-found');
+                    _this.EventBus.$emit("not-found");
                 }
             }, function (error) {});
         }
     }, {
-        key: 'getPayments',
+        key: "getPayments",
         value: function getPayments(userId) {
             var _this2 = this;
 
-            Vue.http.get('/get/payments/' + userId).then(function (response) {
-                _this2.EventBus.$emit('payments-found', response.body.data);
+            Vue.http.get("/get/payments/" + userId).then(function (response) {
+                _this2.EventBus.$emit("payments-found", response.body.data);
             }, function (error) {});
         }
     }, {
-        key: 'savePayment',
+        key: "savePayment",
         value: function savePayment(data) {
             var _this3 = this;
 
-            this.EventBus.$emit('bill-save-start');
-            Vue.http.post('/save/payment', data).then(function (response) {
-                _this3.EventBus.$emit('bill-save-finish', response.body.status == 1);
+            this.EventBus.$emit("bill-save-start");
+            Vue.http.post("/save/payment", data).then(function (response) {
+                _this3.EventBus.$emit("bill-save-finish", response.body.status == 1);
             }, function (error) {});
         }
     }, {
-        key: 'paymentList',
+        key: "paymentList",
         value: function paymentList(userId) {
             return new Promise(function (resolve, reject) {
-                Vue.http.get('/payment/paymentlist/' + userId).then(function (response) {
-                    return response.body.status ? resolve(response.body.data) : reject();
+                Vue.http.get("/payment/paymentlist/" + userId).then(function (response) {
+                    return response.status ? resolve(response.data) : reject();
                 }, function (error) {
                     return reject();
                 });
             });
         }
     }, {
-        key: 'getMsgContent',
+        key: "getMsgContent",
         value: function getMsgContent(userId) {
             var _this4 = this;
 
-            this.EventBus.$emit('get-message-content-start');
-            Vue.http.get('/payment/message/' + userId).then(function (response) {
-                _this4.EventBus.$emit('message-content-received', response.body.data);
+            this.EventBus.$emit("get-message-content-start");
+            Vue.http.get("/payment/message/" + userId).then(function (response) {
+                _this4.EventBus.$emit("message-content-received", response.body.data);
             }, function (error) {});
         }
     }, {
-        key: 'getTotalDue',
+        key: "getTotalDue",
         value: function getTotalDue(userId) {
             var _this5 = this;
 
-            Vue.http.get('/payment/total-due/' + userId).then(function (response) {
-                _this5.EventBus.$emit('total-due-received', response.body.data.total);
+            Vue.http.get("/payment/total-due/" + userId).then(function (response) {
+                _this5.EventBus.$emit("total-due-received", response.body.data.total);
             }, function (error) {});
         }
     }, {
-        key: 'sendMessage',
+        key: "sendMessage",
         value: function sendMessage(userId, content) {
             var _this6 = this;
 
-            this.EventBus.$emit('message-send-start');
-            Vue.http.post('/payment/sms/send', { id: userId, content: content }).then(function (response) {
+            this.EventBus.$emit("message-send-start");
+            Vue.http.post("/payment/sms/send", { id: userId, content: content }).then(function (response) {
                 console.log(response.body);
-                _this6.EventBus.$emit('message-send-done', response.body.data);
+                _this6.EventBus.$emit("message-send-done", response.body.data);
             }, function (error) {});
         }
     }, {
-        key: 'sendMessageAll',
+        key: "sendMessageAll",
         value: function sendMessageAll() {
             return new Promise(function (resolve, reject) {
-                Vue.http.get('/payment/message').then(function (response) {
+                Vue.http.get("/payment/message").then(function (response) {
                     if (response.body.status == 1) {
                         resolve(response.body.data);
                     }
@@ -86897,20 +86897,20 @@ var PaymentApi = function () {
             });
         }
     }, {
-        key: 'getPaymentMethod',
+        key: "getPaymentMethod",
         value: function getPaymentMethod(userId) {
             var _this7 = this;
 
-            this.EventBus.$emit('message-send-start');
-            Vue.http.get('/payment/method/sms/' + userId).then(function (response) {
-                _this7.EventBus.$emit('message-content-received', response.body.data);
+            this.EventBus.$emit("message-send-start");
+            Vue.http.get("/payment/method/sms/" + userId).then(function (response) {
+                _this7.EventBus.$emit("message-content-received", response.body.data);
             }, function (error) {});
         }
     }, {
-        key: 'sendMethodAll',
+        key: "sendMethodAll",
         value: function sendMethodAll() {
             return new Promise(function (resolve, reject) {
-                Vue.http.get('/payment/method/sms').then(function (response) {
+                Vue.http.get("/payment/method/sms").then(function (response) {
                     if (response.body.status == 1) {
                         resolve(response.body.status);
                     }
