@@ -48760,7 +48760,7 @@ var ComplainApi = function () {
       };
       return new Promise(function (resolve, reject) {
         Vue.http.get('/complain/search', { params: params }).then(function (response) {
-          resolve(response.body.data);
+          resolve(response.body);
         }, function (error) {});
       });
     }

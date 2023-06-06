@@ -61,7 +61,7 @@ class ComplainController extends Controller
 
     if (!is_null($complain)) {
       event(new ComplainCreated($complain));
-      return response()->ok();
+      return response()->json();
     }
 
     return response()->error();
@@ -106,7 +106,7 @@ class ComplainController extends Controller
     }
 
     $this->repository->pushCriteria(new LastCreatedCriteria);
-    return response()->ok($this->repository->paginate());
+    return response()->json($this->repository->paginate());
   }
 
   public function change(Request $request)
@@ -120,7 +120,7 @@ class ComplainController extends Controller
     $complain = $this->repository->change($coll);
 
     if (!is_null($complain)) {
-      return response()->ok();
+      return response()->json();
     }
 
     return response()->error();
