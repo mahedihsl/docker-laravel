@@ -22,7 +22,7 @@ class BillingController extends Controller
     public function status(Request $request)
     {
         // TODO: remove always TRUE statement
-        return response()->ok();
+        return response()->json();
 
         $user = $this->getApiUser();
 
@@ -33,7 +33,7 @@ class BillingController extends Controller
         $this->repository->pushCriteria(new BillingMonthCriteria($previous));
 
         if ($this->repository->all()->count() > 0) {
-            return response()->ok();
+            return response()->json();
         }
 
         return response()->error('Your monthly bill has not been paid. You can no longer use our services.');

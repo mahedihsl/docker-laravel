@@ -24,6 +24,6 @@ class ThanaController extends Controller
     {
         $this->repository->pushCriteria(new DistrictIdCriteria($district));
 
-        return response()->ok($this->repository->all());
+        return response()->json($this->repository->all());
     }
 }

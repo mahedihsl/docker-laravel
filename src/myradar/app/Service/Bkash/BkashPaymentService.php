@@ -54,13 +54,13 @@ class BkashPaymentService
       ->pushCriteria($criteria)
       ->with(['user', 'car'])
       ->all();
-    return response()->ok($paymentlist);
+    return response()->json($paymentlist);
   }
 
   public function getRefNo(Request $request, $userId)
   {
     $ref = User::find($userId)->ref_no;
-    return response()->ok($ref);
+    return response()->json($ref);
   }
 
   public function sendAll(Request $request)
@@ -72,7 +72,7 @@ class BkashPaymentService
       } catch (\Exception $e) {
       }
     }
-    return response()->ok();
+    return response()->json();
   }
 
   public function send(Request $request)
@@ -81,17 +81,17 @@ class BkashPaymentService
     $content = $request->get('content');
     $type = $request->get('type');
     $this->smsService->send(User::find($userId)->phone, $content, $type);
-    return response()->ok();
+    return response()->json();
   }
 
   public function getMsgContent($userId)
   {
     $months = $this->getDue($userId);
 
-    if (sizeof($months) == 0) return response()->ok('All paid');
+    if (sizeof($months) == 0) return response()->json('All paid');
     $content = $this->smsService->buildContent('payment_2', $months);
     // $content = $this->getContent($months);
-    return response()->ok($content);
+    return response()->json($content);
   }
 
   public function getContent($data)
@@ -219,7 +219,7 @@ class BkashPaymentService
       $this->sendMethod($user->id);
     }
 
-    return response()->ok();
+    return response()->json();
   }
 
   public function sendMethod($userId)
@@ -227,12 +227,12 @@ class BkashPaymentService
     try {
       $user = User::find($userId);
       $refNo = $user->ref_no;
-      if ($refNo == "") return response()->ok("add ref no!");
+      if ($refNo == "") return response()->json("add ref no!");
       $content = $this->smsService->buildContent('payment_1', ['ref_no' => $refNo]);
       // $content = $this->methodContent($refNo);
-      return response()->ok($content);
+      return response()->json($content);
     } catch (\Throwable $th) {
-      response()->ok($th->getMessage());
+      response()->json($th->getMessage());
     }
   }
 
@@ -263,7 +263,7 @@ class BkashPaymentService
       ]);
     }
 
-    return response()->ok($data);
+    return response()->json($data);
   }
 }
 

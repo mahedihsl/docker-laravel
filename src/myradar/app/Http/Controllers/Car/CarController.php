@@ -90,7 +90,7 @@ class CarController extends Controller
         $car = $this->repository->skipPresenter()->find($id);
 
         if ( ! is_null($car)) {
-            return response()->ok($car->presenter());
+            return response()->json($car->presenter());
         }
 
         return response()->error('Car Not Found');
@@ -109,7 +109,7 @@ class CarController extends Controller
         if($validation['status']){
           $car = $this->repository->save(collect($request->all()));
           if ( ! is_null($car)) {
-              return response()->ok();
+              return response()->json();
           }
 
           return response()->error();
@@ -131,7 +131,7 @@ class CarController extends Controller
         $car = $this->repository->skipPresenter()->change($data);
 
         if ( ! is_null($car)) {
-            return response()->ok($car->presenter());
+            return response()->json($car->presenter());
         }
 
         return response()->error();
@@ -152,7 +152,7 @@ class CarController extends Controller
                 ];
             });
 
-            return response()->ok($items);
+            return response()->json($items);
         }
 
         return response()->error('Car Not Found');
@@ -160,7 +160,7 @@ class CarController extends Controller
 
     public function packages(Request $request)
     {
-        return response()->ok([
+        return response()->json([
             Package::basicCar(),
             Package::proCar(),
             Package::proCarIII(),
@@ -177,7 +177,7 @@ class CarController extends Controller
         if ( ! is_null($car)) {
             $car->update([ 'status' => ($car->status + 1) % 2 ]);
 
-            return response()->ok();
+            return response()->json();
         }
 
         return response()->error();

@@ -26,14 +26,14 @@ class FenceController extends Controller
     {
         $this->repository->pushCriteria(new ThanaIdCriteria($thana));
 
-        return response()->ok($this->repository->all());
+        return response()->json($this->repository->all());
     }
 
     public function enterpriseIndex(Request $request, $carId)
     {
       $this->repository->pushCriteria(new CarIdCriteria($carId));
 
-      return response()->ok($this->repository->all());
+      return response()->json($this->repository->all());
     }
 
     public function toggle(Request $request)
@@ -58,7 +58,7 @@ class FenceController extends Controller
                 $car->fences()->detach($fence->id);
             }
 
-            return response()->ok();
+            return response()->json();
         }
 
         return response()->error('GeoFence Not Found');
@@ -76,7 +76,7 @@ class FenceController extends Controller
 
             $is_attached = isset($car->fence_ids) && in_array($fence->id, $car->fence_ids ?: []);
 
-            return response()->ok([
+            return response()->json([
                 'attached' => $is_attached,
                 'message' => 'New Geofence Saved',
             ]);
@@ -95,7 +95,7 @@ class FenceController extends Controller
     if ( ! is_null($fence) && ! is_null($car)) {
             event(new FenceDeleted($car, $fence));
 
-            return response()->ok('Geofence History Deleted');
+            return response()->json('Geofence History Deleted');
         }
 
         return response()->error('Item Not Found');

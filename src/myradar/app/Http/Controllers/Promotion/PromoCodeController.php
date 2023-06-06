@@ -26,7 +26,7 @@ class PromoCodeController extends Controller
           $num = rand(1000, 9999);
           $code = 'RADAR'.$num;
           if ( ! PromoCode::where('code', $code)->exists()) {
-              return response()->ok([
+              return response()->json([
                   'code' => $code,
               ]);
           }
@@ -36,14 +36,14 @@ class PromoCodeController extends Controller
     public function save(Request $request)
     {
       $this->repository->save(collect($request->all()));
-      return response()->ok();
+      return response()->json();
     }
 
     public function show(Request $request)
     {
       $this->repository->pushCriteria(new LastUpdatedCriteria());
 
-      return response()->ok($this->repository->with(['user'])->paginate());
+      return response()->json($this->repository->with(['user'])->paginate());
     }
 
 

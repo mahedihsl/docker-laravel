@@ -30,6 +30,6 @@ class CarController extends Controller
                     ->with(['driver'])
                     ->all();
 
-        return response()->ok($cars);
+        return response()->json($cars);
     }
 }

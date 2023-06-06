@@ -62,7 +62,7 @@ class CarController extends Controller
         $car = $this->repository->save(collect($request->all()));
 
         if ( ! is_null($car)) {
-            return response()->ok();
+            return response()->json();
         }
 
         return response()->error();
@@ -153,7 +153,7 @@ class CarController extends Controller
         $this->repository->setPresenter(CarInfoPresenter::class);
         $this->repository->pushCriteria(new UserIdCriteria($userId));
 
-        return response()->ok($this->repository->all());
+        return response()->json($this->repository->all());
     }
 
 }

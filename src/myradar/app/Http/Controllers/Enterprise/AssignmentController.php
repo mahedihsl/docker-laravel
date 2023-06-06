@@ -29,7 +29,7 @@ class AssignmentController extends Controller
     {
         $model = $this->repository->save(collect($request->all()));
 
-        return ! is_null($model) ? response()->ok() : response()->error();
+        return ! is_null($model) ? response()->json() : response()->error();
     }
 
     public function current(Request $request, $id)
@@ -43,7 +43,7 @@ class AssignmentController extends Controller
                         ->first();
 
             $transformer = new CarDriverTransformer();
-            return response()->ok([
+            return response()->json([
                 'info' => is_null($model) ? null : $model->presenter(),
                 'car' => $transformer->transform($device->car),
             ]);
@@ -57,7 +57,7 @@ class AssignmentController extends Controller
       $time = Carbon::NOw();
       $assignments = Assignment::where('driver_id', '=', $id)->where('to','>', $time)->get();
 
-      return response()->ok($assignments);
+      return response()->json($assignments);
     }
 
     public function assignmentInfo(Request $request, $driverId)
@@ -98,6 +98,6 @@ class AssignmentController extends Controller
 
       $type = $assignment->type;
 
-      return response()->ok(['type'=>$type, 'driverId' => $driverId, 'driverName' => $driverName, 'driverPhone'=>$driverPhone, 'reg_no' => $reg_no, 'employeeName' => $employeeName, 'employeePhone' => $employeePhone, 'message' => $message, 'start' => $start, 'dest' =>$dest, 'date' => $date, 'duration' => $duration]);
+      return response()->json(['type'=>$type, 'driverId' => $driverId, 'driverName' => $driverName, 'driverPhone'=>$driverPhone, 'reg_no' => $reg_no, 'employeeName' => $employeeName, 'employeePhone' => $employeePhone, 'message' => $message, 'start' => $start, 'dest' =>$dest, 'date' => $date, 'duration' => $duration]);
     }
 }

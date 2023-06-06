@@ -33,7 +33,7 @@ class EmployeeController extends Controller
     {
         $criteria = new UserIdCriteria($id);
         $list = $this->repository->pushCriteria($criteria)->all();
-        return response()->ok($list);
+        return response()->json($list);
     }
 
     public function save(CreateEmployee $request)
@@ -41,7 +41,7 @@ class EmployeeController extends Controller
         $model = $this->repository->skipPresenter()->save(collect($request->all()));
 
         if ( ! is_null($model)) {
-            return response()->ok($model->presenter());
+            return response()->json($model->presenter());
         }
 
         return response()->error('Oops ! Error, Try again');
@@ -52,7 +52,7 @@ class EmployeeController extends Controller
         $model = $this->repository->skipPresenter()->change(collect($request->all()));
 
         if ( ! is_null($model)) {
-            return response()->ok($model->presenter());
+            return response()->json($model->presenter());
         }
 
         return response()->error('Oops ! Error, Try again');
@@ -62,7 +62,7 @@ class EmployeeController extends Controller
     {
         $deleted = $this->repository->delete($request->get('id'));
 
-        return $deleted ? response()->ok() : response()->error();
+        return $deleted ? response()->json() : response()->error();
     }
 
 }

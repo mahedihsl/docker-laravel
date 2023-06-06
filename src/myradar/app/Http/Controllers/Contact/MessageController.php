@@ -36,7 +36,7 @@ class MessageController extends Controller
     {
         try {
             $this->promotionService->saveContactMessage($request->all());
-            return response()->ok('Message Sent');
+            return response()->json('Message Sent');
         } catch (\Exception $th) {
             return response()->error($th->getMessage());
         }

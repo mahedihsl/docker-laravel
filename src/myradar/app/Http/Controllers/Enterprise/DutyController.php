@@ -49,7 +49,7 @@ class DutyController extends Controller
             return $v->duration;
         });
 
-        return response()->ok([
+        return response()->json([
             'time' => intval($duration / 60),
             'month' => $from->format('F'),
         ]);
@@ -74,7 +74,7 @@ class DutyController extends Controller
                             ];
                         });
 
-        return response()->ok($records);
+        return response()->json($records);
     }
 
     public function export_v2(Request $request)
@@ -185,7 +185,7 @@ class DutyController extends Controller
         $reg_no = $carbody->reg_no;
         $records[$key]->put('reg_no', $reg_no);
         $temp = $records[$key];
-        //return response()->ok($temp);
+        //return response()->json($temp);
       //  dd($temp);
         $data->put('reg_no', $reg_no);
         $i = 0; $ind=0;
@@ -216,14 +216,14 @@ class DutyController extends Controller
           $data->put(++$index,0.0);
         }
         //dd($data);
-        //return response()->ok($data->get('reg_no'));
+        //return response()->json($data->get('reg_no'));
 
         $wholedata->push($data);
         $this->repository->popCriteria(new CarIdCriteria($car));
       }
 
       //dd($wholedata);
-    //  return response()->ok($wholedata);
+    //  return response()->json($wholedata);
 
       $mon = $from->format('M');
       $month =$from->format('F');

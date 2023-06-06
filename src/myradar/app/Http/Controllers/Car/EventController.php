@@ -63,7 +63,7 @@ class EventController extends Controller
                 ]
             ]
         ],200);
-        // return response()->ok($data);
+        // return response()->json($data);
     }
     public function recent(Request $request, $id)
     {
@@ -75,6 +75,6 @@ class EventController extends Controller
                         ->pushCriteria(new NRecordsCriteria($request->get('limit')))
                         ->all();
 
-        return response()->ok($models);
+        return response()->json($models);
     }
 }

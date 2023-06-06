@@ -29,6 +29,6 @@ class VehicleController extends Controller
 
        $districtlist = District::orderBy('name', 'asc')->get();
 
-       return response()->ok(['drivers' => $this->repository->all(), 'districtlist' => $districtlist]);
+       return response()->json(['drivers' => $this->repository->all(), 'districtlist' => $districtlist]);
     }
 }

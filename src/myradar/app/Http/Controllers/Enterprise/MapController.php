@@ -49,7 +49,7 @@ class MapController extends Controller
                     })
                     ->values();
 
-        return response()->ok($cars);
+        return response()->json($cars);
     }
 
 

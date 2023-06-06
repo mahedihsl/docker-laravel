@@ -42,7 +42,7 @@ class EngineController extends Controller
         $device = $this->repository->find($id);
 
         if (!is_null($device)) {
-            return response()->ok([
+            return response()->json([
                 'lock' => $device->lock_status,
                 'engine' => $device->engine_status,
             ]);
@@ -57,7 +57,7 @@ class EngineController extends Controller
             $device = $this->repository->find($request->get('device_id'));
             if (!is_null($device)) {
                 $info = $this->concox->status($device->com_id);
-                return response()->ok([
+                return response()->json([
                     "transition" => intval($info['transition']),
                     "engine" => intval($info['synthetic_engine']),
                     "lock" => intval($info['controlled_state']),
@@ -73,7 +73,7 @@ class EngineController extends Controller
         $device = Device::where('com_id', intval($request->get('com_id')))->first();
         if (!is_null($device)) {
             $device->update(['lock_status' => intval($request->get('lock'))]);
-            return response()->ok();
+            return response()->json();
         }
 
         return response()->error();
@@ -112,7 +112,7 @@ class EngineController extends Controller
                     }
                 }
 
-                return response()->ok(['lock_status' => $device->lock_status,]);
+                return response()->json(['lock_status' => $device->lock_status,]);
             }
         }
         return response()->error();
@@ -147,7 +147,7 @@ class EngineController extends Controller
 
         $device->update(['lock_status' => $target_lock]);
 
-        return response()->ok();
+        return response()->json();
     }
 
     public function update(Request $request)
@@ -204,7 +204,7 @@ class EngineController extends Controller
 
         $status = intval($request->get('status'));
         event(new EngineStatusChanged($device, $status));
-        return response()->ok();
+        return response()->json();
     }
 
     public function test(Request $request)

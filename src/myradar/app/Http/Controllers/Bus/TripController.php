@@ -49,7 +49,7 @@ class TripController extends Controller
             ]);
         }
 
-        return response()->ok($ret);
+        return response()->json($ret);
     }
 
     public function details(Request $request, $id, $day)
@@ -62,7 +62,7 @@ class TripController extends Controller
                 ->pushCriteria(new WithinDatesCriteria($start, $end, 'start'))
                 ->pushCriteria(new OrderByIdCriteria())
                 ->all();
-        return response()->ok($list);
+        return response()->json($list);
     }
 
 }

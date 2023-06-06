@@ -59,7 +59,7 @@ class PerformanceController extends Controller
         })
         ->values();
 
-        return response()->ok($models);
+        return response()->json($models);
     }
 
 	public function unhealthy(Request $request)

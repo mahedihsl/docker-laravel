@@ -70,7 +70,7 @@ class CustomerController extends Controller
                 $service = new UserMicroservice();
                 $service->onAccountCreated(['user_id' => $user->id]);
             } catch (ServiceException $e) {}
-            return response()->ok([
+            return response()->json([
                 'redirect' => route('manage.customer', ['id' => $user->id])
             ]);
         }
@@ -92,7 +92,7 @@ class CustomerController extends Controller
                         ->updateCustomer($request->get('id'), $data);
 
         if ( ! is_null($user)) {
-            return response()->ok($user->presenter());
+            return response()->json($user->presenter());
         }
 
         return response()->error('Error, Try Again !');
@@ -105,7 +105,7 @@ class CustomerController extends Controller
         ], $request->get('id'));
 
         if ( ! is_null($model)) {
-            return response()->ok();
+            return response()->json();
         }
 
         return response()->error();
@@ -144,14 +144,14 @@ class CustomerController extends Controller
     {
       $this->repository->setPresenter(UserInfoPresenter::class);
       //$this->repository->pushCriteria(new NRecordsCriteria(5));
-      return response()->ok($this->repository->get());
+      return response()->json($this->repository->get());
     }
 
     public function toggleHistory(Request $request, $id)
     {
         try {
             $service = new UserMicroservice();
-            return response()->ok($service->statusHistory($id));
+            return response()->json($service->statusHistory($id));
         } catch (ServiceException $e) {
             return response()->error($e->getMessage());
         }
@@ -165,7 +165,7 @@ class CustomerController extends Controller
         //             return $transformer->transform($item);
         //         });
 
-        //     return response()->ok($list);
+        //     return response()->json($list);
         // }
 
         // return response()->error();

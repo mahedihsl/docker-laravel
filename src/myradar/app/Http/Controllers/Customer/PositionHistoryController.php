@@ -114,7 +114,7 @@ class PositionHistoryController extends Controller
                         ->pushCriteria(new OrderByWhenCriteria())
                         ->all();
 
-        return response()->ok($positions);
+        return response()->json($positions);
     }
 
     public function getLastPosition(Request $request, $deviceId)
@@ -122,7 +122,7 @@ class PositionHistoryController extends Controller
         $device = Device::find($deviceId);
         $position = $this->repository->lastPosition($deviceId);
         if ( ! is_null($position)) {
-            return response()->ok([
+            return response()->json([
                 'pos' => $position,
                 'meta' => [
                     'engine' => $device->engine_status,

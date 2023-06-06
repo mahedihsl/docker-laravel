@@ -51,14 +51,14 @@ class TextTrackerController extends Controller
       $nullresponse = ['poi' => '-', 'distance' => 'N/A', 'thana' =>'-', 'district' =>'-', 'status' => $status];
 
       if(is_null($device)){
-        return response()->ok($nullresponse);
+        return response()->json($nullresponse);
       }
 
       $lastpos = $device->meta->get('pos');
       $this->repository->setPresenter(FencePresenter::class);
 
       if(is_null($lastpos)){
-        return response()->ok($nullresponse);
+        return response()->json($nullresponse);
       }
 
       $nearestPoi = $this->repository->scopeQuery(function($query) use ($lastpos) {
@@ -75,7 +75,7 @@ class TextTrackerController extends Controller
 
 
 
-      return response()->ok(['poi' => $nearestPoi['data']['name'], 'distance' => $distance, 'thana' => $thana->name, 'district' => $district->name, 'status' => $status]);
+      return response()->json(['poi' => $nearestPoi['data']['name'], 'distance' => $distance, 'thana' => $thana->name, 'district' => $district->name, 'status' => $status]);
     }
 
     public function assignmentInfo(Request $request, $driverId)
@@ -116,13 +116,13 @@ class TextTrackerController extends Controller
 
       $type = $assignment->type;
 
-      return response()->ok(['type'=>$type, 'driverId' => $driverId, 'driverName' => $driverName, 'driverPhone'=>$driverPhone, 'reg_no' => $reg_no, 'employeeName' => $employeeName, 'employeePhone' => $employeePhone, 'message' => $message, 'start' => $start, 'dest' =>$dest, 'date' => $date, 'duration' => $duration]);
+      return response()->json(['type'=>$type, 'driverId' => $driverId, 'driverName' => $driverName, 'driverPhone'=>$driverPhone, 'reg_no' => $reg_no, 'employeeName' => $employeeName, 'employeePhone' => $employeePhone, 'message' => $message, 'start' => $start, 'dest' =>$dest, 'date' => $date, 'duration' => $duration]);
     }
     public function thanalist(Request $request, $districtName){
       $district = District::where('name',$districtName)->first();
 
       $thana = Thana::orderBy('name', 'asc')->where('district_id',$district->id)->get();
 
-      return response()->ok(['thanalist'=>$thana]);
+      return response()->json(['thanalist'=>$thana]);
     }
 }
