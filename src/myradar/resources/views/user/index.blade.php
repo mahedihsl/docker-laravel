@@ -11,7 +11,7 @@
     <div class="col-md-12">
       <form class="form-inline" action="/users" method="get">
         <div class="form-group">
-          <input type="text" name="name" class="form-control" id="name" placeholder="Type User's Name" value="{{$params['name'] or ''}}">
+          <input type="text" name="name" class="form-control" id="name" placeholder="Type User's Name" value="{{isset($params['name']) ? $params['name'] : ''}}">
         </div>
 
         <button type="submit" class="btn btn-sm btn-primary">

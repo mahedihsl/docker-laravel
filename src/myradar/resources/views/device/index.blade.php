@@ -1,7 +1,10 @@
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
 @extends('layouts.new')
 
 @push('style')
-  <link rel="stylesheet" href="{{asset('vendors/buttons/buttons.min.css', true)}}">
+  <link rel="stylesheet" href="{{asset('vendors/buttons/buttons.min.css', $hasHttps)}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 @endpush
 
@@ -26,5 +29,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
   <script src="https://unpkg.com/tippy.js/dist/tippy.all.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
-  <script src="{{ asset('js/device/index.js', true) }}" charset="utf-8"></script>
+  <script src="{{ asset('js/device/index.js', $hasHttps) }}" charset="utf-8"></script>
 @endpush

@@ -335,17 +335,17 @@ Route::group(['middleware' => ['auth', 'role:4', 'customer:2']], function () {
       Route::post('/activation/export', [ActivationController::class, 'export']);
       Route::post('/activation/batch/disable', [ActivationController::class, 'batchDisable']);
 
-      Route::get('/devices', [DeviceController::class, 'index'])->name('devices');
-      Route::get('/device/newid', [DeviceController::class, 'generateId']);
+      Route::get('/devices', [Device_DeviceController::class, 'index'])->name('devices');
+      Route::get('/device/newid', [Device_DeviceController::class, 'generateId']);
 
-      Route::get('/device/bind/history', [DeviceController::class, 'bindHistory'])->name('bind.history');
-      Route::get('/device/bind/export', [DeviceController::class, 'bindExport']);
+      Route::get('/device/bind/history', [Device_DeviceController::class, 'bindHistory'])->name('bind.history');
+      Route::get('/device/bind/export', [Device_DeviceController::class, 'bindExport']);
 
-      Route::post('/device/create', [DeviceController::class, 'save']);
-      Route::get('/devices/recent/{skip}', [DeviceController::class, 'recent']);
-      Route::get('/devices/print/recent', [DeviceController::class, 'print']);
-      Route::get('/devices/export', [DeviceController::class, 'export']);
-      Route::post('/device/update/version', [DeviceController::class, 'updateVersion']);
+      Route::post('/device/create', [Device_DeviceController::class, 'save']);
+      Route::get('/devices/recent/{skip}', [Device_DeviceController::class, 'recent']);
+      Route::get('/devices/print/recent', [Device_DeviceController::class, 'print']);
+      Route::get('/devices/export', [Device_DeviceController::class, 'export']);
+      Route::post('/device/update/version', [Device_DeviceController::class, 'updateVersion']);
 
       Route::get('/bus/routes', [RouteController::class, 'index']);
       Route::get('/bus/company/names', [RouteController::class, 'companies']);

@@ -33,7 +33,7 @@ export default class DeviceApi {
 
     getRecentDevices(skip) {
         Vue.http.get(`/devices/recent/${skip}`).then(response => {
-            this.EventBus.$emit('device-list-found', response.body.data);
+            this.EventBus.$emit('device-list-found', response.body);
         })
     }
 
