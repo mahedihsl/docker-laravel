@@ -31,19 +31,23 @@ class BkashCheckoutURLController extends Controller
         $this->bkashPaymentService = new BkashPaymentService();
         $this->credential = new BkashCredential(config('bkash.tokenized.production'));
     }
-    public function new(Request $request){
-        dd('new');
-    }
+
     public function amount(Request $request, $uId)
-    {   
+    { 
         $user = User::where('uid', intval($uId))->first();
+
+        if(!$user){
+            return redirect()->back()->withErrors(['error' => 'You are not a myRADAR user.']);
+        }
+
         $total_due_bill = $this->bkashPaymentService->totalDue($user->id, $this->paymentRepository);
         $cars_bill_details = $this->bkashPaymentService->carDueBillCheck($user->id, $this->paymentRepository)['cars_bill_details'];
-        //dd($cars_bill_details);
+    
         return view('bkash.chcekout-url.amount')->with([
             'cars_bill_details' => $cars_bill_details,
             'total_due_bill' => $total_due_bill['total'],
-            'user' => $user
+            'user' => $user,
+            'uId' => $uId
         ]);
     }
     
@@ -53,6 +57,12 @@ class BkashCheckoutURLController extends Controller
         //$selectedCarIndexs = $request->input('car_index');
 
         $user = $request->user;
+
+        $language = $request->lang;
+
+        $total_bill = $request->total_bill;
+
+        $uId = $request->uId;
 
         // if(!$selectedCarIndexs){
         //     return redirect()->back()->withErrors(['error' => 'Please select a car']);
@@ -74,18 +84,26 @@ class BkashCheckoutURLController extends Controller
         //     $total_pay_bill +=  $request->input($selectedCarIndex);
 
         //   } 
-        
-        $total_bill = $request->total_bill;
 
 
-        if($total_bill < 1){
-            return redirect()->back()->withErrors(['error' => 'Minimum payable amount 1 tk']);
+        // if($language == 'en'){
+        //     if($total_bill < 1){
+        //         return redirect()->back()->withErrors(['error' => 'Amount must be minimum ৳ 1.']);
+        //     }
+        // }else{
+        //     if($total_bill < 1){
+        //         return redirect()->back()->withErrors(['error' => 'সর্বনিম্ন ১ টাকা দিন।']);
+        //     }
+        // }
+
+        if ($total_bill < 1) {
+           return redirect('/p/'.$uId);
         }
-
-          
+       
         return view('bkash.chcekout-url.pay')->with([
             //'car_wise_bill' => json_encode($car_wise_bill),
             //'selected_cars' => $selectedCars,
+            'language' => $language,
             'amount' => $total_bill,
             'user' => $user
         ]);

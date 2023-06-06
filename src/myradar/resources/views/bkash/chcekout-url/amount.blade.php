@@ -3,30 +3,6 @@
 @section('content')
     <div class=" md:h-[70vh] md:flex flex-col items-center justify-center ">
         <br>
-        {{-- <div class="flex justify-center items-stretch w-full">
-            <div class="col-span-7 pr-1 md:pr-[50px]">
-                <img src="/images/myradar-logo-blue.png" class="img-fluid mb-3 rounded" alt="myradar-logo-blue"
-                    style="max-width: 50px;">
-                <h4>myRADAR</h4>
-            </div>
-
-
-            <div class="col-span-5 pr-4 pb-4">
-        
-
-                <div class="toggle-switch border-2 border-gray-100">
-                    <input type="checkbox" id="languageToggle" class="hidden">
-                    <label for="languageToggle" class="toggle-label flex">
-                        <span class="toggle-text option-english bg-gray-200 rounded-l p-2 cursor-pointer hidden"
-                            id="english">English</span>
-                        <span class="toggle-text option-bengali bg-gray-200 rounded-r p-2 cursor-pointer"
-                            id="bangla">বাংলা</span>
-                    </label>
-                </div>
-            </div>
-
-
-        </div> --}}
         <div class="grid grid-cols-12 w-full ">
             <div class="col-span-4"></div>
             <div class="col-span-4">
@@ -59,8 +35,6 @@
             </div>
         </div>
 
-
-
         <div class="flex justify-center items-stretch w-full px-2">
             <div class="flex flex-col justify-center items-center gap-2">
                 {{-- <h4>myRADAR</h4> --}}
@@ -76,7 +50,7 @@
                             <div class="card-body">
                                 <div class="card-text"><span class="text-sm font-normal" id="greetingMsg">Dear Mr.
                                         {{ $user->name }} Sir,
-                                        Your total due bill &#2547; {{ number_format($total_due_bill) }}</span>
+                                        Your total due bill {{ number_format($total_due_bill) }} tk.</span>
                                     <input type="hidden" id="totalBill" name="totalBill" value='{{ $total_due_bill }}'>
                                 </div>
                             </div>
@@ -141,17 +115,13 @@
                                                     value="{{ $car_bill_details['reg_no'] }}">
                                                 <div class="grid grid-cols-12 gap-2 items-center">
                                                     <div class="col-span-5 md:col-span-4 grid-cols-12">
-                                                        {{-- <input class="col-span-1 form-check-input" type="checkbox"
-                                                            name="car_index[]" value="{{ $i }}" checked> --}}
+                        
                                                         <label
                                                             class="col-span-11  form-check-label">{{ $car_bill_details['reg_no'] }}</label>
                                                     </div>
-                                                    {{-- <input type="number" name="{{ $i }}"
-                                                        value="{{ $car_bill_details['bill'] }}"
-                                                        class="form-control col-span-3 md:col-span-4  border rounded border-slate-400 px-2 py-1 shadow-md"> --}}
+                                            
                                                     <label class="form-control col-span-3 md:col-span-4 px-2 py-1"><span
-                                                            class="font-normal text-xs">&#2547;
-                                                            {{ number_format($car_bill_details['bill']) }}</span>
+                                                            class="font-normal text-xs">{{ number_format($car_bill_details['bill']) }}</span>
                                                     </label>
                                                     <label class="form-check-label col-span-4 pl-2"><span
                                                             class="font-normal text-xs">{{ $formatted_date }}</span>
@@ -168,8 +138,6 @@
                                                 value="{{ $car_bill_details['reg_no'] }}">
                                             <div class="grid grid-cols-12 gap-2 items-center">
                                                 <div class="col-span-5 md:col-span-4 grid-cols-12">
-                                                    {{-- <input class="col-span-1 form-check-input" type="checkbox"
-                                                        name="car_index[]" value="{{ $i }}" checked> --}}
                                                     <label class="col-span-5 font-semibold text-base form-check-label"
                                                         id="payAmountText">Pay
                                                         Amount</label>
@@ -178,10 +146,6 @@
                                                     value="{{ $total_due_bill }}"
                                                     class="form-control col-span-3 md:col-span-4 font-semibold border rounded border-slate-400 px-2 py-1 shadow-md"
                                                     onchange="billCheck(this.value)">
-                                                {{-- <label
-                                                    class="form-control col-span-3 md:col-span-4 px-2 py-1"><span
-                                                        class="font-normal text-xs">{{ number_format($car_bill_details['bill']) }}</span>
-                                                </label> --}}
                                                 <label class="form-check-label col-span-4 pl-2"><span
                                                         class="font-normal text-xs"></span>
                                                 </label>
@@ -215,29 +179,6 @@
                 @endif
             </div>
         </div>
-
-        {{-- 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              var englishOption = document.querySelector('.option-english');
-              var bengaliOption = document.querySelector('.option-bengali');
-              var languageToggle = document.getElementById('languageToggle');
-            
-              englishOption.classList.add('bg-blue-500'); // Apply initial background color to "English" option
-            
-              languageToggle.addEventListener('change', function() {
-                if (languageToggle.checked) {
-                  englishOption.classList.remove('bg-blue-500');
-                  bengaliOption.classList.add('bg-blue-500');
-
-                } else {
-                  bengaliOption.classList.remove('bg-blue-500');
-                  englishOption.classList.add('bg-blue-500');
-                }
-              });
-            });
-            </script> --}}
-
 
         <script>
             var selectedLang = 'bn';
@@ -275,13 +216,6 @@
 
             var form = document.getElementById('bkashForm');
             form.addEventListener('submit', function(event) {
-                // var languageSelect = document.getElementById('languageSelect').value;
-                // if (languageToggle.checked) {
-                //     selectedLang = 'bn';
-
-                // } else {
-                //     selectedLang = 'en';
-                // }
                 let selectedLang = languageChecker();
 
                 var lang = document.getElementById('lang');
@@ -290,19 +224,7 @@
             });
 
             function billCheck(inputValue) {
-                //var languageSelect = document.getElementById('languageSelect').value;
-                //var lang = document.getElementById('lang');
-
-                // if (languageToggle.checked) {
-                //     selectedLang = 'bn';
-
-                // } else {
-                //     selectedLang = 'en';
-                // }
-
                 let selectedLang = languageChecker();
-
-                // lang.value = selectedLang;
                 if (+inputValue < 1 && selectedLang === 'en') {
                     document.getElementById('errorMessageBn').style.display = 'none';
                     document.getElementById('errorMessageEn').style.display = 'block';
@@ -314,12 +236,7 @@
                     document.getElementById('errorMessageBn').style.display = 'none';
                 }
             }
-
-            // var languageSelect = document.getElementById('languageSelect');
-            // languageSelect.addEventListener('change', function() {
             languageToggle.addEventListener('change', function() {
-                //selectedLang = 'bn';
-                //console.log(selectedLang);
                 function formatNumberWithComma(number) {
                     const numberString = number.toString();
                     const digits = numberString.split('.');
@@ -391,12 +308,11 @@
                     if (+totalBill > 0) {
                         console.log(formatNumberWithComma(totalBill));
                         greetingMsg.textContent =
-                            `Dear Mr. ${user.name} Sir, Your total due bill ৳ ${formatNumberWithComma(totalBill)}`;
+                            `Dear Mr. ${user.name} Sir, Your total due bill ${formatNumberWithComma(totalBill)} tk.`;
                     } else {
                         greetingMsg.textContent = `Dear ${user.name} Sir, thanks !! You don't have any due bill.`;
                     }
                 }
-                // });
             });
         </script>
     </div>
