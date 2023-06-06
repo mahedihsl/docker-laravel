@@ -403,7 +403,7 @@ Route::middleware(['auth', 'role:3'])->group(function () {
   Route::get('/vehicles/search', [CarController::class, 'search']);
   Route::get('/vehicles/export', [CarController::class, 'export']);
 
-  // Route::get('unhealthy/device', 'Device\PerformanceController@unhealthy');
+  Route::get('unhealthy/device',[PerformanceController::class,'unhealthy']);
 });
 
 //   // customer care
