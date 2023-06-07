@@ -24,6 +24,6 @@ class DistrictController extends Controller
     {
         $this->repository->pushCriteria(new SortByNameCriteria());
 
-        return response()->ok($this->repository->all());
+        return response()->json($this->repository->all());
     }
 }

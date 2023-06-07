@@ -34,6 +34,6 @@ class FenceLogController extends Controller
             return $transformer->transform($log);
         });
 
-        return response()->ok($items);
+        return response()->json($items);
     }
 }

@@ -40,7 +40,7 @@ class FenceLogController extends Controller
                 return $transformer->transform($log);
             });
 
-            return response()->ok($items);
+            return response()->json($items);
         }
 
         return response()->error('No Car Found');
@@ -54,7 +54,7 @@ class FenceLogController extends Controller
         if ( ! is_null($car) && ! is_null($fence)) {
             event(new FenceAttached($car, $fence));
 
-            return response()->ok('Geofence Added');
+            return response()->json('Geofence Added');
         }
 
         return response()->error('Resource Not Found');

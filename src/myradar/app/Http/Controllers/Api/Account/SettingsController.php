@@ -37,7 +37,7 @@ class SettingsController extends Controller
             $model = $this->repository->save(User::find($id));
         }
 
-        return response()->ok($model);
+        return response()->json($model);
     }
 
     public function change(Request $request)
@@ -47,7 +47,7 @@ class SettingsController extends Controller
 
     public function status(Request $request)
     {
-        return response()->ok(
+        return response()->json(
             $this->repository
                 ->pushCriteria(new UserIdCriteria($this->getApiUser()->id))
                     ->first());
@@ -68,7 +68,7 @@ class SettingsController extends Controller
 
         $this->repository->change($setting->id, collect($data));
 
-        return response()->ok();
+        return response()->json();
     }
 
     public function test(Request $request)
@@ -104,7 +104,7 @@ class SettingsController extends Controller
 		});
 
 
-        return response()->ok([
+        return response()->json([
             'count' => $items->count()
         ]);
     }

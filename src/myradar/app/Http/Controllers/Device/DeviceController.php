@@ -44,7 +44,7 @@ class DeviceController extends Controller
             if ( ! Device::where('phone', $phone)->exists()) {
                 $device = $this->repository->save($comId, $phone, $version, $imei);
 
-                return response()->ok([
+                return response()->json([
                     'com_id' => $device->com_id,
                     'phone' => $device->phone,
                     'version' => $device->version,
@@ -64,7 +64,7 @@ class DeviceController extends Controller
         while (true) {
             $comId = rand(10000, 99999);
             if ( ! Device::where('com_id', $comId)->exists()) {
-                return response()->ok([
+                return response()->json([
                     'com_id' => $comId,
                 ]);
             }
@@ -86,7 +86,7 @@ class DeviceController extends Controller
                                 'time' => $device->created_at->toDayDateTimeString(),
                             ];
                         });
-        return response()->ok($devices);
+        return response()->json($devices);
     }
 
     public function print(Request $request)
@@ -115,7 +115,7 @@ class DeviceController extends Controller
         if ( ! is_null($device)) {
             if ( ! Device::where('phone', $phone)->exists()) {
                 $device->update([ 'phone' => $phone ]);
-                return response()->ok();
+                return response()->json();
             }
 
             return response()->error('Phone number already in use');
@@ -155,7 +155,7 @@ class DeviceController extends Controller
       $device = Device::find($id);
       if(is_null($device))
         return response()->error('No Device Found');
-      return response()->ok($device->phone);
+      return response()->json($device->phone);
     }
 
     public function updateVersion(Request $request)
@@ -165,7 +165,7 @@ class DeviceController extends Controller
 
       $device = Device::where('com_id', '=', $comId)->update(['version' => $version]);
 
-      return response()->ok();
+      return response()->json();
     }
 
     public function bindHistory(Request $request)

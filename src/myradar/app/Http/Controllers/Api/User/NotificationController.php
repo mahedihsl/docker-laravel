@@ -18,7 +18,7 @@ class NotificationController extends Controller
         $user = User::where('api_token', $apiToken)->first();
 
         if (is_null($user)) {
-            return response()->ok('Token Received');
+            return response()->json('Token Received');
         }
 
         $new_token = $request->get('new');
@@ -52,7 +52,7 @@ class NotificationController extends Controller
 
         $log .= json_encode($request->all());
 
-        return response()->ok('Token Received');
+        return response()->json('Token Received');
     }
 
     public function checkSubscription(Request $request)
@@ -65,7 +65,7 @@ class NotificationController extends Controller
                   ->where('device_token', $new_token)
                   ->where('user_id', $user->id)
                   ->exists();
-      return response()->ok($exists);;
+      return response()->json($exists);;
     }
 
     public function test(Request $request, $id)
@@ -79,6 +79,6 @@ class NotificationController extends Controller
         $service = new PushMicroservice();
         $service->send($id, $data);
 
-        return response()->ok();
+        return response()->json();
     }
 }

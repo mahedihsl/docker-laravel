@@ -25,21 +25,21 @@ class ZoneController extends Controller
     {
         $models = $this->repository->pushCriteria(new UserIdCriteria($id))->all();
 
-        return response()->ok($models);
+        return response()->json($models);
     }
 
     public function store(CreateZone $request)
     {
         $model = $this->repository->save(collect($request->all()));
 
-        return is_null($model) ? response()->error() : response()->ok($model);
+        return is_null($model) ? response()->error() : response()->json($model);
     }
 
     public function delete(Request $request)
     {
         $deleted = $this->repository->delete($request->get('id'));
 
-        return $deleted ? response()->ok() : response()->error();
+        return $deleted ? response()->json() : response()->error();
     }
 
 }

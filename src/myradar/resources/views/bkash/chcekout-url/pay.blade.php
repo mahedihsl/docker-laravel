@@ -76,7 +76,7 @@
             {{-- <span class="text-xl text-gray-700 font-medium ">{{$language}}</span> --}}
             @if($language == 'en')
             <span class="text-xl text-gray-700 font-medium ">Total</span>
-            <span class="text-xl text-gray-700 font-medium float-right">&#2547; {{ number_format($amount) }} </span>
+            <span class="text-xl text-gray-700 font-medium float-right">{{ number_format($amount) }} TK.</span>
             @else
             <span class="text-xl text-gray-700 font-medium ">সর্বমোট</span>
             <span class="text-xl text-gray-700 font-medium float-right">&#2547; {{ number_format($amount) }} </span>

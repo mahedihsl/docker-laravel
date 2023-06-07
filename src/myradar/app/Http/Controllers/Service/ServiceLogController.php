@@ -21,7 +21,7 @@ class ServiceLogController extends Controller
     public function history(Request $request, $car, $service)
     {
         $service = new ServiceLog($car, $service);
-        return response()->ok($service->get());
+        return response()->json($service->get());
     }
 
     public function report(Request $request, $car_id)
@@ -33,7 +33,7 @@ class ServiceLogController extends Controller
 
         try {
             $response = $this->service->report($device->id);
-            return response()->ok($response);
+            return response()->json($response);
         } catch (ServiceException $e) {
             return response()->error($e->getMessage());
         }

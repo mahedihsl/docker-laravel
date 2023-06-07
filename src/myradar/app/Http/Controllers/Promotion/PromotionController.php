@@ -31,7 +31,7 @@ class PromotionController extends Controller
     public function save(Request $request)
     {
       $this->repository->save(collect($request->all()));
-      return response()->ok();
+      return response()->json();
     }
 
     public function show(Request $request)
@@ -61,7 +61,7 @@ class PromotionController extends Controller
           return response()->error($e);
         }
 
-        return response()->ok();
+        return response()->json();
     }
 
     public function notification(Request $request)
@@ -77,7 +77,7 @@ class PromotionController extends Controller
             $service = new PushMicroservice();
             $service->send($id, $data);
 
-            return response()->ok();
+            return response()->json();
         }
 
         return response()->error();

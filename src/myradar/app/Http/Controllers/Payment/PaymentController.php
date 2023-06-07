@@ -43,7 +43,7 @@ class PaymentController extends Controller
       } catch (\Exception $e) {
         Log::info('Error during bill observe', ['error' => $e->getMessage()]);
       }
-      return response()->ok();
+      return response()->json();
     }
 
     return response()->error();
@@ -63,7 +63,7 @@ class PaymentController extends Controller
   public function getRefNo(Request $request, $userId)
   {
     $ref = User::find($userId)->ref_no;
-    return response()->ok($ref);
+    return response()->json($ref);
   }
 
   public function sendAll(Request $request)
@@ -75,7 +75,7 @@ class PaymentController extends Controller
       } catch (\Exception $e) {
       }
     }
-    return response()->ok();
+    return response()->json();
   }
 
   public function send(Request $request)
@@ -91,10 +91,10 @@ class PaymentController extends Controller
   {
     $months = $this->getDue($userId);
 
-    if (sizeof($months) == 0) return response()->ok('All paid');
+    if (sizeof($months) == 0) return response()->json('All paid');
     $content = $this->smsService->buildContent('payment_2', $months);
     // $content = $this->getContent($months);
-    return response()->ok($content);
+    return response()->json($content);
   }
 
   public function getContent($data)
@@ -210,7 +210,7 @@ class PaymentController extends Controller
       $this->sendMethod($user->id);
     }
 
-    return response()->ok();
+    return response()->json();
   }
 
   public function sendMethod($userId)
@@ -218,12 +218,12 @@ class PaymentController extends Controller
     try {
       $user = User::find($userId);
       $refNo = $user->ref_no;
-      if ($refNo == "") return response()->ok("add ref no!");
+      if ($refNo == "") return response()->json("add ref no!");
       $content = $this->smsService->buildContent('payment_1', ['ref_no' => $refNo]);
       // $content = $this->methodContent($refNo);
-      return response()->ok($content);
+      return response()->json($content);
     } catch (\Throwable $th) {
-      response()->ok($th->getMessage());
+      response()->json($th->getMessage());
     }
   }
 
@@ -254,6 +254,6 @@ class PaymentController extends Controller
       ]);
     }
 
-    return response()->ok($data);
+    return response()->json($data);
   }
 }

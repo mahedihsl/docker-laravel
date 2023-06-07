@@ -34,7 +34,7 @@ class MileageController extends Controller
     {
         $car = Car::find($carId);
         if (!$car->status) {
-            return response()->ok();
+            return response()->json();
         }
 
         $items = collect(range(0, intval($days) - 1))->map(function($d) use ($carId) {
@@ -52,14 +52,14 @@ class MileageController extends Controller
             return ['value' => round($value / 1000, 2), 'date' => $time->format('j M'), 'year' => $time->format('Y')];
         });
 
-        return response()->ok($items);
+        return response()->json($items);
     }
 
     public function archive(Request $request, $id)
     {
         $device = Device::with(['car'])->find($id);
         if (!$device->car->status) {
-            return response()->ok();
+            return response()->json();
         }
         
         $from = Carbon::createFromFormat('Y-n-j', $request->get('from'));
@@ -78,7 +78,7 @@ class MileageController extends Controller
             return ['value' => round($value / 1000, 2), 'date' => $time->format('j M'), 'year' => $time->format('Y')];
         });
 
-        return response()->ok($items);
+        return response()->json($items);
     }
 
 }

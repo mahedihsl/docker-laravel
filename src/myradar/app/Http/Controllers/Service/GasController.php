@@ -40,7 +40,7 @@ class GasController extends Controller
             }
 
             event(new GasRefueled($device, $range));
-            return response()->ok('Refuel event processed');
+            return response()->json('Refuel event processed');
         } catch (\Exception $th) {
             return response()->error($th->getMessage());
         }
@@ -50,7 +50,7 @@ class GasController extends Controller
     {
         // If this is demo car
         if ($id == '5f63fbca32ebd87dc663002a') {
-            return response()->ok([
+            return response()->json([
                 'id' => '...',
                 'value' => 2,
                 'when' => Carbon::today()->format('j M'),
@@ -59,7 +59,7 @@ class GasController extends Controller
 
         $device = Device::with(['car'])->find($id);
         if (!$device->car->status) {
-            return response()->ok(['value' => 0]);
+            return response()->json(['value' => 0]);
         }
 
         $this->dailyRepo->setPresenter(DailyGasPresenter::class);
@@ -68,10 +68,10 @@ class GasController extends Controller
 
         $item = $this->dailyRepo->skipPresenter()->first();
         if (!is_null($item)) {
-            return response()->ok($item->presenter());
+            return response()->json($item->presenter());
         }
 
-        return response()->ok(['value' => 0]);
+        return response()->json(['value' => 0]);
     }
 
     /**
@@ -85,13 +85,13 @@ class GasController extends Controller
     {
         $device = Device::with(['car'])->find($id);
         if (!$device->car->status) {
-            return response()->ok(['items' => []]);
+            return response()->json(['items' => []]);
         }
 
         $this->dailyRepo->pushCriteria(new DeviceIdCriteria($id));
         $this->dailyRepo->pushCriteria(new BeforeWhenCriteria(Carbon::today()));
 
-        return response()->ok([
+        return response()->json([
             'items' => $this->filterGasValues($day, Carbon::yesterday())
         ]);
     }
@@ -106,7 +106,7 @@ class GasController extends Controller
     {
         $device = Device::with(['car'])->find($id);
         if (!$device->car->status) {
-            return response()->ok(['items' => []]);
+            return response()->json(['items' => []]);
         }
 
         $from = Carbon::createFromFormat('Y-n-j', $request->get('from'));
@@ -120,7 +120,7 @@ class GasController extends Controller
         $this->dailyRepo->pushCriteria(new BeforeWhenCriteria($to->copy()->addDay()));
         $this->dailyRepo->pushCriteria(new AfterWhenCriteria($from->copy()->subDay()));
 
-        return response()->ok([
+        return response()->json([
             'items' => $this->filterGasValues($day, $to)
         ]);
     }

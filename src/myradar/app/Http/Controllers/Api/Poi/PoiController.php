@@ -38,13 +38,13 @@ class PoiController extends Controller
     {
         $items = $this->repository->paginate(1000);
         if (count($items['data']) == 0) {
-            return response()->ok([
+            return response()->json([
                 'data' => [],
                 'time' => $this->lastUpdatedTime(),
             ]);
         }
 
-        return response()->ok($items);
+        return response()->json($items);
     }
 
     public function check(Request $request)
@@ -52,9 +52,9 @@ class PoiController extends Controller
         try {
             $lastTime = intval($request->get('time'));
             $updateAvailable = $lastTime < $this->lastUpdatedTime();
-            return response()->ok($updateAvailable);
+            return response()->json($updateAvailable);
         } catch (\Exception $e) {
-            return response()->ok(false);
+            return response()->json(false);
         }
     }
 

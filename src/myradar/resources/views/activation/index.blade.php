@@ -1,7 +1,10 @@
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
 @extends('layouts.new')
 
 @push('style')
-<link rel="stylesheet" href="{{ asset('vendors/datetimepicker/build/jquery.datetimepicker.min.css', true) }}">
+<link rel="stylesheet" href="{{ asset('vendors/datetimepicker/build/jquery.datetimepicker.min.css', $hasHttps) }}">
 @endpush
 
 @section('content')
@@ -84,8 +87,8 @@
           {{$item->car->user->phone}}
         </td>
         <td class="text-center"><strong>{{$item->key}}</strong></td>
-        <td class="text-center">{{$item->car->device->com_id or 'N/A'}}</td>
-        <td class="text-center">{{$item->car->device->imei or 'N/A'}}</td>
+        <td class="text-center">{{isset($item->car->device->com_id) ? $item->car->device->com_id  : 'N/A'}}</td>
+        <td class="text-center">{{isset($item->car->device->imei) ? $item->car->device->imei : 'N/A'}}</td>
         <td class="text-center">{{$item->car->reg_no}}</td>
         <td class="text-center">{{$item->car->user->isEnabled() ? 'Yes' : 'No'}}</td>
         <td class="text-center">{{$item->created_at->format("j M'y, g:i a")}}</td>
@@ -98,8 +101,8 @@
 @endsection
 
 @push('script')
-<script src="{{ asset('js/moment.min.js', true) }}" charset="utf-8"></script>
-<script src="{{asset('vendors/datetimepicker/build/jquery.datetimepicker.full.min.js', true)}}"></script>
+<script src="{{ asset('js/moment.min.js', $hasHttps) }}" charset="utf-8"></script>
+<script src="{{asset('vendors/datetimepicker/build/jquery.datetimepicker.full.min.js', $hasHttps)}}"></script>
 <script type="text/javascript">
   $(function() {
       $('input.date-picker').datetimepicker({

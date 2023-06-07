@@ -90,7 +90,7 @@ class EventController extends Controller
             $events = $events->concat($this->getDemoGasRefuelEvents());
         }
 
-        return response()->ok([
+        return response()->json([
             'items' => $events,
         ]);
     }

@@ -71,7 +71,7 @@ class DeviceController extends Controller
 
             dispatch(new OnDeviceBindedJob($device->id, $car_id));
 
-            return response()->ok('Commercial ID attached');
+            return response()->json('Commercial ID attached');
         } catch (ServiceException $e) {
             return response()->error($e->getMessage());
         }
@@ -120,7 +120,7 @@ class DeviceController extends Controller
     {
         try {
             $this->service->unbindDevice($request->get('car_id'));
-            return response()->ok();
+            return response()->json();
         } catch (ServiceException $e) {
             return response()->error($e->getMessage());
         }

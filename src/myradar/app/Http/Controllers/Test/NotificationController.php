@@ -35,7 +35,7 @@ class NotificationController extends Controller
         $phone = $request->get('phone');
         $content = 'Testing SMS from myRADAR';
 
-        // return response()->ok([
+        // return response()->json([
         //     'phone' => $phone,
         //     'content' => $content,
         // ]);
@@ -45,7 +45,7 @@ class NotificationController extends Controller
             // $gateway = new UserMicroservice();
             // $res = $gateway->test();
 
-            return response()->ok();            
+            return response()->json();            
         } catch (\Exception $e) {
             return response()->error($e->getMessage());
         }
@@ -53,7 +53,7 @@ class NotificationController extends Controller
         // $job = new SmsService(true);
         // $res = $job->send($phone, $content);
 
-        // return response()->ok([
+        // return response()->json([
         //     'data' => $res,
         // ]);
     }
@@ -68,7 +68,7 @@ class NotificationController extends Controller
         $gateway = new PushMicroservice();
         $reply = $gateway->send($request->get('user_id'), $data);
 
-        return response()->ok([ 'data' => $reply ]);
+        return response()->json([ 'data' => $reply ]);
     }
 
     // public function onesignal(Request $request)

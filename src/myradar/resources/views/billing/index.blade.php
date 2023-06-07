@@ -1,3 +1,6 @@
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
 @extends('layouts.new')
 
 @push('style')
@@ -57,8 +60,8 @@
 @endsection
 
 @push('script')
-  <script src="{{ asset('js/moment.min.js', true) }}" charset="utf-8"></script>
-  <script src="{{asset('vendors/datetimepicker/build/jquery.datetimepicker.full.min.js', true)}}"></script>
+  <script src="{{ asset('js/moment.min.js', $hasHttps) }}" charset="utf-8"></script>
+  <script src="{{asset('vendors/datetimepicker/build/jquery.datetimepicker.full.min.js', $hasHttps)}}"></script>
   <script type="text/javascript">
     $(function() {
       $('input.date-picker').datetimepicker({

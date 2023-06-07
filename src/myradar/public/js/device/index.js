@@ -46887,7 +46887,7 @@ var DeviceApi = function () {
             var _this4 = this;
 
             Vue.http.get('/devices/recent/' + skip).then(function (response) {
-                _this4.EventBus.$emit('device-list-found', response.body.data);
+                _this4.EventBus.$emit('device-list-found', response.body);
             });
         }
     }, {
