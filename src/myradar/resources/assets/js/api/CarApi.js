@@ -135,6 +135,7 @@ export default class CarApi {
     getPackages() {
         Vue.http.get(`/car/packages`).then(
             response => {
+                console.log(response)
                 this.EventBus.$emit(
                     "service-packages-found",
                     response.body.data.items
