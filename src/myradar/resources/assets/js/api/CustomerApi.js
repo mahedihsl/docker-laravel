@@ -31,7 +31,7 @@ export default class CustomerApi {
         return new Promise(function(resolve, reject) {
             Vue.http.post("/customer/save", data).then(
                 response => {
-                    if (response.body.status == 1) {
+                    if (response.status == 200) {
                         resolve(response.body.data);
                     }
                 },
@@ -49,7 +49,7 @@ export default class CustomerApi {
         return new Promise(function(resolve, reject) {
             Vue.http.get(`/customer/toggle-history/${id}`).then(
                 response => {
-                    if (response.body.status == 1) {
+                    if (response.status == 200) {
                         resolve(response.body.data);
                     }
                 },
@@ -71,10 +71,10 @@ export default class CustomerApi {
         };
         Vue.http.post(`/customer/update`, data).then(
             response => {
-                if (response.body.status == 1) {
+                if (response.status == 200) {
                     this.EventBus.$emit(
                         "profile-update-done",
-                        response.body.data
+                        response.body
                     );
                 } else {
                     this.EventBus.$emit(
@@ -105,7 +105,7 @@ export default class CustomerApi {
         };
         Vue.http.post(`/customer/password/change`, data).then(
             response => {
-                if (response.body.status == 1) {
+                if (response.status == 200) {
                     this.EventBus.$emit("password-update-done");
                 } else {
                     this.EventBus.$emit(
@@ -151,7 +151,7 @@ export default class CustomerApi {
             response => {
                 this.EventBus.$emit(
                     "customer-settings-found",
-                    response.body.data
+                    response.body
                 );
             },
             error => {}

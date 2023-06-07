@@ -64571,8 +64571,8 @@ var CustomerApi = function () {
                 status: info.status
             };
             Vue.http.post("/customer/update", data).then(function (response) {
-                if (response.body.status == 1) {
-                    _this.EventBus.$emit("profile-update-done", response.body.data);
+                if (response.status == 200) {
+                    _this.EventBus.$emit("profile-update-done", response.body);
                 } else {
                     _this.EventBus.$emit("profile-update-error", 200, "Error, Try Again");
                 }
@@ -64594,7 +64594,7 @@ var CustomerApi = function () {
                 password_confirmation: pass2
             };
             Vue.http.post("/customer/password/change", data).then(function (response) {
-                if (response.body.status == 1) {
+                if (response.status == 200) {
                     _this2.EventBus.$emit("password-update-done");
                 } else {
                     _this2.EventBus.$emit("password-update-error", 200, "Error, Try Again");
@@ -64630,7 +64630,7 @@ var CustomerApi = function () {
             var _this5 = this;
 
             Vue.http.get("/customer/settings/" + id).then(function (response) {
-                _this5.EventBus.$emit("customer-settings-found", response.body.data);
+                _this5.EventBus.$emit("customer-settings-found", response.body);
             }, function (error) {});
         }
     }, {
@@ -64688,7 +64688,7 @@ var CustomerApi = function () {
 
             return new Promise(function (resolve, reject) {
                 Vue.http.post("/customer/save", data).then(function (response) {
-                    if (response.body.status == 1) {
+                    if (response.status == 200) {
                         resolve(response.body.data);
                     }
                 }, function (error) {
@@ -64704,7 +64704,7 @@ var CustomerApi = function () {
         value: function getToggleHistory(id) {
             return new Promise(function (resolve, reject) {
                 Vue.http.get("/customer/toggle-history/" + id).then(function (response) {
-                    if (response.body.status == 1) {
+                    if (response.status == 200) {
                         resolve(response.body.data);
                     }
                 }, function (error) {});

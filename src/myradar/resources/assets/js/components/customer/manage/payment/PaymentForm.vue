@@ -34,7 +34,7 @@
 
       <div class="form-group">
         <label for="date">Payment Date</label>
-        <datepicker v-model="date" :highlighted="[new Date()]" name="uniquename" placeholder="Pick Date" input-class="form-control"></datepicker>
+        <datepicker v-model="date" :highlighted="{to:new Date(), from: new Date()}" name="uniquename" placeholder="Pick Date" input-class="form-control"></datepicker>
         <p class="help-block"></p>
       </div>
 

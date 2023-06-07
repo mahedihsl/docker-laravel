@@ -38,7 +38,7 @@ new Vue({
             this.$options.store.commit('changeView', k);
         },
         sendPaymentMessage(){
-          if(this.access['bulkMessage']['status']){
+          if(this.access['bulkMessage']){
             const instance = this;
             $.confirm({
               title: 'Are You Sure ?',
@@ -64,7 +64,7 @@ new Vue({
           }
         },
         sendPaymentMethod(){
-          if(this.access['bulkMessage']['status'])
+          if(this.access['bulkMessage'])
           {
             const instance = this;
             $.confirm({

@@ -19,7 +19,7 @@ export default class PaymentApi {
     getPayments(userId) {
         Vue.http.get(`/get/payments/${userId}`).then(
             response => {
-                this.EventBus.$emit("payments-found", response.body.data);
+                this.EventBus.$emit("payments-found", response.body);
             },
             error => {}
         );
@@ -54,7 +54,7 @@ export default class PaymentApi {
             response => {
                 this.EventBus.$emit(
                     "message-content-received",
-                    response.body.data
+                    response.body
                 );
             },
             error => {}
@@ -66,7 +66,7 @@ export default class PaymentApi {
             response => {
                 this.EventBus.$emit(
                     "total-due-received",
-                    response.body.data.total
+                    response.body.total
                 );
             },
             error => {}
@@ -79,10 +79,10 @@ export default class PaymentApi {
             .post(`/payment/sms/send`, { id: userId, content: content })
             .then(
                 response => {
-                    console.log(response.body);
+                    console.log(response)
                     this.EventBus.$emit(
                         "message-send-done",
-                        response.body.data
+                        response.body
                     );
                 },
                 error => {}
@@ -94,7 +94,7 @@ export default class PaymentApi {
             Vue.http.get("/payment/message").then(
                 response => {
                     if (response.body.status == 1) {
-                        resolve(response.body.data);
+                        resolve(response.body);
                     }
                 },
                 error => {
@@ -113,7 +113,7 @@ export default class PaymentApi {
             response => {
                 this.EventBus.$emit(
                     "message-content-received",
-                    response.body.data
+                    response.body
                 );
             },
             error => {}
