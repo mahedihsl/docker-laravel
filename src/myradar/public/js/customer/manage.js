@@ -86763,24 +86763,24 @@ var MileageApi = function () {
     }
 
     _createClass(MileageApi, [{
-        key: 'getRecords',
+        key: "getRecords",
         value: function getRecords(carId, days) {
             var _this = this;
 
-            this.EventBus.$emit('fetch-start');
-            Vue.http.get('/mileage/records/' + carId + '/' + days).then(function (response) {
-                if (response.body.status == 1) {
-                    _this.EventBus.$emit('mileage-data-found', response.body.data);
+            this.EventBus.$emit("fetch-start");
+            Vue.http.get("/mileage/records/" + carId + "/" + days).then(function (response) {
+                if (response.status == 200) {
+                    _this.EventBus.$emit("mileage-data-found", response.body);
                 }
             }, function (error) {});
         }
     }, {
-        key: 'getCars',
+        key: "getCars",
         value: function getCars(userId) {
             var _this2 = this;
 
-            Vue.http.get('/user/car/list/' + userId).then(function (response) {
-                _this2.EventBus.$emit('cars-found', response.body.data);
+            Vue.http.get("/user/car/list/" + userId).then(function (response) {
+                _this2.EventBus.$emit("cars-found", response.body.data);
             }, function (error) {});
         }
     }]);
