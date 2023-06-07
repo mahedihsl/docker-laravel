@@ -6321,6 +6321,12 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6329,57 +6335,57 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['vehicle'],
-  components: { Log: __WEBPACK_IMPORTED_MODULE_1__ServiceLog_vue___default.a, Dates: __WEBPACK_IMPORTED_MODULE_2__DateRange_vue___default.a },
-  data: function data() {
-    return {
-      dates: [],
-      services: [{ id: 0, name: 'Lat/Lng' }, { id: 1, name: 'Fuel' }, { id: 2, name: 'Gas' }, { id: 3, name: 'Engine' }],
-      summary: null
-    };
-  },
-  mounted: function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-      return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              __WEBPACK_IMPORTED_MODULE_3__util_EventBus__["a" /* default */].$on('date-range-changed', this.onDateRangeChanged.bind(this));
-              _context.next = 3;
-              return __WEBPACK_IMPORTED_MODULE_4__api_ServiceApi__["a" /* default */].getSummary(this.vehicle);
-
-            case 3:
-              this.summary = _context.sent;
-
-            case 4:
-            case 'end':
-              return _context.stop();
-          }
-        }
-      }, _callee, this);
-    }));
-
-    function mounted() {
-      return _ref.apply(this, arguments);
-    }
-
-    return mounted;
-  }(),
-
-  methods: {
-    onDateRangeChanged: function onDateRangeChanged(list) {
-      if (this.dates.length != list.length) {
-        this.dates = list;
-      } else if (!this.dates.length && !list.length) {
-        this.dates = list;
-      } else if (this.dates[0] != list[0]) {
-        this.dates = list;
-      }
+    props: ["vehicle"],
+    components: { Log: __WEBPACK_IMPORTED_MODULE_1__ServiceLog_vue___default.a, Dates: __WEBPACK_IMPORTED_MODULE_2__DateRange_vue___default.a },
+    data: function data() {
+        return {
+            dates: [],
+            services: [{ id: 0, name: "Lat/Lng" }, { id: 1, name: "Fuel" }, { id: 2, name: "Gas" }, { id: 3, name: "Engine" }],
+            summary: null
+        };
     },
-    onBackClick: function onBackClick() {
-      __WEBPACK_IMPORTED_MODULE_3__util_EventBus__["a" /* default */].$emit('show-car-list');
+    mounted: function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            __WEBPACK_IMPORTED_MODULE_3__util_EventBus__["a" /* default */].$on("date-range-changed", this.onDateRangeChanged.bind(this));
+                            _context.next = 3;
+                            return __WEBPACK_IMPORTED_MODULE_4__api_ServiceApi__["a" /* default */].getSummary(this.vehicle);
+
+                        case 3:
+                            this.summary = _context.sent;
+
+                        case 4:
+                        case "end":
+                            return _context.stop();
+                    }
+                }
+            }, _callee, this);
+        }));
+
+        function mounted() {
+            return _ref.apply(this, arguments);
+        }
+
+        return mounted;
+    }(),
+
+    methods: {
+        onDateRangeChanged: function onDateRangeChanged(list) {
+            if (this.dates.length != list.length) {
+                this.dates = list;
+            } else if (!this.dates.length && !list.length) {
+                this.dates = list;
+            } else if (this.dates[0] != list[0]) {
+                this.dates = list;
+            }
+        },
+        onBackClick: function onBackClick() {
+            __WEBPACK_IMPORTED_MODULE_3__util_EventBus__["a" /* default */].$emit("show-car-list");
+        }
     }
-  }
 });
 
 /***/ }),
@@ -11630,7 +11636,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -65903,7 +65909,10 @@ var render = function() {
             staticClass: "btn btn-link pull-right",
             on: { click: _vm.onBackClick }
           },
-          [_c("i", { staticClass: "fa fa-arrow-left" }), _vm._v(" Back\n    ")]
+          [
+            _c("i", { staticClass: "fa fa-arrow-left" }),
+            _vm._v(" Back\n        ")
+          ]
         )
       ]
     ),
@@ -65978,13 +65987,13 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [
                   _vm._v(
-                    "\n            " +
+                    "\n                        " +
                       _vm._s(
                         _vm.summary.reset.breakdown
                           ? _vm.summary.reset.internal
                           : "Breakdown Not Available"
                       ) +
-                      "\n          "
+                      "\n                    "
                   )
                 ])
               ]),
@@ -65994,13 +66003,13 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [
                   _vm._v(
-                    "\n            " +
+                    "\n                        " +
                       _vm._s(
                         _vm.summary.reset.breakdown
                           ? _vm.summary.reset.external
                           : "Breakdown Not Available"
                       ) +
-                      "\n          "
+                      "\n                    "
                   )
                 ])
               ])
@@ -66032,7 +66041,11 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("small", [_vm._v("(LatLng / Fuel) percentage in last 500 events")])
+      _c("small", [
+        _vm._v(
+          "(LatLng / Fuel) percentage in last 500\n                            events"
+        )
+      ])
     ])
   },
   function() {
@@ -87109,16 +87122,17 @@ var ServiceApi = function () {
     }
 
     _createClass(ServiceApi, [{
-        key: 'getLog',
+        key: "getLog",
         value: function getLog(car, service) {
             var _this = this;
 
-            Vue.http.get('/service/log/' + car + '/' + service).then(function (response) {
-                _this.EventBus.$emit('service-log-found', response.body.data.items);
+            Vue.http.get("/service/log/" + car + "/" + service).then(function (response) {
+                console.log(response);
+                _this.EventBus.$emit("service-log-found", response.body.data.items);
             }, function (error) {});
         }
     }], [{
-        key: 'getSummary',
+        key: "getSummary",
         value: function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(car) {
                 var res;
@@ -87127,14 +87141,14 @@ var ServiceApi = function () {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 _context.next = 2;
-                                return Vue.http.get('/service/report/' + car.id);
+                                return Vue.http.get("/service/report/" + car.id);
 
                             case 2:
                                 res = _context.sent;
-                                return _context.abrupt('return', res.body.data);
+                                return _context.abrupt("return", res.body);
 
                             case 4:
-                            case 'end':
+                            case "end":
                                 return _context.stop();
                         }
                     }
