@@ -56,7 +56,7 @@ class AccountController extends Controller
 
             return response()->json([ 'enabled' => $response['status'] ]);
         } catch (ServiceException $e) {
-            return response()->error($e->getMessage());
+            return response()->json($e->getMessage());
         }
     }
 }

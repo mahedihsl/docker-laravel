@@ -75,7 +75,7 @@ class CustomerController extends Controller
             ]);
         }
 
-        return response()->error();
+        return response()->json();
     }
 
     public function update(UpdateCustomer $request)
@@ -95,7 +95,7 @@ class CustomerController extends Controller
             return response()->json($user->presenter());
         }
 
-        return response()->error('Error, Try Again !');
+        return response()->json(["error" => 'Error, Try Again !',500]);
     }
 
     public function password(UpdatePassword $request)
@@ -108,7 +108,7 @@ class CustomerController extends Controller
             return response()->json();
         }
 
-        return response()->error();
+        return response()->json(500);
     }
 
     public function findByPhone(Request $request, $phone)
@@ -153,7 +153,7 @@ class CustomerController extends Controller
             $service = new UserMicroservice();
             return response()->json($service->statusHistory($id));
         } catch (ServiceException $e) {
-            return response()->error($e->getMessage());
+            return response()->json(['error'=>$e->getMessage(),500]);
         }
         // $user = $this->repository->find($id);
 

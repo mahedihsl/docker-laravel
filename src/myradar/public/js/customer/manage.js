@@ -1960,7 +1960,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.onInfoFound(response.data);
         toastr.success('Updated successfully');
       } else {
-        toastr.error(response.data.message);
+        toastr.error(response);
       }
     },
     onToggleHistoryClick: function onToggleHistoryClick() {
@@ -4186,7 +4186,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.totalDue = total;
     },
     onMessageContentReceived: function onMessageContentReceived(data) {
-      this.paymentSMS = data.message;
+      this.paymentSMS = data;
       this.$modal.show('info');
     },
     hide: function hide() {
@@ -64298,7 +64298,7 @@ var render = function() {
         _vm._v(" "),
         _c("datepicker", {
           attrs: {
-            highlighted: [new Date()],
+            highlighted: { to: new Date(), from: new Date() },
             name: "uniquename",
             placeholder: "Pick Date",
             "input-class": "form-control"
@@ -69920,9 +69920,8 @@ var render = function() {
           [
             _vm._v("\n      Total Due: "),
             _c("span", { staticClass: "text-error" }, [
-              _vm._v(_vm._s(_vm.totalDue))
-            ]),
-            _vm._v(" Taka\n    ")
+              _vm._v(_vm._s(_vm.totalDue) + " Taka ")
+            ])
           ]
         )
       ]),
@@ -86369,8 +86368,8 @@ var CustomerApi = function () {
                 status: info.status
             };
             Vue.http.post("/customer/update", data).then(function (response) {
-                if (response.body.status == 1) {
-                    _this.EventBus.$emit("profile-update-done", response.body.data);
+                if (response.status == 200) {
+                    _this.EventBus.$emit("profile-update-done", response.body);
                 } else {
                     _this.EventBus.$emit("profile-update-error", 200, "Error, Try Again");
                 }
@@ -86392,7 +86391,7 @@ var CustomerApi = function () {
                 password_confirmation: pass2
             };
             Vue.http.post("/customer/password/change", data).then(function (response) {
-                if (response.body.status == 1) {
+                if (response.status == 200) {
                     _this2.EventBus.$emit("password-update-done");
                 } else {
                     _this2.EventBus.$emit("password-update-error", 200, "Error, Try Again");
@@ -86428,7 +86427,7 @@ var CustomerApi = function () {
             var _this5 = this;
 
             Vue.http.get("/customer/settings/" + id).then(function (response) {
-                _this5.EventBus.$emit("customer-settings-found", response.body.data);
+                _this5.EventBus.$emit("customer-settings-found", response.body);
             }, function (error) {});
         }
     }, {
@@ -86486,7 +86485,7 @@ var CustomerApi = function () {
 
             return new Promise(function (resolve, reject) {
                 Vue.http.post("/customer/save", data).then(function (response) {
-                    if (response.body.status == 1) {
+                    if (response.status == 200) {
                         resolve(response.body.data);
                     }
                 }, function (error) {
@@ -86502,7 +86501,7 @@ var CustomerApi = function () {
         value: function getToggleHistory(id) {
             return new Promise(function (resolve, reject) {
                 Vue.http.get("/customer/toggle-history/" + id).then(function (response) {
-                    if (response.body.status == 1) {
+                    if (response.status == 200) {
                         resolve(response.body.data);
                     }
                 }, function (error) {});
@@ -86826,7 +86825,7 @@ var PaymentApi = function () {
             var _this2 = this;
 
             Vue.http.get("/get/payments/" + userId).then(function (response) {
-                _this2.EventBus.$emit("payments-found", response.body.data);
+                _this2.EventBus.$emit("payments-found", response.body);
             }, function (error) {});
         }
     }, {
@@ -86857,7 +86856,7 @@ var PaymentApi = function () {
 
             this.EventBus.$emit("get-message-content-start");
             Vue.http.get("/payment/message/" + userId).then(function (response) {
-                _this4.EventBus.$emit("message-content-received", response.body.data);
+                _this4.EventBus.$emit("message-content-received", response.body);
             }, function (error) {});
         }
     }, {
@@ -86866,7 +86865,7 @@ var PaymentApi = function () {
             var _this5 = this;
 
             Vue.http.get("/payment/total-due/" + userId).then(function (response) {
-                _this5.EventBus.$emit("total-due-received", response.body.data.total);
+                _this5.EventBus.$emit("total-due-received", response.body.total);
             }, function (error) {});
         }
     }, {
@@ -86876,8 +86875,8 @@ var PaymentApi = function () {
 
             this.EventBus.$emit("message-send-start");
             Vue.http.post("/payment/sms/send", { id: userId, content: content }).then(function (response) {
-                console.log(response.body);
-                _this6.EventBus.$emit("message-send-done", response.body.data);
+                console.log(response);
+                _this6.EventBus.$emit("message-send-done", response.body);
             }, function (error) {});
         }
     }, {
@@ -86886,7 +86885,7 @@ var PaymentApi = function () {
             return new Promise(function (resolve, reject) {
                 Vue.http.get("/payment/message").then(function (response) {
                     if (response.body.status == 1) {
-                        resolve(response.body.data);
+                        resolve(response.body);
                     }
                 }, function (error) {
                     if (error.status == 422) {
@@ -86903,7 +86902,7 @@ var PaymentApi = function () {
 
             this.EventBus.$emit("message-send-start");
             Vue.http.get("/payment/method/sms/" + userId).then(function (response) {
-                _this7.EventBus.$emit("message-content-received", response.body.data);
+                _this7.EventBus.$emit("message-content-received", response.body);
             }, function (error) {});
         }
     }, {

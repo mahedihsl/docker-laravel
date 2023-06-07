@@ -8,6 +8,7 @@ use App\Contract\Repositories\UserRepository;
 use Illuminate\Support\Collection;
 use App\Entities\User;
 use App\Events\CustomerCreated;
+use Illuminate\Support\Str;
 
 /**
  * Class UserRepositoryEloquent
@@ -39,7 +40,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
             'address' => $data->get('address'),
             'email' => $data->get('email'),
             'password' => bcrypt($data->get('password')),
-            'api_token' => str_random(60),
+            'api_token' => Str::random(60),
             'type' => User::$TYPE_CUSTOMER,
             'customer_type' => intval($data->get('ctype')),
             'note' => '',

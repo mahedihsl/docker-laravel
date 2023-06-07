@@ -13,6 +13,7 @@ use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\User\CustomerController;
 use App\Http\Controllers\Customer\SessionController;
 use App\Http\Controllers\Enterprise\SettingsController;
+use App\Http\Controllers\Api\Account\SettingsController as AccountSettingsController;
 use App\Http\Controllers\Contact\MessageController;
 use App\Http\Controllers\Car\CarController;
 use App\Http\Controllers\Car\SpeedController;
@@ -433,7 +434,7 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
   Route::post('/importExcel', [AccountBillingController::class,'importExcel']);
 
  // customer
-  Route::get('/find/customer/{phone}', [CustomerController::class,'gindByPhone']);
+  Route::get('/find/customer/{phone}', [CustomerController::class,'findByPhone']);
   Route::get('/customers', [CustomerController::class,'index'])->name('all-customers');
   Route::post('/customer/save', [CustomerController::class,'save']);
   Route::post('/customer/update', [CustomerController::class,'update']);
@@ -446,8 +447,8 @@ Route::post('/save/promo', [PromotionController::class, 'save']);
   Route::post('/customer/session/logout', [SessionController::class,'logout']);
 
   //setting
-  Route::get('/customer/settings/{id}', [SettingsController::class,'view']);
-  Route::post('/customer/settings/change', [SettingsController::class,'change']);
+  Route::get('/customer/settings/{id}', [AccountSettingsController::class,'view']);
+  Route::post('/customer/settings/change', [AccountSettingsController::class,'change']);
 
  //message
   Route::get('/messages', [MessageController::class,'index']);

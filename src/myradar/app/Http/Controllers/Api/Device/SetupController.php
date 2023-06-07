@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Contract\Repositories\DeviceRepository;
 use App\Criteria\CommercialIdCriteria;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class SetupController extends Controller
 {
@@ -34,7 +35,7 @@ class SetupController extends Controller
             return implode("\n", array(
                 intval($device->lock_status),
                 time(),
-                str_random(40),
+                Str::random(40),
                 $this->getUssd($device),
                 $this->getFences($device),
             ));
@@ -56,7 +57,7 @@ class SetupController extends Controller
             $body = implode("\n", array(
                 intval($device->lock_status),
                 time(),
-                str_random(40),
+                Str::random(40),
                 $this->speed($device),
                 $this->getFences($device),
             ));
@@ -88,7 +89,7 @@ class SetupController extends Controller
             return implode("\n", array(
                 intval($device->lock_status),
                 $this->speed($device),
-                str_random(40),
+                Str::random(40),
                 time(),
                 $text,
             ));
@@ -111,7 +112,7 @@ class SetupController extends Controller
             $body = implode("\n", array(
                 intval($device->lock_status),
                 time(),
-                str_random(40),
+                Str::random(40),
                 $this->speed($device),
 				$voice,
                 $this->getFences($device),
