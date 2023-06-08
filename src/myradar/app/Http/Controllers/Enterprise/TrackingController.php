@@ -59,7 +59,7 @@ class TrackingController extends Controller
                         ];
                     });
 
-        return response()->json([
+        return response()->ok([
             'path' => $path,
             'events' => $events,
         ]);

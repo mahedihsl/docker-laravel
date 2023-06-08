@@ -44,7 +44,7 @@ class DeviceController extends Controller
             if ( ! Device::where('phone', $phone)->exists()) {
                 $device = $this->repository->save($comId, $phone, $version, $imei);
 
-                return response()->json([
+                return response()->ok([
                     'com_id' => $device->com_id,
                     'phone' => $device->phone,
                     'version' => $device->version,
@@ -64,7 +64,7 @@ class DeviceController extends Controller
         while (true) {
             $comId = rand(10000, 99999);
             if ( ! Device::where('com_id', $comId)->exists()) {
-                return response()->json([
+                return response()->ok([
                     'com_id' => $comId,
                 ]);
             }
@@ -86,7 +86,7 @@ class DeviceController extends Controller
                                 'time' => $device->created_at->toDayDateTimeString(),
                             ];
                         });
-        return response()->json($devices);
+        return response()->ok($devices);
     }
 
     public function print(Request $request)
@@ -108,14 +108,14 @@ class DeviceController extends Controller
         if (!$user->isAdmin()) {
             return response()->error('Only admin can change device phone number');
         }
-
+        
         $phone = $request->get('phone');
         $device = Device::where('car_id', $request->get('car_id'))->first();
 
         if ( ! is_null($device)) {
             if ( ! Device::where('phone', $phone)->exists()) {
                 $device->update([ 'phone' => $phone ]);
-                return response()->json();
+                return response()->ok();
             }
 
             return response()->error('Phone number already in use');
@@ -127,7 +127,7 @@ class DeviceController extends Controller
     public function allOfUser(Request $request, $id)
     {
         $this->repository->pushCriteria(new UserIdCriteria($id));
-        return response()->json($this->repository->all(['com_id']));
+        return response()->ok($this->repository->all(['com_id']));
     }
 
     public function export(Request $request)
@@ -155,7 +155,7 @@ class DeviceController extends Controller
       $device = Device::find($id);
       if(is_null($device))
         return response()->error('No Device Found');
-      return response()->json($device->phone);
+      return response()->ok($device->phone);
     }
 
     public function updateVersion(Request $request)
@@ -165,7 +165,7 @@ class DeviceController extends Controller
 
       $device = Device::where('com_id', '=', $comId)->update(['version' => $version]);
 
-      return response()->json();
+      return response()->ok();
     }
 
     public function bindHistory(Request $request)

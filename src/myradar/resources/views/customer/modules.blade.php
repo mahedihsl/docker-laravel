@@ -1,6 +1,3 @@
-@php
-$hasHttps= env('APP_ENV')=='production'
-@endphp
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,10 +6,10 @@ $hasHttps= env('APP_ENV')=='production'
   <title>Choose Modules | myRADAR</title>
 
   <!-- Favicons -->
-	<link rel="shortcut icon" href="{{ asset('images/favicon.ico', $hasHttps) }}">
-	<link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', $hasHttps) }}">
-	<link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', $hasHttps) }}">
-	<link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', $hasHttps) }}">
+	<link rel="shortcut icon" href="{{ asset('images/favicon.ico', true) }}">
+	<link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', true) }}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', true) }}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', true) }}">
 
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>

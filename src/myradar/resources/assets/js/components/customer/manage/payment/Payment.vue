@@ -18,7 +18,7 @@
       </button>
 
       <div class="pull-right" style="font-size: 16px;">
-        Total Due: <span class="text-error">{{totalDue}} Taka </span> 
+        Total Due: <span class="text-error">{{totalDue}}</span> Taka
       </div>
 
     </h3>
@@ -111,7 +111,7 @@ export default {
         this.totalDue = total;
       },
       onMessageContentReceived(data){
-        this.paymentSMS = data;
+        this.paymentSMS = data.message;
         this.$modal.show('info');
 
       },

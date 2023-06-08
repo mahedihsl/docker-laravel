@@ -1,7 +1,3 @@
-@php
-$hasHttps= env('APP_ENV')=='production'
-@endphp
-
 @extends('layouts.new')
 
 @section('title')
@@ -29,5 +25,5 @@ $hasHttps= env('APP_ENV')=='production'
 @endsection
 
 @push('script')
-  <script src="{{asset('js/service/complain/index.js', $hasHttps)}}"></script>
+  <script src="{{asset('js/service/complain/index.js', true)}}"></script>
 @endpush

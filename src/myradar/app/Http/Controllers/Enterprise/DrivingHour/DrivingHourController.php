@@ -44,7 +44,7 @@ class DrivingHourController extends Controller
         $this->repository->pushCriteria(new DateRangeCriteria($days - 1, 0));
         $this->repository->pushCriteria(new CarIdCriteria($carId));
         $this->repository->pushCriteria(new LastUpdatedCriteria());
-        return response()->json($this->repository->all());
+        return response()->ok($this->repository->all());
     }
 
     public function result(Request $request)

@@ -34,7 +34,7 @@ class CampaignController extends Controller
     {
         try {
             $this->promotionService->saveCouponLead($request->all());
-            return response()->json('আপনার রেজিস্ট্রেশন সম্পন্ন হয়েছে, আপনাকে একটি ডিসকাউন্ট কোড সহ শীঘ্রই এসএমএস করে জানানো হবে');
+            return response()->ok('আপনার রেজিস্ট্রেশন সম্পন্ন হয়েছে, আপনাকে একটি ডিসকাউন্ট কোড সহ শীঘ্রই এসএমএস করে জানানো হবে');
         } catch (\Exception $th) {
             return response()->error($th->getMessage());
         }

@@ -1,5 +1,5 @@
-import EventBus from "../../../util/EventBus";
-import EventApi from "../../../api/EventApi";
+import EventBus from '../../../util/EventBus';
+import EventApi from '../../../api/EventApi';
 
 export const event = {
     namespaced: true,
@@ -9,9 +9,9 @@ export const event = {
             total: 0,
             per_page: 50,
             total_pages: 0,
-            current_page: 1
+            current_page: 1,
         },
-        loading: false
+        loading: false,
     },
     getters: {
         events(state) {
@@ -39,15 +39,15 @@ export const event = {
         }
     },
     actions: {
-        getEvents({ commit, rootGetters }, { carId, page = 1 }) {
-            commit("setLoading", true);
+        getEvents({commit, rootGetters}, {carId, page = 1}) {
+            commit('setLoading', true);
             EventApi.list(carId, page)
-                .then(data => {
-                    commit("setEvents", data.list);
-                    commit("setPagination", data.pagination);
-                })
-                .catch(() => {})
-                .then(() => commit("setLoading", false));
+                    .then(data => {
+                        commit('setEvents', data.list);
+                        commit('setPagination', data.pagination);
+                    })
+                    .catch(() => {})
+                    .then(() => commit('setLoading', false))
         }
     }
-};
+}

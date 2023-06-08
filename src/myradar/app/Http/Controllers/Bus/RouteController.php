@@ -41,7 +41,7 @@ class RouteController extends Controller
         $names->push(['id'=>$id, 'name'=>$name]);
       }
 
-      return response()->json($names);
+      return response()->ok($names);
   }
 
   public function buses(Request $request, $id)
@@ -71,7 +71,7 @@ class RouteController extends Controller
       }
 
     }
-    return response()->json($buses);
+    return response()->ok($buses);
   }
 
   public function save(Request $request){
@@ -91,7 +91,7 @@ class RouteController extends Controller
 
         $is_attached = isset($car->fence_ids) && in_array($fence->id, $car->fence_ids ?: []);
 
-      /*  return response()->json([
+      /*  return response()->ok([
             'attached' => $is_attached,
             'message' => 'New Geofence Saved',
         ]);*/
@@ -103,13 +103,13 @@ class RouteController extends Controller
 
         $is_attached = isset($car->fence_ids) && in_array($fence->id, $car->fence_ids ?: []);
 
-        return response()->json([
+        return response()->ok([
             'attached' => $is_attached,
             'message' => 'New Geofence Saved',
         ]);
     }
 
-    return response()->json('Geofence Create Failed');
+    return response()->error('Geofence Create Failed');
   }
 
   public function delete(Request $request){
@@ -131,9 +131,9 @@ class RouteController extends Controller
     $fence = $this->repository->find($destId);
     if ( ! is_null($fence) && ! is_null($car)) {
         event(new FenceDeleted($car, $fence));
-        return response()->json('Geofence History Deleted');
+        return response()->ok('Geofence History Deleted');
     }
 
-    return response()->json('Item Not Found');
+    return response()->error('Item Not Found');
   }
 }

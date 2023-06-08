@@ -70,7 +70,7 @@ class EngagementController extends Controller
 
         if ( ! is_null($user)) {
             $data = $user->getLatestActivity();
-            return response()->json([
+            return response()->ok([
                 $data[0]['r'],
                 $data[1]['r'],
                 $data[2]['r'],
@@ -78,7 +78,7 @@ class EngagementController extends Controller
                 $data[4]['r'],
                 $data[5]['r'],
                 $data[6]['r'],
-            ],200);
+            ]);
         }
 
         return response()->error();
@@ -101,7 +101,7 @@ class EngagementController extends Controller
     private function records($users, $query)
     {
 		$uids = $users->map(function($u) { return $u->id; })->toArray();
-
+        
         $year = intval($query['year']);
         $month = intval($query['month']);
         $startDate = Carbon::createFromDate($year, $month, 1);

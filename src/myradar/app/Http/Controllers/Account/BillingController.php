@@ -11,9 +11,7 @@ use Excel;
 use Carbon\Carbon;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
-
 use Illuminate\Support\Collection;
-
 use App\Contract\Repositories\CarRepository;
 use App\Generator\CarCriteriaGenerator;
 use App\Transformers\CarExportTransformer;
@@ -42,7 +40,7 @@ class BillingController extends Controller
         if ($request->get('type') == 'export') {
             $this->export($this->repository->all());
         }
-        
+
         return view('car.billing')->with([
             'cars' => $this->repository->paginate(),
             'params' => $request->all(),

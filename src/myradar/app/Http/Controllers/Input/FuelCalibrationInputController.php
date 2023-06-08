@@ -34,7 +34,7 @@ class FuelCalibrationInputController extends Controller
             FuelCalibrationInput::where('device_id','=',$deviceId)->where('car_id', '=', $car->id)->update(['data' => $data]);
           }
 
-          return response()->json();
+          return response()->ok();
       }
 
       public function getFuelValue(Device $device)
@@ -63,7 +63,7 @@ class FuelCalibrationInputController extends Controller
                                               ];
                                             });
 
-          return response()->json($input);
+          return response()->ok($input);
       }
 
 

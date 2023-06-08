@@ -1,6 +1,3 @@
-@php
-$hasHttps= env('APP_ENV')=='production'
-@endphp
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
@@ -15,7 +12,7 @@ $hasHttps= env('APP_ENV')=='production'
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link href="{{ asset('css/app.css', $hasHttps) }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css', true) }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>

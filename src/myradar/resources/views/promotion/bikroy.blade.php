@@ -1,21 +1,17 @@
-@php
-$hasHttps= env('APP_ENV')=='production'
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Contact V12</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="{{ asset('bikroy/images/icons/favicon.ico', $hasHttps) }}"/>
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/bootstrap/css/bootstrap.min.css', $hasHttps) }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/fonts/font-awesome-4.7.0/css/font-awesome.min.css', $hasHttps) }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/animate/animate.css', $hasHttps) }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/css-hamburgers/hamburgers.min.css', $hasHttps) }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/select2/select2.min.css', $hasHttps) }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/css/util.css', $hasHttps) }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/css/main.css', $hasHttps) }}">
+	<link rel="icon" type="image/png" href="{{ asset('bikroy/images/icons/favicon.ico', true) }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/bootstrap/css/bootstrap.min.css', true) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/fonts/font-awesome-4.7.0/css/font-awesome.min.css', true) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/animate/animate.css', true) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/css-hamburgers/hamburgers.min.css', true) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/vendor/select2/select2.min.css', true) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/css/util.css', true) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bikroy/css/main.css', true) }}">
 </head>
 <body>
 
@@ -23,7 +19,7 @@ $hasHttps= env('APP_ENV')=='production'
 		<div class="container-contact100">
 			<div class="wrap-contact100">
 				<div class="contact100-pic js-tilt" data-tilt>
-					<img src="{{asset('images/web_logo.png', $hasHttps)}}" alt="myRADAR">
+					<img src="{{asset('images/web_logo.png', true)}}" alt="myRADAR">
 				</div>
 
 				@if ($status == 1)
@@ -79,17 +75,17 @@ $hasHttps= env('APP_ENV')=='production'
 		</div>
 	</div>
 
-	<script src="{{ asset('bikroy/vendor/jquery/jquery-3.2.1.min.js', $hasHttps) }}"></script>
-	<script src="{{ asset('bikroy/vendor/bootstrap/js/popper.js', $hasHttps) }}"></script>
-	<script src="{{ asset('bikroy/vendor/bootstrap/js/bootstrap.min.js', $hasHttps) }}"></script>
-	<script src="{{ asset('bikroy/vendor/select2/select2.min.js', $hasHttps) }}"></script>
-	<script src="{{ asset('bikroy/vendor/tilt/tilt.jquery.min.js', $hasHttps) }}"></script>
+	<script src="{{ asset('bikroy/vendor/jquery/jquery-3.2.1.min.js', true) }}"></script>
+	<script src="{{ asset('bikroy/vendor/bootstrap/js/popper.js', true) }}"></script>
+	<script src="{{ asset('bikroy/vendor/bootstrap/js/bootstrap.min.js', true) }}"></script>
+	<script src="{{ asset('bikroy/vendor/select2/select2.min.js', true) }}"></script>
+	<script src="{{ asset('bikroy/vendor/tilt/tilt.jquery.min.js', true) }}"></script>
 	<script >
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
 	</script>
-	<script src="{{ asset('bikroy/js/main.js', $hasHttps) }}"></script>
+	<script src="{{ asset('bikroy/js/main.js', true) }}"></script>
 
 </body>
 </html>

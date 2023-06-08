@@ -35,7 +35,7 @@ class TrackingController extends Controller
             $duration = ($endTime - $startTime) * 1000;
             $position['duration'] = $duration;
 
-            return response()->json($position);
+            return response()->ok($position);
         }
 
         return response()->error('No Position Found');

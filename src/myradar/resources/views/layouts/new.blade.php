@@ -1,6 +1,3 @@
-@php
-$hasHttps= env('APP_ENV')=='production'
-@endphp
 <!DOCTYPE html>
 <html>
 
@@ -14,10 +11,10 @@ $hasHttps= env('APP_ENV')=='production'
 
   <title>{{ config('app.name') }}</title>
 
-  <link rel="shortcut icon" href="{{ asset('images/favicon.ico', $hasHttps) }}">
-  <link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', $hasHttps) }}">
-  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', $hasHttps) }}">
-  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', $hasHttps) }}">
+  <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico', true) }}">
+  <link rel="apple-touch-icon" href="{{ asset('assets/landing/images/apple-touch-icon.png', true) }}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/landing/images/apple-touch-icon-72x72.png', true) }}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('assets/landing/images/apple-touch-icon-114x114.png', true) }}">
 
 
   <!-- Bootstrap 3.3.7 -->
@@ -25,12 +22,12 @@ $hasHttps= env('APP_ENV')=='production'
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="{{ asset('vendors/Ionicons/css/ionicons.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('assets/vendors/Ionicons/css/ionicons.min.css', true) }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/AdminLTE.min.css', true) }}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{{ asset('css/skins/_all-skins.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/skins/_all-skins.min.css', true) }}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,10 +40,10 @@ $hasHttps= env('APP_ENV')=='production'
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-  <link rel="stylesheet" href="{{ asset('vendors/toastr/toastr.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('assets/vendors/toastr/toastr.min.css', true) }}">
   {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.6.1/tailwind.min.css"> --}}
-  <link rel="stylesheet" href="{{ asset('css/app.css', $hasHttps) }}">
-  <link rel="stylesheet" href="{{ asset('css/tailwind.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/app.css', true) }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css?v='.config('cache.version'), true) }}">
   @stack('style')
   <!-- Scripts -->
   <script>
@@ -122,26 +119,23 @@ $hasHttps= env('APP_ENV')=='production'
   <!-- ./wrapper -->
 
   <!-- jQuery 3 -->
-  {{-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-     --}}
-  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    </script> --}}
-
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- Bootstrap 3.3.7 -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- FastClick -->
-  <script src="{{asset('vendors/fastclick/lib/fastclick.js', $hasHttps)}}"></script>
+  <script src="{{asset('assets/vendors/fastclick/lib/fastclick.js', true)}}"></script>
   <!-- Sparkline -->
-  <script src="{{asset('vendors/jquery-sparkline/dist/jquery.sparkline.min.js', $hasHttps)}}"></script>
+  <script src="{{asset('assets/vendors/jquery-sparkline/dist/jquery.sparkline.min.js', true)}}"></script>
   <!-- SlimScroll -->
-  <script src="{{asset('vendors/jquery-slimscroll/jquery.slimscroll.min.js', $hasHttps)}}"></script>
+  <script src="{{asset('assets/vendors/jquery-slimscroll/jquery.slimscroll.min.js', true)}}"></script>
   <!-- AdminLTE App -->
-  <script src="{{asset('js/adminlte.min.js', $hasHttps)}}"></script>
-  <script src="{{asset('vendors/toastr/toastr.min.js', $hasHttps)}}" charset="utf-8"></script>
+  <script src="{{asset('assets/js/adminlte.min.js', true)}}"></script>
+  <script src="{{asset('assets/vendors/toastr/toastr.min.js', true)}}" charset="utf-8"></script>
   <!-- AdminLTE for demo purposes -->
-  {{-- <script src="{{asset('js/demo.js', $hasHttps)}}"></script> --}}
-  <script src="{{asset('js/common.js', $hasHttps)}}" charset="utf-8"></script>
-  {{-- <script>
+  <script src="{{asset('assets/js/demo.js', true)}}"></script>
+  <script src="{{asset('assets/js/common.js?v='.config('cache.version'), true)}}" charset="utf-8"></script>
+  <script>
     $(document).ready(function () {
     $('.sidebar-menu').tree()
     $('.trigger-upload').click(function(event) {
@@ -149,7 +143,7 @@ $hasHttps= env('APP_ENV')=='production'
       $('#' + target).click()
     })
   })
-  </script> --}} --}}
+  </script>
 
   @stack('script')
 </body>

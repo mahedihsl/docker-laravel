@@ -148,7 +148,7 @@ class CustomerApiController extends Controller
     public function info(Request $request, $id)
     {
         $this->repository->setPresenter(CustomerInfoPresenter::class);
-        return response()->json($this->repository->find($id));
+        return response()->ok($this->repository->find($id));
     }
 
 }

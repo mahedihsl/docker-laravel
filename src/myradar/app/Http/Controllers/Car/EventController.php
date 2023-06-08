@@ -52,7 +52,7 @@ class EventController extends Controller
         });
         $items = $this->repository->parserResult($items);
         // $data = new LengthAwarePaginator($items, $total, $per_page, $page);
-        return response()->json([
+        return response()->ok([
             'data' => $items['data'],
             'meta' => [
                 'pagination' => [
@@ -62,8 +62,8 @@ class EventController extends Controller
                     'total_pages' => ceil($total / $per_page),
                 ]
             ]
-        ],200);
-        // return response()->json($data);
+        ]);
+        // return response()->ok($data);
     }
     public function recent(Request $request, $id)
     {
@@ -75,6 +75,6 @@ class EventController extends Controller
                         ->pushCriteria(new NRecordsCriteria($request->get('limit')))
                         ->all();
 
-        return response()->json($models);
+        return response()->ok($models);
     }
 }

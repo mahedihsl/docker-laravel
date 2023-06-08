@@ -36,7 +36,7 @@ class GasCalibrationController extends Controller
                     ->pushCriteria(new LastUpdatedCriteria())
                     ->all();
 
-        return response()->json([
+        return response()->ok([
             'list' => $list,
             'type' => $car->meta_data['cng_type'],
         ]);
@@ -49,7 +49,7 @@ class GasCalibrationController extends Controller
         $item = $this->repository->save($carId, $data);
 
         if ( ! is_null($item)) {
-            return response()->json();
+            return response()->ok();
         }
 
         return response()->error('Gas calibration not saved');
@@ -58,7 +58,7 @@ class GasCalibrationController extends Controller
     public function remove(Request $request)
     {
         $flag = $this->repository->delete($request->get('id'));
-        return $flag ? response()->json() : response()->error();
+        return $flag ? response()->ok() : response()->error();
     }
 
 
@@ -69,7 +69,7 @@ class GasCalibrationController extends Controller
         return response()->error('No device found for this car');
       }
 
-      return response()->json($car->device->meta);
+      return response()->ok($car->device->meta);
     }
 
     public function setGasMin(Request $request , $id, $value)
@@ -80,7 +80,7 @@ class GasCalibrationController extends Controller
       }
       $car->device->update(["meta.gas_min" =>  $value ]);
 
-      return response()->json();
+      return response()->ok();
     }
 
     public function refuelInput(Request $request, $id)
@@ -105,7 +105,7 @@ class GasCalibrationController extends Controller
                                     ];
                               });
 
-      return response()->json($data);
+      return response()->ok($data);
 
     }
 

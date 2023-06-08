@@ -30,7 +30,7 @@ class FuelCalibrationController extends Controller
         $this->repository->pushCriteria(new CarIdCriteria($id));
         $this->repository->pushCriteria(new LastUpdatedCriteria());
 
-        return response()->json($this->repository->all());
+        return response()->ok($this->repository->all());
     }
 
 
@@ -42,7 +42,7 @@ class FuelCalibrationController extends Controller
         $item = $this->repository->save($request->get('car_id'), $data);
 
         if ( ! is_null($item)) {
-            return response()->json();
+            return response()->ok();
         }
 
         return response()->error('Fuel calibration not saved');
@@ -51,7 +51,7 @@ class FuelCalibrationController extends Controller
     public function remove(Request $request)
     {
         $flag = $this->repository->delete($request->get('id'));
-        return $flag ? response()->json() : response()->error();
+        return $flag ? response()->ok() : response()->error();
     }
 
 }

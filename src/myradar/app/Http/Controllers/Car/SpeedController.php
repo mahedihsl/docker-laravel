@@ -26,7 +26,7 @@ class SpeedController extends Controller
     public function show(Request $request, $id)
     {
         try {
-            return response()->json($this->speedService->find($id));
+            return response()->ok($this->speedService->find($id));
         } catch (ServiceException $e) {
             return response()->error($e->getMessage());
         }
@@ -44,7 +44,7 @@ class SpeedController extends Controller
 
         try {
             $this->speedService->update($car_id, $soft_value, $soft_active, $hard_value, $hard_active);
-            return response()->json();
+            return response()->ok();
         } catch (ServiceException $e) {
             return response()->error($e->getMessage());
         }

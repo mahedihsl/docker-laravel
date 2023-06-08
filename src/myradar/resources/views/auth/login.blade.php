@@ -1,8 +1,6 @@
-
 @php
 $hasHttps= env('APP_ENV')=='production'
 @endphp
-
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 

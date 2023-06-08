@@ -44,7 +44,6 @@ class CustomerController extends Controller
     {
         $user = $this->repository->find($id);
 
-
         if ( ! is_null($user)) {
             return view('customer.manage')->with([
                 'user' => $user,
@@ -70,12 +69,12 @@ class CustomerController extends Controller
                 $service = new UserMicroservice();
                 $service->onAccountCreated(['user_id' => $user->id]);
             } catch (ServiceException $e) {}
-            return response()->json([
+            return response()->ok([
                 'redirect' => route('manage.customer', ['id' => $user->id])
             ]);
         }
 
-        return response()->json();
+        return response()->error();
     }
 
     public function update(UpdateCustomer $request)
@@ -92,10 +91,10 @@ class CustomerController extends Controller
                         ->updateCustomer($request->get('id'), $data);
 
         if ( ! is_null($user)) {
-            return response()->json($user->presenter());
+            return response()->ok($user->presenter());
         }
 
-        return response()->json(["error" => 'Error, Try Again !',500]);
+        return response()->error('Error, Try Again !');
     }
 
     public function password(UpdatePassword $request)
@@ -105,10 +104,10 @@ class CustomerController extends Controller
         ], $request->get('id'));
 
         if ( ! is_null($model)) {
-            return response()->json();
+            return response()->ok();
         }
 
-        return response()->json(500);
+        return response()->error();
     }
 
     public function findByPhone(Request $request, $phone)
@@ -144,16 +143,16 @@ class CustomerController extends Controller
     {
       $this->repository->setPresenter(UserInfoPresenter::class);
       //$this->repository->pushCriteria(new NRecordsCriteria(5));
-      return response()->json($this->repository->get());
+      return response()->ok($this->repository->get());
     }
 
     public function toggleHistory(Request $request, $id)
     {
         try {
             $service = new UserMicroservice();
-            return response()->json($service->statusHistory($id));
+            return response()->ok($service->statusHistory($id));
         } catch (ServiceException $e) {
-            return response()->json(['error'=>$e->getMessage(),500]);
+            return response()->error($e->getMessage());
         }
         // $user = $this->repository->find($id);
 
@@ -165,7 +164,7 @@ class CustomerController extends Controller
         //             return $transformer->transform($item);
         //         });
 
-        //     return response()->json($list);
+        //     return response()->ok($list);
         // }
 
         // return response()->error();

@@ -98,7 +98,7 @@ export default {
         this.onInfoFound(response.data);
         toastr.success('Updated successfully');
       } else {
-        toastr.error(response)
+        toastr.error(response.data.message)
       }
 
     },

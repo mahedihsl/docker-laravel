@@ -63363,7 +63363,7 @@ var PerformanceApi = function () {
         value: function stats(day) {
             return new Promise(function (resolve, reject) {
                 Vue.http.get("/performance/stats", { params: { day: day } }).then(function (response) {
-                    return resolve(response.body);
+                    return resolve(response.body.data);
                 }, function (error) {
                     return reject();
                 });
@@ -63374,7 +63374,7 @@ var PerformanceApi = function () {
         value: function list(tag, day) {
             return new Promise(function (resolve, reject) {
                 Vue.http.get("/performance/items", { params: { tag: tag, day: day } }).then(function (response) {
-                    return resolve(response.body);
+                    return resolve(response.body.data);
                 }, function (error) {
                     return reject();
                 });

@@ -1,7 +1,3 @@
-@php
-$hasHttps= env('APP_ENV')=='production'
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,10 +30,10 @@ $hasHttps= env('APP_ENV')=='production'
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <!-- Favicons -->
-  <link rel="shortcut icon" href="{{ asset('images/favicon.ico', $hasHttps) }}">
-  <link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', $hasHttps) }}">
-  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', $hasHttps) }}">
-  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', $hasHttps) }}">
+  <link rel="shortcut icon" href="{{ asset('images/favicon.ico', true) }}">
+  <link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', true) }}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', true) }}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', true) }}">
 
   <!-- Google Fonts -->
   <link
@@ -45,17 +41,17 @@ $hasHttps= env('APP_ENV')=='production'
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{{ asset('landing2/assets/vendor/bootstrap/css/bootstrap.min.css', $hasHttps) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/bootstrap-icons/bootstrap-icons.css', $hasHttps) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/aos/aos.css', $hasHttps) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/remixicon/remixicon.css', $hasHttps) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/swiper/swiper-bundle.min.css', $hasHttps) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/glightbox/css/glightbox.min.css', $hasHttps) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/bootstrap/css/bootstrap.min.css', true) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/bootstrap-icons/bootstrap-icons.css', true) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/aos/aos.css', true) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/remixicon/remixicon.css', true) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/swiper/swiper-bundle.min.css', true) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/glightbox/css/glightbox.min.css', true) }}" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ asset('vendors/fa5/css/all.css') }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <!-- Template Main CSS File -->
-  <link href="{{ asset('landing2/assets/css/style.css', $hasHttps) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/css/style.css', true) }}" rel="stylesheet">
 
   {{-- <!-- Facebook Pixel Code -->
   <script>
@@ -142,23 +138,23 @@ $hasHttps= env('APP_ENV')=='production'
           <div class="row">
             <div class="col-xs-12 d-flex flex-column flex-lg-row">
               <div style="padding: 10px;">
-                <img src="{{ asset('images/screenshots/1.jpg', $hasHttps) }}" alt=""
+                <img src="{{ asset('images/screenshots/1.jpg', true) }}" alt=""
                   style="width: 100%; border-radius: 4px;" />
               </div>
               <div style="padding: 10px;">
-                <img src="{{ asset('images/screenshots/2.jpg', $hasHttps) }}" alt=""
+                <img src="{{ asset('images/screenshots/2.jpg', true) }}" alt=""
                   style="width: 100%; border-radius: 4px;" />
               </div>
               <div style="padding: 10px;">
-                <img src="{{ asset('images/screenshots/3.jpg', $hasHttps) }}" alt=""
+                <img src="{{ asset('images/screenshots/3.jpg', true) }}" alt=""
                   style="width: 100%; border-radius: 4px;" />
               </div>
               <div style="padding: 10px;">
-                <img src="{{ asset('images/screenshots/4.jpg', $hasHttps) }}" alt=""
+                <img src="{{ asset('images/screenshots/4.jpg', true) }}" alt=""
                   style="width: 100%; border-radius: 4px;" />
               </div>
               <div style="padding: 10px;">
-                <img src="{{ asset('images/screenshots/5.jpg', $hasHttps) }}" alt=""
+                <img src="{{ asset('images/screenshots/5.jpg', true) }}" alt=""
                   style="width: 100%; border-radius: 4px;" />
               </div>
             </div>
@@ -193,9 +189,9 @@ $hasHttps= env('APP_ENV')=='production'
         </header>
 
         <div class="clients-wrapper">
-          <img src="{{ asset('images/partners/banglalink.png', $hasHttps) }}" alt="">
-          <img src="{{ asset('images/partners/robi.png', $hasHttps) }}" alt="" style="margin: 0 50px;">
-          <img src="{{ asset('images/partners/jural.png', $hasHttps) }}" alt="">
+          <img src="{{ asset('images/partners/banglalink.png', true) }}" alt="">
+          <img src="{{ asset('images/partners/robi.png', true) }}" alt="" style="margin: 0 50px;">
+          <img src="{{ asset('images/partners/jural.png', true) }}" alt="">
         </div>
 
       </div>
@@ -318,7 +314,7 @@ $hasHttps= env('APP_ENV')=='production'
         <div class="row gy-4">
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
-              <img src="{{ asset('images/web_logo.png', $hasHttps) }}" alt="">
+              <img src="{{ asset('images/web_logo.png', true) }}" alt="">
               <span>myRADAR</span>
             </a>
             <p></p>
@@ -385,16 +381,16 @@ $hasHttps= env('APP_ENV')=='production'
 
   <!-- Vendor JS Files -->
   {{-- <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script> --}}
-  <script src="{{ asset('landing2/assets/vendor/aos/aos.js', $hasHttps) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/php-email-form/validate.js', $hasHttps) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/swiper/swiper-bundle.min.js', $hasHttps) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/purecounter/purecounter.js', $hasHttps) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/isotope-layout/isotope.pkgd.min.js', $hasHttps) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/glightbox/js/glightbox.min.js', $hasHttps) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/bootstrap/js/bootstrap.bundle.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/aos/aos.js', true) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/php-email-form/validate.js', true) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/swiper/swiper-bundle.min.js', true) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/purecounter/purecounter.js', true) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/isotope-layout/isotope.pkgd.min.js', true) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/glightbox/js/glightbox.min.js', true) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/bootstrap/js/bootstrap.bundle.js', true) }}"></script>
 
   <!-- Template Main JS File -->
-  <script src="{{ asset('landing2/assets/js/main.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/js/main.js', true) }}"></script>
 
   {{-- <script>if( window.self == window.top ) { (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-55234356-4', 'auto'); ga('send', 'pageview'); } </script> --}}
 </body>

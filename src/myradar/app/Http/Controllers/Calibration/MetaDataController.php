@@ -26,7 +26,7 @@ class MetaDataController extends Controller
         $car = $this->repository->find($id);
 
         if ( ! is_null($car)) {
-            return response()->json([
+            return response()->ok([
                 'fuel' => $car->meta_data->get('fuel_factor'),
                 'gas' => $car->meta_data->get('gas_factor'),
             ]);
@@ -40,7 +40,7 @@ class MetaDataController extends Controller
         $car = $this->repository->find($id);
 
         if ( ! is_null($car)) {
-            return response()->json([
+            return response()->ok([
                 'fuel' => $car->meta_data->get('fuel_tune_factor'),
                 'gas' => $car->meta_data->get('gas_tune_factor'),
             ]);
@@ -62,7 +62,7 @@ class MetaDataController extends Controller
                 ]
             ]);
 
-            return response()->json([
+            return response()->ok([
                 'fuel' => $car->meta_data->get('fuel_factor'),
                 'gas' => $car->meta_data->get('gas_factor'),
             ]);
@@ -84,7 +84,7 @@ class MetaDataController extends Controller
                 ]
             ]);
 
-            return response()->json([
+            return response()->ok([
                 'fuel' => $car->meta_data->get('fuel_tune_factor'),
                 'gas' => $car->meta_data->get('gas_tune_factor'),
             ]);

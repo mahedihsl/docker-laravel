@@ -14,7 +14,12 @@ class ResponseMacroServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Response::macro('ok', function($data = []) {
+        Response::macro('ok', function($data = []) {    
+
+            if(gettype($data) != 'array'){
+                $data = ["data"=>$data]; 
+            }
+
             if (sizeof($data) == 1 && isset($data['data'])) {
                 $data = $data['data'];
             }

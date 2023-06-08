@@ -49,7 +49,7 @@ class DrivingController extends Controller
                             return $v->duration;
                         });
 
-        return response()->json([
+        return response()->ok([
             'time' => intval($duration / 60),
             'month' => $from->format('F'),
         ]);
@@ -74,7 +74,7 @@ class DrivingController extends Controller
                             ];
                         });
 
-        return response()->json($records);
+        return response()->ok($records);
     }
 
     public function export(Request $request)
@@ -113,7 +113,7 @@ class DrivingController extends Controller
 
 
         $temp = $records[$key];
-        //return response()->json($temp);
+        //return response()->ok($temp);
         $data->put('reg_no', $reg_no);
         $i = 0; $ind=0;
         for($i=0; $i<sizeof($temp)-2; $i++){
@@ -142,13 +142,13 @@ class DrivingController extends Controller
         {
           $data->put(++$index,0.0);
         }
-        //return response()->json($data->get('reg_no'));
+        //return response()->ok($data->get('reg_no'));
         $wholedata->push($data);
         $this->repository->popCriteria(new CarIdCriteria($car));
       }
 
 
-    //  return response()->json($wholedata);
+    //  return response()->ok($wholedata);
 
       $mon = $from->format('M');
       $month =$from->format('F');

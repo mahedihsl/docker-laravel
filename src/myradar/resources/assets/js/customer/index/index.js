@@ -38,7 +38,7 @@ new Vue({
             this.$options.store.commit('changeView', k);
         },
         sendPaymentMessage(){
-          if(this.access['bulkMessage']){
+          if(this.access['bulkMessage']['status']){
             const instance = this;
             $.confirm({
               title: 'Are You Sure ?',
@@ -64,7 +64,7 @@ new Vue({
           }
         },
         sendPaymentMethod(){
-          if(this.access['bulkMessage'])
+          if(this.access['bulkMessage']['status'])
           {
             const instance = this;
             $.confirm({
@@ -96,7 +96,7 @@ new Vue({
         },
         onMessageAccessFound(data){
           this.access=data;
-          //console.log(this.access);
+          console.log(this.access);
         },
         onAccessDenied(){
           toastr.error('Sorry! you dont have access');

@@ -11,7 +11,7 @@ class AccessController extends Controller
     {
         $user = $this->getWebUser();
 
-        return response()->json([
+        return response()->ok([
             'analytics' => [
                 'status' => true, // $user->isAdmin() || $user->isOperation()
                 'meta' => null,
@@ -44,13 +44,13 @@ class AccessController extends Controller
                 'status' => true,
                 'meta' => null,
             ],
-        ],200);
+        ]);
     }
 
     public function messageAccess(Request $request)
     {
       $user = $this->getWebUser();
-      return response()->json([
+      return response()->ok([
         'bulkMessage'   => [
             'status' => $user->isAdmin(),
             'meta' => null,

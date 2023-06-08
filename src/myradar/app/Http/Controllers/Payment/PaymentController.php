@@ -43,10 +43,10 @@ class PaymentController extends Controller
       } catch (\Exception $e) {
         Log::info('Error during bill observe', ['error' => $e->getMessage()]);
       }
-      return response()->json(200);
+      return response()->ok();
     }
 
-    return response()->json(500);
+    return response()->error();
   }
 
   public function index(Request $request, $userId)
@@ -57,13 +57,13 @@ class PaymentController extends Controller
       ->pushCriteria($criteria)
       ->with(['user', 'car'])
       ->all();
-    return response()->json($paymentlist);
+    return response()->ok($paymentlist);
   }
 
   public function getRefNo(Request $request, $userId)
   {
     $ref = User::find($userId)->ref_no;
-    return response()->json($ref);
+    return response()->ok($ref);
   }
 
   public function sendAll(Request $request)
@@ -75,7 +75,7 @@ class PaymentController extends Controller
       } catch (\Exception $e) {
       }
     }
-    return response()->json();
+    return response()->ok();
   }
 
   public function send(Request $request)
@@ -84,7 +84,7 @@ class PaymentController extends Controller
     $content = $request->get('content');
     $type = $request->get('type');
     $this->smsService->send(User::find($userId)->phone, $content, $type);
-    return response()->json();
+    return response()->ok();
   }
 
   public function getMsgContent($userId)
@@ -92,11 +92,11 @@ class PaymentController extends Controller
     $user = User::find($userId);
     $months = $this->getDue($userId);
 
-    if (sizeof($months) == 0) return response()->json('All paid');
+    if (sizeof($months) == 0) return response()->ok('All paid');
     $content = $this->smsService->buildContent('payment_2', ['months' => $months, 'user_uid' => $user->uid]);
     //$content = $this->smsService->buildContent('payment_2', $months);
     // $content = $this->getContent($months);
-    return response()->json($content);
+    return response()->ok($content);
   }
 
   public function getContent($data)
@@ -132,7 +132,7 @@ class PaymentController extends Controller
 
   public function totalDue(Request $request, $userId)
   {
-    return response()->json([
+    return response()->ok([
       'total' => $this->getDue($userId)->sum('bill'),
     ]);
   }
@@ -212,7 +212,7 @@ class PaymentController extends Controller
       $this->sendMethod($user->id);
     }
 
-    return response()->json();
+    return response()->ok();
   }
 
   public function sendMethod($userId)
@@ -220,12 +220,12 @@ class PaymentController extends Controller
     try {
       $user = User::find($userId);
       $refNo = $user->ref_no;
-      if ($refNo == "") return response()->json("add ref no!");
+      if ($refNo == "") return response()->ok("add ref no!");
       $content = $this->smsService->buildContent('payment_1', ['ref_no' => $refNo, 'user_uid' => $user->uid]);
       // $content = $this->methodContent($refNo);
-      return response()->json($content);
+      return response()->ok($content);
     } catch (\Throwable $th) {
-      response()->json($th->getMessage());
+      response()->ok($th->getMessage());
     }
   }
 
@@ -256,6 +256,6 @@ class PaymentController extends Controller
       ]);
     }
 
-    return response()->json($data);
+    return response()->ok($data);
   }
 }

@@ -42,7 +42,7 @@ class SettingsController extends Controller
               $model = $this->repository->enterSave(User::find($userId), Car::find($carId));
           }
 
-          return response()->json($model);
+          return response()->ok($model);
       }
 
       public function change(Request $request)
@@ -61,6 +61,6 @@ class SettingsController extends Controller
 
             $this->repository->change($setting->id, collect($data));
 
-            return response()->json();
+            return response()->ok();
       }
 }

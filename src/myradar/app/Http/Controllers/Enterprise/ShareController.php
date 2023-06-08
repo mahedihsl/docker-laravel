@@ -46,7 +46,7 @@ class ShareController extends Controller
             $this->users->pushCriteria(new PhoneNumberCriteria($phone));
         }
 
-        return response()->json($this->users->all());
+        return response()->ok($this->users->all());
     }
 
     public function shared(Request $request)
@@ -56,7 +56,7 @@ class ShareController extends Controller
         if ( ! is_null($car)) {
             $list = $this->users->setPresenter(UserInfoPresenter::class)
                         ->pushCriteria(new WithinIdsCriteria($car->shared_with))->all();
-            return response()->json($list);
+            return response()->ok($list);
         }
 
         return response()->error();
@@ -74,7 +74,7 @@ class ShareController extends Controller
             $arr = collect($car->shared_with)->push($user->id)->unique()->values()->toArray();
             $car->update([ 'shared_with' => $arr ]);
 
-            return response()->json();
+            return response()->ok();
         }
 
         return response()->error();
@@ -96,7 +96,7 @@ class ShareController extends Controller
             })->values()->toArray();
             $car->update([ 'shared_with' => $arr ]);
 
-            return response()->json();
+            return response()->ok();
         }
 
         return response()->error();

@@ -40,7 +40,7 @@ class RefuelFeedController extends Controller
             $this->repository->pushCriteria(new WithTypeCriteria($type));
         }
 
-        return response()->json($this->repository->all());
+        return response()->ok($this->repository->all());
     }
 
     public function store(Request $request)
@@ -48,7 +48,7 @@ class RefuelFeedController extends Controller
         $item = $this->repository->save(collect($request->all()));
 
         if ( ! is_null($item)) {
-            return response()->json();
+            return response()->ok();
         }
 
         return response()->error('Feed not saved');

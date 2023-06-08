@@ -52,7 +52,7 @@ class LibraryController extends Controller
       'id' => $request->get('car_id'),
       'reg_no' => $request->get('reg_no'),
     ], true);
-    return response()->json();
+    return response()->ok();
   }
 
   public function unsubscribe(Request $request)
@@ -62,6 +62,6 @@ class LibraryController extends Controller
       'id' => $request->get('car_id'),
       'reg_no' => $request->get('reg_no'),
     ]);
-    return response()->json();
+    return response()->ok();
   }
 }

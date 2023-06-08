@@ -1,7 +1,3 @@
-@php
-$hasHttps= env('APP_ENV')=='production'
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,12 +10,12 @@ $hasHttps= env('APP_ENV')=='production'
 
     <title>{{ config('app.name') }}</title>
 
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico', $hasHttps) }}">
-    <link rel="apple-touch-icon" href="{{ asset('assets/landing/images/apple-touch-icon.png', $hasHttps) }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico', true) }}">
+    <link rel="apple-touch-icon" href="{{ asset('assets/landing/images/apple-touch-icon.png', true) }}">
     <link rel="apple-touch-icon" sizes="72x72"
-        href="{{ asset('assets/landing/images/apple-touch-icon-72x72.png', $hasHttps) }}">
+        href="{{ asset('assets/landing/images/apple-touch-icon-72x72.png', true) }}">
     <link rel="apple-touch-icon" sizes="114x114"
-        href="{{ asset('assets/landing/images/apple-touch-icon-114x114.png', $hasHttps) }}">
+        href="{{ asset('assets/landing/images/apple-touch-icon-114x114.png', true) }}">
 
     <!-- <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}"> -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"

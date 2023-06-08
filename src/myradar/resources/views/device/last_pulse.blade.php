@@ -1,7 +1,4 @@
 @extends('layouts.new')
-@php
-$hasHttps= env('APP_ENV')=='production'
-@endphp
 
 @push('style')
 
@@ -24,5 +21,5 @@ $hasHttps= env('APP_ENV')=='production'
 
 @push('script')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" charset="utf-8"></script>
-  <script src="{{ asset('js/device/last_pulse.js', $hasHttps) }}" charset="utf-8"></script>
+  <script src="{{ asset('js/device/last_pulse.js', true) }}" charset="utf-8"></script>
 @endpush

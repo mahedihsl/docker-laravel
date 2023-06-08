@@ -36,7 +36,7 @@ class FuelController extends Controller
     {
         // If this is demo car
         if ($id == '5f63fbca32ebd87dc663002a') {
-            return response()->json([
+            return response()->ok([
                 'id' => '...',
                 'value' => 56,
                 'when' => Carbon::today()->format('j M'),
@@ -45,7 +45,7 @@ class FuelController extends Controller
 
         $device = Device::with(['car'])->find($id);
         if (!$device->car->status) {
-            return response()->json(['value' => 0]);
+            return response()->ok(['value' => 0]);
         }
 
         $this->dailyRepo->setPresenter(DailyFuelPresenter::class);
@@ -54,10 +54,10 @@ class FuelController extends Controller
 
         $item = $this->dailyRepo->skipPresenter()->first();
         if ( ! is_null($item)) {
-            return response()->json($item->presenter());
+            return response()->ok($item->presenter());
         }
 
-        return response()->json(['value' => 0]);
+        return response()->ok(['value' => 0]);
     }
 
     public function latestv2(Request $request)
@@ -83,16 +83,16 @@ class FuelController extends Controller
     {
         $device = Device::with(['car'])->find($id);
         if (!$device->car->status) {
-            return response()->json(['items' => []]);
+            return response()->ok(['items' => []]);
         }
         if ($device->car->name == 'Demo') {
-            return response()->json([ 'items' => $this->getDemoFuelHistory(7) ]);
+            return response()->ok([ 'items' => $this->getDemoFuelHistory(7) ]);
         }
 
         $this->dailyRepo->pushCriteria(new DeviceIdCriteria($id));
         $this->dailyRepo->pushCriteria(new BeforeWhenCriteria(Carbon::today()));
 
-        return response()->json([
+        return response()->ok([
             'items' => $this->filterFuelValues($day, Carbon::yesterday())
         ]);
     }
@@ -127,7 +127,7 @@ class FuelController extends Controller
     {
         $device = Device::with(['car'])->find($id);
         if (!$device->car->status) {
-            return response()->json(['items' => []]);
+            return response()->ok(['items' => []]);
         }
         
         $from = Carbon::createFromFormat('Y-n-j', $request->get('from'));
@@ -141,7 +141,7 @@ class FuelController extends Controller
         $this->dailyRepo->pushCriteria(new BeforeWhenCriteria($to->copy()->addDay()));
         $this->dailyRepo->pushCriteria(new AfterWhenCriteria($from->copy()->subDay()));
 
-        return response()->json([
+        return response()->ok([
             'items' => $this->filterFuelValues($day, $to)
         ]);
     }

@@ -6,14 +6,14 @@ export default class LastPulseApi {
     static stats(day) {
         return new Promise((resolve, reject) => {
             Vue.http.get(`/lastpulse/stats`, {params: {day}})
-                        .then(response => resolve(response.body), error => reject())
+                        .then(response => resolve(response.body.data), error => reject())
         })
     }
 
     static list(tag, day) {
         return new Promise((resolve, reject) => {
             Vue.http.get(`/lastpulse/items`, {params: {tag, day}})
-                        .then(response => resolve(response.body), error => reject())
+                        .then(response => resolve(response.body.data), error => reject())
         })
     }
 

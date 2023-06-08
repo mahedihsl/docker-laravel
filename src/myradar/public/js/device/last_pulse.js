@@ -63515,7 +63515,7 @@ var LastPulseApi = function () {
         value: function stats(day) {
             return new Promise(function (resolve, reject) {
                 Vue.http.get("/lastpulse/stats", { params: { day: day } }).then(function (response) {
-                    return resolve(response.body);
+                    return resolve(response.body.data);
                 }, function (error) {
                     return reject();
                 });
@@ -63526,7 +63526,7 @@ var LastPulseApi = function () {
         value: function list(tag, day) {
             return new Promise(function (resolve, reject) {
                 Vue.http.get("/lastpulse/items", { params: { tag: tag, day: day } }).then(function (response) {
-                    return resolve(response.body);
+                    return resolve(response.body.data);
                 }, function (error) {
                     return reject();
                 });

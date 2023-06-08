@@ -49,7 +49,7 @@ class GasRefuelInputController extends Controller
         'factor' => $priceFactor,
       ];
       GasRefuelInput::create($inputs);
-      return response()->json();
+      return response()->ok();
     }
 
     public function findEvent($eventId)

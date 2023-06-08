@@ -1,7 +1,4 @@
 @extends('layouts.new')
-@php
-$hasHttps= env('APP_ENV')=='production'
-@endphp
 
 @section('content')
   <div class="row" id="app">
@@ -12,5 +9,5 @@ $hasHttps= env('APP_ENV')=='production'
 @endsection
 
 @push('script')
-<script src="{{ asset('js/car/index.js', $hasHttps) }}"></script>
+<script src="{{ asset('js/car/index.js', true) }}"></script>
 @endpush

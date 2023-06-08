@@ -41,7 +41,7 @@ class DeviceController extends Controller
             $shared = in_array($request->get('user_id'), Car::find($id)->shared_with);
             $device = $this->devices->first();
             $flag = ! is_null($device);
-            return response()->json([
+            return response()->ok([
                 'car_id'    => $id,
                 'shared'    => $shared,
                 'value'     => $flag ? 1 : 0,
@@ -68,10 +68,10 @@ class DeviceController extends Controller
         try {
             $car_id = $request->get('car_id');
             $this->service->bindDevice($car_id, $device->com_id);
-
+            
             dispatch(new OnDeviceBindedJob($device->id, $car_id));
-
-            return response()->json('Commercial ID attached');
+            
+            return response()->ok('Commercial ID attached');
         } catch (ServiceException $e) {
             return response()->error($e->getMessage());
         }
@@ -120,7 +120,7 @@ class DeviceController extends Controller
     {
         try {
             $this->service->unbindDevice($request->get('car_id'));
-            return response()->json();
+            return response()->ok();
         } catch (ServiceException $e) {
             return response()->error($e->getMessage());
         }

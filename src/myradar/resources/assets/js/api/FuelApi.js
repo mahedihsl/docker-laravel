@@ -27,7 +27,6 @@ export default class FuelApi {
 
   async fetchGroups() {
     const res = await Vue.http.get(`/fuel/fetch-groups`)
-    console.log(res)
     return res.body
   }
 }

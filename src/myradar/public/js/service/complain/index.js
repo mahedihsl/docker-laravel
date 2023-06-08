@@ -48746,7 +48746,7 @@ var ComplainApi = function () {
 
       return new Promise(function (resolve, reject) {
         Vue.http.get('/complain/list?page=' + page + '&user_id=' + user_id).then(function (response) {
-          resolve(response.body);
+          resolve(response.body.data);
         }, function (error) {});
       });
     }
@@ -48760,7 +48760,7 @@ var ComplainApi = function () {
       };
       return new Promise(function (resolve, reject) {
         Vue.http.get('/complain/search', { params: params }).then(function (response) {
-          resolve(response.body);
+          resolve(response.body.data);
         }, function (error) {});
       });
     }

@@ -36,7 +36,7 @@ class AuthController extends Controller
 
         if ( ! is_null($user)) {
             if (Hash::check($request->get('password'), $user->password)) {
-                return response()->json($user->presenter());
+                return response()->ok($user->presenter());
             }
 
             return response()->error('Password is Incorrect. Try Again');
@@ -58,7 +58,7 @@ class AuthController extends Controller
         //         //->where('device_type', $type)
         // }
 
-        return response()->json();
+        return response()->ok();
     }
 
 }

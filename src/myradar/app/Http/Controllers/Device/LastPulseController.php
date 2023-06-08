@@ -49,7 +49,7 @@ class LastPulseController extends Controller
           }
         }
 
-        return response()->json($ret);
+        return response()->ok($ret);
     }
 
     public function getDeviceList($versionLow, $versionHigh, $timeLow, $timeHigh)
@@ -96,7 +96,7 @@ class LastPulseController extends Controller
       $ret = collect();
       $ret = $this->transformList($deviceList);
 
-      return response()->json($ret);
+      return response()->ok($ret);
     }
 
     public function transformList($deviceList)
@@ -140,7 +140,7 @@ class LastPulseController extends Controller
 
 			$dev->save();
 
-			return response()->json([
+			return response()->ok([
 				'reset_calls' => $dev->reset_calls,
 				'reset_attempts' => $dev->reset_attempts,
 			]);

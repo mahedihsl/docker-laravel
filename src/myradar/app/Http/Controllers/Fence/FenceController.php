@@ -40,7 +40,7 @@ class FenceController extends Controller
             return $transformer->transform($fence);
         });
 
-        return response()->json($items);
+        return response()->ok($items);
     }
 
     public function toggle(Request $request)
@@ -65,7 +65,7 @@ class FenceController extends Controller
                 $user->fences()->detach($fence->id);
             }
 
-            return response()->json();
+            return response()->ok();
         }
 
         return response()->error('GeoFence Not Found');

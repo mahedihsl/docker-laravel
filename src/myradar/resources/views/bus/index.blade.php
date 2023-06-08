@@ -1,6 +1,3 @@
-@php
-$hasHttps= env('APP_ENV')=='production'
-@endphp
 @extends('layouts.new')
 
 @section('content')
@@ -12,5 +9,5 @@ $hasHttps= env('APP_ENV')=='production'
 @endsection
 
 @push('script')
-  <script src="{{mix('js/bus/index.js', $hasHttps)}}"></script>
+  <script src="{{mix('js/bus/index.js', true)}}"></script>
 @endpush

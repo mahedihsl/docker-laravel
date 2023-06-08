@@ -54,9 +54,9 @@ class AccountController extends Controller
             
             $response = $this->microservice->toggleStatus($user_id, $actor_id);
 
-            return response()->json([ 'enabled' => $response['status'] ]);
+            return response()->ok([ 'enabled' => $response['status'] ]);
         } catch (ServiceException $e) {
-            return response()->json($e->getMessage());
+            return response()->error($e->getMessage());
         }
     }
 }

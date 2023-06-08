@@ -34,7 +34,7 @@ class DriverController extends Controller
     {
         $criteria = new UserIdCriteria($id);
         $drivers = $this->repository->pushCriteria($criteria)->all();
-        return response()->json($drivers);
+        return response()->ok($drivers);
     }
 
     public function save(CreateDriver $request)
@@ -42,7 +42,7 @@ class DriverController extends Controller
         $model = $this->repository->skipPresenter()->save(collect($request->all()));
 
         if ( ! is_null($model)) {
-            return response()->json($model->presenter());
+            return response()->ok($model->presenter());
         }
 
         return response()->error('Unknown Error, Try Again');
@@ -52,7 +52,7 @@ class DriverController extends Controller
     {
         $driver = $this->repository->skipPresenter()->change(collect($request->all()));
 
-        return response()->json([
+        return response()->ok([
             'curr' => $driver->presenter(),
             'prev' => $this->attach($driver, $request->get('car_id')),
         ]);
@@ -81,7 +81,7 @@ class DriverController extends Controller
     {
         $deleted = $this->repository->delete($request->get('id'));
 
-        return $deleted ? response()->json() : response()->error();
+        return $deleted ? response()->ok() : response()->error();
     }
 
 }

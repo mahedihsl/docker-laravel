@@ -80,7 +80,7 @@ class AreaController extends Controller
       'id' => $request->get('car_id'),
       'reg_no' => $request->get('reg_no'),
     ], true);
-    return response()->json();
+    return response()->ok();
   }
 
   public function unsubscribe(Request $request)
@@ -90,14 +90,14 @@ class AreaController extends Controller
       'id' => $request->get('car_id'),
       'reg_no' => $request->get('reg_no'),
     ]);
-    return response()->json();
+    return response()->ok();
   }
 
   public function remove(Request $request)
   {
     try {
       $this->geofenceService->removeGeofence($request->get('id'));
-      return response()->json();
+      return response()->ok();
     } catch (ServiceException $e) {
       return response()->json(['message' => $e->getMessage()], 400);
     }
@@ -107,7 +107,7 @@ class AreaController extends Controller
   {
     try {
       $this->geofenceService->updateGeofence($request->all());
-      return response()->json();
+      return response()->ok();
     } catch (ServiceException $e) {
       return response()->json(['message' => $e->getMessage()], 400);
     }
@@ -120,7 +120,7 @@ class AreaController extends Controller
         $request->get('geofence_id'),
         $request->get('car_ids')
       );
-      return response()->json();
+      return response()->ok();
     } catch (ServiceException $e) {
       return response()->json(['message' => $e->getMessage()], 400);
     }

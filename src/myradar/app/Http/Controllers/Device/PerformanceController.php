@@ -35,6 +35,7 @@ class PerformanceController extends Controller
                         ->skipPresenter()
                         ->pushCriteria(new ExactDateCriteria(Carbon::today()->subDays($day)))
                         ->all();
+
         $ret = collect();
         foreach (config('device.health') as $key => $limit) {
             $count = $models->sum(function($item) use ($limit) {
@@ -42,7 +43,8 @@ class PerformanceController extends Controller
             });
             $ret->put($key, $count);
         }
-        return response()->json($ret);
+
+        return response()->ok($ret);
     }
 
     public function items(Request $request)
@@ -59,7 +61,7 @@ class PerformanceController extends Controller
         })
         ->values();
 
-        return response()->json($models);
+        return response()->ok($models);
     }
 
 	public function unhealthy(Request $request)

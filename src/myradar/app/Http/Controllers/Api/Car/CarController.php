@@ -37,7 +37,7 @@ class CarController extends Controller
 
         $car = $this->repository->skipPresenter()->find($id);
         if ( ! is_null($car)) {
-            return response()->json($car->presenter(),200);
+            return response()->ok($car->presenter());
         }
 
         return response()->error('Car Not Found');
@@ -50,7 +50,7 @@ class CarController extends Controller
         if ( ! is_null($car)) {
             $this->repository->updateDates($car, collect($request->all()));
 
-            return response()->json(200);
+            return response()->ok();
         }
 
         return response()->error('Car Not Found');
