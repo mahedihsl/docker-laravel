@@ -1,4 +1,3 @@
-
 @extends('layouts.new')
 
 @push('style')

@@ -1,6 +1,3 @@
-@php
-$hasHttps= env('APP_ENV')=='production'
-@endphp
 <!-- ======= Features Section ======= -->
 <section id="feature" class="features">
 
@@ -14,7 +11,7 @@ $hasHttps= env('APP_ENV')=='production'
     <div class="row">
 
       <div class="col-lg-6">
-        <img src="{{ asset('landing2/assets/image/features.png', $hasHttps) }}" class="img-fluid" alt="">
+        <img src="{{ asset('landing2/assets/image/features.png', true) }}" class="img-fluid" alt="">
       </div>
 
       <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
@@ -120,7 +117,7 @@ $hasHttps= env('APP_ENV')=='production'
       </div>
 
       <div class="col-lg-6">
-        <img src="{{ asset('landing2/assets/image/car_safety.png', $hasHttps) }}" class="img-fluid" alt="">
+        <img src="{{ asset('landing2/assets/image/car_safety.png', true) }}" class="img-fluid" alt="">
       </div>
 
     </div>
@@ -129,7 +126,7 @@ $hasHttps= env('APP_ENV')=='production'
     <!-- Feature Tabs 2 -->
     <div class="row feture-tabs" data-aos="fade-up">
       <div class="col-lg-6">
-        <img src="{{ asset('landing2/assets/image/live_tracking3.gif', $hasHttps) }}" class="img-fluid" alt="">
+        <img src="{{ asset('landing2/assets/image/live_tracking3.gif', true) }}" class="img-fluid" alt="">
       </div>
 
       <div class="col-lg-6">
@@ -258,7 +255,7 @@ $hasHttps= env('APP_ENV')=='production'
       </div>
 
       <div class="col-lg-6">
-        <img src="{{ asset('landing2/assets/image/theft_protection.png', $hasHttps) }}" class="img-fluid" alt="">
+        <img src="{{ asset('landing2/assets/image/theft_protection.png', true) }}" class="img-fluid" alt="">
       </div>
 
     </div>
@@ -267,7 +264,7 @@ $hasHttps= env('APP_ENV')=='production'
     <!-- Feature Tabs 4 -->
     <div id="fuel-meter" class="row feture-tabs" data-aos="fade-up">
       <div class="col-lg-6">
-        <img src="{{ asset('landing2/assets/image/cng_monitoring2.png', $hasHttps) }}" class="img-fluid" alt="">
+        <img src="{{ asset('landing2/assets/image/cng_monitoring2.png', true) }}" class="img-fluid" alt="">
       </div>
 
       <div class="col-lg-6">
@@ -401,7 +398,7 @@ $hasHttps= env('APP_ENV')=='production'
       </div>
 
       <div class="col-lg-6">
-        <img src="{{ asset('landing2/assets/image/live_tracking2.png', $hasHttps) }}" class="img-fluid" alt="">
+        <img src="{{ asset('landing2/assets/image/live_tracking2.png', true) }}" class="img-fluid" alt="">
       </div>
 
     </div>
@@ -410,7 +407,7 @@ $hasHttps= env('APP_ENV')=='production'
     <!-- Feature Tabs 6 -->
     <div class="row feture-tabs" data-aos="fade-up">
       <div class="col-lg-6">
-        <img src="{{ asset('landing2/assets/image/family_safety.png', $hasHttps) }}" class="img-fluid" alt="">
+        <img src="{{ asset('landing2/assets/image/family_safety.png', true) }}" class="img-fluid" alt="">
       </div>
 
       <div class="col-lg-6">

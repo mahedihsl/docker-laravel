@@ -11,9 +11,7 @@ use Excel;
 use Carbon\Carbon;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
-
 use Illuminate\Support\Collection;
-
 use App\Contract\Repositories\CarRepository;
 use App\Generator\CarCriteriaGenerator;
 use App\Transformers\CarExportTransformer;

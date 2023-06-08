@@ -1,4 +1,13 @@
 <li>
+  <a href="{{route('bkash-pgw-bill')}}">
+    <i class="fa fa-cab"></i> <span>bKash PGW (909)</span>
+    {{-- <span class="pull-right-container">
+      <small class="label pull-right bg-green">Hot</small>
+    </span> --}}
+  </a>
+</li>
+<li>
+<li>
   <a href="{{route('devices')}}">
     <i class="fa fa-microchip"></i> <span>Manage Devices</span>
   </a>
@@ -89,21 +98,21 @@
   </a>
 </li>
 <li>
+  <a href="/leads">
+    <i class="fa fa-bolt"></i> <span>Leads</span>
+    {{-- <span class="pull-right-container">
+      <small class="label pull-right bg-green">Hot</small>
+    </span> --}}
+  </a>
+</li>
+<li>
   <a href="/promotion">
     <i class="fa fa-tags" aria-hidden="true"></i> <span>Promo Schemes</span>
   </a>
 </li>
 <li>
-  <a href="/messages">
-    <i class="fa fa-envelope"></i> <span>Messages</span>
-    @php
-      $n = \App\Entities\Message::where('created_at', '>', \Carbon\Carbon::today())->count()
-    @endphp
-    @if ($n)
-      <span class="pull-right-container">
-        <small class="label pull-right bg-green">{{$n}}</small>
-      </span>
-    @endif
+  <a href="http://biwta.myradar.com.bd/demo?token=demo-preview" target="_blank">
+    <i class="fa fa-ship"></i> <span>BIWTA Demo</span>
   </a>
 </li>
 @include('partial.menu.test')

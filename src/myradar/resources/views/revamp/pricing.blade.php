@@ -1,6 +1,3 @@
-@php
-$hasHttps= env('APP_ENV')=='production'
-@endphp
 <!-- ======= Pricing Section ======= -->
 <section id="pricing" class="pricing">
 
@@ -19,7 +16,7 @@ $hasHttps= env('APP_ENV')=='production'
           </h3>
           <div class="price bangla"><sup class="na">@lang('price.standard.price_prev')</sup>@lang('price.standard.price')<span> @lang('misc.currency')</span></div>
           <div class="price2 bangla"><span>@lang('misc.month_charge') </span>@lang('price.standard.bill')<span> @lang('misc.currency')</span></div>
-          {{-- <img src="{{ asset('landing2/assets/img/pricing-free.png', $hasHttps) }}" class="img-fluid" alt=""> --}}
+          {{-- <img src="{{ asset('landing2/assets/img/pricing-free.png', true) }}" class="img-fluid" alt=""> --}}
           <ul class="bangla">
             <li>@lang('price.items.1')</li>
             <li>@lang('price.items.2')</li>
@@ -51,7 +48,7 @@ $hasHttps= env('APP_ENV')=='production'
           </h3>
           <div class="price bangla"><sup class="na">@lang('price.special.price_prev')</sup>@lang('price.special.price')<span> @lang('misc.currency')</span></div>
           <div class="price2 bangla"><span>@lang('misc.month_charge') </span>@lang('price.special.bill')<span> @lang('misc.currency')</span></div>
-          {{-- <img src="{{ asset('landing2/assets/img/pricing-starter.png', $hasHttps) }}" class="img-fluid" alt="">
+          {{-- <img src="{{ asset('landing2/assets/img/pricing-starter.png', true) }}" class="img-fluid" alt="">
           --}}
           <ul class="bangla">
             <li>@lang('price.items.1')</li>
@@ -83,7 +80,7 @@ $hasHttps= env('APP_ENV')=='production'
           </h3>
           <div class="price bangla"><sup></sup>@lang('price.advanced.price')<span> @lang('misc.currency')</span></div>
           <div class="price2 bangla"><span>@lang('misc.month_charge') </span>@lang('price.advanced.bill')<span> @lang('misc.currency')</span></div>
-          {{-- <img src="{{ asset('landing2/assets/img/pricing-business.png', $hasHttps) }}" class="img-fluid" alt="">
+          {{-- <img src="{{ asset('landing2/assets/img/pricing-business.png', true) }}" class="img-fluid" alt="">
           --}}
           <ul class="bangla">
             <li>@lang('price.items.1')</li>
@@ -115,7 +112,7 @@ $hasHttps= env('APP_ENV')=='production'
           </h3>
           <div class="price bangla"><sup></sup>@lang('price.business.price')<span></span></div>
           <div class="price2 bangla">&nbsp;</div>
-          {{-- <img src="{{ asset('landing2/assets/img/pricing-ultimate.png', $hasHttps) }}" class="img-fluid" alt="">
+          {{-- <img src="{{ asset('landing2/assets/img/pricing-ultimate.png', true) }}" class="img-fluid" alt="">
           --}}
           <ul class="bangla">
             <li>@lang('price.items.1')</li>

@@ -89,10 +89,12 @@ class PaymentController extends Controller
 
   public function getMsgContent($userId)
   {
+    $user = User::find($userId);
     $months = $this->getDue($userId);
 
     if (sizeof($months) == 0) return response()->ok('All paid');
-    $content = $this->smsService->buildContent('payment_2', $months);
+    $content = $this->smsService->buildContent('payment_2', ['months' => $months, 'user_uid' => $user->uid]);
+    //$content = $this->smsService->buildContent('payment_2', $months);
     // $content = $this->getContent($months);
     return response()->ok($content);
   }
@@ -219,7 +221,7 @@ class PaymentController extends Controller
       $user = User::find($userId);
       $refNo = $user->ref_no;
       if ($refNo == "") return response()->ok("add ref no!");
-      $content = $this->smsService->buildContent('payment_1', ['ref_no' => $refNo]);
+      $content = $this->smsService->buildContent('payment_1', ['ref_no' => $refNo, 'user_uid' => $user->uid]);
       // $content = $this->methodContent($refNo);
       return response()->ok($content);
     } catch (\Throwable $th) {

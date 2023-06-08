@@ -38,9 +38,7 @@ class PromotionController extends Controller
     {
       $list = $this->repository->pushCriteria(new LastUpdatedCriteria())
                                ->all();
-                               
-                               
-      return response()->json($list);
+      return response()->ok($list);
     }
 
     public function codeList(Request $request)
