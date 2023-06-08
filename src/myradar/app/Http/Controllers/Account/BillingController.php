@@ -7,7 +7,7 @@ use App\Entities\Recharge;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Entities\Car;
-use Excel;
+//use Excel;
 use Carbon\Carbon;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
@@ -15,6 +15,7 @@ use Illuminate\Support\Collection;
 use App\Contract\Repositories\CarRepository;
 use App\Generator\CarCriteriaGenerator;
 use App\Transformers\CarExportTransformer;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BillingController extends Controller
 {
@@ -47,24 +48,23 @@ class BillingController extends Controller
         ]);
     }
 
-    private function export($data)
+    public function export($data)
     {
-        Excel::create('BillingRecords', function ($excel) use ($data) {
+        return Excel::download(function ($excel) use ($data) {
             $excel->sheet('data', function ($sheet) use ($data) {
                 $data->transform(function ($car) {
                     $transformer = new CarExportTransformer();
                     return $transformer->transform($car);
                 });
-
+        
                 $sheet->fromArray($data->toArray(), null, 'A1', false, true);
-
+        
                 $sheet->row(1, function ($row) {
-                    $row->BalancesetFontWeight('bold');
+                    $row->setFontWeight('bold');
                 });
             });
-        })->download('xlsx');
+        }, 'invoices.xlsx', \Maatwebsite\Excel\Excel::XLSX);           
     }
-
 
     public function importExcel(Request $request)
     {
