@@ -153,5 +153,5 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf9yCy5ZZ6iEo0EyOWjUg4EpUHIeuZVWQ&libraries=geometry"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" charset="utf-8"></script>
-<script src="{{ asset('js/customer/manage.js', true) }}"></script>
+<script src="{{ asset('js/customer/manage.js', $hasHttps) }}"></script>
 @endpush

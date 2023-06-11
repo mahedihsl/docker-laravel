@@ -13,7 +13,7 @@ Generators
     <div style="padding: 20px 20px;">
       <strong>Fuel Meter</strong>
     </div>
-    
+
     <fuel-meter :value="fuel" />
   </div>
   <div class="col-xs-12 col-md-8" style="display: flex; flex-direction: column;" v-if="generators.length">
@@ -36,5 +36,5 @@ Generators
 
 @push('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" charset="utf-8"></script>
-<script src="{{ asset('js/enterprise/generator.js', true) }}" charset="utf-8"></script>
+<script src="{{ asset('js/enterprise/generator.js', $hasHttps) }}" charset="utf-8"></script>
 @endpush

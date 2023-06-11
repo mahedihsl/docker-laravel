@@ -22,11 +22,13 @@ $hasHttps= env('APP_ENV')=='production'
       <div class="w-100 d-flex flex-row justify-content-center align-items-center d-lg-none" style="gap: 30px;">
         <a target="_blank" href="{{ config('myradar.appstore') }}"
             title="Download from App Store" style="width: 35%;">
-          <img src="{{ asset('images/btn-appstore.png', $hasHttps) }}" class="img-fluid" alt="">  
+
+          <img src="{{ asset('images/btn-appstore.png', $hasHttps) }}" class="img-fluid" alt="">
         </a>
         <a target="_blank" href="{{ config('myradar.playstore') }}"
           title="Download from Play Store" style="width: 35%;">
-          <img src="{{ asset('images/btn-playstore.png', $hasHttps) }}" class="img-fluid" alt="">  
+          <img src="{{ asset('images/btn-playstore.png', $hasHttps) }}" class="img-fluid" alt="">
+    
         </a>
       </div>
       <h2 class="text-center bangla" style="font-weight: 800; color: #424242; font-size: 24px; margin-top: 30px;">

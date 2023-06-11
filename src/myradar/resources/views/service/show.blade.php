@@ -153,7 +153,7 @@
 
 @push('script')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" charset="utf-8"></script>
-  <script src="{{ asset('js/customer/service.js', true) }}" charset="utf-8"></script>
+  <script src="{{ asset('js/customer/service.js', $hasHttps) }}" charset="utf-8"></script>
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
   <script type="text/javascript">
       var OneSignal = window.OneSignal || [];
@@ -266,7 +266,7 @@
 
         OneSignal.push(function() {
             OneSignal.on('subscriptionChange', function (isSubscribed) {
-                if(isSubscribed==true){
+                if(isSubscribed==$hasHttps){
                     OneSignal.getUserId().then(function(userId) {
                         useragentid = userId;
                     }).then(function(){

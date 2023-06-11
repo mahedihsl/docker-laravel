@@ -1,12 +1,12 @@
 <div class="w-full py-8 px-4 md:px-32 flex flex-col items-center shadow-lg" style="background-color: #0c2461;">
   <div class="w-full flex flex-row justify-center items-center px-8">
-    <img class="w-8 h-8 tada" src="{{ asset('images/ic_confetti.svg', true) }}" alt="" />
+    <img class="w-8 h-8 tada" src="{{ asset('images/ic_confetti.svg', $hasHttps) }}" alt="" />
     <span class="tada font-semibold text-white text-xl ml-8">New Product</span>
   </div>
 
   <div class="w-full flex flex-col md:flex-row items-center mt-4 md:mt-0">
     <div class="flex-shrink-0">
-      <img class="w-auto h-24 rounded" src="{{ asset('images/e-heater.jpg', true) }}" alt="" />
+      <img class="w-auto h-24 rounded" src="{{ asset('images/e-heater.jpg', $hasHttps) }}" alt="" />
     </div>
     <div class="flex flex-col pl-6 flex-grow py-4 md:py-0">
       <span class="text-white font-bold text-4xl text-center md:text-left">

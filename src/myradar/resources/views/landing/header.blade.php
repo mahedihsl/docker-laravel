@@ -9,19 +9,19 @@
             <div class="col-xs-12 col-md-10 col-md-offset-1 mt-8">
                 <div class="owl-carousel">
                     <div>
-                        <img src="{{ asset('images/features/vts.png', true) }}" alt="" class="img-rounded">
+                        <img src="{{ asset('images/features/vts.png', $hasHttps) }}" alt="" class="img-rounded">
                         <h4 class="text-center">Track &amp; Relax</h4>
                     </div>
                     <div>
-                        <img src="{{ asset('images/features/remote-car-lock.gif', true) }}" alt="" class="img-rounded">
+                        <img src="{{ asset('images/features/remote-car-lock.gif', $hasHttps) }}" alt="" class="img-rounded">
                         <h4 class="text-center">Remote Lock</h4>
                     </div>
                     <div>
-                        <img src="{{ asset('images/features/remote-car-refueling.gif', true) }}" alt="" class="img-rounded">
+                        <img src="{{ asset('images/features/remote-car-refueling.gif', $hasHttps) }}" alt="" class="img-rounded">
                         <h4 class="text-center">Fuel &amp; Gas Monitor</h4>
                     </div>
                     <div>
-                        <img src="{{ asset('images/features/remote-lock-geo-fence.png', true) }}" alt="" class="img-rounded">
+                        <img src="{{ asset('images/features/remote-lock-geo-fence.png', $hasHttps) }}" alt="" class="img-rounded">
                         <h4 class="text-center">Theft Protection</h4>
                     </div>
                 </div>

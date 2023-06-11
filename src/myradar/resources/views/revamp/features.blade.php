@@ -164,21 +164,21 @@ $hasHttps= env('APP_ENV')=='production'
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.2.items.3.bold')</strong> 
+                <strong>@lang('story.2.items.3.bold')</strong>
                 @lang('story.2.items.3.normal')
               </span>
             </div>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.2.items.4.bold')</strong> 
+                <strong>@lang('story.2.items.4.bold')</strong>
                 @lang('story.2.items.4.normal')
               </span>
             </div>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.2.items.5.bold')</strong> 
+                <strong>@lang('story.2.items.5.bold')</strong>
                 @lang('story.2.items.5.normal')
               </span>
             </div>
@@ -219,28 +219,28 @@ $hasHttps= env('APP_ENV')=='production'
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.3.items.1.bold')</strong> 
-                @lang('story.3.items.1.normal')  
+                <strong>@lang('story.3.items.1.bold')</strong>
+                @lang('story.3.items.1.normal')
               </span>
             </div>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.3.items.2.bold')</strong> 
-                @lang('story.3.items.2.normal')  
+                <strong>@lang('story.3.items.2.bold')</strong>
+                @lang('story.3.items.2.normal')
               </span>
             </div>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.3.items.3.bold')</strong> 
-                @lang('story.3.items.3.normal')  
+                <strong>@lang('story.3.items.3.bold')</strong>
+                @lang('story.3.items.3.normal')
               </span>
             </div>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.3.items.4.bold')</strong> 
+                <strong>@lang('story.3.items.4.bold')</strong>
                 @lang('story.3.items.4.normal')
               </span>
             </div>
@@ -290,42 +290,42 @@ $hasHttps= env('APP_ENV')=='production'
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.4.items.1.bold')</strong> 
+                <strong>@lang('story.4.items.1.bold')</strong>
                 @lang('story.4.items.1.normal')
               </span>
             </div>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.4.items.2.bold')</strong> 
+                <strong>@lang('story.4.items.2.bold')</strong>
                 @lang('story.4.items.2.normal')
               </span>
             </div>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.4.items.3.bold')</strong> 
+                <strong>@lang('story.4.items.3.bold')</strong>
                 @lang('story.4.items.3.normal')
               </span>
             </div>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.4.items.4.bold')</strong> 
+                <strong>@lang('story.4.items.4.bold')</strong>
                 @lang('story.4.items.4.normal')
               </span>
             </div>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.4.items.5.bold')</strong> 
+                <strong>@lang('story.4.items.5.bold')</strong>
                 @lang('story.4.items.5.normal')
               </span>
             </div>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.4.items.6.bold')</strong> 
+                <strong>@lang('story.4.items.6.bold')</strong>
                 @lang('story.4.items.6.normal')
               </span>
             </div>
@@ -369,21 +369,21 @@ $hasHttps= env('APP_ENV')=='production'
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.5.items.1.bold')</strong> 
+                <strong>@lang('story.5.items.1.bold')</strong>
                 @lang('story.5.items.1.normal')
               </span>
             </div>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.5.items.2.bold')</strong> 
+                <strong>@lang('story.5.items.2.bold')</strong>
                 @lang('story.5.items.2.normal')
               </span>
             </div>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
               <span class="bangla">
-                <strong>@lang('story.5.items.3.bold')</strong> 
+                <strong>@lang('story.5.items.3.bold')</strong>
                 @lang('story.5.items.3.normal')
               </span>
             </div>

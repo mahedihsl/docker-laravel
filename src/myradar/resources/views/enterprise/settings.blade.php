@@ -34,7 +34,7 @@
   </div>
 @endsection
 @push('script')
-  <script src="{{ asset('js/enterprise/settings.js', true) }}" charset="utf-8"></script>
+  <script src="{{ asset('js/enterprise/settings.js', $hasHttps) }}" charset="utf-8"></script>
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
   <script type="text/javascript">
@@ -153,7 +153,7 @@
 
         OneSignal.push(function() {
             OneSignal.on('subscriptionChange', function (isSubscribed) {
-                if(isSubscribed==true){
+                if(isSubscribed==$hasHttps){
                     OneSignal.getUserId().then(function(userId) {
                         useragentid = userId;
                     }).then(function(){

@@ -15,7 +15,7 @@
                 <div class="slick-slide"> <!-- 1 -->
                     <div class="affa-testimonial">
                         <div class="testimonial-name">
-                            <img src="{{ asset('landing/images/content/avatars/1.jpg', true) }}" alt="Avatar">
+                            <img src="{{ asset('landing/images/content/avatars/1.jpg', $hasHttps) }}" alt="Avatar">
                             <h4>Amah Holland</h4>
                             <p>Social Media Manager of MG</p>
                         </div>
@@ -31,7 +31,7 @@
                 <div class="slick-slide"> <!-- 2 -->
                     <div class="affa-testimonial">
                         <div class="testimonial-name">
-                            <img src="{{ asset('landing/images/content/avatars/2.jpg', true) }}" alt="Avatar">
+                            <img src="{{ asset('landing/images/content/avatars/2.jpg', $hasHttps) }}" alt="Avatar">
                             <h4>Mugiwara Kiwolen</h4>
                             <p>CEO & Founder of AffaGroup</p>
                         </div>
@@ -47,7 +47,7 @@
                 <div class="slick-slide"> <!-- 3 -->
                     <div class="affa-testimonial">
                         <div class="testimonial-name">
-                            <img src="{{ asset('landing/images/content/avatars/3.jpg', true) }}" alt="Avatar">
+                            <img src="{{ asset('landing/images/content/avatars/3.jpg', $hasHttps) }}" alt="Avatar">
                             <h4>Bebbh Cwan</h4>
                             <p>Comunity Manager of Avelie</p>
                         </div>
@@ -63,7 +63,7 @@
                 <div class="slick-slide"> <!-- 4 -->
                     <div class="affa-testimonial">
                         <div class="testimonial-name">
-                            <img src="{{ asset('landing/images/content/avatars/4.jpg', true) }}" alt="Avatar">
+                            <img src="{{ asset('landing/images/content/avatars/4.jpg', $hasHttps) }}" alt="Avatar">
                             <h4>Rendy Jagerjack</h4>
                             <p>Marketing Leader of MochiHijab</p>
                         </div>

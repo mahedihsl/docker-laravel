@@ -1,5 +1,5 @@
 # docker/nginx/Dockerfile
-FROM nginx
+FROM nginx:1.25.0-alpine-slim
 ADD myradar.nginx.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /var/www/html/myradar

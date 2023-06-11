@@ -26,7 +26,7 @@
             <div class="col-sm-6 col-md-7 margin-bottom40">
                 <figure class="img-layers2 img-layer-left-front">
                     <div class="" style="margin-top: 100px;">
-                        <img src="{{ asset('images/features/remote-lock-geo-fence.png', true) }}" alt="Image Left" class="animation" data-animation="animation-fade-in-right" data-delay="400">
+                        <img src="{{ asset('images/features/remote-lock-geo-fence.png', $hasHttps) }}" alt="Image Left" class="animation" data-animation="animation-fade-in-right" data-delay="400">
                     </div>
                     {{-- <div class="img-layer-right">
                         <img src="{{ asset('landing/images/content/landing/feature-7.jpg') }}" alt="Image Right" class="animation" data-animation="animation-fade-in-right">

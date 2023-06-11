@@ -31,6 +31,7 @@ class CheckoutURLToken
         $accessTokenExpireTime = 50 * 60; // 50 minutes
         $refreshTokenExpireTime = 60 * 60 * 24 * 26; // 26 days
         $accessToken = Redis::command('GET', ['bkash:checkout_url:access_token']);
+
         if (!$accessToken) {
             $refreshToken = Redis::command('GET', ['bkash:checkout_url:refresh_token']);
             if (!$refreshToken) {

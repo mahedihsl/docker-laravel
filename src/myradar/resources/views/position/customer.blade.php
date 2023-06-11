@@ -2,11 +2,11 @@
 
 @push('style')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
-  <link rel="stylesheet" href="{{ asset('vendors/datetimepicker/build/jquery.datetimepicker.min.css', true) }}">
-  <link rel="stylesheet" href="{{asset('vendors/time/include/ui-1.10.0/ui-lightness/jquery-ui.css', true)}}">
-  <link rel="stylesheet" href="{{asset('vendors/time/jquery.ui.timepicker.css', true)}}">
-  <link rel="stylesheet" href="{{ asset('css/material-switch.css', true) }}">
-  <link rel="stylesheet" href="{{ asset('css/simple.css', true) }}">
+  <link rel="stylesheet" href="{{ asset('vendors/datetimepicker/build/jquery.datetimepicker.min.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{asset('vendors/time/include/ui-1.10.0/ui-lightness/jquery-ui.css', $hasHttps)}}">
+  <link rel="stylesheet" href="{{asset('vendors/time/jquery.ui.timepicker.css', $hasHttps)}}">
+  <link rel="stylesheet" href="{{ asset('css/material-switch.css', $hasHttps) }}">
+  <link rel="stylesheet" href="{{ asset('css/simple.css', $hasHttps) }}">
   <style media="screen">
   .list-group-item {
       border: none;
@@ -169,10 +169,10 @@
 @push('script')
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf9yCy5ZZ6iEo0EyOWjUg4EpUHIeuZVWQ&libraries=geometry"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
-<script src="{{asset('js/moment.min.js', true)}}" charset="utf-8"></script>
-<script src="{{asset('vendors/time/include/ui-1.10.0/jquery.ui.core.min.js', true)}}"></script>
-<script src="{{asset('vendors/datetimepicker/build/jquery.datetimepicker.full.min.js', true)}}"></script>
-<script src="{{asset('vendors/time/jquery.ui.timepicker.js', true)}}"></script>
+<script src="{{asset('js/moment.min.js', $hasHttps)}}" charset="utf-8"></script>
+<script src="{{asset('vendors/time/include/ui-1.10.0/jquery.ui.core.min.js', $hasHttps)}}"></script>
+<script src="{{asset('vendors/datetimepicker/build/jquery.datetimepicker.full.min.js', $hasHttps)}}"></script>
+<script src="{{asset('vendors/time/jquery.ui.timepicker.js', $hasHttps)}}"></script>
 
 <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
 <script type="text/javascript">
@@ -189,7 +189,7 @@ google.maps.LatLng.prototype.distanceFrom = function (newLatLng) {
     return EarthRadiusMeters * c;
 }
 </script>
-<script src="{{ asset('js/position/live.js', true) }}" charset="utf-8"></script>
+<script src="{{ asset('js/position/live.js', $hasHttps) }}" charset="utf-8"></script>
 <script type="text/javascript">
 
 $(function() {
