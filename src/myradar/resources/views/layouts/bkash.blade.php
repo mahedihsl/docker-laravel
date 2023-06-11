@@ -10,12 +10,12 @@
 
     <title>{{ config('app.name') }}</title>
 
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico', true) }}">
-    <link rel="apple-touch-icon" href="{{ asset('assets/landing/images/apple-touch-icon.png', true) }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico', $hasHttps) }}">
+    <link rel="apple-touch-icon" href="{{ asset('assets/landing/images/apple-touch-icon.png', $hasHttps) }}">
     <link rel="apple-touch-icon" sizes="72x72"
-        href="{{ asset('assets/landing/images/apple-touch-icon-72x72.png', true) }}">
+        href="{{ asset('assets/landing/images/apple-touch-icon-72x72.png', $hasHttps) }}">
     <link rel="apple-touch-icon" sizes="114x114"
-        href="{{ asset('assets/landing/images/apple-touch-icon-114x114.png', true) }}">
+        href="{{ asset('assets/landing/images/apple-touch-icon-114x114.png', $hasHttps) }}">
 
     <!-- <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}"> -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"

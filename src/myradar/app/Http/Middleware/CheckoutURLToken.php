@@ -31,20 +31,30 @@ class CheckoutURLToken
         $accessTokenExpireTime = 50 * 60; // 50 minutes
         $refreshTokenExpireTime = 60 * 60 * 24 * 26; // 26 days
         $accessToken = Redis::command('GET', ['bkash:checkout_url:access_token']);
+
         if (!$accessToken) {
             $refreshToken = Redis::command('GET', ['bkash:checkout_url:refresh_token']);
             if (!$refreshToken) {
                 $arr = $this->BkashCheckoutURLService->grantToken($this->credential);
                 $accessToken = $arr['id_token'];
                 $refreshToken = $arr['refresh_token'];
-                
-                Redis::command('SET', ['bkash:checkout_url:access_token', $accessToken, 'EX', strval($accessTokenExpireTime)]);
-                Redis::command('SET', ['bkash:checkout_url:refresh_token', $refreshToken, 'EX', strval($refreshTokenExpireTime)]);
+
+                //Redis::command('SET', ['bkash:checkout_url:access_token', $accessToken, 'EX', strval($accessTokenExpireTime)]);
+                Redis::set('bkash:checkout_url:access_token', $accessToken);
+                Redis::expire('bkash:checkout_url:access_token', strval($accessTokenExpireTime));
+
+
+               //Redis::command('SET', ['bkash:checkout_url:refresh_token', $refreshToken, 'EX', strval($refreshTokenExpireTime)]);
+                Redis::set('bkash:checkout_url:refresh_token', $refreshToken);
+                Redis::expire('bkash:checkout_url:access_token',strval($refreshTokenExpireTime));
+
             } else {
                 $arr = $this->BkashCheckoutURLService->refreshToken($refreshToken, $this->credential);
                 $accessToken = $arr['id_token'];
-                
-                Redis::command('SET', ['bkash:checkout_url:access_token', $accessToken, 'EX', strval($accessTokenExpireTime)]);
+
+                //Redis::command('SET', ['bkash:checkout_url:access_token', $accessToken, 'EX', strval($accessTokenExpireTime)]);
+                Redis::set('bkash:checkout_url:access_token', $accessToken);
+                Redis::expire('bkash:checkout_url:access_token',strval($accessTokenExpireTime));
             }
         }
         return $next($request);

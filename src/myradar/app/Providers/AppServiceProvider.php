@@ -14,6 +14,8 @@ use Auth;
 use App\Providers\ObserverServiceProvider;
 use App\Providers\RepositoryServiceProvider as newRepositoryServiceProvider;
 use App\Providers\ResponseMacroServiceProvider ;
+use Illuminate\Support\Facades\View;
+
 
 
 class LaravelLoggerProxy
@@ -51,6 +53,13 @@ class AppServiceProvider extends ServiceProvider
         Validator::replacer('current_password', function ($message, $attribute, $rule, $parameters) {
             return str_replace(':attribute', $attribute, 'Password is wrong');
         });
+
+
+
+        View::share('hasHttps', env('APP_ENV')=='production');
+
+
+
     }
 
     /**

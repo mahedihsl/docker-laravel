@@ -19,7 +19,7 @@
 
 @push('script')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
-  <script src="{{ asset('js/enterprise/employee.js', true) }}" charset="utf-8"></script>
+  <script src="{{ asset('js/enterprise/employee.js', $hasHttps) }}" charset="utf-8"></script>
   <script type="text/javascript">
     $(function() {
       $('div.box-header').css('background', '#3c8dbc').css('color', '#ffffff');

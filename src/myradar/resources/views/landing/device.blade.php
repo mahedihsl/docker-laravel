@@ -22,13 +22,13 @@
     <div class="col-pull-right">
         <figure class="img-layers3 img-pull-left">
             <div class="img-layer-lg">
-                <img src="{{ asset('images/devices/laptop.png', true) }}" alt="Image Large" class="animation" data-animation="animation-fade-in-right">
+                <img src="{{ asset('images/devices/laptop.png', $hasHttps) }}" alt="Image Large" class="animation" data-animation="animation-fade-in-right">
             </div>
             <div class="img-layer-md">
-                <img src="{{ asset('images/devices/ipad.png', true) }}" alt="Image Mediun" class="animation" data-animation="animation-fade-in-left" data-delay="300">
+                <img src="{{ asset('images/devices/ipad.png', $hasHttps) }}" alt="Image Mediun" class="animation" data-animation="animation-fade-in-left" data-delay="300">
             </div>
             <div class="img-layer-sm">
-                <img src="{{ asset('images/devices/iphone.png', true) }}" alt="Image Small" class="animation" data-animation="animation-fade-in-down" data-delay="600">
+                <img src="{{ asset('images/devices/iphone.png', $hasHttps) }}" alt="Image Small" class="animation" data-animation="animation-fade-in-down" data-delay="600">
             </div>
         </figure>
     </div>

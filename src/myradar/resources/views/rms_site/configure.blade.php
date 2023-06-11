@@ -20,9 +20,9 @@
             <h4>Device Com. ID: @{{ dev }}</h4>
             <div class="tw-w-full tw-flex tw-flex-col tw-gap-y-3">
                 <pin-header></pin-header>
-                <pin-config 
-                    v-for="(conf, j) in pinConfigsOfDevice(dev)" 
-                    :key="conf.id" 
+                <pin-config
+                    v-for="(conf, j) in pinConfigsOfDevice(dev)"
+                    :key="conf.id"
                     :config="conf">
                 </pin-config>
                 <div v-if="!pinConfigFormVisibility(+dev)"
@@ -34,9 +34,9 @@
                         </button>
                     </div>
                 </div>
-                <pin-config-form 
-                    v-if="pinConfigFormVisibility(+dev)" 
-                    :site-id="site_id" 
+                <pin-config-form
+                    v-if="pinConfigFormVisibility(+dev)"
+                    :site-id="site_id"
                     :com-id="dev"
                     @close="onPinConfigFormClosed">
                 </pin-config-form>
@@ -47,5 +47,5 @@
 @endsection
 
 @push('script')
-<script src="{{ asset('js/rms/configure.js', true) }}" charset="utf-8"></script>
+<script src="{{ asset('js/rms/configure.js', $hasHttps) }}" charset="utf-8"></script>
 @endpush

@@ -9,7 +9,7 @@
             <div class="col-sm-8 col-md-5 col-lg-4 col-sm-offset-2 col-lg-offset-1 col-md-offset-0 margin-bottom20 ">
                 <figure class="img-layers img-layer-right-front">
                     <div class="img-layer-left img-layer-middle">
-                        <img src="{{ asset('images/features/live-tracking.gif', true) }}" alt="Live Tracking" class="animation live-tracking" data-animation="animation-fade-in-left">
+                        <img src="{{ asset('images/features/live-tracking.gif', $hasHttps) }}" alt="Live Tracking" class="animation live-tracking" data-animation="animation-fade-in-left">
                     </div>
                     {{-- <div class="img-layer-right">
                         <img src="{{ asset('landing/images/content/landing/feature-5.png') }}" alt="Image Right" class="animation" data-animation="animation-fade-in-right" data-delay="400">

@@ -104,7 +104,7 @@ Due Bill SMS/Push Notice
 @endsection
 
 @push('script')
-<script src="{{asset('js/customer/promotion/index.js', true)}}"></script>
+<script src="{{asset('js/customer/promotion/index.js', $hasHttps)}}"></script>
 <script type="text/javascript">
   var count;
 
@@ -114,7 +114,7 @@ Due Bill SMS/Push Notice
         var count = parseInt(progress.data('total'))
         var done = count - data.remaining
         var percentage = Math.floor(done / count * 100)
-        
+
         progress.attr('aria-valuenow', percentage)
         progress.css('width', percentage + '%')
         progress.text(percentage + '%')

@@ -27,6 +27,6 @@
 @endsection
 
 @push('script')
-<script src="{{ asset('js/customer/index.js', true) }}"></script>
+<script src="{{ asset('js/customer/index.js', $hasHttps) }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 @endpush

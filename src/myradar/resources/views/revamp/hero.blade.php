@@ -3,7 +3,7 @@
   <div class="row" style="width: 100%; --bs-gutter-x: 0;">
     <div class="col-lg-12" style="display: flex; flex-direction: column; align-items: center;">
       <div class="container-fluid position-relative">
-        <img src="{{ asset('landing2/assets/image/banner.gif', true) }}" class="img-fluid d-none d-lg-block" alt=""
+        <img src="{{ asset('landing2/assets/image/banner.gif', $hasHttps) }}" class="img-fluid d-none d-lg-block" alt=""
           style="width: 100%;" />
         <div class="row d-none d-lg-block position-absolute bottom-0 start-50 translate-middle-x">
           <div class="col-xs-12 d-flex flex-row justify-content-center align-items-center">
@@ -14,16 +14,16 @@
           </div>
         </div>
       </div>
-      <img src="{{ asset('landing2/assets/image/live_tracking3.gif', true) }}" class="img-fluid d-lg-none" alt=""
+      <img src="{{ asset('landing2/assets/image/live_tracking3.gif', $hasHttps) }}" class="img-fluid d-lg-none" alt=""
         style="width: 100%;" />
       <div class="w-100 d-flex flex-row justify-content-center align-items-center d-lg-none" style="gap: 30px;">
         <a target="_blank" href="{{ config('myradar.appstore') }}"
             title="Download from App Store" style="width: 35%;">
-          <img src="{{ asset('images/btn-appstore.png', true) }}" class="img-fluid" alt="">  
+          <img src="{{ asset('images/btn-appstore.png', $hasHttps) }}" class="img-fluid" alt="">
         </a>
         <a target="_blank" href="{{ config('myradar.playstore') }}"
           title="Download from Play Store" style="width: 35%;">
-          <img src="{{ asset('images/btn-playstore.png', true) }}" class="img-fluid" alt="">  
+          <img src="{{ asset('images/btn-playstore.png', $hasHttps) }}" class="img-fluid" alt="">
         </a>
       </div>
       <h2 class="text-center bangla" style="font-weight: 800; color: #424242; font-size: 24px; margin-top: 30px;">

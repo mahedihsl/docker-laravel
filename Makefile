@@ -10,7 +10,7 @@ setup-local:
 	@make fresh-build
 	@make composer-update
 	@make npm-update
-	@make npm-rundev
+	@make npm-runwatch
 	@make local-env
 	@make permission
 	

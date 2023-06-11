@@ -30,10 +30,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <!-- Favicons -->
-  <link rel="shortcut icon" href="{{ asset('images/favicon.ico', true) }}">
-  <link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', true) }}">
-  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', true) }}">
-  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', true) }}">
+  <link rel="shortcut icon" href="{{ asset('images/favicon.ico', $hasHttps) }}">
+  <link rel="apple-touch-icon" href="{{ asset('landing/images/apple-touch-icon.png', $hasHttps) }}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('landing/images/apple-touch-icon-72x72.png', $hasHttps) }}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('landing/images/apple-touch-icon-114x114.png', $hasHttps) }}">
 
   <!-- Google Fonts -->
   <link
@@ -41,17 +41,17 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{{ asset('landing2/assets/vendor/bootstrap/css/bootstrap.min.css', true) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/bootstrap-icons/bootstrap-icons.css', true) }}" rel="stylesheet">
-  {{-- <link href="{{ asset('landing2/assets/vendor/aos/aos.css', true) }}" rel="stylesheet"> --}}
-  <link href="{{ asset('landing2/assets/vendor/remixicon/remixicon.css', true) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/swiper/swiper-bundle.min.css', true) }}" rel="stylesheet">
-  <link href="{{ asset('landing2/assets/vendor/glightbox/css/glightbox.min.css', true) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/bootstrap/css/bootstrap.min.css', $hasHttps) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/bootstrap-icons/bootstrap-icons.css', $hasHttps) }}" rel="stylesheet">
+  {{-- <link href="{{ asset('landing2/assets/vendor/aos/aos.css', $hasHttps) }}" rel="stylesheet"> --}}
+  <link href="{{ asset('landing2/assets/vendor/remixicon/remixicon.css', $hasHttps) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/swiper/swiper-bundle.min.css', $hasHttps) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/vendor/glightbox/css/glightbox.min.css', $hasHttps) }}" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ asset('vendors/fa5/css/all.css') }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <!-- Template Main CSS File -->
-  <link href="{{ asset('landing2/assets/css/style.css', true) }}" rel="stylesheet">
+  <link href="{{ asset('landing2/assets/css/style.css', $hasHttps) }}" rel="stylesheet">
 
   {{-- <!-- Facebook Pixel Code -->
   <script>
@@ -80,7 +80,7 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window,document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-   fbq('init', '948521199337536'); 
+   fbq('init', '948521199337536');
   fbq('track', 'PageView');
   </script>
   <noscript>
@@ -128,7 +128,7 @@
         <!-- Feature Tabs 4 -->
         <div id="fuel-meter" class="row feture-tabs" data-aos="fade-up" style="margin-top: 80px;">
           <div class="col-lg-6">
-            <img src="{{ asset('landing2/assets/image/cng_monitoring2.png', true) }}" class="img-fluid" alt="">
+            <img src="{{ asset('landing2/assets/image/cng_monitoring2.png', $hasHttps) }}" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-6">
@@ -322,7 +322,7 @@
         <div class="row gy-4">
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
-              <img src="{{ asset('images/web_logo.png', true) }}" alt="">
+              <img src="{{ asset('images/web_logo.png', $hasHttps) }}" alt="">
               <span>myRADAR</span>
             </a>
             <p></p>
@@ -389,16 +389,16 @@
 
   <!-- Vendor JS Files -->
   {{-- <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script> --}}
-  {{-- <script src="{{ asset('landing2/assets/vendor/aos/aos.js', true) }}"></script> --}}
-  <script src="{{ asset('landing2/assets/vendor/php-email-form/validate.js', true) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/swiper/swiper-bundle.min.js', true) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/purecounter/purecounter.js', true) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/isotope-layout/isotope.pkgd.min.js', true) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/glightbox/js/glightbox.min.js', true) }}"></script>
-  <script src="{{ asset('landing2/assets/vendor/bootstrap/js/bootstrap.bundle.js', true) }}"></script>
+  {{-- <script src="{{ asset('landing2/assets/vendor/aos/aos.js', $hasHttps) }}"></script> --}}
+  <script src="{{ asset('landing2/assets/vendor/php-email-form/validate.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/swiper/swiper-bundle.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/purecounter/purecounter.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/isotope-layout/isotope.pkgd.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/glightbox/js/glightbox.min.js', $hasHttps) }}"></script>
+  <script src="{{ asset('landing2/assets/vendor/bootstrap/js/bootstrap.bundle.js', $hasHttps) }}"></script>
 
   <!-- Template Main JS File -->
-  <script src="{{ asset('landing2/assets/js/main.js', true) }}"></script>
+  <script src="{{ asset('landing2/assets/js/main.js', $hasHttps) }}"></script>
 
   {{-- <script>if( window.self == window.top ) { (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-55234356-4', 'auto'); ga('send', 'pageview'); } </script> --}}
 </body>

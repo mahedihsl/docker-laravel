@@ -11,5 +11,5 @@
   </div>
 @endsection
 @push('script')
-  <script src="{{ asset('js/enterprise/tracker.js', true) }}" charset="utf-8"></script>
+  <script src="{{ asset('js/enterprise/tracker.js', $hasHttps) }}" charset="utf-8"></script>
 @endpush

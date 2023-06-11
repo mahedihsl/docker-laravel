@@ -13,5 +13,5 @@
 @endsection
 
 @push('script')
-    <script src="{{ asset('js/customer/refuel.js', true) }}" charset="utf-8"></script>
+    <script src="{{ asset('js/customer/refuel.js', $hasHttps) }}" charset="utf-8"></script>
 @endpush

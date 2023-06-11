@@ -14,7 +14,7 @@
                 <div class="affa-video-img">
                     <a href="https://www.youtube.com/embed/4ZawV1mXlS8?autoplay=1" class="fancybox-media" title="Play Video" data-fancybox-group="videos_gallery">
                         <figure>
-                            <img src="{{ asset('landing/images/content/works/1.jpg', true) }}" alt="Image">
+                            <img src="{{ asset('landing/images/content/works/1.jpg', $hasHttps) }}" alt="Image">
                             <div class="video-img-masked"></div>
                         </figure>
                     </a>
@@ -29,7 +29,7 @@
                 <div class="affa-video-img">
                     <a href="https://www.youtube.com/embed/4ZawV1mXlS8?autoplay=1" class="fancybox-media" title="Play Video" data-fancybox-group="videos_gallery">
                         <figure>
-                            <img src="{{ asset('landing/images/content/works/2.jpg', true) }}" alt="Image">
+                            <img src="{{ asset('landing/images/content/works/2.jpg', $hasHttps) }}" alt="Image">
                             <div class="video-img-masked"></div>
                         </figure>
                     </a>
@@ -44,7 +44,7 @@
                 <div class="affa-video-img">
                     <a href="https://www.youtube.com/embed/4ZawV1mXlS8?autoplay=1" class="fancybox-media" title="Play Video" data-fancybox-group="videos_gallery">
                         <figure>
-                            <img src="{{ asset('landing/images/content/works/3.jpg', true) }}" alt="Image">
+                            <img src="{{ asset('landing/images/content/works/3.jpg', $hasHttps) }}" alt="Image">
                             <div class="video-img-masked"></div>
                         </figure>
                     </a>

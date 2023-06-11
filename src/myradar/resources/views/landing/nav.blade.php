@@ -11,7 +11,7 @@
 			&nbsp;&nbsp; Support: +8801907888899</p> --}}
 		<div class="navbar-brand flex flex-row items-center justify-center md:justify-start">
 			<a href="{{ route('welcome') }}">
-				<img src="{{ asset('images/web_logo.png', true) }}" alt="Logo">
+				<img src="{{ asset('images/web_logo.png', $hasHttps) }}" alt="Logo">
 			</a> <!-- site logo -->
 			<span class="ml-2">myRADAR</span>
 		</div>
