@@ -1,4 +1,7 @@
 <!-- ======= Features Section ======= -->
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
 <section id="feature" class="features">
 
   <div class="container" data-aos="fade-up">

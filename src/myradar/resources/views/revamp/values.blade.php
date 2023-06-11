@@ -1,4 +1,7 @@
 <!-- ======= Values Section ======= -->
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
 <section id="values" class="values">
 
   <div class="container" data-aos="fade-up">

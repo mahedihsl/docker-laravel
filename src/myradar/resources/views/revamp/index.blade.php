@@ -1,3 +1,6 @@
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
