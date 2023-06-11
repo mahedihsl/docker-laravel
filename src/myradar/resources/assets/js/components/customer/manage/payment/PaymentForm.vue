@@ -34,7 +34,7 @@
 
       <div class="form-group">
         <label for="date">Payment Date</label>
-        <datepicker v-model="date" :highlighted="[new Date()]" name="uniquename" placeholder="Pick Date" input-class="form-control"></datepicker>
+        <datepicker v-model="date" :highlighted="highlighted" name="uniquename" placeholder="Pick Date" input-class="form-control"></datepicker>
         <p class="help-block"></p>
       </div>
 
@@ -134,6 +134,7 @@ export default {
       extraMoney: 0,
       waiveMoney: 0,
       prevExtra: 0,
+      highlighted: { to: new Date(),from: new Date() }
   }),
   computed:{
     isDisabled(){

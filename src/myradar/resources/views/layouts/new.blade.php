@@ -133,7 +133,7 @@
   <script src="{{asset('assets/js/adminlte.min.js', $hasHttps)}}"></script>
   <script src="{{asset('assets/vendors/toastr/toastr.min.js', $hasHttps)}}" charset="utf-8"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="{{asset('assets/js/demo.js', $hasHttps)}}"></script>
+  {{-- <script src="{{asset('assets/js/demo.js', $hasHttps)}}"></script> --}}
   <script src="{{asset('assets/js/common.js?v='.config('cache.version'), $hasHttps)}}" charset="utf-8"></script>
   <script>
     $(document).ready(function () {
