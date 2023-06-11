@@ -63,7 +63,7 @@ class BillingController extends Controller
                     $row->setFontWeight('bold');
                 });
             });
-        }, 'invoices.xlsx', \Maatwebsite\Excel\Excel::XLSX);           
+        }, 'billing.xlsx');           
     }
 
     public function importExcel(Request $request)
