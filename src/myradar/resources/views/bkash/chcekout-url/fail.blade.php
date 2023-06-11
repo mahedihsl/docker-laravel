@@ -13,7 +13,7 @@
     @endif
 
     <div class="text-center">
-      <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-800 text-white rounded shadow-md"><a href="{{ route('url-amount',$uid) }}">Try Again</a></button> 
+      <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-800 text-white rounded shadow-md"><a href="{{ route('url-amount', ['uid'=>$uid]) }}">Try Again</a></button>  
   </div>
   </div>
 </div>
