@@ -15,5 +15,5 @@
 @endsection
 
 @push('script')
-  <script src="{{asset('js/customer/promotion/index.js', true)}}"></script>
+  <script src="{{asset('js/customer/promotion/index.js', $hasHttps)}}"></script>
 @endpush

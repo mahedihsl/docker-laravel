@@ -25,5 +25,5 @@
 @endsection
 
 @push('script')
-  <script src="{{asset('js/service/complain/index.js', true)}}"></script>
+  <script src="{{asset('js/service/complain/index.js', $hasHttps)}}"></script>
 @endpush

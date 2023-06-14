@@ -14,6 +14,10 @@ use Auth;
 use App\Providers\ObserverServiceProvider;
 use App\Providers\RepositoryServiceProvider as newRepositoryServiceProvider;
 use App\Providers\ResponseMacroServiceProvider ;
+use App\Providers\BroadcastServiceProvider ;
+use App\Providers\EventServiceProvider;
+use App\Providers\AuthServiceProvider;
+
 use Illuminate\Support\Facades\View;
 
 
@@ -78,8 +82,11 @@ class AppServiceProvider extends ServiceProvider
            // $this->app->register(DuskServiceProvider::class);
         }
         $this->app->register(RepositoryServiceProvider::class);
+        $this->app->register(BroadcastServiceProvider ::class);
         $this->app->register(newRepositoryServiceProvider::class);
         $this->app->register(ObserverServiceProvider::class);
+        $this->app->register(AuthServiceProvider::class);
+        $this->app->register(EventServiceProvider::class);
         $this->app->register(ResponseMacroServiceProvider::class);
         $this->app->bind('App\Service\Calibration\CalibrationService', 'App\Service\Calibration\CalibrationServiceImpl');
 

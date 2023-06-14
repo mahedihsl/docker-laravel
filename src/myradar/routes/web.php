@@ -29,7 +29,7 @@ Route::get('/archive', function() {
     return view('landing.welcome');
 });
 
-Route::post('/test', [App\Http\Controllers\Auth\CustomLoginController::class,'login'])->name('test');
+
 Auth::routes();
 
 

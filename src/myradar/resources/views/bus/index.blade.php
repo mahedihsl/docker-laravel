@@ -9,5 +9,5 @@
 @endsection
 
 @push('script')
-  <script src="{{mix('js/bus/index.js', true)}}"></script>
+  <script src="{{mix('js/bus/index.js', $hasHttps)}}"></script>
 @endpush
