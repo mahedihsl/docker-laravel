@@ -39,7 +39,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //URL::forceScheme('https');
+        if(env('APP_ENV')=='production'){
+            URL::forceScheme('https');
+        }
+
 
         Validator::extend('bd_phone', function ($attribute, $value, $parameters, $validator) {
             return preg_match('^(?:\+?88)?01[15-9]\d{8}$^', $value) && strlen($value) >= 10;
