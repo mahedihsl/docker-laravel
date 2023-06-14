@@ -1,4 +1,7 @@
 <!-- ======= Pricing Section ======= -->
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
 <section id="pricing" class="pricing">
 
   <div class="container" data-aos="fade-up">

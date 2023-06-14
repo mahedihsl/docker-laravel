@@ -1,4 +1,7 @@
 <!-- ======= Hero Section ======= -->
+@php
+$hasHttps= env('APP_ENV')=='production'
+@endphp
 <section id="hero" class="hero d-flex align-items-center">
   <div class="row" style="width: 100%; --bs-gutter-x: 0;">
     <div class="col-lg-12" style="display: flex; flex-direction: column; align-items: center;">
@@ -19,11 +22,13 @@
       <div class="w-100 d-flex flex-row justify-content-center align-items-center d-lg-none" style="gap: 30px;">
         <a target="_blank" href="{{ config('myradar.appstore') }}"
             title="Download from App Store" style="width: 35%;">
+
           <img src="{{ asset('images/btn-appstore.png', $hasHttps) }}" class="img-fluid" alt="">
         </a>
         <a target="_blank" href="{{ config('myradar.playstore') }}"
           title="Download from Play Store" style="width: 35%;">
           <img src="{{ asset('images/btn-playstore.png', $hasHttps) }}" class="img-fluid" alt="">
+    
         </a>
       </div>
       <h2 class="text-center bangla" style="font-weight: 800; color: #424242; font-size: 24px; margin-top: 30px;">

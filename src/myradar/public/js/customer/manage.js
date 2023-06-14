@@ -4330,7 +4330,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             spareType: '',
             extraMoney: 0,
             waiveMoney: 0,
-            prevExtra: 0
+            prevExtra: 0,
+            highlighted: { to: new Date(), from: new Date() }
         };
     },
     computed: {
@@ -64261,7 +64262,7 @@ var render = function() {
         _vm._v(" "),
         _c("datepicker", {
           attrs: {
-            highlighted: [new Date()],
+            highlighted: _vm.highlighted,
             name: "uniquename",
             placeholder: "Pick Date",
             "input-class": "form-control"
