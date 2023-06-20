@@ -10,9 +10,9 @@ setup-local:
 	@make fresh-build
 	@make composer-update
 	@make npm-update
-	@make npm-runwatch
 	@make local-env
 	@make permission
+	@make npm-runwatch
 	
 fresh-build:
 	docker compose build --no-cache --force-rm
