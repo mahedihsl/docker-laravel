@@ -19,6 +19,7 @@ use App\Criteria\RecentItemCriteria;
 use App\Transformers\ComplainExportTransformer;
 use Illuminate\Http\Request;
 use Excel;
+use App\Exports\CompainsExport;
 
 class ComplainController extends Controller
 {
@@ -160,17 +161,29 @@ class ComplainController extends Controller
     $transitions = $this->getAllStatusTransitionsAsKeys($complains);
     $transformer = new ComplainExportTransformer($transitions);
 
-    Excel::create('Complains', function ($excel) use ($complains, $transformer) {
-      $excel->sheet('data', function ($sheet) use ($complains, $transformer) {
 
-        $data = $complains->map(function($complain) use ($transformer) {
-          return $transformer->transform($complain);
-        });
-        $sheet->fromArray($data, null, 'A1', false, true);
-      });
-    })->download('xls');
+    $complainsData = $complains->map(function ($complain) use ($transformer) {
+        return $transformer->transform($complain);
+    });
 
-    return redirect()->back();
+  //dd($complainsData[5]);
+
+
+
+    return Excel::download(new CompainsExport($complainsData), 'Complains.xlsx');
+
+
+    // Excel::create('Complains', function ($excel) use ($complains, $transformer) {
+    //   $excel->sheet('data', function ($sheet) use ($complains, $transformer) {
+
+    //     $data = $complains->map(function($complain) use ($transformer) {
+    //       return $transformer->transform($complain);
+    //     });
+    //     $sheet->fromArray($data, null, 'A1', false, true);
+    //   });
+    // })->download('xls');
+
+    // return redirect()->back();
   }
 
   public function getAllStatusTransitionsAsKeys($complains)

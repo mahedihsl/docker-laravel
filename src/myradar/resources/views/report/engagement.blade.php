@@ -64,8 +64,8 @@
       disabled for all users who have more than 300 API requests. An Excel report will be generated after script is over.
     </p>
     <button class="btn btn-primary">Start Scanning</button>
-  </form>  
-</div>    
+  </form>
+</div>
 @endif
 
 <div class="col-xs-12 table-responsive">

@@ -15,6 +15,7 @@ use App\Entities\Activity;
 use App\Service\Microservice\ServiceException;
 use Carbon\Carbon;
 use Excel;
+use App\Exports\CustomerEngagementExport;
 
 class EngagementController extends Controller
 {
@@ -32,6 +33,8 @@ class EngagementController extends Controller
 
     public function index(Request $request)
     {
+
+
         $name = $request->get('name', '');
         $phone = $request->get('phone', '');
 
@@ -86,29 +89,38 @@ class EngagementController extends Controller
 
     public function export(Request $request)
     {
+
         $users = $this->repository->all(['name', 'phone']);
+
         $data = $this->records($users, $request->all());
 
-        Excel::create('CustomerEngagement (API Count)', function ($excel) use ($data) {
-            $excel->sheet('data', function ($sheet) use ($data) {
-                $sheet->fromArray($data->toArray(), null, 'A1', false, true);
-            });
-        })->download('xls');
 
-        return redirect()->back();
+        return Excel::download(new CustomerEngagementExport($data) , 'test(API Count).xls');
+
+        // Excel::create('CustomerEngagement (API Count)', function ($excel) use ($data) {
+        //     $excel->sheet('data', function ($sheet) use ($data) {
+        //         $sheet->fromArray($data->toArray(), null, 'A1', false, true);
+        //     });
+        // })->download('xls');
+
+        // return redirect()->back();
     }
 
     private function records($users, $query)
     {
 		$uids = $users->map(function($u) { return $u->id; })->toArray();
-        
+
+
         $year = intval($query['year']);
         $month = intval($query['month']);
         $startDate = Carbon::createFromDate($year, $month, 1);
         $startDate->setTime(0, 0, 0);
         $endDate = $startDate->copy()->addMonth();
 
-		$activities = Activity::whereIn('user_id', $uids)
+
+
+
+		$activities = Activity::where('user_id',$uids)
 			->where('when', '>=', $startDate)
 			->where('when', '<', $endDate)
 			->get()
@@ -116,10 +128,15 @@ class EngagementController extends Controller
 				return $val->user_id;
 			});
 
+
+
+
         // return $activities;
 
-        return $users->map(function ($user) use ($activities, $startDate, $endDate) {
+       $test=$users->map(function ($user) use ($activities, $startDate, $endDate) {
             $data = collect($activities->get($user->id));
+
+
             $ret = [
                 'Name' => $user->name,
                 // 'Phone' => $user->phone,
@@ -135,19 +152,21 @@ class EngagementController extends Controller
 				$yy = 0;
 				if ( ! is_null($itm)) {
 					$xx = $itm->request;
-					// $yy = $itm->login;
+					 $yy = $itm->login;
 				}
 
 				$str = $i->format('j M');
 				$arr = [
 					$str => $xx,
-					// $str.'(OPEN)' => $yy,
+					 $str.'(OPEN)' => $yy,
 				];
 
 				$ret = array_merge($ret, $arr);
 			}
             return $ret;
         });
+
+
     }
 
 	public function test() {
